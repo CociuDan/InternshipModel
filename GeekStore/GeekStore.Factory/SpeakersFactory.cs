@@ -6,12 +6,12 @@ namespace GeekStore.Factory
     {
         public static Speakers CreateSpeakers()
         {
-            return new Speakers("2.0", "Pioneer", 119, "S-DJ08", 400);
+            return new Speakers("2.0", "Pioneer", 119, "S-DJ08");
         }
 
-        public static Speakers CreateSpeakers(string configuration, string manufacturer, int maxVolume, string model, double price)
+        public static Speakers CreateSpeakers(string configuration, string manufacturer, int maxVolume, string model)
         {
-            return new Speakers(configuration, manufacturer, maxVolume, model, price);
+            return new Speakers(configuration, manufacturer, maxVolume, model);
         }
     }
 }

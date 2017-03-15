@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Text;
-using GeekStore.Model.Components;
 
-namespace GeekStore.Model.Peripherals
+namespace GeekStore.Model.Components.PowerUnits
 {
-    public class Monitor : Display, IItem
+    public class PowerUnit : IItem
     {
         private readonly string _manufacturer;
         private readonly string _model;
+        private readonly int _output;
 
-        public Monitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, double size)
-                : base(aspectRatio, maxRefreshRate, resolution, size)
+        public PowerUnit(string manufacturer, string model, int output)
         {
             try
             {
@@ -20,12 +19,12 @@ namespace GeekStore.Model.Peripherals
                 if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                     throw new ArgumentNullException(model);
 
+                if (output <= 0)
+                    throw new ArgumentException("Power Unit cannot have an output less or equal to 0W. Entered value: " + output.ToString());
+
                 _manufacturer = manufacturer;
                 _model = model;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
+                _output = output;
             }
             catch (ArgumentException exception)
             {
@@ -44,9 +43,7 @@ namespace GeekStore.Model.Peripherals
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine($"\tManufacturer: {Manufacturer}");
                 sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tResolution: {Resolution}");
-                sb.AppendLine($"\tMax Refresh Rate: {MaxRefreshRate}Hz");
-                sb.AppendLine($"\tAspect Ratio: {AspectRatio}");
+                sb.AppendLine($"\tOutput: {Output}W");
                 return sb.ToString();
             }
         }
@@ -55,5 +52,6 @@ namespace GeekStore.Model.Peripherals
 
         public string Model { get { return _model; } }
 
+        public int Output { get { return _output; } }
     }
 }

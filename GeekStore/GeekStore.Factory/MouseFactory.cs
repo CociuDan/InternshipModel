@@ -6,12 +6,12 @@ namespace GeekStore.Factory
     {
         public static Mouse CreateMouse()
         {
-            return new Mouse(2500, "Logitech", "G100S", 22.5, Mouse.MouseType.Optical);
+            return new Mouse(2500, "Logitech", "G100S", Mouse.MouseType.Optical);
         }
 
-        public static Mouse CreateMouse(int dpi, string manufacturer, string model, double price, Mouse.MouseType mouseType)
+        public static Mouse CreateMouse(int dpi, string manufacturer, string model, Mouse.MouseType mouseType)
         {
-            return new Mouse(dpi, manufacturer, model, price, mouseType);
+            return new Mouse(dpi, manufacturer, model, mouseType);
         }
     }
 }

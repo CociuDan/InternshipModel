@@ -5,24 +5,19 @@ namespace GeekStore.Factory
 {
     public class DisplayFactory
     {
+        public static Display CreateDisplay()
+        {
+            return new Display("16:9", 60, "1920x1080", 15.6);
+        }
+
         public static Monitor CreateMonitor()
         {
-            return new Monitor("16:9", "ASUS", 165, "ROG Swift PG279Q", 500, "2560x1440");
+            return new Monitor("16:9", "ASUS", 165, "ROG Swift PG279Q", "2560x1440", 27);
         }
 
-        public static Monitor CreateMonitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, double price, string resolution)
+        public static Monitor CreateMonitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, double size)
         {
-            return new Monitor(aspectRatio, manufacturer, maxRefreshRate, model, price, resolution);
-        }
-
-        public static LaptopDisplay CreateLaptopDisplay()
-        {
-            return new LaptopDisplay("16:9", 60, "1920x1080");
-        }
-
-        public static LaptopDisplay CreateLaptopDisplay(string aspectRatio, int maxRefreshRate, string resolution)
-        {
-            return new LaptopDisplay(aspectRatio, maxRefreshRate, resolution);
+            return new Monitor(aspectRatio, manufacturer, maxRefreshRate, model, resolution, size);
         }
     }
 }

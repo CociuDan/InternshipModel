@@ -4,22 +4,13 @@ using System.Collections.Generic;
 
 namespace GeekStore.Repository.Interfaces
 {
-    public interface IStorage<IItem>
+    public interface IStorage<T>
     {
-        IEnumerable<IItem> GetItems();
-
-        IItem GetItemByID(int itemID);
-
         void DeleteItemByID(int itemID);
+        IEnumerable<T> GetItems();
+        IEnumerable<T> GetItemsByCriteria(Func<T, bool> criteria);
+        void SaveItem(T item);
 
-        void SaveItem(IItem item);
 
-        IEnumerable<IItem> GetItemsByPrice<T>(double minPrice, double maxPrice);
-
-        IEnumerable<IItem> GetCompatibleItems<T>(string socket);
-
-        IEnumerable<IItem> GetItemsByType<T>();
-
-        IEnumerable<IItem> GetItemsByCriteria(Func<IItem, bool> criteria);
     }
 }

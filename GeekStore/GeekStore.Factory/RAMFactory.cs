@@ -4,24 +4,14 @@ namespace GeekStore.Factory
 {
     public class RAMFactory
     {
-        public static DesktopRAM CreateDesktopRAM()
+        public static RAM CreateRAM()
         {
-            return new DesktopRAM(4096, 1600, RAM.RAMGeneration.DDR3, "Corsair", "Vengeance", 17.5);
+            return new RAM(4096, 1600, RAM.RAMGeneration.DDR3, "Corsair", "Vengeance");
         }
 
-        public static DesktopRAM CreateDesktopRAM(int capacity, int frequency, RAM.RAMGeneration ramGeneration, string manufacturer, string model, double price)
+        public static RAM CreateRAM(int capacity, int frequency, RAM.RAMGeneration ramGeneration, string manufacturer, string model)
         {
-            return new DesktopRAM(capacity, frequency, ramGeneration, manufacturer, model, price);
-        }
-
-        public static LaptopRAM CreateLaptopRAM()
-        {
-            return new LaptopRAM(8192, 2400, RAM.RAMGeneration.DDR4);
-        }
-
-        public static LaptopRAM CreateLaptopRAM(int capacity, int frequency, RAM.RAMGeneration ramGeneration)
-        {
-            return new LaptopRAM(capacity, frequency, ramGeneration);
+            return new RAM(capacity, frequency, ramGeneration, manufacturer, model);
         }
     }
 }

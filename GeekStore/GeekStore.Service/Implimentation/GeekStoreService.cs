@@ -7,48 +7,28 @@ using System;
 
 namespace GeekStore.Service.Implimentation
 {
-    public class GeekStoreService : IGeekStoreService<IItem>
+    public class GeekStoreService<T> : IGeekStoreService<T> where T : Product
     {
-        private IStorage<IItem> _storage = new ListStorage();
+        IStorage<T> _storage = new ListStorage<T>();
 
         public void DeleteItemByID(int itemID)
         {
             _storage.DeleteItemByID(itemID);
         }
 
-        public IEnumerable<IItem> GetCompatibleItems<T>(string socket)
-        {
-            return _storage.GetCompatibleItems<T>(socket);
-        }
-
-        public IItem GetItemByID(int itemID)
-        {
-            return _storage.GetItemByID(itemID);
-        }
-
-        public IEnumerable<IItem> GetItems()
+        public IEnumerable<T> GetItems()
         {
             return _storage.GetItems();
         }
 
-        public IEnumerable<IItem> GetItemsByPrice<T>(double minPrice, double maxPrice)
-        {
-            return _storage.GetItemsByPrice<T>(minPrice, maxPrice);
-        }
-
-        public IEnumerable<IItem> GetItemsByType<T>()
-        {
-            return _storage.GetItemsByType<T>();
-        }
-
-        public void SaveItem(IItem item)
-        {
-            _storage.SaveItem(item);
-        }
-
-        public IEnumerable<IItem> GetItemByCriteria(Func<IItem, bool> criteria)
+        public IEnumerable<T> GetItemByCriteria(Func<T, bool> criteria)
         {
             return _storage.GetItemsByCriteria(criteria);
+        }
+
+        public void SaveItem(T item)
+        {
+            _storage.SaveItem(item);
         }
     }
 }

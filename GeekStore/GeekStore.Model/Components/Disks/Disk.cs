@@ -5,27 +5,26 @@ namespace GeekStore.Model.Components.Disks
     public abstract class Disk
     {
         private readonly int _capacity;
-        private readonly int _readSpeed;
-        private readonly int _writeSpeed;
+        private readonly string _manufacturer;
+        private readonly string _model;
 
-        public Disk(int capacity, int readSpeed, int writeSpeed)
+
+        public Disk(int capacity, string manufacturer, string model)
         {
             try
             {
                 if (capacity <= 0)
                     throw new ArgumentException("Disk Capacity cannot be less or equal to 0. Entered value: " + capacity.ToString());
 
-                if (readSpeed <= 0)
-                    throw new ArgumentException("Disk Read Speed cannot be less or equal to 0. Entered value: " + readSpeed.ToString());
+                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
+                    throw new ArgumentNullException(manufacturer);
 
-                if (writeSpeed <= 0)
-                    throw new ArgumentException("Disk Write Speed cannot be less or equal to 0. Entered value: " + writeSpeed.ToString());
+                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
+                    throw new ArgumentNullException(model);
 
                 _capacity = capacity;
-                _readSpeed = readSpeed;
-                _writeSpeed = writeSpeed;
-
-
+                _manufacturer = manufacturer;
+                _model = model;
             }
             catch (ArgumentNullException exception)
             {
@@ -43,8 +42,10 @@ namespace GeekStore.Model.Components.Disks
 
         public int Capacity { get { return _capacity; } }
 
-        public int ReadSpeed { get { return _readSpeed; } }
+        public string Description { get; }
 
-        public int WriteSpeed { get { return _writeSpeed; } }
+        public string Manufacturer { get { return _manufacturer; } }
+
+        public string Model { get { return _model; } }
     }
 }

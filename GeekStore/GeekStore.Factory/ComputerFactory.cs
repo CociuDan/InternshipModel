@@ -13,25 +13,25 @@ namespace GeekStore.Factory
     {
         public static Desktop CreateDesktop()
         {
-            return new Desktop(CoolerFactory.CreateCooler(), CPUFactory.CreateDesktopCPU(), DiskFactory.CreateDesktopHDD(), GPUFactory.CreateDesktopGPU(),
-                               MotherboardFactory.CreateDesktopMotherboard(), PowerUnitFactory.CreatePSU(), RAMFactory.CreateDesktopRAM());
+            return new Desktop(CoolerFactory.CreateCooler(), CPUFactory.CreateCPU(), DiskFactory.CreateSSD(), GPUFactory.CreateGPU(),
+                               MotherboardFactory.CreateMotherboard(), PowerUnitFactory.CreatePowerUnit(), RAMFactory.CreateRAM());
         }
 
-        public static Desktop CreateDesktop(Cooler cooler, DesktopCPU cpu, DesktopHDD disk, DesktopGPU gpu, DesktopMotherboard motherboard, PSU psu, DesktopRAM ram)
+        public static Desktop CreateDesktop(Cooler cooler, CPU cpu, Disk disk, GPU gpu, Motherboard motherboard, PowerUnit psu, RAM ram)
         {
             return new Desktop(cooler, cpu, disk, gpu, motherboard, psu, ram);
         }
 
         public static Laptop CreateLaptop()
         {
-            return new Laptop(PowerUnitFactory.CreateBattery(), CPUFactory.CreateLaptopCPU(), DisplayFactory.CreateLaptopDisplay(), DiskFactory.CreateLaptopHDD(),
-                              GPUFactory.CreateLaptopGPU(), "ASUS", "UX610", MotherboardFactory.CreateLaptopMotherboard(), 800, RAMFactory.CreateLaptopRAM());
+            return new Laptop( CPUFactory.CreateCPU(), DisplayFactory.CreateDisplay(), DiskFactory.CreateHDD(),
+                              GPUFactory.CreateGPU(), "ASUS", "UX610", MotherboardFactory.CreateMotherboard(), PowerUnitFactory.CreatePowerUnit(), RAMFactory.CreateRAM());
         }
 
-        public static Laptop CreateLaptop(Battery battery, LaptopCPU cpu, LaptopDisplay display, LaptopHDD disk, LaptopGPU gpu, string manufacturer,
-                                         string model, LaptopMotherboard motherboard, double price, LaptopRAM ram)
+        public static Laptop CreateLaptop(CPU cpu, Display display, Disk disk, GPU gpu, string manufacturer,
+                                         string model, Motherboard motherboard, PowerUnit powerUnit, RAM ram)
         {
-            return new Laptop(battery, cpu, display, disk, gpu, manufacturer, model, motherboard, price, ram);
+            return new Laptop(cpu, display, disk, gpu, manufacturer, model, motherboard, powerUnit, ram);
         }
     }
 }

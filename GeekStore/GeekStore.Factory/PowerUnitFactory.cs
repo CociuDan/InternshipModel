@@ -5,24 +5,14 @@ namespace GeekStore.Factory
 {
     public class PowerUnitFactory
     {
-        public static PSU CreatePSU()
+        public static PowerUnit CreatePowerUnit()
         {
-            return new PSU("Corsair", "CX500", 500, 33.0);
+            return new PowerUnit("Corsair", "CX500", 500);
         }
 
-        public static PSU CreatePSU(string manufacturer, string model, int output, double price)
+        public static PowerUnit CreatePowerUnit(string manufacturer, string model, int output)
         {
-            return new PSU(manufacturer, model, output, price);
-        }
-
-        public static Battery CreateBattery()
-        {
-            return new Battery(45);
-        }
-
-        public static Battery CreateBattery(int output)
-        {
-            return new Battery(output);
+            return new PowerUnit(manufacturer, model, output);
         }
     }
 }

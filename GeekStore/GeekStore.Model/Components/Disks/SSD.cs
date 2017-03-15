@@ -1,42 +1,30 @@
-﻿using GeekStore.Model.Infrastucture;
-using System;
+﻿using System;
 using System.Text;
 
 namespace GeekStore.Model.Components.Disks
 {
     public class SSD : Disk, IItem
     {
-        private readonly int _id;
-        private readonly string _manufacturer;
-        private readonly string _model;
-        private double _price;
-        private int _quantity;
+        private readonly int _readSpeed;
+        private readonly int _writeSpeed;
 
-        public SSD(int capacity, string manufacturer, string model, double price, int readSpeed, int writeSpeed) : base(capacity, readSpeed, writeSpeed)
+        public SSD(int capacity, string manufacturer, string model, int readSpeed, int writeSpeed) : base(capacity, manufacturer, model)
         {
-            if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                throw new ArgumentNullException(manufacturer);
+            if (readSpeed <= 0)
+                throw new ArgumentException("SSDs Read Speed cannot be less or equal to 0. Entered value: " + readSpeed.ToString());
 
-            if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                throw new ArgumentNullException(model);
+            if (writeSpeed <= 0)
+                throw new ArgumentException("SSDs Write Speed cannot be less or equal to 0. Entered value: " + writeSpeed.ToString());
 
-            if (price <= 0)
-                throw new ArgumentException("Price cannot be less or equal to 0. Entered value: " + price.ToString());
-
-            _id = IDGenerator.NextID();
-            _manufacturer = manufacturer;
-            _model = model;
-            _price = price;
-
-            AddToWarehouse(1);
+            _readSpeed = readSpeed;
+            _writeSpeed = writeSpeed;
         }
 
-        public string Description
+        public new string Description
         {
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"#{ID}");
                 sb.AppendLine($"\tManufacturer: {Manufacturer}");
                 sb.AppendLine($"\tModel: {Model}");
                 sb.AppendLine($"\tCapacity: {Capacity}GB");
@@ -46,36 +34,8 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
-        public int ID { get { return _id; } }
+        public int ReadSpeed { get { return _readSpeed; } }
 
-        public string Manufacturer { get { return _manufacturer; } }
-
-        public string Model { get { return _model; } }
-
-        public double Price { get { return _price; } }
-
-        public int Quantity { get { return _quantity; } }
-
-
-        public void AddToWarehouse(int incomingQuantity)
-        {
-            if (incomingQuantity <= 0)
-                throw new ArgumentException("You cannot add less than one item to warehouse. Enterd value: " + incomingQuantity.ToString());
-            _quantity += incomingQuantity;
-        }
-
-        public void SellQuantity(int sellingQuantity)
-        {
-            if (sellingQuantity <= 0)
-                throw new ArgumentException("You cannot sell less than one item from warehouse. Enterd value: " + sellingQuantity.ToString());
-            _quantity -= sellingQuantity;
-        }
-
-        public void ChangePrice(double newPrice)
-        {
-            if (newPrice <= 0)
-                throw new ArgumentException("New Price cannot be less or equal to 0. Entered value: " + newPrice.ToString());
-            _price = newPrice;
-        }
+        public int WriteSpeed { get { return _writeSpeed; } }
     }
 }

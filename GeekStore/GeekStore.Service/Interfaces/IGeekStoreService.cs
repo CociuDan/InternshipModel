@@ -3,22 +3,11 @@ using System.Collections.Generic;
 
 namespace GeekStore.Service.Interfaces
 {
-    public interface IGeekStoreService<IItem>
+    public interface IGeekStoreService<T>
     {
-        IEnumerable<IItem> GetItems();
-
-        IItem GetItemByID(int itemID);
-
         void DeleteItemByID(int itemID);
-
-        void SaveItem(IItem item);
-
-        IEnumerable<IItem> GetItemsByPrice<T>(double minPrice, double maxPrice);
-
-        IEnumerable<IItem> GetCompatibleItems<T>(string socket);
-
-        IEnumerable<IItem> GetItemsByType<T>();
-
-        IEnumerable<IItem> GetItemByCriteria(Func<IItem, bool> criteria);
+        IEnumerable<T> GetItems();
+        IEnumerable<T> GetItemByCriteria(Func<T, bool> criteria);
+        void SaveItem(T item);
     }
 }

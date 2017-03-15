@@ -7,48 +7,28 @@ using GeekStore.Model.Components.CPUs;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ListStorage : IStorage<IItem>
+    public class ListStorage<T> : IStorage<T> where T : Product
     {
-        private List<IItem> _warehouseItems = new List<IItem>();
-
-        public void SaveItem(IItem item)
-        {
-            _warehouseItems.Add(item);
-        }
+        List<T> _items = new List<T>();
 
         public void DeleteItemByID(int itemID)
         {
-            _warehouseItems.Remove(_warehouseItems.Where(x => x.ID == itemID).First());
+            _items.Remove(_items.Where(x => x.ID == itemID).First());
         }
 
-        public IItem GetItemByID(int itemID)
+        public IEnumerable<T> GetItems()
         {
-            return _warehouseItems.Find(x => x.ID == itemID);
+            return _items;
         }
 
-        public IEnumerable<IItem> GetItems()
+        public IEnumerable<T> GetItemsByCriteria(Func<T, bool> criteria)
         {
-            return _warehouseItems;
+            return _items.Where(criteria);
         }
 
-        public IEnumerable<IItem> GetItemsByPrice<T>(double minPrice, double maxPrice)
+        public void SaveItem(T item)
         {
-            return _warehouseItems.Where(x => x is T && x.Price >= minPrice && x.Price <= maxPrice);
-        }
-
-        public IEnumerable<IItem> GetCompatibleItems<T>(string socket)
-        {
-            return _warehouseItems.Where(x => x is T && x.Description.Contains(socket));
-        }
-
-        public IEnumerable<IItem> GetItemsByType<T>()
-        {
-            return _warehouseItems.Where(x => x is T);
-        }
-
-        public IEnumerable<IItem> GetItemsByCriteria<T>(Func<IItem, bool> criteria)
-        {
-            return _warehouseItems.Where(x => x is T).Where(criteria);
+            _items.Add(item);
         }
     }
 }

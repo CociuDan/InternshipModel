@@ -42,27 +42,15 @@
   <ItemGroup>
     <Compile Include="Components\Case.cs" />
     <Compile Include="Components\Cooler.cs" />
-    <Compile Include="Components\CPUs\CPU.cs" />
-    <Compile Include="Components\CPUs\DesktopCPU.cs" />
-    <Compile Include="Components\CPUs\LaptopCPU.cs" />
-    <Compile Include="Components\Disks\DesktopHDD.cs" />
+    <Compile Include="Components\CPU.cs" />
+    <Compile Include="Components\Disks\HDD.cs" />
     <Compile Include="Components\Disks\Disk.cs" />
-    <Compile Include="Components\Disks\LaptopHDD.cs" />
     <Compile Include="Components\Disks\SSD.cs" />
     <Compile Include="Components\Display.cs" />
-    <Compile Include="Components\GPUs\DesktopGPU.cs" />
-    <Compile Include="Components\GPUs\GPU.cs" />
-    <Compile Include="Components\GPUs\LaptopGPU.cs" />
-    <Compile Include="Components\LaptopDisplay.cs" />
-    <Compile Include="Components\Motherboards\DesktopMotherboard.cs" />
-    <Compile Include="Components\Motherboards\LaptopMotherboard.cs" />
-    <Compile Include="Components\Motherboards\Motherboard.cs" />
-    <Compile Include="Components\PowerUnits\Battery.cs" />
-    <Compile Include="Components\PowerUnits\PowerUnit.cs" />
-    <Compile Include="Components\PowerUnits\PSU.cs" />
-    <Compile Include="Components\RAMs\DesktopRAM.cs" />
-    <Compile Include="Components\RAMs\LaptopRAM.cs" />
-    <Compile Include="Components\RAMs\RAM.cs" />
+    <Compile Include="Components\GPU.cs" />
+    <Compile Include="Components\Motherboard.cs" />
+    <Compile Include="Components\PowerUnit.cs" />
+    <Compile Include="Components\RAM.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="Infrastucture\IDGenerator.cs" />
     <Compile Include="Infrastucture\IIDGenerator.cs" />
@@ -76,6 +64,7 @@
     <Compile Include="Peripherals\Monitor.cs" />
     <Compile Include="Peripherals\Mouse.cs" />
     <Compile Include="Peripherals\Speakers.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
