@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Text;
 
-namespace GeekStore.Model.Components.RAMs
+namespace GeekStore.Model.Components
 {
     public class RAM : IItem
     {
         public enum RAMGeneration { DDR, DDR2, DDR3, DDR4 }
-        private readonly int _capacity;
-        private readonly int _frequency;
-        private readonly string _generation;
-        private readonly string _manufacturer;
-        private readonly string _model;
 
         public RAM(int capacity, int frequency, RAMGeneration ramGeneration, string manufacturer, string model)
         {
@@ -27,12 +22,13 @@ namespace GeekStore.Model.Components.RAMs
             if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                 throw new ArgumentNullException(model);
 
-            _capacity = capacity;
-            _frequency = frequency;
-            _generation = ramGeneration.ToString();
-            _manufacturer = manufacturer;
-            _model = model;
+            Capacity = capacity;
+            Frequency = frequency;
+            Generation = ramGeneration.ToString();
+            Manufacturer = manufacturer;
+            Model = model;
         }
+
         public string Description
         {
             get
@@ -47,10 +43,10 @@ namespace GeekStore.Model.Components.RAMs
             }
         }
 
-        public int Capacity { get { return _capacity; } }
-        public int Frequency { get { return _frequency; } }
-        public string Generation { get { return _generation; } }
-        public string Manufacturer { get { return _manufacturer; } }
-        public string Model { get { return _model; } }
+        public int Capacity { get; }
+        public int Frequency { get; }
+        public string Generation { get; }
+        public string Manufacturer { get; }
+        public string Model { get; }
     }
 }

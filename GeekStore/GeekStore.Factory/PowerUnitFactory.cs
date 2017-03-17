@@ -1,5 +1,4 @@
 ﻿using GeekStore.Model.Components;
-using GeekStore.Model.Components.PowerUnits;
 
 namespace GeekStore.Factory
 {

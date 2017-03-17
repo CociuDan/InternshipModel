@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lesson11_Assignment
 {
-    class Profesor
+    public class Profesor
     {
+        private int _salary;
+
+        public void ChangeSalary(int newSalary)
+        {
+            _salary = newSalary;
+        }
     }
 }

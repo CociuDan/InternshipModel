@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Text;
 
-namespace GeekStore.Model.Components.Motherboards
+namespace GeekStore.Model.Components
 {
     public class Motherboard : IItem
     {
-        private readonly string _chipset;
-        private readonly string _manufacturer;
-        private readonly string _model;
-        private readonly int _pcieSlots;
-        private readonly int _ramSlots;
-        private readonly string _socket;
-
         public Motherboard(string chipset, string manufacturer, string model, int pcieSlots, int ramSlots, string socket)
         {
             try
@@ -34,12 +27,12 @@ namespace GeekStore.Model.Components.Motherboards
                 if (string.IsNullOrEmpty(socket) || string.IsNullOrWhiteSpace(socket))
                     throw new ArgumentNullException(socket);
 
-                _chipset = chipset;
-                _manufacturer = manufacturer;
-                _model = model;
-                _pcieSlots = pcieSlots;
-                _ramSlots = ramSlots;
-                _socket = socket;
+                Chipset = chipset;
+                Manufacturer = manufacturer;
+                Model = model;
+                PCIESlots = pcieSlots;
+                RAMSlots = ramSlots;
+                Socket = socket;
             }
             catch (ArgumentNullException exception)
             {
@@ -53,9 +46,7 @@ namespace GeekStore.Model.Components.Motherboards
             {
                 throw exception;
             }
-        }
-
-        public string Chipset { get { return _chipset; } }
+        } 
 
         public string Description
         {
@@ -72,10 +63,11 @@ namespace GeekStore.Model.Components.Motherboards
             }
         }
 
-        public string Manufacturer { get { return _manufacturer; } }
-        public string Model { get { return _model; } }
-        public int PCIESlots { get { return _pcieSlots; } }
-        public int RAMSlots { get { return _ramSlots; } }
-        public string Socket { get { return _socket; } }
+        public string Chipset { get; }
+        public string Manufacturer { get; }
+        public string Model { get; }
+        public int PCIESlots { get; }
+        public int RAMSlots { get; }
+        public string Socket { get; }
     }
 }

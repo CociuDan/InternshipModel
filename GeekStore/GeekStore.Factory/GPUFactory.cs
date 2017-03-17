@@ -1,4 +1,4 @@
-﻿using GeekStore.Model.Components.GPUs;
+﻿using GeekStore.Model.Components;
 
 namespace GeekStore.Factory
 {

@@ -6,22 +6,20 @@ namespace GeekStore.Model
 {
     public class Product
     {
-        private readonly int _id;
-        private readonly IItem _item;
         private double _price;
         private int _quantity;
 
         public Product(IItem item, double price, int quantity)
         {
-            _id = IDGenerator.NextID();
-            _item = item;
+            ID = IDGenerator.NextID();
+            Item = item;
             _price = price;
             _quantity = quantity;
         }
 
-        public int ID { get { return _id; } }
+        public int ID { get; }
 
-        public IItem Item { get { return _item; } }
+        public IItem Item { get; }
 
         public double Price { get { return _price; } }
 

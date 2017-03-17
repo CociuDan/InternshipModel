@@ -5,9 +5,6 @@ namespace GeekStore.Model.Components.Disks
 {
     public class SSD : Disk, IItem
     {
-        private readonly int _readSpeed;
-        private readonly int _writeSpeed;
-
         public SSD(int capacity, string manufacturer, string model, int readSpeed, int writeSpeed) : base(capacity, manufacturer, model)
         {
             if (readSpeed <= 0)
@@ -16,8 +13,8 @@ namespace GeekStore.Model.Components.Disks
             if (writeSpeed <= 0)
                 throw new ArgumentException("SSDs Write Speed cannot be less or equal to 0. Entered value: " + writeSpeed.ToString());
 
-            _readSpeed = readSpeed;
-            _writeSpeed = writeSpeed;
+            ReadSpeed = readSpeed;
+            WriteSpeed = writeSpeed;
         }
 
         public new string Description
@@ -34,8 +31,8 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
-        public int ReadSpeed { get { return _readSpeed; } }
+        public int ReadSpeed { get; }
 
-        public int WriteSpeed { get { return _writeSpeed; } }
+        public int WriteSpeed { get; }
     }
 }

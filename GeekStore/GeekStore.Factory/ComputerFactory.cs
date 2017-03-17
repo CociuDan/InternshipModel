@@ -1,10 +1,5 @@
 ﻿using GeekStore.Model.Components;
-using GeekStore.Model.Components.CPUs;
 using GeekStore.Model.Components.Disks;
-using GeekStore.Model.Components.GPUs;
-using GeekStore.Model.Components.Motherboards;
-using GeekStore.Model.Components.PowerUnits;
-using GeekStore.Model.Components.RAMs;
 using GeekStore.Model.PCs;
 
 namespace GeekStore.Factory

@@ -5,11 +5,6 @@ namespace GeekStore.Model.Peripherals
 {
     public class Speakers : IItem
     {
-        private readonly string _configuration;
-        private readonly string _manufacturer;
-        private readonly int _maxVolume;
-        private readonly string _model;
-
         public Speakers(string configuration, string manufacturer, int maxVolume, string model)
         {
             try
@@ -27,10 +22,10 @@ namespace GeekStore.Model.Peripherals
                 if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                     throw new ArgumentNullException(model);
 
-                _configuration = configuration;
-                _manufacturer = manufacturer;
-                _maxVolume = maxVolume;
-                _model = model;
+                Configuration = configuration;
+                Manufacturer = manufacturer;
+                MaxVolume = maxVolume;
+                Model = model;
             }
             catch (ArgumentNullException exception)
             {
@@ -59,9 +54,9 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
-        public string Configuration { get { return _configuration; } }
-        public string Manufacturer { get { return _manufacturer; } }
-        public int MaxVolume { get { return _maxVolume; } }
-        public string Model { get { return _model; } }
+        public string Configuration { get; }
+        public string Manufacturer { get; }
+        public int MaxVolume { get; }
+        public string Model { get; }
     }
 }

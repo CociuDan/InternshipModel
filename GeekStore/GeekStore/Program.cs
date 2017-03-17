@@ -22,7 +22,7 @@ namespace GeekStore
             IGeekStoreService<Product> _geekStore_Service = new GeekStoreService<Product>();
 
             foreach(Product item in justAList)
-            {
+            { 
                 _geekStore_Service.SaveItem(item);
             }
 

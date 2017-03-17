@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Text;
 
-namespace GeekStore.Model.Components.GPUs
+namespace GeekStore.Model.Components
 {
     public class GPU : IItem
     {
-        private readonly string _architecture;
-        private readonly int _interfaceWidth;
-        private readonly string _manufacturer;
-        private readonly string _memoryInterface;
-        private readonly string _model;
-        private readonly int _vram;
-
         public GPU(string architecture, int interfaceWidth, string manufacturer, string memoryInterface, string model, int vram)
         {
             try
@@ -34,12 +27,12 @@ namespace GeekStore.Model.Components.GPUs
                 if (vram <= 0 || vram % 2 != 0)
                     throw new ArgumentException("GPU VRAM cannot be less or equal to 0 or not divided by 2. Entered value: " + vram);
 
-                _architecture = architecture;
-                _interfaceWidth = interfaceWidth;
-                _manufacturer = manufacturer;
-                _memoryInterface = memoryInterface;
-                _model = model;
-                _vram = vram;
+                Architecture = architecture;
+                InterfaceWidth = interfaceWidth;
+                Manufacturer = manufacturer;
+                MemoryInterface = memoryInterface;
+                Model = model;
+                Vram = vram;
             }
             catch (ArgumentNullException exception)
             {
@@ -71,12 +64,12 @@ namespace GeekStore.Model.Components.GPUs
             }
         }
 
-        public string Architecture { get { return _architecture; } }
-        public int InterfaceWidth { get { return _interfaceWidth; } }
-        public string Manufacturer { get { return _manufacturer; } }
-        public string MemoryInterface { get { return _memoryInterface; } }
-        public string Model { get { return _model; } }
-        public int Vram { get { return _vram; } }
+        public string Architecture { get; }
+        public int InterfaceWidth { get; }
+        public string Manufacturer { get; }
+        public string MemoryInterface { get; }
+        public string Model { get; }
+        public int Vram { get; }
 
         public override string ToString()
         {

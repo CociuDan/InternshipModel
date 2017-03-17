@@ -4,11 +4,6 @@ namespace GeekStore.Model.Components.Disks
 {
     public abstract class Disk
     {
-        private readonly int _capacity;
-        private readonly string _manufacturer;
-        private readonly string _model;
-
-
         public Disk(int capacity, string manufacturer, string model)
         {
             try
@@ -22,9 +17,9 @@ namespace GeekStore.Model.Components.Disks
                 if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                     throw new ArgumentNullException(model);
 
-                _capacity = capacity;
-                _manufacturer = manufacturer;
-                _model = model;
+                Capacity = capacity;
+                Manufacturer = manufacturer;
+                Model = model;
             }
             catch (ArgumentNullException exception)
             {
@@ -40,12 +35,12 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
-        public int Capacity { get { return _capacity; } }
+        public int Capacity { get; }
 
         public string Description { get; }
 
-        public string Manufacturer { get { return _manufacturer; } }
+        public string Manufacturer { get; }
 
-        public string Model { get { return _model; } }
+        public string Model { get; }
     }
 }

@@ -6,9 +6,6 @@ namespace GeekStore.Model.Components
     public class Case : IItem
     {
         public enum FormFactorTypes { FullTower, MidTower, MiniTower, SFF, MicroATX, MiniITX }
-        private readonly string _formFactor;
-        private readonly string _manufacturer;
-        private readonly string _model;
 
         public Case(FormFactorTypes formFactor, string manufacturer, string model, double price)
         {
@@ -23,9 +20,9 @@ namespace GeekStore.Model.Components
                 if (price <= 0)
                     throw new ArgumentException("Price cannot be less or equal to 0. Entered value: " + price.ToString());
 
-                _formFactor = formFactor.ToString();
-                _manufacturer = manufacturer;
-                _model = model;
+                FormFactor = formFactor.ToString();
+                Manufacturer = manufacturer;
+                Model = model;
             }
             catch (ArgumentNullException exception)
             {
@@ -53,8 +50,8 @@ namespace GeekStore.Model.Components
             }
         }
 
-        public string FormFactor { get { return _formFactor; } }
-        public string Manufacturer { get { return _manufacturer; } }
-        public string Model { get { return _model; } }
+        public string FormFactor { get; }
+        public string Manufacturer { get; }
+        public string Model { get; }
     }
 }

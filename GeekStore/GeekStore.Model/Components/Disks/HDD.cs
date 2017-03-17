@@ -5,14 +5,12 @@ namespace GeekStore.Model.Components.Disks
 {
     public class HDD : Disk, IItem
     {
-        private readonly int _rpm;
-
         public HDD(int capacity, string manufacturer, string model, int rpm) : base(capacity, manufacturer, model)
         {
             if (rpm <= 0)
                 throw new ArgumentException("HDD RPM cannot be less or equal to 0");
 
-            _rpm = rpm;
+            RPM = rpm;
         }
 
         public new string Description
@@ -28,6 +26,6 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
-        public int RPM { get { return _rpm; } }
+        public int RPM { get; }
     }
 }

@@ -6,11 +6,6 @@ namespace GeekStore.Model.Peripherals
     public class Headphones : IItem
     {
         public enum HeadphonesType { InEar, OnEar, OverEar}
-        private int _impendance;
-        private readonly string _manufacturer;
-        private readonly int _maxVolume;
-        private readonly string _model;
-        private string _type;
 
         public Headphones(int impendance, string manufacturer, int maxVolume, string model, HeadphonesType type)
         {
@@ -28,11 +23,11 @@ namespace GeekStore.Model.Peripherals
                 if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                     throw new ArgumentNullException(model);
 
-                _impendance = impendance;
-                _manufacturer = manufacturer;
-                _maxVolume = maxVolume;
-                _model = model;
-                _type = type.ToString();
+                Impendance = impendance;
+                Manufacturer = manufacturer;
+                MaxVolume = maxVolume;
+                Model = model;
+                Type = type.ToString();
             }
             catch (ArgumentNullException exception)
             {
@@ -61,10 +56,10 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
-        public int Impendance { get { return _impendance; } }
-        public string Manufacturer { get { return _manufacturer; } }
-        public int MaxVolume { get { return _maxVolume; } }
-        public string Model { get { return _model; } }
-        public string Type { get { return _type; } }
+        public int Impendance { get; }
+        public string Manufacturer { get; }
+        public int MaxVolume { get; }
+        public string Model { get; }
+        public string Type { get; }
     }
 }

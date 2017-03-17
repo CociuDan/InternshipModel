@@ -5,11 +5,6 @@ namespace GeekStore.Model.Components
 {
     public class Cooler : IItem
     {
-        private readonly string _manufacturer;
-        private readonly string _model;
-        private readonly string _socket;
-        private readonly int _maxTdp;
-
         public Cooler(string manufacturer, string model, double price, string socket, int maxTdp)
         {
             try
@@ -29,10 +24,10 @@ namespace GeekStore.Model.Components
                 if (maxTdp <= 0)
                     throw new ArgumentException("MaxTDP is less or equal to 0. Entered value: " + maxTdp.ToString());
 
-                _manufacturer = manufacturer;
-                _model = model;
-                _socket = socket;
-                _maxTdp = maxTdp;
+                Manufacturer = manufacturer;
+                MaxTDP = maxTdp;
+                Model = model;
+                Socket = socket;
             }
             catch (ArgumentNullException exception)
             {
@@ -61,9 +56,9 @@ namespace GeekStore.Model.Components
             }
         }
 
-        public string Manufacturer { get { return _manufacturer; } }
-        public string Model { get { return _model; } }
-        public string Socket { get { return _socket; } }
-        public int MaxTDP { get { return _maxTdp; } }
+        public string Manufacturer { get; }
+        public string Model { get; }
+        public string Socket { get; }
+        public int MaxTDP { get; }
     }
 }

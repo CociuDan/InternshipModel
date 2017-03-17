@@ -20,9 +20,7 @@ namespace Lesson11_Assignment
             DisplayStudentAverageMark(s);
             DisplayStudentAverageMark(s.Name, s.AverageMark);
 
-            #region Control Coupling
 
-            #endregion
         }
 
         #region Temporal Cohesion

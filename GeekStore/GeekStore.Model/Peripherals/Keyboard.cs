@@ -6,10 +6,6 @@ namespace GeekStore.Model.Peripherals
     public class Keyboard : IItem
     {
         public enum KeyboardType { Membrane, Mechanical }
-        private readonly bool _backLight;
-        private readonly string _manufacturer;
-        private readonly string _model;
-        private readonly string _type;
 
         public Keyboard(bool backLight, string manufacturer, string model, KeyboardType type)
         {
@@ -21,10 +17,10 @@ namespace GeekStore.Model.Peripherals
                 if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                     throw new ArgumentNullException(model);
 
-                _backLight = backLight;
-                _manufacturer = manufacturer;
-                _model = model;
-                _type = type.ToString();
+                BackLight = backLight;
+                Manufacturer = manufacturer;
+                Model = model;
+                Type = type.ToString();
             }
             catch (ArgumentNullException exception)
             {
@@ -53,9 +49,9 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
-        public bool BackLight { get { return _backLight; } }
-        public string Manufacturer { get { return _manufacturer; } }
-        public string Model { get { return _model; } }
-        public string Type { get { return _type; } }
+        public bool BackLight { get; }
+        public string Manufacturer { get; }
+        public string Model { get; }
+        public string Type { get; }
     }
 }

@@ -6,9 +6,6 @@ namespace GeekStore.Model.Peripherals
 {
     public class Monitor : Display, IItem
     {
-        private readonly string _manufacturer;
-        private readonly string _model;
-
         public Monitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, double size)
                 : base(aspectRatio, maxRefreshRate, resolution, size)
         {
@@ -20,8 +17,8 @@ namespace GeekStore.Model.Peripherals
                 if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
                     throw new ArgumentNullException(model);
 
-                _manufacturer = manufacturer;
-                _model = model;
+                Manufacturer = manufacturer;
+                Model = model;
             }
             catch (ArgumentNullException exception)
             {
@@ -51,9 +48,9 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
-        public string Manufacturer { get { return _manufacturer; } }
+        public string Manufacturer { get; }
 
-        public string Model { get { return _model; } }
+        public string Model { get; }
 
     }
 }

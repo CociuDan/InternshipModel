@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lesson11_Assignment
 {
-    class Faculty
+    public static class Faculty
     {
+        public static string FacultyName { get; set; }
     }
 }

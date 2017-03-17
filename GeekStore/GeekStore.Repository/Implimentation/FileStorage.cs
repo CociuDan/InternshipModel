@@ -1,33 +1,33 @@
-﻿using System.Collections.Generic;
-using GeekStore.Model;
+﻿using GeekStore.Model;
 using GeekStore.Repository.Interfaces;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ListStorage<T> : IStorage<T> where T : Product
+    public class FileStorage<T> : IStorage<T> where T : Product
     {
-        List<T> _items = new List<T>();
-
         public void DeleteItemByID(int itemID)
         {
-            _items.Remove(_items.Where(x => x.ID == itemID).First());
+            throw new NotImplementedException();
         }
 
         public IEnumerable<T> GetItems()
         {
-            return _items;
+            throw new NotImplementedException();
         }
 
         public IEnumerable<T> GetItemsByCriteria(Func<T, bool> criteria)
         {
-            return _items.Where(criteria);
+            throw new NotImplementedException();
         }
 
         public void SaveItem(T item)
         {
-            _items.Add(item);
+            throw new NotImplementedException();
         }
     }
 }

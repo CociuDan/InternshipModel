@@ -1,4 +1,4 @@
-﻿using GeekStore.Model.Components.CPUs;
+﻿using GeekStore.Model.Components;
 
 namespace GeekStore.Factory
 {

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Text;
 
-namespace GeekStore.Model.Components.PowerUnits
+namespace GeekStore.Model.Components
 {
     public class PowerUnit : IItem
     {
-        private readonly string _manufacturer;
-        private readonly string _model;
-        private readonly int _output;
-
         public PowerUnit(string manufacturer, string model, int output)
         {
             try
@@ -22,9 +18,9 @@ namespace GeekStore.Model.Components.PowerUnits
                 if (output <= 0)
                     throw new ArgumentException("Power Unit cannot have an output less or equal to 0W. Entered value: " + output.ToString());
 
-                _manufacturer = manufacturer;
-                _model = model;
-                _output = output;
+                Manufacturer = manufacturer;
+                Model = model;
+                Output = output;
             }
             catch (ArgumentException exception)
             {
@@ -48,10 +44,10 @@ namespace GeekStore.Model.Components.PowerUnits
             }
         }
 
-        public string Manufacturer { get { return _manufacturer; } }
+        public string Manufacturer { get; }
 
-        public string Model { get { return _model; } }
+        public string Model { get; }
 
-        public int Output { get { return _output; } }
+        public int Output { get; }
     }
 }
