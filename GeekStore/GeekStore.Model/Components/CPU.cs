@@ -10,47 +10,34 @@ namespace GeekStore.Model.Components
 
         public CPU(double baseFrequency, double boostFrequency, CPUCores cores, CPUManufacturer manufacturer, string model, string socket, int tdp, int threads)
         {
-            try
-            {
-                if (baseFrequency <= 0)
-                    throw new ArgumentException("CPU Base Frequency cannot be less than 0. Entered value: " + baseFrequency.ToString());
 
-                if (boostFrequency < baseFrequency)
-                    throw new ArgumentException("CPU Boost Frequency cannot be less than Base Frequency. Entered value: " + boostFrequency.ToString());
+            if (baseFrequency <= 0)
+                throw new ArgumentException($"CPU Base Frequency cannot be less than 0. Entered value: {baseFrequency}");
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (boostFrequency < baseFrequency)
+                throw new ArgumentException($"CPU Boost Frequency cannot be less than Base Frequency. Entered value: {boostFrequency}");
 
-                if (string.IsNullOrEmpty(socket) || string.IsNullOrWhiteSpace(socket))
-                    throw new ArgumentNullException(socket);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                if (tdp <= 0)
-                    throw new ArgumentException("TDP cannot be less or equal to 0. Entered value: " + tdp.ToString());
+            if (string.IsNullOrEmpty(socket.Trim()))
+                throw new ArgumentNullException(nameof(socket));
 
-                if (threads != (int)cores && threads != ((int)cores * 2))
-                    throw new ArgumentException("Number of Threads have to be equal or double of number of cores. Entered value: " + threads.ToString() + ". Number of cores entered: " + cores.ToString());
+            if (tdp <= 0)
+                throw new ArgumentException($"TDP cannot be less or equal to 0. Entered value: {tdp}W");
 
-                BaseFrequency = baseFrequency;
-                BoostFrequency = boostFrequency;
-                Cores = cores;
-                Manufacturer = manufacturer.ToString();
-                Model = model;
-                Socket = socket;
-                TDP = tdp;
-                Threads = threads;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            if (threads != (int)cores && threads != ((int)cores * 2))
+                throw new ArgumentException($"Number of Threads have to be equal or double of number of cores. Entered value: {threads}. Number of cores entered: {cores}");
+
+            BaseFrequency = baseFrequency;
+            BoostFrequency = boostFrequency;
+            Cores = cores;
+            Manufacturer = manufacturer.ToString();
+            Model = model;
+            Socket = socket;
+            TDP = tdp;
+            Threads = threads;
+
         }
 
         public string Description

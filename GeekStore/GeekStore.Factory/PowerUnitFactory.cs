@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class PowerUnitFactory
+    public static class PowerUnitFactory
     {
         public static PowerUnit CreatePowerUnit()
         {

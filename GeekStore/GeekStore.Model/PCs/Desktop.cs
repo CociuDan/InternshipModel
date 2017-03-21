@@ -7,37 +7,23 @@ namespace GeekStore.Model.PCs
 {
     public class Desktop : IComputer
     {
+        public Desktop() { }
         public Desktop(Cooler cooler, CPU cpu, Disk drive, GPU gpu, Motherboard motherboard, PowerUnit psu, RAM ram)
         {
-            try
-            {
-                if (cooler == null) throw new ArgumentNullException("cooler");
-                if (cpu == null) throw new ArgumentNullException("cpu");
-                if (drive == null) throw new ArgumentNullException("drive");
-                if (gpu == null) throw new ArgumentNullException("gpu");
-                if (motherboard == null) throw new ArgumentNullException("motherboard");
-                if (psu == null) throw new ArgumentNullException("psu");
-                if (ram == null) throw new ArgumentNullException("ram");
-                Cooler = cooler;
-                CPU = cpu;
-                Disk = drive;
-                GPU = gpu;
-                Motherboard = motherboard;
-                PowerUnit = psu;
-                RAM = ram;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            if (cooler == null) throw new ArgumentNullException(nameof(cooler));
+            if (cpu == null) throw new ArgumentNullException(nameof(cpu));
+            if (drive == null) throw new ArgumentNullException(nameof(drive));
+            if (gpu == null) throw new ArgumentNullException(nameof(gpu));
+            if (motherboard == null) throw new ArgumentNullException(nameof(motherboard));
+            if (psu == null) throw new ArgumentNullException(nameof(psu));
+            if (ram == null) throw new ArgumentNullException(nameof(ram));
+            Cooler = cooler;
+            CPU = cpu;
+            Disk = drive;
+            GPU = gpu;
+            Motherboard = motherboard;
+            PowerUnit = psu;
+            RAM = ram;
         }
 
         public Case Case { get; set; }

@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class MouseFactory
+    public static class MouseFactory
     {
         public static Mouse CreateMouse()
         {

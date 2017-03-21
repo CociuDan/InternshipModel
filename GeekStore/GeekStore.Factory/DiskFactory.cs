@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class DiskFactory
+    public static class DiskFactory
     {       
         public static HDD CreateHDD()
         {

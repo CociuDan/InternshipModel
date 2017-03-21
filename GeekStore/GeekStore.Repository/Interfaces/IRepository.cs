@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace GeekStore.Service.Interfaces
+namespace GeekStore.Repository.Interfaces
 {
-    public interface IGeekStoreService
+    public interface IRepository
     {
         void DeleteProductByID(int productID);
         IEnumerable<Product> GetProducts();

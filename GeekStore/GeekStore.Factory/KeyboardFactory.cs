@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class KeyboardFactory
+    public static class KeyboardFactory
     {
         public static Keyboard CreateKeyboard()
         {

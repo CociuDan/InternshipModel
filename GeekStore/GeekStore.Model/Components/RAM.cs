@@ -11,16 +11,16 @@ namespace GeekStore.Model.Components
         {
             if (capacity != 512 && capacity != 1024 && capacity != 2048 && capacity != 4096 && capacity != 6144 && capacity != 8192 &&
                 capacity != 10240 && capacity != 16384 && capacity != 32768 && capacity != 65536 && capacity != 131072)
-                throw new ArgumentException("RAM Capacity cannot be less than 512MB and higher than 128GB(131072MB). Entered value: " + capacity.ToString());
+                throw new ArgumentException($"RAM Capacity cannot be less than 512MB and higher than 128GB(131072MB). Entered value: {capacity}");
 
             if (frequency <= 0)
-                throw new ArgumentException("RAM Frequency cannot be less or equal to 0. Entered value: " + frequency.ToString());
+                throw new ArgumentException($"RAM Frequency cannot be less or equal to 0. Entered value: {frequency}");
 
-            if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-            if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
             Capacity = capacity;
             Frequency = frequency;

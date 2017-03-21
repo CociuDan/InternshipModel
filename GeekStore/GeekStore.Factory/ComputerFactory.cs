@@ -4,7 +4,7 @@ using GeekStore.Model.PCs;
 
 namespace GeekStore.Factory
 {
-    public class ComputerFactory
+    public static class ComputerFactory
     {
         public static Desktop CreateDesktop()
         {

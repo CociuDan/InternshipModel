@@ -3,7 +3,7 @@ using GeekStore.Model.Peripherals;
 
 namespace GeekStore.Factory
 {
-    public class DisplayFactory
+    public static class DisplayFactory
     {
         public static Display CreateDisplay()
         {

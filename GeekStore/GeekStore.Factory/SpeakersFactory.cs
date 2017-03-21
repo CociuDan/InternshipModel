@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class SpeakersFactory
+    public static class SpeakersFactory
     {
         public static Speakers CreateSpeakers()
         {

@@ -7,38 +7,23 @@ namespace GeekStore.Model.Peripherals
     {
         public Speakers(string configuration, string manufacturer, int maxVolume, string model)
         {
-            try
-            {
-                if (configuration != "1.0" && configuration != "2.0" && configuration != "2.1" && configuration != "3.1" && configuration != "4.0"
-                    && configuration != "4.1" && configuration != "5.1" && configuration != "6.1" && configuration != "7.1")
-                    throw new ArgumentException("Speakers unkown configuration. Entered value: " + configuration.ToString());
+            if (configuration != "1.0" && configuration != "2.0" && configuration != "2.1" && configuration != "3.1" && configuration != "4.0"
+                && configuration != "4.1" && configuration != "5.1" && configuration != "6.1" && configuration != "7.1")
+                throw new ArgumentException($"Speakers unkown configuration. Entered value: {configuration}");
 
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (maxVolume <= 0)
-                    throw new ArgumentException("Speakers Max Volume cannot be less or equal than 0 Db. Entered value: " + maxVolume.ToString());
+            if (maxVolume <= 0)
+                throw new ArgumentException($"Speakers Max Volume cannot be less or equal than 0 Db. Entered value: {maxVolume}");
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                Configuration = configuration;
-                Manufacturer = manufacturer;
-                MaxVolume = maxVolume;
-                Model = model;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            Configuration = configuration;
+            Manufacturer = manufacturer;
+            MaxVolume = maxVolume;
+            Model = model;
         }
 
         public string Description

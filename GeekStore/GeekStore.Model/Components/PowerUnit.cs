@@ -7,29 +7,18 @@ namespace GeekStore.Model.Components
     {
         public PowerUnit(string manufacturer, string model, int output)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                if (output <= 0)
-                    throw new ArgumentException("Power Unit cannot have an output less or equal to 0W. Entered value: " + output.ToString());
+            if (output <= 0)
+                throw new ArgumentException($"Power Unit cannot have an output less or equal to 0W. Entered value: {output}");
 
-                Manufacturer = manufacturer;
-                Model = model;
-                Output = output;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            Manufacturer = manufacturer;
+            Model = model;
+            Output = output;
         }
 
         public string Description

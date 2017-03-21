@@ -8,10 +8,10 @@ namespace GeekStore.Model.Components.Disks
         public SSD(int capacity, string manufacturer, string model, int readSpeed, int writeSpeed) : base(capacity, manufacturer, model)
         {
             if (readSpeed <= 0)
-                throw new ArgumentException("SSDs Read Speed cannot be less or equal to 0. Entered value: " + readSpeed.ToString());
+                throw new ArgumentException($"SSDs Read Speed cannot be less or equal to 0. Entered value: {readSpeed}");
 
             if (writeSpeed <= 0)
-                throw new ArgumentException("SSDs Write Speed cannot be less or equal to 0. Entered value: " + writeSpeed.ToString());
+                throw new ArgumentException($"SSDs Write Speed cannot be less or equal to 0. Entered value: {writeSpeed}");
 
             ReadSpeed = readSpeed;
             WriteSpeed = writeSpeed;

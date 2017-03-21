@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class RAMFactory
+    public static class RAMFactory
     {
         public static RAM CreateRAM()
         {

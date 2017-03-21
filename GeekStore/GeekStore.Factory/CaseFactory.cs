@@ -2,16 +2,16 @@
 
 namespace GeekStore.Factory
 {
-    public class CaseFactory
+    public static class CaseFactory
     {
         public static Case CreateCase()
         {
-            return new Case(Case.FormFactorTypes.MidTower, "Corsair", "Graphite Series™ 760T", 200);
+            return new Case(Case.FormFactorTypes.MidTower, "Corsair", "Graphite Series™ 760T");
         }
 
-        public static Case CreateCase(Case.FormFactorTypes formFactor, string manufacturer, string model, double price)
+        public static Case CreateCase(Case.FormFactorTypes formFactor, string manufacturer, string model)
         {
-            return new Case(formFactor, manufacturer, model, price);
+            return new Case(formFactor, manufacturer, model);
         }
     }
 }

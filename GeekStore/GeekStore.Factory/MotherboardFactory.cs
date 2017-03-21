@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class MotherboardFactory
+    public static class MotherboardFactory
     {
         public static Motherboard CreateMotherboard()
         {

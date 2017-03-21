@@ -9,31 +9,16 @@ namespace GeekStore.Model.Peripherals
 
         public Keyboard(bool backLight, string manufacturer, string model, KeyboardType type)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                BackLight = backLight;
-                Manufacturer = manufacturer;
-                Model = model;
-                Type = type.ToString();
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            BackLight = backLight;
+            Manufacturer = manufacturer;
+            Model = model;
+            Type = type.ToString();
         }
 
         public string Description

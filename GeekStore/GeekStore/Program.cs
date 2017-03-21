@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GeekStore.Model.Components.Disks;
-using GeekStore.Factory;
+using GeekStore.Model.Components;
 using GeekStore.Model;
 using GeekStore.Service.Implimentation;
 using GeekStore.Service.Interfaces;
+using static System.Console;
+using static GeekStore.Factory.CPUFactory;
+using static GeekStore.Factory.DiskFactory;
+using System.Xml.Linq;
 
 namespace GeekStore
 {
@@ -13,26 +16,24 @@ namespace GeekStore
         static void Main(string[] args)
         {
             List<Product> justAList = new List<Product>();
-            justAList.Add(new Product(CPUFactory.CreateCPU(), 300, 1));
-            justAList.Add(new Product(CPUFactory.CreateCPU(), 400, 1));
-            justAList.Add(new Product(CPUFactory.CreateCPU(), 500, 1));
-            justAList.Add(new Product(CPUFactory.CreateCPU(), 600, 1));
-            justAList.Add(new Product(DiskFactory.CreateSSD(), 80, 1));
+            justAList.Add(new Product(CreateCPU(), 300, 1));
+            justAList.Add(new Product(CreateCPU(), 400, 1));
+            justAList.Add(new Product(CreateCPU(), 500, 1));
+            justAList.Add(new Product(CreateCPU(), 600, 1));
+            justAList.Add(new Product(CreateSSD(), 80, 1));
 
-            IGeekStoreService<Product> _geekStore_Service = new GeekStoreService<Product>();
+            IGeekStoreService _geekStore_Service = new GeekStoreService();
 
-            foreach(Product item in justAList)
-            { 
-                _geekStore_Service.SaveItem(item);
-            }
-
-            foreach(var item in _geekStore_Service.GetItemByCriteria((product) => product.Price > 10 && product.Price < 550 && product.Item is Disk))
+            foreach (Product item in justAList)
             {
-                Console.WriteLine(item.ToString());
-                Console.WriteLine("---------------------------------------------");
+                _geekStore_Service.SaveProduct(item);
             }
-
-            Console.ReadKey();
+            foreach(var item in _geekStore_Service.GetProductsByCriteria((x) => x.Item is CPU))
+            {
+                WriteLine(item.Item.Description);
+            }
+            _geekStore_Service.GetProductsByCriteria(x => x.Item.Model.StartsWith("i7"));
+            ReadKey();
         }
     }
 }

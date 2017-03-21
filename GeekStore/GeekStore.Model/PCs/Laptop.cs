@@ -10,17 +10,15 @@ namespace GeekStore.Model.PCs
     {
         public Laptop(CPU cpu, Display display, Disk disk, GPU gpu, string manufacturer, string model, Motherboard motherboard, PowerUnit battery, RAM ram)
         {
-            try
-            {
-                if(battery == null) throw new ArgumentNullException("battery");
-                if(cpu == null) throw new ArgumentNullException("cpu");
-                if(display == null) throw new ArgumentNullException("display");
-                if(disk == null) throw new ArgumentNullException("disk");
-                if(gpu == null) throw new ArgumentNullException("gpu");
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer)) throw new ArgumentNullException("manufacturer");
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model)) throw new ArgumentNullException("model");
-                if(motherboard == null) throw new ArgumentNullException("motherboard");
-                if(ram == null) throw new ArgumentNullException("ram");
+                if(battery == null) throw new ArgumentNullException(nameof(battery));
+                if(cpu == null) throw new ArgumentNullException(nameof(cpu));
+                if(display == null) throw new ArgumentNullException(nameof(display));
+                if(disk == null) throw new ArgumentNullException(nameof(disk));
+                if(gpu == null) throw new ArgumentNullException(nameof(gpu));
+                if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
+                if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
+                if(motherboard == null) throw new ArgumentNullException(nameof(motherboard));
+                if(ram == null) throw new ArgumentNullException(nameof(ram));
                 
                 CPU = cpu;
                 Display = display;
@@ -30,20 +28,7 @@ namespace GeekStore.Model.PCs
                 Model = model;
                 Motherboard = motherboard;
                 PowerUnit = battery;
-                RAM = ram;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }            
+                RAM = ram;          
         }        
 
         public string Description
@@ -64,11 +49,11 @@ namespace GeekStore.Model.PCs
 
         public CPU CPU { get; }
         public Display Display { get; }
-        public Disk Disk { get; }
+        public Disk Disk { get; set; }
         public GPU GPU { get; }
         public string Manufacturer { get; }
         public string Model { get; }
-        public RAM RAM { get; }
+        public RAM RAM { get; set; }
         public Motherboard Motherboard { get; }
         public PowerUnit PowerUnit { get; }
     }

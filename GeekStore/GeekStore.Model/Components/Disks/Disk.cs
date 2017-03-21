@@ -6,38 +6,21 @@ namespace GeekStore.Model.Components.Disks
     {
         public Disk(int capacity, string manufacturer, string model)
         {
-            try
-            {
-                if (capacity <= 0)
-                    throw new ArgumentException("Disk Capacity cannot be less or equal to 0. Entered value: " + capacity.ToString());
+            if (capacity <= 0)
+                throw new ArgumentException($"Disk Capacity cannot be less or equal to 0. Entered value: {capacity}");
 
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                Capacity = capacity;
-                Manufacturer = manufacturer;
-                Model = model;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            Capacity = capacity;
+            Manufacturer = manufacturer;
+            Model = model;
         }
 
         public int Capacity { get; }
-
-        public string Description { get; }
 
         public string Manufacturer { get; }
 

@@ -21,7 +21,7 @@ namespace GeekStore.Model.Components.Disks
                 sb.AppendLine($"\tManufacturer: {Manufacturer}");
                 sb.AppendLine($"\tModel: {Model}");
                 sb.AppendLine($"\tCapacity: {Capacity}GB");
-                sb.AppendLine($"\tRPM: {RPM}GB");
+                sb.AppendLine($"\tRPM: {RPM}");
                 return sb.ToString();
             }
         }

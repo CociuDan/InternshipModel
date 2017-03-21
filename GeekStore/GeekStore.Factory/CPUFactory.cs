@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class CPUFactory
+    public static class CPUFactory
     {
         public static CPU CreateCPU()
         {

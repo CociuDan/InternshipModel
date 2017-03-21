@@ -2,7 +2,7 @@
 
 namespace GeekStore.Factory
 {
-    public class GPUFactory
+    public static class GPUFactory
     {
         public static GPU CreateGPU()
         {

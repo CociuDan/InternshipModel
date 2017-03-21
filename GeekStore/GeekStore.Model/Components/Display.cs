@@ -6,37 +6,23 @@ namespace GeekStore.Model.Components
     {
         public Display(string aspectRatio, int maxRefreshRate, string resolution, double size)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(aspectRatio) || string.IsNullOrWhiteSpace(aspectRatio))
-                    throw new ArgumentNullException("aspectRatio");
 
-                if (maxRefreshRate < 60)
-                    throw new ArgumentException($"Display Max Refresh Rate cannot be less than 60Hz. Entered value: {maxRefreshRate}");
+            if (string.IsNullOrEmpty(aspectRatio.Trim()))
+                throw new ArgumentNullException(nameof(aspectRatio));
 
-                if (string.IsNullOrEmpty(resolution) || string.IsNullOrWhiteSpace(resolution))
-                    throw new ArgumentNullException("resolution");
+            if (maxRefreshRate < 60)
+                throw new ArgumentException($"Display Max Refresh Rate cannot be less than 60Hz. Entered value: {maxRefreshRate}");
 
-                if (size <= 0)
-                    throw new ArgumentException($"Display size cannot be less or equal to 0. Entered value: {size}");
+            if (string.IsNullOrEmpty(resolution.Trim()))
+                throw new ArgumentNullException(nameof(resolution));
 
-                AspectRatio = aspectRatio;
-                MaxRefreshRate = maxRefreshRate;
-                Resolution = resolution;
-                Size = size;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            if (size <= 0)
+                throw new ArgumentException($"Display size cannot be less or equal to 0. Entered value: {size}");
+
+            AspectRatio = aspectRatio;
+            MaxRefreshRate = maxRefreshRate;
+            Resolution = resolution;
+            Size = size;
         }
 
         public string AspectRatio { get; }

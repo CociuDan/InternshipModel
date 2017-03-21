@@ -9,34 +9,19 @@ namespace GeekStore.Model.Peripherals
 
         public Mouse(int dpi, string manufacturer, string model, MouseType type)
         {
-            try
-            {
-                if (dpi <= 0)
-                    throw new ArgumentException("Mouse cannot have a DPI less or equal to 0. Entered value: " + dpi.ToString());
+            if (dpi <= 0)
+                throw new ArgumentException($"Mouse cannot have a DPI less or equal to 0. Entered value: {dpi}");
 
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                DPI = dpi;
-                Manufacturer = manufacturer;
-                Model = model;
-                Type = type.ToString();
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            DPI = dpi;
+            Manufacturer = manufacturer;
+            Model = model;
+            Type = type.ToString();
         }
 
         public string Description

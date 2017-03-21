@@ -7,35 +7,17 @@ namespace GeekStore.Model.Components
     {
         public enum FormFactorTypes { FullTower, MidTower, MiniTower, SFF, MicroATX, MiniITX }
 
-        public Case(FormFactorTypes formFactor, string manufacturer, string model, double price)
+        public Case(FormFactorTypes formFactor, string manufacturer, string model)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(model);
 
-                if (price <= 0)
-                    throw new ArgumentException("Price cannot be less or equal to 0. Entered value: " + price.ToString());
-
-                FormFactor = formFactor.ToString();
-                Manufacturer = manufacturer;
-                Model = model;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            FormFactor = formFactor.ToString();
+            Manufacturer = manufacturer;
+            Model = model;
         }
 
         public string Description

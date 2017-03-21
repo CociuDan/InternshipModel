@@ -7,28 +7,28 @@ using System;
 
 namespace GeekStore.Service.Implimentation
 {
-    public class GeekStoreService<T> : IGeekStoreService<T> where T : Product
+    public class GeekStoreService : IGeekStoreService
     {
-        IStorage<T> _storage = new ListStorage<T>();
+        IRepository _storage = new ListStorage();
 
-        public void DeleteItemByID(int itemID)
+        public void DeleteProductByID(int productID)
         {
-            _storage.DeleteItemByID(itemID);
+            _storage.DeleteProductByID(productID);
         }
 
-        public IEnumerable<T> GetItems()
+        public IEnumerable<Product> GetProducts()
         {
-            return _storage.GetItems();
+            return _storage.GetProducts();
         }
 
-        public IEnumerable<T> GetItemByCriteria(Func<T, bool> criteria)
+        public IEnumerable<Product> GetProductsByCriteria(Func<Product, bool> criteria)
         {
-            return _storage.GetItemsByCriteria(criteria);
+            return _storage.GetProductsByCriteria(criteria);
         }
 
-        public void SaveItem(T item)
+        public void SaveProduct(Product product)
         {
-            _storage.SaveItem(item);
+            _storage.SaveProduct(product);
         }
     }
 }

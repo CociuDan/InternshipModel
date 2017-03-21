@@ -5,42 +5,25 @@ namespace GeekStore.Model.Components
 {
     public class Cooler : IItem
     {
-        public Cooler(string manufacturer, string model, double price, string socket, int maxTdp)
+        public Cooler(string manufacturer, string model, string socket, int maxTdp)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(manufacturer);
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                if (price <= 0)
-                    throw new ArgumentException("Price cannot be less or equal to 0. Entered value: " + price.ToString());
+            if (string.IsNullOrEmpty(socket.Trim()))
+                throw new ArgumentNullException(nameof(socket));
 
-                if (string.IsNullOrEmpty(socket) || string.IsNullOrWhiteSpace(socket))
-                    throw new ArgumentNullException(socket);
+            if (maxTdp <= 0)
+                throw new ArgumentException($"MaxTDP is less or equal to 0. Entered value: {maxTdp}");
 
-                if (maxTdp <= 0)
-                    throw new ArgumentException("MaxTDP is less or equal to 0. Entered value: " + maxTdp.ToString());
+            Manufacturer = manufacturer;
+            MaxTDP = maxTdp;
+            Model = model;
+            Socket = socket;
 
-                Manufacturer = manufacturer;
-                MaxTDP = maxTdp;
-                Model = model;
-                Socket = socket;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
         }
 
         public string Description

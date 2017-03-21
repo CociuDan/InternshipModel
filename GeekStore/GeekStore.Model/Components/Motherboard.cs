@@ -7,46 +7,31 @@ namespace GeekStore.Model.Components
     {
         public Motherboard(string chipset, string manufacturer, string model, int pcieSlots, int ramSlots, string socket)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(chipset) || string.IsNullOrWhiteSpace(chipset))
-                    throw new ArgumentNullException(chipset);
+            if (string.IsNullOrEmpty(chipset.Trim()))
+                throw new ArgumentNullException(nameof(chipset));
 
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                if (pcieSlots < 0)
-                    throw new ArgumentException("Motherboard cannot have less than 0 PCI-E slots. Entered value: " + pcieSlots);
+            if (pcieSlots < 0)
+                throw new ArgumentException($"Motherboard cannot have less than 0 PCI-E slots. Entered value: {pcieSlots}");
 
-                if (ramSlots < 1)
-                    throw new ArgumentException("Motherboard cannot have less than one RAM slot. Entered value: " + ramSlots);
+            if (ramSlots < 1)
+                throw new ArgumentException($"Motherboard cannot have less than one RAM slot. Entered value: {ramSlots}");
 
-                if (string.IsNullOrEmpty(socket) || string.IsNullOrWhiteSpace(socket))
-                    throw new ArgumentNullException(socket);
+            if (string.IsNullOrEmpty(socket.Trim()))
+                throw new ArgumentNullException(nameof(socket));
 
-                Chipset = chipset;
-                Manufacturer = manufacturer;
-                Model = model;
-                PCIESlots = pcieSlots;
-                RAMSlots = ramSlots;
-                Socket = socket;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
-        } 
+            Chipset = chipset;
+            Manufacturer = manufacturer;
+            Model = model;
+            PCIESlots = pcieSlots;
+            RAMSlots = ramSlots;
+            Socket = socket;
+        }
 
         public string Description
         {

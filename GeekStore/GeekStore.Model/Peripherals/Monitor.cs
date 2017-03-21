@@ -9,29 +9,14 @@ namespace GeekStore.Model.Peripherals
         public Monitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, double size)
                 : base(aspectRatio, maxRefreshRate, resolution, size)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(manufacturer) || string.IsNullOrWhiteSpace(manufacturer))
-                    throw new ArgumentNullException(manufacturer);
+            if (string.IsNullOrEmpty(manufacturer.Trim()))
+                throw new ArgumentNullException(nameof(manufacturer));
 
-                if (string.IsNullOrEmpty(model) || string.IsNullOrWhiteSpace(model))
-                    throw new ArgumentNullException(model);
+            if (string.IsNullOrEmpty(model.Trim()))
+                throw new ArgumentNullException(nameof(model));
 
-                Manufacturer = manufacturer;
-                Model = model;
-            }
-            catch (ArgumentNullException exception)
-            {
-                throw exception;
-            }
-            catch (ArgumentException exception)
-            {
-                throw exception;
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+            Manufacturer = manufacturer;
+            Model = model;
         }
 
         public string Description
@@ -51,6 +36,5 @@ namespace GeekStore.Model.Peripherals
         public string Manufacturer { get; }
 
         public string Model { get; }
-
     }
 }

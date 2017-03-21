@@ -6,44 +6,49 @@ namespace GeekStore.Model
 {
     public class Product
     {
-        private double _price;
-        private int _quantity;
-
         public Product(IItem item, double price, int quantity)
         {
             ID = IDGenerator.NextID();
             Item = item;
-            _price = price;
-            _quantity = quantity;
+            Price = price;
+            Quantity = quantity;
         }
 
-        public int ID { get; }
+        public Product(int id, IItem item, double price, int quantity)
+        {
+            ID = id;
+            Item = item;
+            Price = price;
+            Quantity = quantity;
+        }
 
-        public IItem Item { get; }
+        public int ID { get; private set; }
 
-        public double Price { get { return _price; } }
+        public IItem Item { get; private set; }
 
-        public int Quantity { get { return _quantity; } }
+        public double Price { get; private set; }
+
+        public int Quantity { get; private set; }
 
         public void AddToWarehouse(int incomingQuantity)
         {
             if (incomingQuantity <= 0)
                 throw new ArgumentException("You cannot add less than one item to warehouse. Enterd value: " + incomingQuantity.ToString());
-            _quantity += incomingQuantity;
+            Quantity += incomingQuantity;
         }
 
         public void SellQuantity(int sellingQuantity)
         {
             if (sellingQuantity <= 0)
                 throw new ArgumentException("You cannot sell less than one item from warehouse. Enterd value: " + sellingQuantity.ToString());
-            _quantity -= sellingQuantity;
+            Quantity -= sellingQuantity;
         }
 
         public void ChangePrice(double newPrice)
         {
             if (newPrice <= 0)
                 throw new ArgumentException("New Price cannot be less or equal to 0. Entered value: " + newPrice.ToString());
-            _price = newPrice;
+            Price = newPrice;
         }
 
         public override string ToString()
