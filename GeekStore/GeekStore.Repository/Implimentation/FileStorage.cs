@@ -21,7 +21,25 @@ namespace GeekStore.Repository.Implimentation
 
         public IEnumerable<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            List<Product> products = new List<Product>();
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load("Storage.xml");
+            string xmlString = xmlDocument.OuterXml;
+
+            using (StringReader read = new StringReader(xmlString))
+            {
+                Type outType = typeof(Product);
+
+                XmlSerializer serializer = new XmlSerializer(outType);
+                using (XmlReader reader = new XmlTextReader(read))
+                {
+                    products.Add((Product)serializer.Deserialize(reader));
+                    reader.Close();
+                }
+
+                read.Close();
+            }
+            return products;
         }
 
         public IEnumerable<Product> GetProductsByCriteria(Func<Product, bool> criteria)
@@ -31,7 +49,16 @@ namespace GeekStore.Repository.Implimentation
 
         public void SaveProduct(Product product)
         {
-            throw new NotImplementedException();
+            XmlDocument xmlDocument = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(product.GetType());
+            using (MemoryStream stream = new MemoryStream())
+            {
+                serializer.Serialize(stream, product);
+                stream.Position = 0;
+                xmlDocument.Load(stream);
+                xmlDocument.Save("Storage.xml");
+                stream.Close();
+            }
         }
 
         //public void DeleteProductByID(int productID)

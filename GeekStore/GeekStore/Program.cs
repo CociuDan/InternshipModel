@@ -28,11 +28,7 @@ namespace GeekStore
             {
                 _geekStore_Service.SaveProduct(item);
             }
-            foreach(var item in _geekStore_Service.GetProductsByCriteria((x) => x.Item is CPU))
-            {
-                WriteLine(item.Item.Description);
-            }
-            _geekStore_Service.GetProductsByCriteria(x => x.Item.Model.StartsWith("i7"));
+            _geekStore_Service.GetProducts();
             ReadKey();
         }
     }

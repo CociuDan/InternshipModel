@@ -1,11 +1,18 @@
 ﻿using GeekStore.Model.Infrastucture;
 using System;
 using System.Text;
+using System.Xml.Serialization;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model
 {
-    public class Product
+    public class Product : IXmlSerializable
     {
+        public Product()
+        {
+
+        }
         public Product(IItem item, double price, int quantity)
         {
             ID = IDGenerator.NextID();
@@ -57,6 +64,28 @@ namespace GeekStore.Model
             sb.Append(Item.Description);
             sb.AppendLine($"\tPrice: {Price}");
             return sb.ToString();
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            ID = int.Parse(reader["ID"]);
+            Price = double.Parse(reader["Price"]);
+            Quantity = int.Parse(reader["Quantity"]);
+            Item = 
+            reader.Read();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("ID", ID.ToString());
+            writer.WriteAttributeString("Price", Price.ToString());
+            writer.WriteAttributeString("Quantity", Quantity.ToString());
+            Item.WriteXml(writer);            
         }
     }
 }

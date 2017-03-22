@@ -9,7 +9,7 @@ namespace GeekStore.Service.Implimentation
 {
     public class GeekStoreService : IGeekStoreService
     {
-        IRepository _storage = new ListStorage();
+        IRepository _storage = new FileStorage();
 
         public void DeleteProductByID(int productID)
         {

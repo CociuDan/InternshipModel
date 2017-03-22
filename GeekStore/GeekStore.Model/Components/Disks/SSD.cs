@@ -19,6 +19,12 @@ namespace GeekStore.Model.Components.Disks
             WriteSpeed = writeSpeed;
         }
 
+        public SSD Deserialize(XmlReader reader)
+        {
+            ReadXml(reader);
+            return this;
+        }
+
         public string Description
         {
             get
