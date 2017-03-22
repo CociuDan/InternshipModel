@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Peripherals
 {
@@ -18,7 +20,7 @@ namespace GeekStore.Model.Peripherals
             BackLight = backLight;
             Manufacturer = manufacturer;
             Model = model;
-            Type = type.ToString();
+            Type = type;
         }
 
         public string Description
@@ -34,9 +36,31 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
-        public bool BackLight { get; }
-        public string Manufacturer { get; }
-        public string Model { get; }
-        public string Type { get; }
+        public bool BackLight { get; private set; }
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+        public KeyboardType Type { get; private set; }
+
+        public XmlSchema GetSchema()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            Manufacturer = reader["Manufacturer"];
+            Model = reader["Model"];
+            BackLight = bool.Parse(reader["BackLight"]);
+            Type = (KeyboardType)Enum.Parse(typeof(KeyboardType), reader["Type"]);
+            reader.Read();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("BackLight", BackLight.ToString());
+            writer.WriteAttributeString("Type", Type.ToString());
+        }
     }
 }

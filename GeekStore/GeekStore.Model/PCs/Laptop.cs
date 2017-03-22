@@ -3,6 +3,8 @@ using GeekStore.Model.Components.Disks;
 
 using GeekStore.Model.Components;
 using System;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.PCs
 {
@@ -39,10 +41,10 @@ namespace GeekStore.Model.PCs
                 sb.AppendLine($"\tManufacturer: {Manufacturer}");
                 sb.AppendLine($"\tModel: { Model} ");
                 sb.AppendLine($"\tCPU: {CPU.ToString()}");
-                sb.AppendLine($"\tRAM: {RAM.Capacity}MB {RAM.Generation} {RAM.Frequency}Mhz");
+                sb.AppendLine($"\tRAM: {RAM.ToString()}");
                 sb.AppendLine($"\tGPU: {GPU.ToString()}");
-                sb.AppendLine($"\tDrive: {Disk.Capacity} {Disk.GetType()}");
-                sb.AppendLine($"\tDisplay: {Display.AspectRatio} {Display.Resolution} @ {Display.MaxRefreshRate}Hz");
+                sb.AppendLine($"\tDrive: {Disk.ToString()}");
+                sb.AppendLine($"\tDisplay: {Display.ToString()}");
                 return sb.ToString();
             }
         }
@@ -56,5 +58,20 @@ namespace GeekStore.Model.PCs
         public RAM RAM { get; set; }
         public Motherboard Motherboard { get; }
         public PowerUnit PowerUnit { get; }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+
+        }
     }
 }

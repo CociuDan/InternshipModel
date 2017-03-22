@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Components
 {
@@ -43,10 +45,42 @@ namespace GeekStore.Model.Components
             }
         }
 
-        public int Capacity { get; }
-        public int Frequency { get; }
-        public string Generation { get; }
-        public string Manufacturer { get; }
-        public string Model { get; }
+        public int Capacity { get; private set; }
+        public int Frequency { get; private set; }
+        public string Generation { get; private set; }
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+
+        public override string ToString()
+        {
+            return $"{Capacity}MB {Generation} {Frequency}Mhz";
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
+            {
+                Manufacturer = reader["Manufacturer"];
+                Model = reader["Model"];
+                Capacity = int.Parse(reader["Capacity"]);
+                Frequency = int.Parse(reader["Frequency"]);
+                Generation = reader["Generation"];
+                reader.Read();
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("Capacity", Capacity.ToString());
+            writer.WriteAttributeString("Frequency", Frequency.ToString());
+            writer.WriteAttributeString("Generation", Generation);
+        }
     }
 }

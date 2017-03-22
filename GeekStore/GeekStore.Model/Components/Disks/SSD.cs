@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Components.Disks
 {
@@ -17,7 +19,7 @@ namespace GeekStore.Model.Components.Disks
             WriteSpeed = writeSpeed;
         }
 
-        public new string Description
+        public string Description
         {
             get
             {
@@ -31,8 +33,35 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
-        public int ReadSpeed { get; }
+        public int ReadSpeed { get; private set; }
 
-        public int WriteSpeed { get; }
+        public int WriteSpeed { get; private set; }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "SSD")
+            {                
+                Manufacturer = reader["Manufacturer"];
+                Model = reader["Model"];
+                Capacity = int.Parse(reader["Capacity"]);
+                ReadSpeed = int.Parse(reader["ReadSpeed"]);
+                WriteSpeed = int.Parse(reader["WriteSpeed"]);
+                reader.Read();
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("Capacity", Capacity.ToString());
+            writer.WriteAttributeString("ReadSpeed", ReadSpeed.ToString());
+            writer.WriteAttributeString("WriteSpeed", WriteSpeed.ToString());
+        }
     }
 }

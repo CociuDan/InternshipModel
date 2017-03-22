@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Peripherals
 {
@@ -25,7 +27,7 @@ namespace GeekStore.Model.Peripherals
             Manufacturer = manufacturer;
             MaxVolume = maxVolume;
             Model = model;
-            Type = type.ToString();
+            Type = type;
         }
 
         public string Description
@@ -35,16 +37,41 @@ namespace GeekStore.Model.Peripherals
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine($"\tManufacturer: {Manufacturer}");
                 sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tType: {Type}");
                 sb.AppendLine($"\tImpendance: {Impendance}Ω");
+                sb.AppendLine($"\tMaxVolume: {MaxVolume}db");
+                sb.AppendLine($"\tType: {Type}");
                 return sb.ToString();
             }
         }
 
-        public int Impendance { get; }
-        public string Manufacturer { get; }
-        public int MaxVolume { get; }
-        public string Model { get; }
-        public string Type { get; }
+        public int Impendance { get; private set; }
+        public string Manufacturer { get; private set; }
+        public int MaxVolume { get; private set; }
+        public string Model { get; private set; }
+        public HeadphonesType Type { get; private set; }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            Manufacturer = reader["Manufacturer"];
+            Model = reader["Model"];
+            Impendance = int.Parse(reader["Impendance"]);
+            MaxVolume = int.Parse(reader["MaxVolume"]);
+            Type = (HeadphonesType)Enum.Parse(typeof(HeadphonesType), reader["Type"]);
+            reader.Read();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("Impendance", Impendance.ToString());
+            writer.WriteAttributeString("MaxVolume", MaxVolume.ToString());
+            writer.WriteAttributeString("Type", Type.ToString());
+        }
     }
 }

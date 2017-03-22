@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Components
 {
@@ -31,7 +33,7 @@ namespace GeekStore.Model.Components
 
             BaseFrequency = baseFrequency;
             BoostFrequency = boostFrequency;
-            Cores = cores;
+            Cores = (int)cores;
             Manufacturer = manufacturer.ToString();
             Model = model;
             Socket = socket;
@@ -47,7 +49,7 @@ namespace GeekStore.Model.Components
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine($"\tManufacturer: {Manufacturer}");
                 sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tCores: {Cores}");
+                sb.AppendLine($"\tCores: {Cores.ToString()}");
                 sb.AppendLine($"\tThreads: {Threads}");
                 sb.AppendLine($"\tBaseClock: {BaseFrequency}Ghz");
                 sb.AppendLine($"\tBoostClock: {BoostFrequency}Ghz");
@@ -56,18 +58,51 @@ namespace GeekStore.Model.Components
                 return sb.ToString();
             }
         }
-        public double BaseFrequency { get; }
-        public double BoostFrequency { get; }
-        public CPUCores Cores { get; }
-        public string Manufacturer { get; }
-        public string Model { get; }
-        public string Socket { get; }
-        public int TDP { get; }
-        public int Threads { get; }
+        public double BaseFrequency { get; private set; }
+        public double BoostFrequency { get; private set; }
+        public int Cores { get; private set; }
+        public string Manufacturer { get; private set; }
+        public string Model { get; private set; }
+        public string Socket { get; private set; }
+        public int TDP { get; private set; }
+        public int Threads { get; private set; }
 
         public override string ToString()
         {
             return $"{Manufacturer} {Model} {Cores}/{Threads} @{BaseFrequency}-{BoostFrequency} {TDP}W";
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
+            {
+                Manufacturer = reader["Manufacturer"];
+                Model = reader["Model"];
+                BaseFrequency = double.Parse(reader["BaseFrequency"]);
+                BoostFrequency = double.Parse(reader["BoostFrequency"]);
+                Cores = int.Parse(reader["Cores"]);
+                Threads = int.Parse(reader["Threads"]);
+                Socket = reader["Socket"];
+                TDP = int.Parse(reader["TDP"]);
+                reader.Read();
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("BaseFrequency", BaseFrequency.ToString());
+            writer.WriteAttributeString("BoostFrequency", BoostFrequency.ToString());
+            writer.WriteAttributeString("Cores", Cores.ToString());
+            writer.WriteAttributeString("Threads", Threads.ToString());
+            writer.WriteAttributeString("Socket", Socket);
+            writer.WriteAttributeString("TDP", TDP.ToString());
         }
     }
 }

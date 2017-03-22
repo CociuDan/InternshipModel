@@ -10,7 +10,7 @@ namespace GeekStore.Model.ModelOperations
             if (x.Threads == y.Threads && x.BoostFrequency == y.BoostFrequency)
                 return 0;
 
-            else if (x.Cores >= CPU.CPUCores.QuadCore && x.Threads >= 4 && x.BoostFrequency > y.BoostFrequency + 0.5)
+            else if (x.Cores >= 4 && x.Threads >= 4 && x.BoostFrequency > y.BoostFrequency + 0.5)
                 return 1;
 
             else

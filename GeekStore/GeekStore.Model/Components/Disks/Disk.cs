@@ -20,10 +20,15 @@ namespace GeekStore.Model.Components.Disks
             Model = model;
         }
 
-        public int Capacity { get; }
+        public int Capacity { get; protected set; }
 
-        public string Manufacturer { get; }
+        public string Manufacturer { get; protected set; }
 
-        public string Model { get; }
+        public string Model { get; protected set; }
+
+        public override string ToString()
+        {
+            return $"{Capacity} {GetType()}";
+        }
     }
 }

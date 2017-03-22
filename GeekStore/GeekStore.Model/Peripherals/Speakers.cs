@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Peripherals
 {
@@ -39,9 +41,31 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
-        public string Configuration { get; }
-        public string Manufacturer { get; }
-        public int MaxVolume { get; }
-        public string Model { get; }
+        public string Configuration { get; private set; }
+        public string Manufacturer { get; private set; }
+        public int MaxVolume { get; private set; }
+        public string Model { get; private set; }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            Manufacturer = reader["Manufacturer"];
+            Model = reader["Model"];
+            Configuration = reader["Configuration"];
+            MaxVolume = int.Parse(reader["MaxVolume"]);
+            reader.Read();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("Configuration", Configuration);
+            writer.WriteAttributeString("MaxVolume", MaxVolume.ToString());
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Components
 {
@@ -50,16 +52,45 @@ namespace GeekStore.Model.Components
             }
         }
 
-        public string Architecture { get; }
-        public int InterfaceWidth { get; }
-        public string Manufacturer { get; }
-        public string MemoryInterface { get; }
-        public string Model { get; }
-        public int VRAM { get; }
+        public string Architecture { get; private set; }
+        public int InterfaceWidth { get; private set; }
+        public string Manufacturer { get; private set; }
+        public string MemoryInterface { get; private set; }
+        public string Model { get; private set; }
+        public int VRAM { get; private set; }
 
         public override string ToString()
         {
             return string.Format("{0} {1} {2} {3} {4}", Manufacturer, Model, VRAM, MemoryInterface, InterfaceWidth);
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
+            {
+                Manufacturer = reader["Manufacturer"];
+                Model = reader["Model"];
+                Architecture = reader["Architecture"];
+                InterfaceWidth = int.Parse(reader["InterfaceWidth"]);
+                MemoryInterface = reader["MemoryInterface"];
+                VRAM = int.Parse(reader["VRAM"]);
+                reader.Read();
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("Architecture", Architecture);
+            writer.WriteAttributeString("InterfaceWidth", InterfaceWidth.ToString());
+            writer.WriteAttributeString("MemoryInterface", MemoryInterface.ToString());
+            writer.WriteAttributeString("VRAM", VRAM.ToString());
         }
     }
 }

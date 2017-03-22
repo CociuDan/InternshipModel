@@ -25,9 +25,14 @@ namespace GeekStore.Model.Components
             Size = size;
         }
 
-        public string AspectRatio { get; }
-        public int MaxRefreshRate { get; }
-        public string Resolution { get; }
-        public double Size { get; }
+        public string AspectRatio { get; protected set; }
+        public int MaxRefreshRate { get; protected set; }
+        public string Resolution { get; protected set; }
+        public double Size { get; protected set; }
+
+        public override string ToString()
+        {
+            return $"{AspectRatio} {Resolution} @ {MaxRefreshRate}Hz";
+        }
     }
 }

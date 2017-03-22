@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace GeekStore.Model.Components.Disks
 {
@@ -13,7 +15,7 @@ namespace GeekStore.Model.Components.Disks
             RPM = rpm;
         }
 
-        public new string Description
+        public string Description
         {
             get
             {
@@ -26,6 +28,31 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
-        public int RPM { get; }
+        public int RPM { get; private set; }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "HDD")
+            {
+                Manufacturer = reader["Manufacturer"];
+                Model = reader["Model"];
+                Capacity = int.Parse(reader["Capacity"]);
+                RPM = int.Parse(reader["RPM"]);
+                reader.Read();
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            writer.WriteAttributeString("Manufacturer", Manufacturer);
+            writer.WriteAttributeString("Model", Model);
+            writer.WriteAttributeString("Capacity", Capacity.ToString());
+            writer.WriteAttributeString("RPM", RPM.ToString());
+        }
     }
 }
