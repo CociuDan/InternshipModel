@@ -10,6 +10,8 @@ namespace GeekStore.Model.Components
         public enum CPUCores { SingCore = 1, DualCore = 2, TripleCore = 3, QuadCore = 4, HexaCore = 6, OctaCore = 8, DecaCore = 10 }
         public enum CPUManufacturer { Intel, AMD }
 
+        public CPU() { }
+
         public CPU(double baseFrequency, double boostFrequency, CPUCores cores, CPUManufacturer manufacturer, string model, string socket, int tdp, int threads)
         {
 
@@ -58,6 +60,8 @@ namespace GeekStore.Model.Components
                 return sb.ToString();
             }
         }
+
+        public int ID { get; private set; }
         public double BaseFrequency { get; private set; }
         public double BoostFrequency { get; private set; }
         public int Cores { get; private set; }
@@ -81,6 +85,7 @@ namespace GeekStore.Model.Components
         {
             if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
             {
+                ID = int.Parse(reader["ID"]);
                 Manufacturer = reader["Manufacturer"];
                 Model = reader["Model"];
                 BaseFrequency = double.Parse(reader["BaseFrequency"]);
@@ -95,6 +100,7 @@ namespace GeekStore.Model.Components
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteAttributeString("ID", ID.ToString());
             writer.WriteAttributeString("Manufacturer", Manufacturer);
             writer.WriteAttributeString("Model", Model);
             writer.WriteAttributeString("BaseFrequency", BaseFrequency.ToString());

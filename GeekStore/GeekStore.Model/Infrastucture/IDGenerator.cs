@@ -1,6 +1,6 @@
 ﻿namespace GeekStore.Model.Infrastucture
 {
-    public class IDGenerator : IIDGenerator<int>
+    public class IDGenerator<T> : IIDGenerator<T>
     {
         private static int _id = 1;
 
@@ -9,7 +9,7 @@
             return _id++;
         }
 
-        int IIDGenerator<int>.NextID()
+        public int NextID<T>()
         {
             return NextID();
         }

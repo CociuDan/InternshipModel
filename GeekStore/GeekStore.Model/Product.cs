@@ -9,29 +9,29 @@ namespace GeekStore.Model
 {
     public class Product : IXmlSerializable
     {
-        public Product()
+        Product() { }
+        public Product(int itemID, ItemTypes itemType, double price, int quantity)
         {
+            if (itemID <= 0)
+                throw new ArgumentException($"Invalid ItemID. Entered value: {itemID}");
 
-        }
-        public Product(IItem item, double price, int quantity)
-        {
-            ID = IDGenerator.NextID();
-            Item = item;
-            Price = price;
-            Quantity = quantity;
-        }
+            if (price <= 0)
+                throw new ArgumentException("Price cannot be less or equal to 0");
 
-        public Product(int id, IItem item, double price, int quantity)
-        {
-            ID = id;
-            Item = item;
+            if (quantity <= 0)
+                throw new ArgumentException("Quantity cannot be less or equal to 0");
+
+            ID = IDGenerator<Product>.NextID();
+            ItemID = itemID;
             Price = price;
             Quantity = quantity;
         }
 
         public int ID { get; private set; }
 
-        public IItem Item { get; private set; }
+        public int ItemID { get; private set; }
+
+        public ItemTypes ItemType { get; private set; }
 
         public double Price { get; private set; }
 
@@ -61,8 +61,11 @@ namespace GeekStore.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(Item.Description);
+            sb.AppendLine($"\tID: {ID}");
+            sb.AppendLine($"\tItemID {ItemID}");
+            sb.AppendLine($"\tItemType: {ItemType}");
             sb.AppendLine($"\tPrice: {Price}");
+            sb.AppendLine($"\tQuantity: {Quantity}");
             return sb.ToString();
         }
 
@@ -74,18 +77,21 @@ namespace GeekStore.Model
         public void ReadXml(XmlReader reader)
         {
             ID = int.Parse(reader["ID"]);
+            ItemID = int.Parse(reader["ItemID"]);
+            ItemType = (ItemTypes)Enum.Parse(typeof(ItemTypes), reader["ItemType"]);
             Price = double.Parse(reader["Price"]);
             Quantity = int.Parse(reader["Quantity"]);
-            Item = 
             reader.Read();
         }
 
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Price", Price.ToString());
-            writer.WriteAttributeString("Quantity", Quantity.ToString());
-            Item.WriteXml(writer);            
+            writer.WriteElementString("ID", ID.ToString());
+            writer.WriteElementString("ItemID", ItemID.ToString());
+            writer.WriteElementString("ItemType", ItemType.ToString());
+            writer.WriteElementString("Price", Price.ToString());
+            writer.WriteElementString("Quantity", Quantity.ToString());
+       
         }
     }
 }

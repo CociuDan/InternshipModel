@@ -6,9 +6,9 @@ namespace GeekStore.Service.Interfaces
 {
     public interface IGeekStoreService
     {
-        void DeleteProductByID(int productID);
-        IEnumerable<Product> GetProducts();
-        IEnumerable<Product> GetProductsByCriteria(Func<Product, bool> criteria);
-        void SaveProduct(Product product);
+        void DeleteProductsByCriteria<T>(Func<T, bool> criteria);
+        IEnumerable<T> GetProducts<T>();
+        IEnumerable<T> GetProductsByCriteria<T>(Func<T, bool> criteria);
+        void SaveProduct<T>(T product);
     }
 }

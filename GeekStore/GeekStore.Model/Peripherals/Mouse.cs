@@ -39,6 +39,7 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
+        public int ID { get; private set; }
         public int DPI { get; private set; }
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
@@ -51,6 +52,7 @@ namespace GeekStore.Model.Peripherals
 
         public void ReadXml(XmlReader reader)
         {
+            ID = int.Parse(reader["ID"]);
             Manufacturer = reader["Manufacturer"];
             Model = reader["Model"];
             DPI = int.Parse(reader["DPI"]);
@@ -60,6 +62,7 @@ namespace GeekStore.Model.Peripherals
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteAttributeString("ID", ID.ToString());
             writer.WriteAttributeString("Manufacturer", Manufacturer);
             writer.WriteAttributeString("Model", Model);
             writer.WriteAttributeString("DPI", DPI.ToString());

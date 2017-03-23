@@ -1,7 +1,7 @@
 ﻿namespace GeekStore.Model.Infrastucture
 {
-    public interface IIDGenerator<TID>
+    public interface IIDGenerator<T>
     {
-        TID NextID();
+        int NextID<T>();
     }
 }

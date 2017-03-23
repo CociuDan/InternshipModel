@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeekStore.Model.Infrastucture;
+using System;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
@@ -18,6 +19,7 @@ namespace GeekStore.Model.Components
                 throw new ArgumentNullException(model);
 
             FormFactor = formFactor.ToString();
+            ID = IDGenerator<Case>.NextID();
             Manufacturer = manufacturer;
             Model = model;
         }
@@ -34,6 +36,7 @@ namespace GeekStore.Model.Components
             }
         }
 
+        public int ID { get; private set; }
         public string FormFactor { get; private set; }
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
@@ -47,15 +50,17 @@ namespace GeekStore.Model.Components
         {
             if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "Case")
             {
-                FormFactor = reader["FormFactor"];
+                ID = int.Parse(reader["ID"]);
                 Manufacturer = reader["Manufacturer"];
                 Model = reader["Model"];
+                FormFactor = reader["FormFactor"];
                 reader.Read();
             }
         }
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteAttributeString("ID", ID.ToString());
             writer.WriteAttributeString("Manufacturer", Manufacturer);
             writer.WriteAttributeString("Model", Model);
             writer.WriteAttributeString("FormFactor", FormFactor);

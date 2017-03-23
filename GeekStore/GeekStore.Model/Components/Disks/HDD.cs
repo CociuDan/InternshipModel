@@ -28,6 +28,8 @@ namespace GeekStore.Model.Components.Disks
             }
         }
 
+        public int ID { get; private set; }
+
         public int RPM { get; private set; }
 
         public XmlSchema GetSchema()
@@ -39,6 +41,7 @@ namespace GeekStore.Model.Components.Disks
         {
             if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "HDD")
             {
+                ID = int.Parse(reader["ID"]);
                 Manufacturer = reader["Manufacturer"];
                 Model = reader["Model"];
                 Capacity = int.Parse(reader["Capacity"]);
@@ -49,6 +52,7 @@ namespace GeekStore.Model.Components.Disks
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteAttributeString("ID", ID.ToString());
             writer.WriteAttributeString("Manufacturer", Manufacturer);
             writer.WriteAttributeString("Model", Model);
             writer.WriteAttributeString("Capacity", Capacity.ToString());

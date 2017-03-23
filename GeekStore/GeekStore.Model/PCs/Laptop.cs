@@ -49,6 +49,7 @@ namespace GeekStore.Model.PCs
             }
         }
 
+        public int ID { get; private set; }
         public CPU CPU { get; }
         public Display Display { get; }
         public Disk Disk { get; set; }

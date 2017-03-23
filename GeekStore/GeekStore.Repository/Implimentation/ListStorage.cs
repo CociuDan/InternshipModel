@@ -6,26 +6,26 @@ using System;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ListStorage : IRepository
+    public class ListStorage<T> : IRepository<T>
     {
-        List<Product> _products = new List<Product>();
+        private static List<T> _products = new List<T>();
 
-        public void DeleteProductByID(int productID)
+        public void DeleteProductsByCriteria(Func<T, bool> criteria) 
         {
-            _products.Remove(_products.Where(x => x.ID == productID).First());
+            _products.Remove(_products.Where(criteria).Single());
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<T> GetProducts()
         {
             return _products;
         }
 
-        public IEnumerable<Product> GetProductsByCriteria(Func<Product, bool> criteria)
+        public IEnumerable<T> GetProductsByCriteria(Func<T, bool> criteria)
         {
             return _products.Where(criteria);
         }
 
-        public void SaveProduct(Product product)
+        public void SaveProduct(T product)
         {
             _products.Add(product);
         }

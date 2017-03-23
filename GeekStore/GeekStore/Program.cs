@@ -16,11 +16,7 @@ namespace GeekStore
         static void Main(string[] args)
         {
             List<Product> justAList = new List<Product>();
-            justAList.Add(new Product(CreateCPU(), 300, 1));
-            justAList.Add(new Product(CreateCPU(), 400, 1));
-            justAList.Add(new Product(CreateCPU(), 500, 1));
-            justAList.Add(new Product(CreateCPU(), 600, 1));
-            justAList.Add(new Product(CreateSSD(), 80, 1));
+            justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
 
             IGeekStoreService _geekStore_Service = new GeekStoreService();
 
@@ -28,7 +24,14 @@ namespace GeekStore
             {
                 _geekStore_Service.SaveProduct(item);
             }
-            _geekStore_Service.GetProducts();
+            _geekStore_Service.SaveProduct(CreateCPU());
+            _geekStore_Service.SaveProduct(CreateCPU());
+            _geekStore_Service.SaveProduct(CreateCPU());
+            _geekStore_Service.SaveProduct(CreateCPU());
+            foreach (var item in _geekStore_Service.GetProducts<CPU>())
+            {
+                WriteLine(item.ToString());
+            }
             ReadKey();
         }
     }

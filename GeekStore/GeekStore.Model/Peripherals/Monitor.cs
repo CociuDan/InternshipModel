@@ -35,8 +35,8 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
+        public int ID { get; private set; }
         public string Manufacturer { get; private set; }
-
         public string Model { get; private set; }
 
         public XmlSchema GetSchema()

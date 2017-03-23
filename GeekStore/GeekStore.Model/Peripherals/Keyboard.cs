@@ -36,6 +36,7 @@ namespace GeekStore.Model.Peripherals
             }
         }
 
+        public int ID { get; private set; }
         public bool BackLight { get; private set; }
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
@@ -43,11 +44,12 @@ namespace GeekStore.Model.Peripherals
 
         public XmlSchema GetSchema()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void ReadXml(XmlReader reader)
         {
+            ID = int.Parse(reader["ID"]);
             Manufacturer = reader["Manufacturer"];
             Model = reader["Model"];
             BackLight = bool.Parse(reader["BackLight"]);
@@ -57,6 +59,7 @@ namespace GeekStore.Model.Peripherals
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteAttributeString("ID", ID.ToString());
             writer.WriteAttributeString("Manufacturer", Manufacturer);
             writer.WriteAttributeString("Model", Model);
             writer.WriteAttributeString("BackLight", BackLight.ToString());

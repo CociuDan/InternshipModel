@@ -52,6 +52,7 @@ namespace GeekStore.Model.Components
             }
         }
 
+        public int ID { get; private set; }
         public string Architecture { get; private set; }
         public int InterfaceWidth { get; private set; }
         public string Manufacturer { get; private set; }
@@ -73,6 +74,7 @@ namespace GeekStore.Model.Components
         {
             if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
             {
+                ID = int.Parse(reader["ID"]);
                 Manufacturer = reader["Manufacturer"];
                 Model = reader["Model"];
                 Architecture = reader["Architecture"];
@@ -85,6 +87,7 @@ namespace GeekStore.Model.Components
 
         public void WriteXml(XmlWriter writer)
         {
+            writer.WriteAttributeString("ID", ID.ToString());
             writer.WriteAttributeString("Manufacturer", Manufacturer);
             writer.WriteAttributeString("Model", Model);
             writer.WriteAttributeString("Architecture", Architecture);
