@@ -86,12 +86,11 @@ namespace GeekStore.Model
 
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteElementString("ID", ID.ToString());
-            writer.WriteElementString("ItemID", ItemID.ToString());
-            writer.WriteElementString("ItemType", ItemType.ToString());
-            writer.WriteElementString("Price", Price.ToString());
-            writer.WriteElementString("Quantity", Quantity.ToString());
-       
+            writer.WriteAttributeString("ID", ID.ToString());
+            writer.WriteAttributeString("ItemID", ItemID.ToString());
+            writer.WriteAttributeString("ItemType", ItemType.ToString());
+            writer.WriteAttributeString("Price", Price.ToString());
+            writer.WriteAttributeString("Quantity", Quantity.ToString());       
         }
     }
 }
