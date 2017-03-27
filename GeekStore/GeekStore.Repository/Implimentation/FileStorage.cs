@@ -22,17 +22,18 @@ namespace GeekStore.Repository.Implimentation
         public IEnumerable<T> GetProducts()
         {
             List<T> products = new List<T>();
-            //XmlDocument xmlDocument = new XmlDocument();
+            XmlDocument xmlDocument = new XmlDocument();
             //xmlDocument.Load($"{typeof(T).ToString().Split('.').Last()}s.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(T));
-
             using (StreamReader reader = new StreamReader($"{typeof(T).ToString().Split('.').Last()}s.xml"))
             {
                 int i = 0;
                 while(reader.ReadLine() != null)
                 {
-                        products.Add((T)serializer.Deserialize(reader));
-                }
+                    products.Add((T)serializer.Deserialize(reader.));
+                    //reader.
+                }            
+                
             }
             return products;
         }

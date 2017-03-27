@@ -29,12 +29,15 @@ namespace GeekStore
             {
                 _geekStore_Service.SaveProduct(item);
             }
-            //foreach (var item in _geekStore_Service.GetProducts<Product>())
-            //{
-            //    WriteLine(item.ToString());
-            //}
-
-
+            foreach (var item in _geekStore_Service.GetProducts<Product>())
+            {
+                WriteLine(item.ToString());
+            }
+            foreach (var item in _geekStore_Service.GetProducts<Product>())
+            {
+                WriteLine(item.ID);
+                WriteLine(item.ItemType);
+            }
 
 
 

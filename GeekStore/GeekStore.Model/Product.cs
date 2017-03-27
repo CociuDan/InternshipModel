@@ -4,9 +4,17 @@ using System.Text;
 using System.Xml.Serialization;
 using System.Xml;
 using System.Xml.Schema;
+using System.Collections.Generic;
 
 namespace GeekStore.Model
 {
+    [XmlRoot("Products")]
+    public class ProductsList
+    {
+        List<Product> Products;
+    }
+
+    [XmlElement("Product")]
     public class Product : IXmlSerializable
     {
         Product() { }
@@ -23,6 +31,7 @@ namespace GeekStore.Model
 
             ID = IDGenerator<Product>.NextID();
             ItemID = itemID;
+            ItemType = itemType;
             Price = price;
             Quantity = quantity;
         }
@@ -81,7 +90,7 @@ namespace GeekStore.Model
             ItemType = (ItemTypes)Enum.Parse(typeof(ItemTypes), reader["ItemType"]);
             Price = double.Parse(reader["Price"]);
             Quantity = int.Parse(reader["Quantity"]);
-            reader.Read();
+            //reader.Read();
         }
 
         public void WriteXml(XmlWriter writer)
