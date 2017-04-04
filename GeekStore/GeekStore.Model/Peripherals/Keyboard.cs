@@ -20,7 +20,7 @@ namespace GeekStore.Model.Peripherals
             BackLight = backLight;
             Manufacturer = manufacturer;
             Model = model;
-            Type = type;
+            Type = type.ToString();
         }
 
         public string Description
@@ -40,7 +40,7 @@ namespace GeekStore.Model.Peripherals
         public bool BackLight { get; private set; }
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
-        public KeyboardType Type { get; private set; }
+        public string Type { get; private set; }
 
         public XmlSchema GetSchema()
         {
@@ -53,7 +53,7 @@ namespace GeekStore.Model.Peripherals
             Manufacturer = reader["Manufacturer"];
             Model = reader["Model"];
             BackLight = bool.Parse(reader["BackLight"]);
-            Type = (KeyboardType)Enum.Parse(typeof(KeyboardType), reader["Type"]);
+            Type = reader["Type"];
             reader.Read();
         }
 

@@ -18,11 +18,11 @@ namespace GeekStore.Model.Components
             if (string.IsNullOrEmpty(model.Trim()))
                 throw new ArgumentNullException(nameof(model));
 
-            if (pcieSlots < 0)
-                throw new ArgumentException($"Motherboard cannot have less than 0 PCI-E slots. Entered value: {pcieSlots}");
+            if (pcieSlots < 0 && pcieSlots > 6)
+                throw new ArgumentException($"Motherboard cannot have less than 0 or more than 6 PCI-E slots. Entered value: {pcieSlots}");
 
-            if (ramSlots < 1)
-                throw new ArgumentException($"Motherboard cannot have less than one RAM slot. Entered value: {ramSlots}");
+            if (ramSlots < 1 && ramSlots > 8)
+                throw new ArgumentException($"Motherboard cannot have less than one or more than 8 RAM slots. Entered value: {ramSlots}");
 
             if (string.IsNullOrEmpty(socket.Trim()))
                 throw new ArgumentNullException(nameof(socket));

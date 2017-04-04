@@ -11,25 +11,25 @@ namespace GeekStore.Service.Implimentation
     {
         public void DeleteProductsByCriteria<T>(Func<T, bool> criteria)
         {
-            IRepository<T> _storage = new FileStorage<T>();
+            IRepository<T> _storage = new ListStorage<T>();
             _storage.DeleteProductsByCriteria(criteria);
         }
 
         public IEnumerable<T> GetProducts<T>()
         {
-            IRepository<T> _storage = new FileStorage<T>();
+            IRepository<T> _storage = new ListStorage<T>();
             return _storage.GetProducts();
         }
 
         public IEnumerable<T> GetProductsByCriteria<T>(Func<T, bool> criteria)
         {
-            IRepository<T> _storage = new FileStorage<T>();
+            IRepository<T> _storage = new ListStorage<T>();
             return _storage.GetProductsByCriteria(criteria);
         }
 
         public void SaveProduct<T>(T product)
         {
-            IRepository<T> _storage = new FileStorage<T>();
+            IRepository<T> _storage = new ListStorage<T>();
             _storage.SaveProduct(product);
         }
     }

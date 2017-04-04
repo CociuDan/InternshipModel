@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2EF179B4-6E7A-4372-BACA-9D57200813C1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeekStore</RootNamespace>
-    <AssemblyName>GeekStore</AssemblyName>
+    <RootNamespace>GeekStore.IoC</RootNamespace>
+    <AssemblyName>GeekStore.IoC</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -47,25 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeekStore.Factory\GeekStore.Factory.csproj">
-      <Project>{25db1f25-18d8-46e1-9c6e-6adc90508106}</Project>
-      <Name>GeekStore.Factory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GeekStore.IoC\GeekStore.IoC.csproj">
-      <Project>{505f924b-e6f4-42af-b980-bfd3aa4f9e29}</Project>
-      <Name>GeekStore.IoC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GeekStore.Model\GeekStore.Model.csproj">
-      <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
-      <Name>GeekStore.Model</Name>
+    <ProjectReference Include="..\GeekStore.Repository\GeekStore.Repository.csproj">
+      <Project>{f5d9127f-0e85-4283-943f-73d392557db1}</Project>
+      <Name>GeekStore.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeekStore.Service\GeekStore.Service.csproj">
       <Project>{536475ea-ad4e-4293-a476-707ef05095d9}</Project>

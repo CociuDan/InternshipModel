@@ -56,9 +56,10 @@ namespace GeekStore.Model.PCs
         public GPU GPU { get; }
         public string Manufacturer { get; }
         public string Model { get; }
-        public RAM RAM { get; set; }
         public Motherboard Motherboard { get; }
         public PowerUnit PowerUnit { get; }
+        public RAM RAM { get; set; }
+
 
         public XmlSchema GetSchema()
         {

@@ -30,7 +30,7 @@ namespace GeekStore.Repository.Implimentation
                 int i = 0;
                 while(reader.ReadLine() != null)
                 {
-                    products.Add((T)serializer.Deserialize(reader.));
+                    products.Add((T)serializer.Deserialize(reader));
                     //reader.
                 }            
                 

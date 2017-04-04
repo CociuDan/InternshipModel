@@ -8,13 +8,6 @@ using System.Collections.Generic;
 
 namespace GeekStore.Model
 {
-    [XmlRoot("Products")]
-    public class ProductsList
-    {
-        List<Product> Products;
-    }
-
-    [XmlElement("Product")]
     public class Product : IXmlSerializable
     {
         Product() { }

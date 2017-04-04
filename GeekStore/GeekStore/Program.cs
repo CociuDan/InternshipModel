@@ -1,14 +1,8 @@
 ﻿using System.Collections.Generic;
-using GeekStore.Model.Components.Disks;
-using GeekStore.Model.Components;
+using Ninject;
 using GeekStore.Model;
-using GeekStore.Service.Implimentation;
 using GeekStore.Service.Interfaces;
 using static System.Console;
-using static GeekStore.Factory.CPUFactory;
-using static GeekStore.Factory.DiskFactory;
-using System.Xml.Linq;
-using System.Xml;
 
 namespace GeekStore
 {
@@ -16,6 +10,9 @@ namespace GeekStore
     {
         static void Main(string[] args)
         {
+            var kernel = new StandardKernel(IoC.IoC.Instance);
+            IGeekStoreService _geekStore_Service = kernel.Get<IGeekStoreService>();
+
             List<Product> justAList = new List<Product>();
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
@@ -23,7 +20,7 @@ namespace GeekStore
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
 
-            IGeekStoreService _geekStore_Service = new GeekStoreService();
+
 
             foreach (Product item in justAList)
             {
@@ -33,33 +30,6 @@ namespace GeekStore
             {
                 WriteLine(item.ToString());
             }
-            foreach (var item in _geekStore_Service.GetProducts<Product>())
-            {
-                WriteLine(item.ID);
-                WriteLine(item.ItemType);
-            }
-
-
-
-
-
-            //XmlDocument doc = new XmlDocument();
-            //doc.LoadXml("<book>" +
-            //            "  <title>Oberon's Legacy</title>" +
-            //            "  <price>5.95</price>" +
-            //            "</book>");
-
-            //// Create a new element node.
-            //XmlNode newElem = doc.CreateNode("element", "pages", "");
-            //newElem.InnerText = "290";
-
-            //WriteLine("Add the new element to the document...");
-            //XmlElement root = doc.DocumentElement;
-            //root.AppendChild(newElem);
-
-            //WriteLine("Display the modified XML document...");
-            //WriteLine(doc.OuterXml);
-
             ReadKey();
         }
     }

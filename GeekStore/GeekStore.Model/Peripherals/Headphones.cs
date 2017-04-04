@@ -27,7 +27,7 @@ namespace GeekStore.Model.Peripherals
             Manufacturer = manufacturer;
             MaxVolume = maxVolume;
             Model = model;
-            Type = type;
+            Type = type.ToString();
         }
 
         public string Description
@@ -49,7 +49,7 @@ namespace GeekStore.Model.Peripherals
         public string Manufacturer { get; private set; }
         public int MaxVolume { get; private set; }
         public string Model { get; private set; }
-        public HeadphonesType Type { get; private set; }
+        public string Type { get; private set; }
 
         public XmlSchema GetSchema()
         {
@@ -63,7 +63,7 @@ namespace GeekStore.Model.Peripherals
             Model = reader["Model"];
             Impendance = int.Parse(reader["Impendance"]);
             MaxVolume = int.Parse(reader["MaxVolume"]);
-            Type = (HeadphonesType)Enum.Parse(typeof(HeadphonesType), reader["Type"]);
+            Type = reader["Type"];
             reader.Read();
         }
 
