@@ -5,11 +5,10 @@ using System.Xml.Schema;
 
 namespace GeekStore.Model.Components
 {
+    public enum CPUCores { SingCore = 1, DualCore = 2, TripleCore = 3, QuadCore = 4, HexaCore = 6, OctaCore = 8, DecaCore = 10 }
+    public enum CPUManufacturer { Intel, AMD }
     public class CPU : IItem
     {
-        public enum CPUCores { SingCore = 1, DualCore = 2, TripleCore = 3, QuadCore = 4, HexaCore = 6, OctaCore = 8, DecaCore = 10 }
-        public enum CPUManufacturer { Intel, AMD }
-
         public CPU() { }
 
         public CPU(double baseFrequency, double boostFrequency, CPUCores cores, CPUManufacturer manufacturer, string model, string socket, int tdp, int threads)
