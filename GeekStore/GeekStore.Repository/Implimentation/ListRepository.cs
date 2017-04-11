@@ -6,7 +6,7 @@ using System;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ListStorage<T> : IRepository<T>
+    public class ListRepository<T> : IRepository<T>
     {
         private static List<T> _products = new List<T>();
 

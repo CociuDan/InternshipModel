@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class FileStorage<T> : IRepository<T>
+    public class FileRepository<T> : IRepository<T>
     {
         public void DeleteProductsByCriteria(Func<T, bool> criteria)
         {

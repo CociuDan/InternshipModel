@@ -33,7 +33,7 @@ namespace GeekStore.IoC
         public override void Load()
         {
             Bind<IGeekStoreService>().To<GeekStoreService>();
-            Bind(typeof(IRepository<>)).To(typeof(ListStorage<>));
+            Bind(typeof(IRepository<>)).To(typeof(ListRepository<>));
         }
     }
 }
