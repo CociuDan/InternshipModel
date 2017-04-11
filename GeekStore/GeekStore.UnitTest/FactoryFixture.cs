@@ -3,7 +3,7 @@ using NUnit.Framework;
 using GeekStore.Factory;
 using GeekStore.Model.Components;
 
-namespace GeekStore.UnitTest
+namespace GeekStore.UnitTests
 {
     [TestFixture]
     public class FactoryFixture

@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Service", "GeekSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.IoC", "GeekStore.IoC\GeekStore.IoC.csproj", "{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.UnitTest", "GeekStore.UnitTest\GeekStore.UnitTest.csproj", "{829B81D3-F0AA-463F-BFD9-44C268A38E28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.UnitTests", "GeekStore.UnitTest\GeekStore.UnitTests.csproj", "{829B81D3-F0AA-463F-BFD9-44C268A38E28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
