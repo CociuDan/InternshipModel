@@ -1,4 +1,4 @@
-﻿using GeekStore.Model.Components.Disks;
+﻿using GeekStore.Domain.Components.Disks;
 
 namespace GeekStore.Factory
 {

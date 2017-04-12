@@ -1,6 +1,6 @@
-﻿using GeekStore.Model.Components;
-using GeekStore.Model.Components.Disks;
-using GeekStore.Model.PCs;
+﻿using GeekStore.Domain.Components;
+using GeekStore.Domain.Components.Disks;
+using GeekStore.Domain.PCs;
 
 namespace GeekStore.Factory
 {

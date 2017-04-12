@@ -88,9 +88,9 @@
       <Project>{505f924b-e6f4-42af-b980-bfd3aa4f9e29}</Project>
       <Name>GeekStore.IoC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeekStore.Model\GeekStore.Model.csproj">
+    <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
-      <Name>GeekStore.Model</Name>
+      <Name>GeekStore.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeekStore.Service\GeekStore.Service.csproj">
       <Project>{536475ea-ad4e-4293-a476-707ef05095d9}</Project>

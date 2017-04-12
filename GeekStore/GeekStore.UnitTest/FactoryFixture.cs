@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using GeekStore.Factory;
-using GeekStore.Model.Components;
+using GeekStore.Domain.Components;
 
 namespace GeekStore.UnitTests
 {

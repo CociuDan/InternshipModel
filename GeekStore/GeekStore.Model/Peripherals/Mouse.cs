@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Peripherals
+namespace GeekStore.Domain.Peripherals
 {
     public class Mouse : IItem
     {
@@ -44,29 +44,5 @@ namespace GeekStore.Model.Peripherals
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
         public string Type { get; private set; }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            ID = int.Parse(reader["ID"]);
-            Manufacturer = reader["Manufacturer"];
-            Model = reader["Model"];
-            DPI = int.Parse(reader["DPI"]);
-            Type = reader["Type"];
-            reader.Read();
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("DPI", DPI.ToString());
-            writer.WriteAttributeString("Type", Type.ToString());
-        }
     }
 }

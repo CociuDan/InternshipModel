@@ -1,12 +1,12 @@
 ﻿using System.Text;
-using GeekStore.Model.Components.Disks;
+using GeekStore.Domain.Components.Disks;
 
-using GeekStore.Model.Components;
+using GeekStore.Domain.Components;
 using System;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.PCs
+namespace GeekStore.Domain.PCs
 {
     public class Laptop : IItem, IComputer
     {
@@ -59,21 +59,5 @@ namespace GeekStore.Model.PCs
         public Motherboard Motherboard { get; }
         public PowerUnit PowerUnit { get; }
         public RAM RAM { get; set; }
-
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-
-        }
     }
 }

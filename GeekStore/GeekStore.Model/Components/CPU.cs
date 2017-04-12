@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Components
+namespace GeekStore.Domain.Components
 {
     public enum CPUCores { SingCore = 1, DualCore = 2, TripleCore = 3, QuadCore = 4, HexaCore = 6, OctaCore = 8, DecaCore = 10 }
     public enum CPUManufacturer { Intel, AMD }
@@ -73,41 +73,6 @@ namespace GeekStore.Model.Components
         public override string ToString()
         {
             return $"{Manufacturer} {Model} {Cores}/{Threads} @{BaseFrequency}-{BoostFrequency} {TDP}W";
-        }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
-            {
-                ID = int.Parse(reader["ID"]);
-                Manufacturer = reader["Manufacturer"];
-                Model = reader["Model"];
-                BaseFrequency = double.Parse(reader["BaseFrequency"]);
-                BoostFrequency = double.Parse(reader["BoostFrequency"]);
-                Cores = int.Parse(reader["Cores"]);
-                Threads = int.Parse(reader["Threads"]);
-                Socket = reader["Socket"];
-                TDP = int.Parse(reader["TDP"]);
-                reader.Read();
-            }
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("BaseFrequency", BaseFrequency.ToString());
-            writer.WriteAttributeString("BoostFrequency", BoostFrequency.ToString());
-            writer.WriteAttributeString("Cores", Cores.ToString());
-            writer.WriteAttributeString("Threads", Threads.ToString());
-            writer.WriteAttributeString("Socket", Socket);
-            writer.WriteAttributeString("TDP", TDP.ToString());
         }
     }
 }

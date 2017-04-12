@@ -1,4 +1,4 @@
-﻿using GeekStore.Model.Peripherals;
+﻿using GeekStore.Domain.Peripherals;
 
 namespace GeekStore.Factory
 {

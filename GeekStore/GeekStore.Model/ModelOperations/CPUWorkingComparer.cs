@@ -1,8 +1,8 @@
-﻿using GeekStore.Model.Components;
+﻿using GeekStore.Domain.Components;
 using System;
 using System.Collections.Generic;
 
-namespace GeekStore.Model.ModelOperations
+namespace GeekStore.Domain.ModelOperations
 {
     public class CPUWorkingComparer : Comparer<CPU>
     {

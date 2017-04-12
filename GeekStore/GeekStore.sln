@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore", "GeekStore\Geek
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Factory", "GeekStore.Factory\GeekStore.Factory.csproj", "{25DB1F25-18D8-46E1-9C6E-6ADC90508106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Model", "GeekStore.Model\GeekStore.Model.csproj", "{7B9E51CB-6B6C-4735-A990-76F3460F8CFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain", "GeekStore.Model\GeekStore.Domain.csproj", "{7B9E51CB-6B6C-4735-A990-76F3460F8CFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Repository", "GeekStore.Repository\GeekStore.Repository.csproj", "{F5D9127F-0E85-4283-943F-73D392557DB1}"
 EndProject

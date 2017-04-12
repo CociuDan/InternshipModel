@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeekStore.Model.Components
+namespace GeekStore.Domain.Components
 {
     public class Display
     {

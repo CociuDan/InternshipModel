@@ -2,9 +2,9 @@
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
-using GeekStore.Model.Components;
+using GeekStore.Domain.Components;
 
-namespace GeekStore.Model.Peripherals
+namespace GeekStore.Domain.Peripherals
 {
     public class Monitor : Display, IItem
     {
@@ -38,29 +38,5 @@ namespace GeekStore.Model.Peripherals
         public int ID { get; private set; }
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            Manufacturer = reader["Manufacturer"];
-            Model = reader["Model"];
-            AspectRatio = reader["AspectRatio"];
-            MaxRefreshRate = int.Parse(reader["MaxRefreshRate"]);
-            Resolution = reader["Resolution"];
-            reader.Read();
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("AspectRatio", AspectRatio);
-            writer.WriteAttributeString("MaxRefreshRate", MaxRefreshRate.ToString());
-            writer.WriteAttributeString("Resolution", Resolution);
-        }
     }
 }

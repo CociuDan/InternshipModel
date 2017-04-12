@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Components.Disks
+namespace GeekStore.Domain.Components.Disks
 {
     public class HDD : Disk, IItem
     {
@@ -31,32 +31,5 @@ namespace GeekStore.Model.Components.Disks
         public int ID { get; private set; }
 
         public int RPM { get; private set; }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "HDD")
-            {
-                ID = int.Parse(reader["ID"]);
-                Manufacturer = reader["Manufacturer"];
-                Model = reader["Model"];
-                Capacity = int.Parse(reader["Capacity"]);
-                RPM = int.Parse(reader["RPM"]);
-                reader.Read();
-            }
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("Capacity", Capacity.ToString());
-            writer.WriteAttributeString("RPM", RPM.ToString());
-        }
     }
 }

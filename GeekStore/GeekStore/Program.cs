@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ninject;
-using GeekStore.Model;
+using GeekStore.Domain;
 using GeekStore.Service.Interfaces;
 using static System.Console;
 

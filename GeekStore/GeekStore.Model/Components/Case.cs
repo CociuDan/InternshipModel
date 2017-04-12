@@ -1,10 +1,10 @@
-﻿using GeekStore.Model.Infrastucture;
+﻿using GeekStore.Domain.Infrastucture;
 using System;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Components
+namespace GeekStore.Domain.Components
 {
     public class Case : IItem
     {
@@ -40,30 +40,5 @@ namespace GeekStore.Model.Components
         public string FormFactor { get; private set; }
         public string Manufacturer { get; private set; }
         public string Model { get; private set; }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "Case")
-            {
-                ID = int.Parse(reader["ID"]);
-                Manufacturer = reader["Manufacturer"];
-                Model = reader["Model"];
-                FormFactor = reader["FormFactor"];
-                reader.Read();
-            }
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("FormFactor", FormFactor);
-        }
     }
 }

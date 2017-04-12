@@ -1,4 +1,4 @@
-﻿using GeekStore.Model;
+﻿using GeekStore.Domain;
 using System.Collections.Generic;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Service.Interfaces;

@@ -52,13 +52,11 @@
     <Compile Include="Components\PowerUnit.cs" />
     <Compile Include="Components\RAM.cs" />
     <Compile Include="IItem.cs" />
-    <Compile Include="Infrastucture\IDGenerator.cs" />
-    <Compile Include="Infrastucture\IIDGenerator.cs" />
-    <Compile Include="ModelOperations\CPUGamingComparer.cs" />
-    <Compile Include="ModelOperations\CPUWorkingComparer.cs" />
+    <Compile Include="Infrastructure\IDGenerator.cs" />
+    <Compile Include="Infrastructure\IIDGenerator.cs" />
     <Compile Include="PCs\Desktop.cs" />
     <Compile Include="PCs\IComputer.cs" />
-    <Compile Include="PCs\Laptop.cs" />
+    <Compile Include="Laptop.cs" />
     <Compile Include="Peripherals\Headphones.cs" />
     <Compile Include="Peripherals\Keyboard.cs" />
     <Compile Include="Peripherals\Monitor.cs" />

@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\GeekStore.Model\GeekStore.Model.csproj">
+    <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
-      <Name>GeekStore.Model</Name>
+      <Name>GeekStore.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeekStore.Repository\GeekStore.Repository.csproj">
       <Project>{f5d9127f-0e85-4283-943f-73d392557db1}</Project>

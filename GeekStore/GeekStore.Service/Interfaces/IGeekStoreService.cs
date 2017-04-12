@@ -1,4 +1,4 @@
-﻿using GeekStore.Model;
+﻿using GeekStore.Domain;
 using System;
 using System.Collections.Generic;
 

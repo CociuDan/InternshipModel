@@ -1,9 +1,9 @@
 ﻿using System;
-using GeekStore.Model.Components;
-using GeekStore.Model.Components.Disks;
-using GeekStore.Model.Peripherals;
+using GeekStore.Domain.Components;
+using GeekStore.Domain.Components.Disks;
+using GeekStore.Domain.Peripherals;
 
-namespace GeekStore.Model.PCs
+namespace GeekStore.Domain.PCs
 {
     public class Desktop : IComputer
     {

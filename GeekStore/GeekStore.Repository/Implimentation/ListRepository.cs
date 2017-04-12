@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GeekStore.Model;
+using GeekStore.Domain;
 using GeekStore.Repository.Interfaces;
 using System.Linq;
 using System;

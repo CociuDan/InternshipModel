@@ -57,9 +57,9 @@
     <Compile Include="SpeakersFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeekStore.Model\GeekStore.Model.csproj">
+    <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
-      <Name>GeekStore.Model</Name>
+      <Name>GeekStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

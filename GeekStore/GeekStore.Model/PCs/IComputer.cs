@@ -1,7 +1,7 @@
-﻿using GeekStore.Model.Components;
-using GeekStore.Model.Components.Disks;
+﻿using GeekStore.Domain.Components;
+using GeekStore.Domain.Components.Disks;
 
-namespace GeekStore.Model.PCs
+namespace GeekStore.Domain.PCs
 {
     public interface IComputer
     {

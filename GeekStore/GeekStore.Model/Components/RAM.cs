@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Components
+namespace GeekStore.Domain.Components
 {
     public class RAM : IItem
     {
@@ -55,35 +55,6 @@ namespace GeekStore.Model.Components
         public override string ToString()
         {
             return $"{Capacity}MB {Generation} {Frequency}Mhz";
-        }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
-            {
-                ID = int.Parse(reader["ID"]);
-                Manufacturer = reader["Manufacturer"];
-                Model = reader["Model"];
-                Capacity = int.Parse(reader["Capacity"]);
-                Frequency = int.Parse(reader["Frequency"]);
-                Generation = reader["Generation"];
-                reader.Read();
-            }
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("Capacity", Capacity.ToString());
-            writer.WriteAttributeString("Frequency", Frequency.ToString());
-            writer.WriteAttributeString("Generation", Generation);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System.Xml.Serialization;
 
-namespace GeekStore.Model
+namespace GeekStore.Domain
 {
     public enum ItemTypes { Case, Cooler, CPU, Display, GPU, HDD, Headphones, Laptop, Monitor, Motherboard, Mouse, PowerUnit, RAM, Speakers, SSD }
-    public interface IItem : IXmlSerializable
+    public interface IItem
     {
         string Description { get; }
         int ID { get; }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeekStore.Model.Components.Disks
+namespace GeekStore.Domain.Components.Disks
 {
     public abstract class Disk
     {

@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Components
+namespace GeekStore.Domain.Components
 {
     public class Motherboard : IItem
     {
@@ -57,36 +57,5 @@ namespace GeekStore.Model.Components
         public int PCIESlots { get; private set; }
         public int RAMSlots { get; private set; }
         public string Socket { get; private set; }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
-            {
-                ID = int.Parse(reader["ID"]);
-                Manufacturer = reader["Manufacturer"];
-                Model = reader["Model"];
-                Chipset = reader["Chipset"];
-                PCIESlots = int.Parse(reader["PCIESlots"]);
-                RAMSlots = int.Parse(reader["RAMSlots"]);
-                Socket = reader["Socket"];
-                reader.Read();
-            }
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("Chipset", Chipset);
-            writer.WriteAttributeString("PCIESlots", PCIESlots.ToString());
-            writer.WriteAttributeString("RAMSlots", RAMSlots.ToString());
-            writer.WriteAttributeString("Socket", Socket);
-        }
     }
 }

@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Peripherals
+namespace GeekStore.Domain.Peripherals
 {
     public class Speakers : IItem
     {
@@ -46,29 +46,5 @@ namespace GeekStore.Model.Peripherals
         public string Manufacturer { get; private set; }
         public int MaxVolume { get; private set; }
         public string Model { get; private set; }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            ID = int.Parse(reader["ID"]);
-            Manufacturer = reader["Manufacturer"];
-            Model = reader["Model"];
-            Configuration = reader["Configuration"];
-            MaxVolume = int.Parse(reader["MaxVolume"]);
-            reader.Read();
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("Configuration", Configuration);
-            writer.WriteAttributeString("MaxVolume", MaxVolume.ToString());
-        }
     }
 }

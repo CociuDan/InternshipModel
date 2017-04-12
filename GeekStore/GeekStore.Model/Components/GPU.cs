@@ -3,7 +3,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace GeekStore.Model.Components
+namespace GeekStore.Domain.Components
 {
     public class GPU : IItem
     {
@@ -63,37 +63,6 @@ namespace GeekStore.Model.Components
         public override string ToString()
         {
             return string.Format("{0} {1} {2} {3} {4}", Manufacturer, Model, VRAM, MemoryInterface, InterfaceWidth);
-        }
-
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
-
-        public void ReadXml(XmlReader reader)
-        {
-            if (reader.MoveToContent() == XmlNodeType.Element && reader.LocalName == "CPU")
-            {
-                ID = int.Parse(reader["ID"]);
-                Manufacturer = reader["Manufacturer"];
-                Model = reader["Model"];
-                Architecture = reader["Architecture"];
-                InterfaceWidth = int.Parse(reader["InterfaceWidth"]);
-                MemoryInterface = reader["MemoryInterface"];
-                VRAM = int.Parse(reader["VRAM"]);
-                reader.Read();
-            }
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteAttributeString("ID", ID.ToString());
-            writer.WriteAttributeString("Manufacturer", Manufacturer);
-            writer.WriteAttributeString("Model", Model);
-            writer.WriteAttributeString("Architecture", Architecture);
-            writer.WriteAttributeString("InterfaceWidth", InterfaceWidth.ToString());
-            writer.WriteAttributeString("MemoryInterface", MemoryInterface.ToString());
-            writer.WriteAttributeString("VRAM", VRAM.ToString());
         }
     }
 }
