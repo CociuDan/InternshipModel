@@ -1,10 +1,11 @@
-﻿using GeekStore.Domain.Model.IDGenerator;
+﻿using GeekStore.Domain;
+using GeekStore.Domain.Model.IDGenerator;
 using System;
 using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class Case : IItem
+    public class Case : Item
     {
         public enum FormFactorTypes { FullTower, MidTower, MiniTower, SFF, MicroATX, MiniITX }
 

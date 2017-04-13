@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class Motherboard : IItem
+    public class Motherboard : Item
     {
         public Motherboard() { }
 

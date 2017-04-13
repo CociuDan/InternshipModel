@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Mouse : IItem
+    public class Mouse : Item
     {
         public enum MouseType { Optical, Laser, Mechanical }
 

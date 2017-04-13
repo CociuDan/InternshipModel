@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components.Disks
 {
-    public class SSD : Disk, IItem
+    public class SSD : Disk
     {
         public SSD() { }
         public SSD(int capacity, string manufacturer, string model, int readSpeed, int writeSpeed) : base(capacity, manufacturer, model)

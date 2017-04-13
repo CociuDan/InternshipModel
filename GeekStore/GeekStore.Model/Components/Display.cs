@@ -2,7 +2,7 @@
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class Display
+    public class Display : Item
     {
         public Display() { }
 

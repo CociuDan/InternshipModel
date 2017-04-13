@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class PowerUnit : IItem
+    public class PowerUnit : Item
     {
         public PowerUnit() { }
 

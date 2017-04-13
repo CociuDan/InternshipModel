@@ -5,7 +5,7 @@ using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Domain.PCs
 {
-    public class Laptop : IItem, IComputer
+    public class Laptop : Item, IComputer
     {
         public Laptop(CPU cpu, Display display, Disk disk, GPU gpu, string manufacturer, string model, Motherboard motherboard, PowerUnit battery, RAM ram)
         {

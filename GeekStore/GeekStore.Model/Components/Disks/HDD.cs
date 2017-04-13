@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components.Disks
 {
-    public class HDD : Disk, IItem
+    public class HDD : Disk
     {
         public HDD() { }
 

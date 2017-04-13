@@ -22,7 +22,7 @@ namespace GeekStore.Infrastucture
         public static void RegisterAll()
         {
             Container.RegisterType<IGeekStoreService, GeekStoreService>();
-            Container.RegisterType<IRepository, DBRepository>();
+            Container.RegisterType<IRepository, GenericRepository>();
             Container.RegisterInstance(NHibernateProvider.GetSession());
         }
 

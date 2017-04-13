@@ -4,6 +4,7 @@ using GeekStore.Domain;
 using GeekStore.Service.Interfaces;
 using static System.Console;
 using GeekStore.Repository.Interfaces;
+using GeekStore.Domain.Model.Components;
 
 namespace GeekStore
 {
@@ -22,12 +23,15 @@ namespace GeekStore
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
 
-            foreach(var cpu in _geekStore_Repository.GetCPUs())
+            foreach(var item in _geekStore_Repository.GetAll<Case>())
             {
-                WriteLine(cpu.Model);
+                WriteLine(item.Model);
             }
-
-
+            ReadKey();
+            foreach (var item in _geekStore_Repository.GetAll<CPU>())
+            {
+                WriteLine(item.Model);
+            }
             ReadKey();
         }
     }

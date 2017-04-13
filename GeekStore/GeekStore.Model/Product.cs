@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GeekStore.Domain
 {
-    public class Product
+    public class Product : Item
     {
         Product() { }
         public Product(int itemID, ItemTypes itemType, double price, int quantity)

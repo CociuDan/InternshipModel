@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class RAM : IItem
+    public class RAM : Item
     {
         public enum RAMGeneration { DDR, DDR2, DDR3, DDR4 }
 

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Speakers : IItem
+    public class Speakers : Item
     {
         public Speakers() { }
 

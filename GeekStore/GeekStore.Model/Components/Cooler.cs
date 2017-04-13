@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class Cooler : IItem
+    public class Cooler : Item
     {
         public Cooler() { }
 

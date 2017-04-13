@@ -4,7 +4,7 @@ using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Monitor : Display, IItem
+    public class Monitor : Display
     {
         public Monitor() { }
 

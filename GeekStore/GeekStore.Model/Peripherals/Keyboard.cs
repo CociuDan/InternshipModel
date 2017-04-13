@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Keyboard : IItem
+    public class Keyboard : Item
     {
         public enum KeyboardType { Membrane, Mechanical }
 

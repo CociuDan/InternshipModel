@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Headphones : IItem
+    public class Headphones : Item
     {
         public enum HeadphonesType { InEar, OnEar, OverEar }
 

@@ -2,9 +2,10 @@
 
 namespace GeekStore.Domain.Model.Components.Disks
 {
-    public abstract class Disk
+    public abstract class Disk : Item
     {
         public Disk() { }
+
         public Disk(int capacity, string manufacturer, string model)
         {
             if (capacity <= 0)

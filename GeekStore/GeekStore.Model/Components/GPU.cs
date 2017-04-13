@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class GPU : IItem
+    public class GPU : Item
     {
         public GPU() { }
         public GPU(string architecture, int interfaceWidth, string manufacturer, string memoryInterface, string model, int vram)
