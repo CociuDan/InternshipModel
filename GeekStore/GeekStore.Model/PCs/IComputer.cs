@@ -1,5 +1,5 @@
-﻿using GeekStore.Domain.Components;
-using GeekStore.Domain.Components.Disks;
+﻿using GeekStore.Domain.Model.Components;
+using GeekStore.Domain.Model.Components.Disks;
 
 namespace GeekStore.Domain.PCs
 {

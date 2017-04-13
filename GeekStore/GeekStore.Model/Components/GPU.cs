@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class GPU : IItem
     {
+        public GPU() { }
         public GPU(string architecture, int interfaceWidth, string manufacturer, string memoryInterface, string model, int vram)
         {
 
@@ -37,7 +36,7 @@ namespace GeekStore.Domain.Components
         }
 
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -50,19 +49,23 @@ namespace GeekStore.Domain.Components
                 sb.AppendLine($"\tVRAM: {VRAM}GB");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string Architecture { get; private set; }
-        public int InterfaceWidth { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string MemoryInterface { get; private set; }
-        public string Model { get; private set; }
-        public int VRAM { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual string Architecture { get; protected set; }
+        public virtual int InterfaceWidth { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string MemoryInterface { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual int VRAM { get; protected set; }
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2} {3} {4}", Manufacturer, Model, VRAM, MemoryInterface, InterfaceWidth);
+            return $"{Manufacturer} {Model} {VRAM} {MemoryInterface} {InterfaceWidth}";
         }
     }
 }

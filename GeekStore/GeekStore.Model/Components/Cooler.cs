@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class Cooler : IItem
     {
+        public Cooler() { }
+
         public Cooler(string manufacturer, string model, string socket)
         {
             if (string.IsNullOrEmpty(manufacturer.Trim()))
@@ -24,7 +24,7 @@ namespace GeekStore.Domain.Components
 
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -34,11 +34,15 @@ namespace GeekStore.Domain.Components
                 sb.AppendLine($"\tSocket: {Socket}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-        public string Socket { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual string Socket { get; protected set; }
     }
 }

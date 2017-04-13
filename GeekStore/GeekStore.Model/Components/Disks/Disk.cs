@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeekStore.Domain.Components.Disks
+namespace GeekStore.Domain.Model.Components.Disks
 {
     public abstract class Disk
     {
@@ -21,11 +21,11 @@ namespace GeekStore.Domain.Components.Disks
             Model = model;
         }
 
-        public int Capacity { get; protected set; }
+        public virtual int Capacity { get; protected set; }
 
-        public string Manufacturer { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
 
-        public string Model { get; protected set; }
+        public virtual string Model { get; protected set; }
 
         public override string ToString()
         {

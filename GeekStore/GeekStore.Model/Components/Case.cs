@@ -1,14 +1,14 @@
-﻿using GeekStore.Domain.Infrastucture;
+﻿using GeekStore.Domain.Model.IDGenerator;
 using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class Case : IItem
     {
         public enum FormFactorTypes { FullTower, MidTower, MiniTower, SFF, MicroATX, MiniITX }
+
+        public Case() { }
 
         public Case(FormFactorTypes formFactor, string manufacturer, string model)
         {
@@ -24,7 +24,7 @@ namespace GeekStore.Domain.Components
             Model = model;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -34,11 +34,15 @@ namespace GeekStore.Domain.Components
                 sb.AppendLine($"\tForm Factor: {FormFactor}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string FormFactor { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual string FormFactor { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
     }
 }

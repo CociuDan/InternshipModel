@@ -1,39 +1,67 @@
-﻿using Ninject.Modules;
+﻿//using Ninject.Modules;
+using Microsoft.Practices.Unity;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Repository.Implimentation;
 using GeekStore.Service.Interfaces;
 using GeekStore.Service.Implimentation;
 
-namespace GeekStore.IoC
+namespace GeekStore.Infrastucture
 {
-    public sealed class IoC : NinjectModule
+    public sealed class IoC// : NinjectModule
     {
-        private static IoC instance = null;
-        private static readonly object padlock = new object();
+        private static readonly UnityContainer Container;
 
-        private IoC() { }
-        public static IoC Instance
+        static IoC()
         {
-            get
+            if (Container == null)
             {
-                if (instance == null)
-                {
-                    lock (padlock)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new IoC();
-                        }
-                    }
-                }
-                return instance;
+                Container = new UnityContainer();
             }
         }
 
-        public override void Load()
+        public static void RegisterAll()
         {
-            Bind<IGeekStoreService>().To<GeekStoreService>();
-            Bind(typeof(IRepository<>)).To(typeof(ListRepository<>));
+            Container.RegisterType<IGeekStoreService, GeekStoreService>();
+            Container.RegisterType<IRepository, DBRepository>();
+            Container.RegisterInstance(NHibernateProvider.GetSession());
         }
+
+        public static T Resolve<T>()
+        {
+            return Container.Resolve<T>();
+        }
+
+
+
+
+
+        //private static IoC instance = null;
+        //private static readonly object padlock = new object();
+
+        //private IoC() { }
+        //public static IoC Instance
+        //{
+        //    get
+        //    {
+        //        if (instance == null)
+        //        {
+        //            lock (padlock)
+        //            {
+        //                if (instance == null)
+        //                {
+        //                    instance = new IoC();
+        //                }
+        //            }
+        //        }
+        //        return instance;
+        //    }
+        //}
+
+        //public override void Load()
+        //{
+        //    Bind<IGeekStoreService>().To<GeekStoreService>();
+        //    Bind<IRepository>().To<DBRepository>();
+        //    B
+        //}
     }
 }

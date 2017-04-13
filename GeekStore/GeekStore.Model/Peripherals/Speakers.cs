@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Peripherals
+namespace GeekStore.Domain.Model.Peripherals
 {
     public class Speakers : IItem
     {
+        public Speakers() { }
+
         public Speakers(string configuration, string manufacturer, int maxVolume, string model)
         {
             if (configuration != "1.0" && configuration != "2.0" && configuration != "2.1" && configuration != "3.1" && configuration != "4.0"
@@ -28,7 +28,7 @@ namespace GeekStore.Domain.Peripherals
             Model = model;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -39,12 +39,16 @@ namespace GeekStore.Domain.Peripherals
                 sb.AppendLine($"\tMax Volume: {MaxVolume}Db");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string Configuration { get; private set; }
-        public string Manufacturer { get; private set; }
-        public int MaxVolume { get; private set; }
-        public string Model { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual string Configuration { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual int MaxVolume { get; protected set; }
+        public virtual string Model { get; protected set; }
     }
 }

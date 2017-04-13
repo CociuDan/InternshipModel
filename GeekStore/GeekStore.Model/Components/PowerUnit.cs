@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class PowerUnit : IItem
     {
+        public PowerUnit() { }
+
         public PowerUnit(string manufacturer, string model, int output)
         {
             if (string.IsNullOrEmpty(manufacturer.Trim()))
@@ -23,7 +23,7 @@ namespace GeekStore.Domain.Components
             Output = output;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -33,11 +33,15 @@ namespace GeekStore.Domain.Components
                 sb.AppendLine($"\tOutput: {Output}W");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-        public int Output { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual int Output { get; protected set; }
     }
 }

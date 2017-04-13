@@ -1,10 +1,6 @@
-﻿using GeekStore.Domain.Infrastucture;
+﻿using GeekStore.Domain.Model.IDGenerator;
 using System;
 using System.Text;
-using System.Xml.Serialization;
-using System.Xml;
-using System.Xml.Schema;
-using System.Collections.Generic;
 
 namespace GeekStore.Domain
 {

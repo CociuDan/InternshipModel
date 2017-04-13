@@ -1,4 +1,4 @@
-﻿namespace GeekStore.Domain.Infrastucture
+﻿namespace GeekStore.Domain.Model.IDGenerator
 {
     public interface IIDGenerator<T>
     {

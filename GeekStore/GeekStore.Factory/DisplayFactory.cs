@@ -1,5 +1,5 @@
-﻿using GeekStore.Domain.Components;
-using GeekStore.Domain.Peripherals;
+﻿using GeekStore.Domain.Model.Components;
+using GeekStore.Domain.Model.Peripherals;
 
 namespace GeekStore.Factory
 {

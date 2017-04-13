@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class Motherboard : IItem
     {
+        public Motherboard() { }
+
         public Motherboard(string chipset, string manufacturer, string model, int pcieSlots, int ramSlots, string socket)
         {
             if (string.IsNullOrEmpty(chipset.Trim()))
@@ -35,7 +35,7 @@ namespace GeekStore.Domain.Components
             Socket = socket;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -48,14 +48,18 @@ namespace GeekStore.Domain.Components
                 sb.AppendLine($"\tRAM Slots: {RAMSlots}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string Chipset { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-        public int PCIESlots { get; private set; }
-        public int RAMSlots { get; private set; }
-        public string Socket { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual string Chipset { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual int PCIESlots { get; protected set; }
+        public virtual int RAMSlots { get; protected set; }
+        public virtual string Socket { get; protected set; }
     }
 }

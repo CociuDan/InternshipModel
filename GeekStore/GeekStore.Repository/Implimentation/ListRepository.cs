@@ -1,33 +1,37 @@
 ﻿using System.Collections.Generic;
-using GeekStore.Domain;
 using GeekStore.Repository.Interfaces;
 using System.Linq;
 using System;
+using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ListRepository<T> : IRepository<T>
+    public class ListRepository<T> : IRepository
     {
-        private static List<T> _products = new List<T>();
+        //private static List<T> _products = new List<T>();
 
-        public void DeleteProductsByCriteria(Func<T, bool> criteria) 
-        {
-            _products.Remove(_products.Where(criteria).Single());
-        }
+        //public void DeleteProductsByCriteria(Func<T, bool> criteria) 
+        //{
+        //    _products.Remove(_products.Where(criteria).Single());
+        //}
 
-        public IEnumerable<T> GetProducts()
-        {
-            return _products;
-        }
+        //public IEnumerable<T> GetProducts()
+        //{
+        //    return _products;
+        //}
 
-        public IEnumerable<T> GetProductsByCriteria(Func<T, bool> criteria)
-        {
-            return _products.Where(criteria);
-        }
+        //public IEnumerable<T> GetProductsByCriteria(Func<T, bool> criteria)
+        //{
+        //    return _products.Where(criteria);
+        //}
 
-        public void SaveProduct(T product)
+        //public void SaveProduct(T product)
+        //{
+        //    _products.Add(product);
+        //}
+        public IEnumerable<CPU> GetCPUs()
         {
-            _products.Add(product);
+            throw new NotImplementedException();
         }
     }
 }

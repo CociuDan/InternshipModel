@@ -1,40 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
-using GeekStore.Domain.Components;
+using GeekStore.Domain.Model.Components;
+using NHibernate;
+using GeekStore.Repository.Interfaces;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class DBRepository
+    public class DBRepository : IRepository
     {
-        private static string _connectionString = null;
-        static DBRepository()
+        private ISession _session;
+        public DBRepository(ISession session)
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["GeekStoreConnectionString"].ConnectionString;
+            _session = session;
         }
 
-        public IEnumerable<GPU> GetGPUS()
+        public IEnumerable<CPU> GetCPUs()
         {
-            List<GPU> gpus = null;
-            using (var sqlConnection = new SqlConnection(_connectionString))
-            {
-                sqlConnection.Open();
-                var sqlCommandText = "SELECT * FROM GPU";
-                using (var sqlCommand = new SqlCommand(sqlCommandText, sqlConnection))
-                {
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
-                    while(reader.Read())
-                    {
-                        gpus.Add(new GPU(reader["Architecture"].ToString(), int.Parse(reader["InterfaceWidth"].ToString()), reader["Manufacturer"].ToString(),
-                                 reader["MemoryInterface"].ToString(), reader["Model"].ToString(), int.Parse(reader["VRAM"].ToString())));
-                    }
-                }
-            }
-            return gpus;
+            return _session.QueryOver<CPU>().List();
         }
     }
 }

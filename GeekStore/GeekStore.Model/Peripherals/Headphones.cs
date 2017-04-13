@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Peripherals
+namespace GeekStore.Domain.Model.Peripherals
 {
     public class Headphones : IItem
     {
         public enum HeadphonesType { InEar, OnEar, OverEar }
+
+        public Headphones() { }
 
         public Headphones(int impendance, string manufacturer, int maxVolume, string model, HeadphonesType type)
         {
@@ -30,7 +30,7 @@ namespace GeekStore.Domain.Peripherals
             Type = type.ToString();
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -42,13 +42,17 @@ namespace GeekStore.Domain.Peripherals
                 sb.AppendLine($"\tType: {Type}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public int Impendance { get; private set; }
-        public string Manufacturer { get; private set; }
-        public int MaxVolume { get; private set; }
-        public string Model { get; private set; }
-        public string Type { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual int Impendance { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual int MaxVolume { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual string Type { get; protected set; }
     }
 }

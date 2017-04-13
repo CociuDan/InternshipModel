@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class RAM : IItem
     {
         public enum RAMGeneration { DDR, DDR2, DDR3, DDR4 }
+
+        public RAM() { }
 
         public RAM(int capacity, int frequency, RAMGeneration ramGeneration, string manufacturer, string model)
         {
@@ -31,7 +31,7 @@ namespace GeekStore.Domain.Components
             Model = model;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -45,12 +45,12 @@ namespace GeekStore.Domain.Components
             }
         }
 
-        public int ID { get; private set; }
-        public int Capacity { get; private set; }
-        public int Frequency { get; private set; }
-        public string Generation { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual int Capacity { get; protected set; }
+        public virtual int Frequency { get; protected set; }
+        public virtual string Generation { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
 
         public override string ToString()
         {

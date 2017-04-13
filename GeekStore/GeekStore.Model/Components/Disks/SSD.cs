@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components.Disks
+namespace GeekStore.Domain.Model.Components.Disks
 {
     public class SSD : Disk, IItem
     {
@@ -32,12 +30,16 @@ namespace GeekStore.Domain.Components.Disks
                 sb.AppendLine($"\tWrite Speed: {WriteSpeed}Mbs");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
+        public virtual int ID { get; protected set; }
 
-        public int ReadSpeed { get; private set; }
+        public virtual int ReadSpeed { get; protected set; }
 
-        public int WriteSpeed { get; private set; }
+        public virtual int WriteSpeed { get; protected set; }
     }
 }

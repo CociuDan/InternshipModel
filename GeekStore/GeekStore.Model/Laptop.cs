@@ -1,10 +1,7 @@
-﻿using System.Text;
-using GeekStore.Domain.Components.Disks;
-
-using GeekStore.Domain.Components;
-using System;
-using System.Xml;
-using System.Xml.Schema;
+﻿using System;
+using System.Text;
+using GeekStore.Domain.Model.Components.Disks;
+using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Domain.PCs
 {
@@ -49,15 +46,15 @@ namespace GeekStore.Domain.PCs
             }
         }
 
-        public int ID { get; private set; }
-        public CPU CPU { get; }
-        public Display Display { get; }
-        public Disk Disk { get; set; }
-        public GPU GPU { get; }
-        public string Manufacturer { get; }
-        public string Model { get; }
-        public Motherboard Motherboard { get; }
-        public PowerUnit PowerUnit { get; }
-        public RAM RAM { get; set; }
+        public virtual int ID { get; private set; }
+        public virtual CPU CPU { get; }
+        public virtual Display Display { get; }
+        public virtual Disk Disk { get; set; }
+        public virtual GPU GPU { get; }
+        public virtual string Manufacturer { get; }
+        public virtual string Model { get; }
+        public virtual Motherboard Motherboard { get; }
+        public virtual PowerUnit PowerUnit { get; }
+        public virtual RAM RAM { get; set; }
     }
 }

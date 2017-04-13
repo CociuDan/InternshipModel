@@ -1,4 +1,4 @@
-﻿using GeekStore.Domain.Components;
+﻿using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Factory
 {

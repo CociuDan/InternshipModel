@@ -1,7 +1,6 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using GeekStore.Factory;
-using GeekStore.Domain.Components;
+using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.UnitTests
 {

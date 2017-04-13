@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Peripherals
+namespace GeekStore.Domain.Model.Peripherals
 {
     public class Keyboard : IItem
     {
         public enum KeyboardType { Membrane, Mechanical }
+
+        public Keyboard() { }
 
         public Keyboard(bool backLight, string manufacturer, string model, KeyboardType type)
         {
@@ -23,7 +23,7 @@ namespace GeekStore.Domain.Peripherals
             Type = type.ToString();
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -34,12 +34,16 @@ namespace GeekStore.Domain.Peripherals
                 sb.AppendLine($"\tType: {Type}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public bool BackLight { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-        public string Type { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual bool BackLight { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual string Type { get; protected set; }
     }
 }

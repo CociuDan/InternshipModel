@@ -33,6 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -84,13 +96,17 @@
       <Project>{25db1f25-18d8-46e1-9c6e-6adc90508106}</Project>
       <Name>GeekStore.Factory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeekStore.IoC\GeekStore.IoC.csproj">
+    <ProjectReference Include="..\GeekStore.IoC\GeekStore.Infrastucture.csproj">
       <Project>{505f924b-e6f4-42af-b980-bfd3aa4f9e29}</Project>
-      <Name>GeekStore.IoC</Name>
+      <Name>GeekStore.Infrastucture</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.csproj">
+    <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.Model.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
-      <Name>GeekStore.Domain</Name>
+      <Name>GeekStore.Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeekStore.Repository\GeekStore.Repository.csproj">
+      <Project>{F5D9127F-0E85-4283-943F-73D392557DB1}</Project>
+      <Name>GeekStore.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeekStore.Service\GeekStore.Service.csproj">
       <Project>{536475ea-ad4e-4293-a476-707ef05095d9}</Project>

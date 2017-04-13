@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using Ninject;
+//using Ninject;
 using GeekStore.Domain;
 using GeekStore.Service.Interfaces;
 using static System.Console;
+using GeekStore.Repository.Interfaces;
 
 namespace GeekStore
 {
@@ -10,8 +11,9 @@ namespace GeekStore
     {
         static void Main(string[] args)
         {
-            var kernel = new StandardKernel(IoC.IoC.Instance);
-            IGeekStoreService _geekStore_Service = kernel.Get<IGeekStoreService>();
+            Infrastucture.IoC.RegisterAll();
+
+            IRepository _geekStore_Repository = Infrastucture.IoC.Resolve<IRepository>();
 
             List<Product> justAList = new List<Product>();
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
@@ -20,16 +22,12 @@ namespace GeekStore
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
             justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
 
+            foreach(var cpu in _geekStore_Repository.GetCPUs())
+            {
+                WriteLine(cpu.Model);
+            }
 
 
-            foreach (Product item in justAList)
-            {
-                _geekStore_Service.SaveProduct(item);
-            }
-            foreach (var item in _geekStore_Service.GetProducts<Product>())
-            {
-                WriteLine(item.ToString());
-            }
             ReadKey();
         }
     }

@@ -7,15 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore", "GeekStore\Geek
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Factory", "GeekStore.Factory\GeekStore.Factory.csproj", "{25DB1F25-18D8-46E1-9C6E-6ADC90508106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain", "GeekStore.Model\GeekStore.Domain.csproj", "{7B9E51CB-6B6C-4735-A990-76F3460F8CFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain.Model", "GeekStore.Model\GeekStore.Domain.Model.csproj", "{7B9E51CB-6B6C-4735-A990-76F3460F8CFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Repository", "GeekStore.Repository\GeekStore.Repository.csproj", "{F5D9127F-0E85-4283-943F-73D392557DB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Service", "GeekStore.Service\GeekStore.Service.csproj", "{536475EA-AD4E-4293-A476-707EF05095D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.IoC", "GeekStore.IoC\GeekStore.IoC.csproj", "{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Infrastucture", "GeekStore.IoC\GeekStore.Infrastucture.csproj", "{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.UnitTests", "GeekStore.UnitTest\GeekStore.UnitTests.csproj", "{829B81D3-F0AA-463F-BFD9-44C268A38E28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain.Model.Mapping", "GeekStore.Domain.Model.Mapping\GeekStore.Domain.Model.Mapping.csproj", "{653FB892-9FC6-42EA-9955-F233B19FF636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{829B81D3-F0AA-463F-BFD9-44C268A38E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829B81D3-F0AA-463F-BFD9-44C268A38E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829B81D3-F0AA-463F-BFD9-44C268A38E28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653FB892-9FC6-42EA-9955-F233B19FF636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653FB892-9FC6-42EA-9955-F233B19FF636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653FB892-9FC6-42EA-9955-F233B19FF636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653FB892-9FC6-42EA-9955-F233B19FF636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

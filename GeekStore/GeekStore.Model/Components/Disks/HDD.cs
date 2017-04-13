@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components.Disks
+namespace GeekStore.Domain.Model.Components.Disks
 {
     public class HDD : Disk, IItem
     {
+        public HDD() { }
+
         public HDD(int capacity, string manufacturer, string model, int rpm) : base(capacity, manufacturer, model)
         {
             if (rpm <= 0)
@@ -15,7 +15,7 @@ namespace GeekStore.Domain.Components.Disks
             RPM = rpm;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -26,10 +26,14 @@ namespace GeekStore.Domain.Components.Disks
                 sb.AppendLine($"\tRPM: {RPM}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
+        public virtual int ID { get; protected set; }
 
-        public int RPM { get; private set; }
+        public virtual int RPM { get; protected set; }
     }
 }

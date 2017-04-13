@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
-using GeekStore.Domain.Components;
+using GeekStore.Domain.Model.Components;
 
-namespace GeekStore.Domain.Peripherals
+namespace GeekStore.Domain.Model.Peripherals
 {
     public class Monitor : Display, IItem
     {
+        public Monitor() { }
+
         public Monitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, double size)
                 : base(aspectRatio, maxRefreshRate, resolution, size)
         {
@@ -21,7 +21,7 @@ namespace GeekStore.Domain.Peripherals
             Model = model;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -33,10 +33,14 @@ namespace GeekStore.Domain.Peripherals
                 sb.AppendLine($"\tResolution: {Resolution}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
+        public new virtual int  ID { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
     }
 }

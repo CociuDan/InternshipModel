@@ -1,9 +1,11 @@
 ﻿using System;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public class Display
     {
+        public Display() { }
+
         public Display(string aspectRatio, int maxRefreshRate, string resolution, double size)
         {
 
@@ -25,10 +27,11 @@ namespace GeekStore.Domain.Components
             Size = size;
         }
 
-        public string AspectRatio { get; protected set; }
-        public int MaxRefreshRate { get; protected set; }
-        public string Resolution { get; protected set; }
-        public double Size { get; protected set; }
+        public virtual int ID { get; protected set; }
+        public virtual string AspectRatio { get; protected set; }
+        public virtual int MaxRefreshRate { get; protected set; }
+        public virtual string Resolution { get; protected set; }
+        public virtual double Size { get; protected set; }
 
         public override string ToString()
         {

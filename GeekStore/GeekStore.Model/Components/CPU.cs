@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Text;
-using System.Xml;
-using System.Xml.Schema;
 
-namespace GeekStore.Domain.Components
+namespace GeekStore.Domain.Model.Components
 {
     public enum CPUCores { SingCore = 1, DualCore = 2, TripleCore = 3, QuadCore = 4, HexaCore = 6, OctaCore = 8, DecaCore = 10 }
     public enum CPUManufacturer { Intel, AMD }
@@ -43,7 +41,7 @@ namespace GeekStore.Domain.Components
 
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -58,17 +56,21 @@ namespace GeekStore.Domain.Components
                 sb.AppendLine($"\tTDP: {TDP}W");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public int ID { get; private set; }
-        public double BaseFrequency { get; private set; }
-        public double BoostFrequency { get; private set; }
-        public int Cores { get; private set; }
-        public string Manufacturer { get; private set; }
-        public string Model { get; private set; }
-        public string Socket { get; private set; }
-        public int TDP { get; private set; }
-        public int Threads { get; private set; }
+        public virtual int ID { get; protected set; }
+        public virtual double BaseFrequency { get; protected set; }
+        public virtual double BoostFrequency { get; protected set; }
+        public virtual int Cores { get; protected set; }
+        public virtual string Manufacturer { get; protected set; }
+        public virtual string Model { get; protected set; }
+        public virtual string Socket { get; protected set; }
+        public virtual int TDP { get; protected set; }
+        public virtual int Threads { get; protected set; }
 
         public override string ToString()
         {
