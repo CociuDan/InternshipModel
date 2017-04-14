@@ -3,29 +3,18 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class Motherboard : Item
+    public class Motherboard : Product
     {
         public Motherboard() { }
 
         public Motherboard(string chipset, string manufacturer, string model, int pcieSlots, int ramSlots, string socket)
         {
-            if (string.IsNullOrEmpty(chipset.Trim()))
-                throw new ArgumentNullException(nameof(chipset));
-
-            if (string.IsNullOrEmpty(manufacturer.Trim()))
-                throw new ArgumentNullException(nameof(manufacturer));
-
-            if (string.IsNullOrEmpty(model.Trim()))
-                throw new ArgumentNullException(nameof(model));
-
-            if (pcieSlots < 0 && pcieSlots > 6)
-                throw new ArgumentException($"Motherboard cannot have less than 0 or more than 6 PCI-E slots. Entered value: {pcieSlots}");
-
-            if (ramSlots < 1 && ramSlots > 8)
-                throw new ArgumentException($"Motherboard cannot have less than one or more than 8 RAM slots. Entered value: {ramSlots}");
-
-            if (string.IsNullOrEmpty(socket.Trim()))
-                throw new ArgumentNullException(nameof(socket));
+            if (string.IsNullOrEmpty(chipset.Trim())) throw new ArgumentNullException(nameof(chipset));
+            if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
+            if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
+            if (pcieSlots < 0 && pcieSlots > 6) throw new ArgumentException($"Motherboard cannot have less than 0 or more than 6 PCI-E slots. Entered value: {pcieSlots}");
+            if (ramSlots < 1 && ramSlots > 8) throw new ArgumentException($"Motherboard cannot have less than one or more than 8 RAM slots. Entered value: {ramSlots}");
+            if (string.IsNullOrEmpty(socket.Trim())) throw new ArgumentNullException(nameof(socket));
 
             Chipset = chipset;
             Manufacturer = manufacturer;
@@ -56,8 +45,6 @@ namespace GeekStore.Domain.Model.Components
 
         public virtual int ID { get; protected set; }
         public virtual string Chipset { get; protected set; }
-        public virtual string Manufacturer { get; protected set; }
-        public virtual string Model { get; protected set; }
         public virtual int PCIESlots { get; protected set; }
         public virtual int RAMSlots { get; protected set; }
         public virtual string Socket { get; protected set; }

@@ -7,8 +7,8 @@
     <ProjectGuid>{7B9E51CB-6B6C-4735-A990-76F3460F8CFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeekStore.Model</RootNamespace>
-    <AssemblyName>GeekStore.Model</AssemblyName>
+    <RootNamespace>GeekStore.Domain.Model</RootNamespace>
+    <AssemblyName>GeekStore.Domain.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -63,7 +63,8 @@
     <Compile Include="Components\Motherboard.cs" />
     <Compile Include="Components\PowerUnit.cs" />
     <Compile Include="Components\RAM.cs" />
-    <Compile Include="IItem.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="IDGenerator\IDGenerator.cs" />
     <Compile Include="IDGenerator\IIDGenerator.cs" />
     <Compile Include="PCs\Desktop.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Peripherals\Monitor.cs" />
     <Compile Include="Peripherals\Mouse.cs" />
     <Compile Include="Peripherals\Speakers.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="WareHouseProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

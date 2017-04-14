@@ -8,11 +8,8 @@ namespace GeekStore.Domain.Model.Components.Disks
         public SSD() { }
         public SSD(int capacity, string manufacturer, string model, int readSpeed, int writeSpeed) : base(capacity, manufacturer, model)
         {
-            if (readSpeed <= 0)
-                throw new ArgumentException($"SSDs Read Speed cannot be less or equal to 0. Entered value: {readSpeed}");
-
-            if (writeSpeed <= 0)
-                throw new ArgumentException($"SSDs Write Speed cannot be less or equal to 0. Entered value: {writeSpeed}");
+            if (readSpeed <= 0) throw new ArgumentException($"SSDs Read Speed cannot be less or equal to 0. Entered value: {readSpeed}");
+            if (writeSpeed <= 0) throw new ArgumentException($"SSDs Write Speed cannot be less or equal to 0. Entered value: {writeSpeed}");
 
             ReadSpeed = readSpeed;
             WriteSpeed = writeSpeed;
@@ -37,9 +34,7 @@ namespace GeekStore.Domain.Model.Components.Disks
         }
 
         public virtual int ID { get; protected set; }
-
         public virtual int ReadSpeed { get; protected set; }
-
         public virtual int WriteSpeed { get; protected set; }
     }
 }

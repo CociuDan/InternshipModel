@@ -3,20 +3,15 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
-    public class PowerUnit : Item
+    public class PowerUnit : Product
     {
         public PowerUnit() { }
 
         public PowerUnit(string manufacturer, string model, int output)
         {
-            if (string.IsNullOrEmpty(manufacturer.Trim()))
-                throw new ArgumentNullException(nameof(manufacturer));
-
-            if (string.IsNullOrEmpty(model.Trim()))
-                throw new ArgumentNullException(nameof(model));
-
-            if (output <= 0)
-                throw new ArgumentException($"Power Unit cannot have an output less or equal to 0W. Entered value: {output}");
+            if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
+            if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
+            if (output <= 0) throw new ArgumentException($"Power Unit cannot have an output less or equal to 0W. Entered value: {output}");
 
             Manufacturer = manufacturer;
             Model = model;
@@ -40,8 +35,6 @@ namespace GeekStore.Domain.Model.Components
         }
 
         public virtual int ID { get; protected set; }
-        public virtual string Manufacturer { get; protected set; }
-        public virtual string Model { get; protected set; }
         public virtual int Output { get; protected set; }
     }
 }

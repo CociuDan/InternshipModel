@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Speakers : Item
+    public class Speakers : Product
     {
         public Speakers() { }
 
@@ -12,15 +12,9 @@ namespace GeekStore.Domain.Model.Peripherals
             if (configuration != "1.0" && configuration != "2.0" && configuration != "2.1" && configuration != "3.1" && configuration != "4.0"
                 && configuration != "4.1" && configuration != "5.1" && configuration != "6.1" && configuration != "7.1")
                 throw new ArgumentException($"Speakers unkown configuration. Entered value: {configuration}");
-
-            if (string.IsNullOrEmpty(manufacturer.Trim()))
-                throw new ArgumentNullException(nameof(manufacturer));
-
-            if (maxVolume <= 0)
-                throw new ArgumentException($"Speakers Max Volume cannot be less or equal than 0 Db. Entered value: {maxVolume}");
-
-            if (string.IsNullOrEmpty(model.Trim()))
-                throw new ArgumentNullException(nameof(model));
+            if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
+            if (maxVolume <= 0) throw new ArgumentException($"Speakers Max Volume cannot be less or equal than 0 Db. Entered value: {maxVolume}");
+            if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
 
             Configuration = configuration;
             Manufacturer = manufacturer;
@@ -47,8 +41,6 @@ namespace GeekStore.Domain.Model.Peripherals
 
         public virtual int ID { get; protected set; }
         public virtual string Configuration { get; protected set; }
-        public virtual string Manufacturer { get; protected set; }
         public virtual int MaxVolume { get; protected set; }
-        public virtual string Model { get; protected set; }
     }
 }

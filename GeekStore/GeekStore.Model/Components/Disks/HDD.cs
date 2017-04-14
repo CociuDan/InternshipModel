@@ -9,8 +9,7 @@ namespace GeekStore.Domain.Model.Components.Disks
 
         public HDD(int capacity, string manufacturer, string model, int rpm) : base(capacity, manufacturer, model)
         {
-            if (rpm <= 0)
-                throw new ArgumentException("HDD RPM cannot be less or equal to 0");
+            if (rpm <= 0) throw new ArgumentException("HDD RPM cannot be less or equal to 0");
 
             RPM = rpm;
         }
@@ -33,7 +32,6 @@ namespace GeekStore.Domain.Model.Components.Disks
         }
 
         public virtual int ID { get; protected set; }
-
         public virtual int RPM { get; protected set; }
     }
 }

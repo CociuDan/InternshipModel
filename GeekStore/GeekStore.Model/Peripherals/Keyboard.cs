@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Keyboard : Item
+    public class Keyboard : Product
     {
         public enum KeyboardType { Membrane, Mechanical }
 
@@ -11,11 +11,8 @@ namespace GeekStore.Domain.Model.Peripherals
 
         public Keyboard(bool backLight, string manufacturer, string model, KeyboardType type)
         {
-            if (string.IsNullOrEmpty(manufacturer.Trim()))
-                throw new ArgumentNullException(nameof(manufacturer));
-
-            if (string.IsNullOrEmpty(model.Trim()))
-                throw new ArgumentNullException(nameof(model));
+            if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
+            if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
 
             BackLight = backLight;
             Manufacturer = manufacturer;
@@ -42,8 +39,6 @@ namespace GeekStore.Domain.Model.Peripherals
 
         public virtual int ID { get; protected set; }
         public virtual bool BackLight { get; protected set; }
-        public virtual string Manufacturer { get; protected set; }
-        public virtual string Model { get; protected set; }
         public virtual string Type { get; protected set; }
     }
 }

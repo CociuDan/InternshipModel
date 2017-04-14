@@ -16,14 +16,7 @@ namespace GeekStore
 
             IRepository _geekStore_Repository = Infrastucture.IoC.Resolve<IRepository>();
 
-            List<Product> justAList = new List<Product>();
-            justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
-            justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
-            justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
-            justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
-            justAList.Add(new Product(1, ItemTypes.CPU, 300, 1));
-
-            foreach(var item in _geekStore_Repository.GetAll<Case>())
+            foreach (var item in _geekStore_Repository.GetByManufacturer<Case>("Corsair"))
             {
                 WriteLine(item.Model);
             }

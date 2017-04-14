@@ -3,7 +3,7 @@ using System.Text;
 
 namespace GeekStore.Domain.Model.Peripherals
 {
-    public class Mouse : Item
+    public class Mouse : Product
     {
         public enum MouseType { Optical, Laser, Mechanical }
 
@@ -11,14 +11,9 @@ namespace GeekStore.Domain.Model.Peripherals
 
         public Mouse(int dpi, string manufacturer, string model, MouseType type)
         {
-            if (dpi <= 0)
-                throw new ArgumentException($"Mouse cannot have a DPI less or equal to 0. Entered value: {dpi}");
-
-            if (string.IsNullOrEmpty(manufacturer.Trim()))
-                throw new ArgumentNullException(nameof(manufacturer));
-
-            if (string.IsNullOrEmpty(model.Trim()))
-                throw new ArgumentNullException(nameof(model));
+            if (dpi <= 0) throw new ArgumentException($"Mouse cannot have a DPI less or equal to 0. Entered value: {dpi}");
+            if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
+            if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
 
             DPI = dpi;
             Manufacturer = manufacturer;
@@ -45,8 +40,6 @@ namespace GeekStore.Domain.Model.Peripherals
 
         public virtual int ID { get; protected set; }
         public virtual int DPI { get; protected set; }
-        public virtual string Manufacturer { get; protected set; }
-        public virtual string Model { get; protected set; }
         public virtual string Type { get; protected set; }
     }
 }
