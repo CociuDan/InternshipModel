@@ -12,9 +12,11 @@ namespace GeekStore.Repository.Implimentation
     public class GenericRepository : IRepository
     {
         private ISession _session;
+        private ITransaction _transaction;
         public GenericRepository(ISession session)
         {
             _session = session;
+            _transaction = _session.BeginTransaction();
         }
 
         public void Save<T>(T item) where T : Item
@@ -40,6 +42,8 @@ namespace GeekStore.Repository.Implimentation
         public void Delete<T>(T item)
         {
             _session.Delete(item);
+            //
+           _transaction.Commit();
         }
 
         public IEnumerable<T> GetByManufacturer<T>(string manufacturer) where T : Product
