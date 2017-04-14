@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Configuration;
-using GeekStore.Domain.Model.Components;
 using NHibernate;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain;
@@ -42,7 +39,6 @@ namespace GeekStore.Repository.Implimentation
         public void Delete<T>(T item)
         {
             _session.Delete(item);
-            //
            _transaction.Commit();
         }
 
