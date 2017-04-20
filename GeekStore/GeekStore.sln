@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.UnitTests", "Geek
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain.Model.Mapping", "GeekStore.Domain.Model.Mapping\GeekStore.Domain.Model.Mapping.csproj", "{653FB892-9FC6-42EA-9955-F233B19FF636}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain.CustomModel", "GeekStore.Domain.CustomModel\GeekStore.Domain.CustomModel.csproj", "{40B54064-58A4-43B0-905E-A3406F9C2AF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{653FB892-9FC6-42EA-9955-F233B19FF636}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{653FB892-9FC6-42EA-9955-F233B19FF636}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{653FB892-9FC6-42EA-9955-F233B19FF636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B54064-58A4-43B0-905E-A3406F9C2AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B54064-58A4-43B0-905E-A3406F9C2AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B54064-58A4-43B0-905E-A3406F9C2AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B54064-58A4-43B0-905E-A3406F9C2AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using GeekStore.Domain.Model.Components.Disks;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.PCs;
 

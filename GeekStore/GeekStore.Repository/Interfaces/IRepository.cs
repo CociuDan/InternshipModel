@@ -1,4 +1,5 @@
 ﻿using GeekStore.Domain;
+using GeekStore.Domain.CustomModel;
 using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using System.Collections.Generic;
@@ -16,7 +17,8 @@ namespace GeekStore.Repository.Interfaces
         IEnumerable<T> GetByModel<T>(string model) where T : Product;
         IEnumerable<CPU> GetTOPCPUs();
 
-        //IEnumerable<Laptop> GetLaptops();
+        IEnumerable<string> GetLaptops();
+        IEnumerable<LaptopCpuGpuModels> GetLaptopCpuGpuModels();
         //void DeleteProductsByCriteria(Func<T, bool> criteria);
         //IEnumerable<T> GetProducts();
         //IEnumerable<T> GetProductsByCriteria(Func<T, bool> criteria);

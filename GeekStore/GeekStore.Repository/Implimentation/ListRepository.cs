@@ -8,7 +8,7 @@ using GeekStore.Domain.Model;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ListRepository<T> : IRepository
+    public class ListRepository<T>// : IRepository
     {
         public void Delete<T1>(T1 item)
         {

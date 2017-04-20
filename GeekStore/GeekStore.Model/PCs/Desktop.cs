@@ -1,6 +1,5 @@
 ﻿using System;
 using GeekStore.Domain.Model.Components;
-using GeekStore.Domain.Model.Components.Disks;
 using GeekStore.Domain.Model.Peripherals;
 
 namespace GeekStore.Domain.PCs

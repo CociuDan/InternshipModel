@@ -5,6 +5,8 @@ using GeekStore.Domain;
 using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using NHibernate.Criterion;
+using GeekStore.Domain.CustomModel;
+using NHibernate.Transform;
 
 namespace GeekStore.Repository.Implimentation
 {
@@ -56,17 +58,43 @@ namespace GeekStore.Repository.Implimentation
 
         public IEnumerable<CPU> GetTOPCPUs()
         {
-            return _session.QueryOver<CPU>().Where(x => x.Model.Contains("i7") || x.Model.Contains("R7")).List();
+            CPU cpuAlias = null;
+            return _session.QueryOver(() => cpuAlias)
+                           .Where(Restrictions.On(() => cpuAlias.Model).IsLike("%i7%") || Restrictions.On(() => cpuAlias.Model).IsLike("%Ryzen 7%"))
+                           .List();
         }
 
-    //    public IEnumerable<Laptop> GetLaptops()
-    //    {
-    //        Laptop laptopAlias = null;
-    //        CPU cpuAlias = null;
-    //        return _session.QueryOver(() => laptopAlias)
-    //                       .JoinAlias(() => laptopAlias.CPU, () => cpuAlias)
-    //                       .Where(Restrictions.On(() => cpuAlias.Model).IsLike("%6950X%"))
-    //                       .Select(x=>x.ID).List();
-    //    }
+        public IEnumerable<string> GetLaptops()
+        {
+            Laptop laptopAlias = null;
+            CPU cpuAlias = null;
+            return _session.QueryOver(() => laptopAlias)
+                           .JoinAlias(() => laptopAlias.CPU, () => cpuAlias)
+                           .Where(Restrictions.On(() => cpuAlias.Model).IsLike("%2600%"))
+                           .SelectList(list=>list)
+                           .Select(c=>c.Model).List<string>();
+        }
+
+        public IEnumerable<LaptopCpuGpuModels> GetLaptopCpuGpuModels()
+        {
+            Laptop laptopAlias = null;
+            CPU cpuAlias = null;
+            GPU gpuAlias = null;
+            LaptopCpuGpuModels laptopCpuGpuModels = null;
+            return _session.QueryOver(() => laptopAlias)
+                           .JoinAlias(() => laptopAlias.CPU, () => cpuAlias)
+                           .JoinAlias(() => laptopAlias.GPU, () => gpuAlias)
+                           .SelectList(list => list
+                           .Select(() => laptopAlias.Model).WithAlias(() => laptopCpuGpuModels.LaptopModel)
+                           .Select(() => cpuAlias.Model).WithAlias(() => laptopCpuGpuModels.CpuModel)
+                           .Select(() => gpuAlias.Model).WithAlias(() => laptopCpuGpuModels.GpuModel))
+                           .TransformUsing(Transformers.AliasToBean<LaptopCpuGpuModels>())
+                           .List<LaptopCpuGpuModels>();
+        }
+
+        //public IEnumerable<int> GetCaseCount()
+        //{
+        //    return _session.QueryOver<Case>().Select().
+        //}
     }
 }

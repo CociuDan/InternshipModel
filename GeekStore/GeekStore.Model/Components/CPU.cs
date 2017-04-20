@@ -9,7 +9,7 @@ namespace GeekStore.Domain.Model.Components
     {
         public CPU() { }
 
-        public CPU(double baseFrequency, double boostFrequency, CPUCores cores, CPUManufacturer manufacturer, string model, string socket, int tdp, int threads)
+        public CPU(decimal baseFrequency, decimal boostFrequency, CPUCores cores, CPUManufacturer manufacturer, string model, string socket, int tdp, int threads)
         {
             if (baseFrequency <= 0) throw new ArgumentException($"CPU Base Frequency cannot be less than 0. Entered value: {baseFrequency}");
             if (boostFrequency < baseFrequency) throw new ArgumentException($"CPU Boost Frequency cannot be less than Base Frequency. Entered value: {boostFrequency}");
@@ -50,8 +50,8 @@ namespace GeekStore.Domain.Model.Components
             }
         }
 
-        public virtual double BaseFrequency { get; protected set; }
-        public virtual double BoostFrequency { get; protected set; }
+        public virtual decimal BaseFrequency { get; protected set; }
+        public virtual decimal BoostFrequency { get; protected set; }
         public virtual int Cores { get; protected set; }
         public virtual string Socket { get; protected set; }
         public virtual int TDP { get; protected set; }

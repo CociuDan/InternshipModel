@@ -92,6 +92,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GeekStore.Domain.CustomModel\GeekStore.Domain.CustomModel.csproj">
+      <Project>{40b54064-58a4-43b0-905e-a3406f9c2af5}</Project>
+      <Name>GeekStore.Domain.CustomModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeekStore.Factory\GeekStore.Factory.csproj">
       <Project>{25db1f25-18d8-46e1-9c6e-6adc90508106}</Project>
       <Name>GeekStore.Factory</Name>
