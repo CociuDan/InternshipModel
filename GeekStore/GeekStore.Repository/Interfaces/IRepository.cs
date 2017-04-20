@@ -14,6 +14,9 @@ namespace GeekStore.Repository.Interfaces
         void Delete<T>(T item);
         IEnumerable<T> GetByManufacturer<T>(string manufacturer) where T : Product;
         IEnumerable<T> GetByModel<T>(string model) where T : Product;
+        IEnumerable<CPU> GetTOPCPUs();
+
+        //IEnumerable<Laptop> GetLaptops();
         //void DeleteProductsByCriteria(Func<T, bool> criteria);
         //IEnumerable<T> GetProducts();
         //IEnumerable<T> GetProductsByCriteria(Func<T, bool> criteria);

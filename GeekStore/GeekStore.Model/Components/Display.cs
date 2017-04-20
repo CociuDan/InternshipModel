@@ -19,7 +19,6 @@ namespace GeekStore.Domain.Model.Components
             Size = size;
         }
 
-        public virtual int ID { get; protected set; }
         public virtual string AspectRatio { get; protected set; }
         public virtual int MaxRefreshRate { get; protected set; }
         public virtual string Resolution { get; protected set; }

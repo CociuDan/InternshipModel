@@ -1,17 +1,20 @@
 ﻿using FluentNHibernate.Mapping;
-using GeekStore.Domain.Model.Components.Disks;
+using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Domain.Model.Mapping
 {
-    public class HDDMap : ClassMap<HDD>
+    public class DiskMap : ClassMap<Disk>
     {
-        public HDDMap()
+        public DiskMap()
         {
+            UseUnionSubclassForInheritanceMapping();
             Id(x => x.ID);
             Map(x => x.Manufacturer);
             Map(x => x.Model);
             Map(x => x.Capacity);
             Map(x => x.RPM);
+            Map(x => x.ReadSpeed);
+            Map(x => x.WriteSpeed);
         }
     }
 }

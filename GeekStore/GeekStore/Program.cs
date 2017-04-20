@@ -16,10 +16,10 @@ namespace GeekStore
 
             IRepository _geekStore_Repository = Infrastucture.IoC.Resolve<IRepository>();
 
-            Cooler c = (Cooler)_geekStore_Repository.GetById<Cooler>(18);
-            _geekStore_Repository.Delete(c);
-            ReadKey();
-            foreach (var item in _geekStore_Repository.GetByManufacturer<Case>("Corsair"))
+            //Cooler c = (Cooler)_geekStore_Repository.GetById<Cooler>(18);
+            //_geekStore_Repository.Delete(c);
+            //ReadKey();
+            foreach (var item in _geekStore_Repository.GetAll<Case>())
             {
                 WriteLine(item.Model);
             }

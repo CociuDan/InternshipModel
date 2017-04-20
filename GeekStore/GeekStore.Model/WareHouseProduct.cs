@@ -19,8 +19,6 @@ namespace GeekStore.Domain
             Quantity = quantity;
         }
 
-        public int ID { get; private set; }
-
         public int ItemID { get; private set; }
 
         public ItemTypes ItemType { get; private set; }

@@ -38,7 +38,6 @@ namespace GeekStore.Domain.Model.Peripherals
             }
         }
 
-        public virtual int ID { get; protected set; }
         public virtual int DPI { get; protected set; }
         public virtual string Type { get; protected set; }
     }

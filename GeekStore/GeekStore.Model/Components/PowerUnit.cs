@@ -34,7 +34,6 @@ namespace GeekStore.Domain.Model.Components
             }
         }
 
-        public virtual int ID { get; protected set; }
         public virtual int Output { get; protected set; }
     }
 }

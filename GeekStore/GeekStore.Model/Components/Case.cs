@@ -37,7 +37,6 @@ namespace GeekStore.Domain.Model.Components
             }
         }
 
-        public virtual int ID { get; protected set; }
         public virtual string FormFactor { get; protected set; }
     }
 }

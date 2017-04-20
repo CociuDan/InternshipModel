@@ -8,6 +8,7 @@ namespace GeekStore.Domain.Model
 {
     public class Laptop : Product, IComputer
     {
+        public Laptop() { }
         public Laptop(CPU cpu, Display display, Disk disk, GPU gpu, string manufacturer, string model, Motherboard motherboard, PowerUnit battery, RAM ram)
         {
             if (battery == null) throw new ArgumentNullException(nameof(battery));
@@ -31,7 +32,7 @@ namespace GeekStore.Domain.Model
             RAM = ram;
         }
 
-        public string Description
+        public virtual string Description
         {
             get
             {
@@ -45,15 +46,18 @@ namespace GeekStore.Domain.Model
                 sb.AppendLine($"\tDisplay: {Display.ToString()}");
                 return sb.ToString();
             }
+            protected set
+            {
+                Description = value;
+            }
         }
 
-        public virtual int ID { get; private set; }
-        public virtual CPU CPU { get; }
-        public virtual Display Display { get; }
-        public virtual Disk Disk { get; set; }
-        public virtual GPU GPU { get; }
-        public virtual Motherboard Motherboard { get; }
-        public virtual PowerUnit PowerUnit { get; }
-        public virtual RAM RAM { get; set; }
+        public virtual CPU CPU { get; protected set; }
+        public virtual Display Display { get; protected set; }
+        public virtual Disk Disk { get; protected set; }
+        public virtual GPU GPU { get; protected set; }
+        public virtual Motherboard Motherboard { get; protected set; }
+        public virtual PowerUnit PowerUnit { get; protected set; }
+        public virtual RAM RAM { get; protected set; }
     }
 }

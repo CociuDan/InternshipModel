@@ -55,11 +55,12 @@
     <Compile Include="CaseMap.cs" />
     <Compile Include="CoolerMap.cs" />
     <Compile Include="CPUMap.cs" />
+    <Compile Include="DiskMap.cs" />
     <Compile Include="DisplayMap.cs" />
     <Compile Include="GPUMap.cs" />
-    <Compile Include="HDDMap.cs" />
     <Compile Include="HeadphonesMap.cs" />
     <Compile Include="KeyboardMap.cs" />
+    <Compile Include="LaptopMap.cs" />
     <Compile Include="MonitorMap.cs" />
     <Compile Include="MotherboardMap.cs" />
     <Compile Include="MouseMap.cs" />

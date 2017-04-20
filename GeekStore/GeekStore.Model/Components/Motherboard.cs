@@ -43,7 +43,6 @@ namespace GeekStore.Domain.Model.Components
             }
         }
 
-        public virtual int ID { get; protected set; }
         public virtual string Chipset { get; protected set; }
         public virtual int PCIESlots { get; protected set; }
         public virtual int RAMSlots { get; protected set; }

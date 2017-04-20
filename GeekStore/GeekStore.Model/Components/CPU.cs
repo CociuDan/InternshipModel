@@ -50,7 +50,6 @@ namespace GeekStore.Domain.Model.Components
             }
         }
 
-        public virtual int ID { get; protected set; }
         public virtual double BaseFrequency { get; protected set; }
         public virtual double BoostFrequency { get; protected set; }
         public virtual int Cores { get; protected set; }

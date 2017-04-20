@@ -55,9 +55,7 @@
     <Compile Include="Components\Case.cs" />
     <Compile Include="Components\Cooler.cs" />
     <Compile Include="Components\CPU.cs" />
-    <Compile Include="Components\Disks\HDD.cs" />
-    <Compile Include="Components\Disks\Disk.cs" />
-    <Compile Include="Components\Disks\SSD.cs" />
+    <Compile Include="Components\Disk.cs" />
     <Compile Include="Components\Display.cs" />
     <Compile Include="Components\GPU.cs" />
     <Compile Include="Components\Motherboard.cs" />

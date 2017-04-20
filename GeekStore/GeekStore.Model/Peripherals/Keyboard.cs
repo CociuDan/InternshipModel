@@ -37,7 +37,6 @@ namespace GeekStore.Domain.Model.Peripherals
             }
         }
 
-        public virtual int ID { get; protected set; }
         public virtual bool BackLight { get; protected set; }
         public virtual string Type { get; protected set; }
     }

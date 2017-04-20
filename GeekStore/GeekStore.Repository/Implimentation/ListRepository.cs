@@ -40,6 +40,16 @@ namespace GeekStore.Repository.Implimentation
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Laptop> GetLaptops()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<CPU> GetTOPCPUs()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save<T1>(T1 item) where T1 : Item
         {
             throw new NotImplementedException();
