@@ -8,9 +8,9 @@ namespace GeekStore.Domain.Model.Mapping
         public PowerUnitMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Output);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Output).Not.Nullable();
         }
     }
 }

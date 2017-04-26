@@ -4,10 +4,10 @@ using System.Text;
 
 namespace GeekStore.Domain
 {
-    public class WareHouseProduct : Item
+    public class WareHouseProduct : Entity
     {
-        WareHouseProduct() { }
-        public WareHouseProduct(int itemID, ItemTypes itemType, double price, int quantity)
+        public WareHouseProduct() { }
+        public WareHouseProduct(int itemID, ItemTypes itemType, decimal price, int quantity)
         {
             if (itemID <= 0) throw new ArgumentException($"Invalid ItemID. Entered value: {itemID}");
             if (price <= 0) throw new ArgumentException("Price cannot be less or equal to 0");
@@ -19,31 +19,13 @@ namespace GeekStore.Domain
             Quantity = quantity;
         }
 
-        public int ItemID { get; private set; }
+        public virtual int ItemID { get; protected set; }
 
-        public ItemTypes ItemType { get; private set; }
+        public virtual ItemTypes ItemType { get; protected set; }
 
-        public double Price { get; private set; }
+        public virtual decimal Price { get; protected set; }
 
-        public int Quantity { get; private set; }
-
-        public void AddToWarehouse(int incomingQuantity)
-        {
-            if (incomingQuantity <= 0) throw new ArgumentException("You cannot add less than one item to warehouse. Enterd value: " + incomingQuantity.ToString());
-            Quantity += incomingQuantity;
-        }
-
-        public void SellQuantity(int sellingQuantity)
-        {
-            if (sellingQuantity <= 0) throw new ArgumentException("You cannot sell less than one item from warehouse. Enterd value: " + sellingQuantity.ToString());
-            Quantity -= sellingQuantity;
-        }
-
-        public void ChangePrice(double newPrice)
-        {
-            if (newPrice <= 0) throw new ArgumentException("New Price cannot be less or equal to 0. Entered value: " + newPrice.ToString());
-            Price = newPrice;
-        }
+        public virtual int Quantity { get; protected set; }
 
         public override string ToString()
         {

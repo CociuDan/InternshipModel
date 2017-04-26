@@ -8,10 +8,10 @@ namespace GeekStore.Domain.Model.Mapping
         public SpeakersMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Configuration);
-            Map(x => x.MaxVolume);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Configuration).Not.Nullable();
+            Map(x => x.MaxVolume).Not.Nullable();
         }
     }
 }

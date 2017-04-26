@@ -8,11 +8,11 @@ namespace GeekStore.Domain.Model.Mapping
         public RAMMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Capacity);
-            Map(x => x.Frequency);
-            Map(x => x.Generation);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Capacity).Not.Nullable();
+            Map(x => x.Frequency).Not.Nullable();
+            Map(x => x.Generation).Not.Nullable();
         }
     }
 }

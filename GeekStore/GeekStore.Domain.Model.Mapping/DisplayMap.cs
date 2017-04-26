@@ -8,10 +8,10 @@ namespace GeekStore.Domain.Model.Mapping
         public DisplayMap()
         {
             Id(x => x.ID);
-            Map(x => x.AspectRatio);
-            Map(x => x.MaxRefreshRate);
-            Map(x => x.Resolution);
-            Map(x => x.Size);
+            Map(x => x.AspectRatio).Not.Nullable();
+            Map(x => x.MaxRefreshRate).Not.Nullable();
+            Map(x => x.Resolution).Not.Nullable();
+            Map(x => x.Size).Not.Nullable();
         }
     }
 }

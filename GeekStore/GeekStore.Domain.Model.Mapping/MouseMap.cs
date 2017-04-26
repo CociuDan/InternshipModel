@@ -8,10 +8,10 @@ namespace GeekStore.Domain.Model.Mapping
         public MouseMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.DPI);
-            Map(x => x.Type);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.DPI).Not.Nullable();
+            Map(x => x.Type).Not.Nullable();
         }
     }
 }

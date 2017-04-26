@@ -8,10 +8,10 @@ namespace GeekStore.Domain.Model.Mapping
         public KeyboardMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.BackLight);
-            Map(x => x.Type);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.BackLight).Not.Nullable();
+            Map(x => x.Type).Not.Nullable();
         }
     }
 }

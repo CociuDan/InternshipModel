@@ -15,12 +15,12 @@ namespace GeekStore.Repository.Implimentation
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll<T>() where T : Item
+        public IEnumerable<T> GetAll<T>() where T : Entity
         {
             throw new NotImplementedException();
         }
 
-        public Item GetById<T1>(int id) where T1 : Item
+        public Entity GetById<T1>(int id) where T1 : Entity
         {
             throw new NotImplementedException();
         }
@@ -35,7 +35,7 @@ namespace GeekStore.Repository.Implimentation
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Item> GetCPUs<T>()
+        public IEnumerable<Entity> GetCPUs<T>()
         {
             throw new NotImplementedException();
         }
@@ -50,7 +50,7 @@ namespace GeekStore.Repository.Implimentation
             throw new NotImplementedException();
         }
 
-        public void Save<T1>(T1 item) where T1 : Item
+        public void Save<T1>(T1 item) where T1 : Entity
         {
             throw new NotImplementedException();
         }

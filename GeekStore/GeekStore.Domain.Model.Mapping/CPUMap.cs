@@ -8,14 +8,14 @@ namespace GeekStore.Domain.Model.Mapping
         public CPUMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.BaseFrequency);
-            Map(x => x.BoostFrequency);
-            Map(x => x.Cores);
-            Map(x => x.Socket);
-            Map(x => x.TDP);
-            Map(x => x.Threads);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.BaseFrequency).Not.Nullable();
+            Map(x => x.BoostFrequency).Not.Nullable();
+            Map(x => x.Cores).Not.Nullable();
+            Map(x => x.Socket).Not.Nullable();
+            Map(x => x.TDP).Not.Nullable();
+            Map(x => x.Threads).Not.Nullable();
         }
     }
 }

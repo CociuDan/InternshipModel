@@ -1,6 +1,6 @@
 ﻿namespace GeekStore.Domain.Model
 {
-    public abstract class Product : Item
+    public abstract class Product : Entity
     {
         public Product() { }
         public virtual string Manufacturer { get; protected set; }

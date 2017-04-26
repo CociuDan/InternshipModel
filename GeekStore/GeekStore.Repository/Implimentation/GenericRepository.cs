@@ -13,48 +13,64 @@ namespace GeekStore.Repository.Implimentation
     public class GenericRepository : IRepository
     {
         private ISession _session;
-        private ITransaction _transaction;
+        //private ITransaction _transaction;
         public GenericRepository(ISession session)
         {
             _session = session;
-            _transaction = _session.BeginTransaction();
         }
 
-        public void Save<T>(T item) where T : Item
+        public void Save<T>(T item) where T : Entity
         {
             _session.SaveOrUpdate(item);
         }
 
-        public IEnumerable<T> GetAll<T>() where T : Item
+        public IEnumerable<T> GetAll<T>() where T : Entity
         {
             return _session.QueryOver<T>().List();
         }
 
-        public Item GetById<T>(int id) where T : Item
+        public Entity GetById<T>(int id) where T : Entity
         {
             return _session.Get<T>(id);
         }
 
-        public void Update<T>(T item)
+        public void Update<T>(T item) where T : Entity
         {
             _session.Update(item);
         }
 
-        public void Delete<T>(T item)
+        public void Delete<T>(T item) where T : Entity
         {
+            //_transaction = _session.BeginTransaction();
             _session.Delete(item);
-            _transaction.Commit();
+            // _transaction.Commit();
         }
 
-        public IEnumerable<T> GetByManufacturer<T>(string manufacturer) where T : Product
-        {
-            return _session.QueryOver<T>().Where(x => x.Manufacturer == manufacturer).List();
-        }
 
-        public IEnumerable<T> GetByModel<T>(string model) where T : Product
-        {
-            return _session.QueryOver<T>().Where(x => x.Model == model).List();
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public IEnumerable<CPU> GetTOPCPUs()
         {
@@ -69,10 +85,9 @@ namespace GeekStore.Repository.Implimentation
             Laptop laptopAlias = null;
             CPU cpuAlias = null;
             return _session.QueryOver(() => laptopAlias)
-                           .JoinAlias(() => laptopAlias.CPU, () => cpuAlias)
-                           .Where(Restrictions.On(() => cpuAlias.Model).IsLike("%2600%"))
-                           .SelectList(list=>list)
-                           .Select(c=>c.Model).List<string>();
+                           .JoinQueryOver(() => laptopAlias.CPU, () => cpuAlias)
+                           .Where(x=>x.Model.IsLike("2600", MatchMode.Anywhere))
+                           .Select(c => c.Model).List<string>();
         }
 
         public IEnumerable<LaptopCpuGpuModels> GetLaptopCpuGpuModels()

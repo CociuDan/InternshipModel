@@ -8,9 +8,9 @@ namespace GeekStore.Domain.Model.Mapping
         public CoolerMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Socket);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Socket).Not.Nullable();
         }
     }
 }

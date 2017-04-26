@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GeekStore.Domain.Model.Components.Case" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Case.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.Cooler" Collapsed="true">
+    <Position X="16.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Cooler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.CPU" Collapsed="true">
+    <Position X="29.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAoBAAEAAAAAAEAAAAAAQAAAAAIAAAAAAA=</HashCode>
+      <FileName>Components\CPU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.Disk" Collapsed="true">
+    <Position X="11.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAACAAARAAAIAQAAAAAAAAA=</HashCode>
+      <FileName>Components\Disk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.Display" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAgAAEAgAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Display.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.GPU" Collapsed="true">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAIgAAAEAMAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\GPU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.Motherboard" Collapsed="true">
+    <Position X="25.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAgAQAAAAAAABAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Motherboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.PowerUnit" Collapsed="true">
+    <Position X="32" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\PowerUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Components.RAM" Collapsed="true">
+    <Position X="36.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAEAAAAAAACAIAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Components\RAM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Entity" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.WareHouseProduct" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAEgAAAAAAAAAAAAAAAAAAAgAAAAgA=</HashCode>
+      <FileName>WareHouseProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.IDGenerator.IDGenerator&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="45.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDGenerator\IDGenerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Laptop" Collapsed="true">
+    <Position X="38.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgABAAAAAgAAAAAAAAAQCIAAAAIAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Laptop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Order" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAABAAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.OrderItem" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>OrderItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Product" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.User" Collapsed="true">
+    <Position X="41" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAEAAAAAAACAAAAQAAAAAUAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.PCs.Desktop" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="43.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAigABAAAAAAAAAAQAAAAQCIIAAAIAAAAAAAAEAIAAQ=</HashCode>
+      <FileName>PCs\Desktop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Peripherals.Headphones" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgACAAAAAAAAAAAAAAAAAAAQIAAAAAAAA=</HashCode>
+      <FileName>Peripherals\Headphones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Peripherals.Keyboard" Collapsed="true">
+    <Position X="18.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAgAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Peripherals\Keyboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Peripherals.Monitor" Collapsed="true">
+    <Position X="23" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAggAAEAgAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Peripherals\Monitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Peripherals.Mouse" Collapsed="true">
+    <Position X="27.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Peripherals\Mouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeekStore.Domain.Model.Peripherals.Speakers" Collapsed="true">
+    <Position X="34.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAgAIAAAAAAAA=</HashCode>
+      <FileName>Peripherals\Speakers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="GeekStore.Domain.Model.IDGenerator.IIDGenerator&lt;T&gt;" Collapsed="true">
+    <Position X="45.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDGenerator\IIDGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GeekStore.Domain.PCs.IComputer" Collapsed="true">
+    <Position X="43.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgABAAAAAAAAAAAAAAAACIAAAAIAAAAAAAAEAAAAA=</HashCode>
+      <FileName>PCs\IComputer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GeekStore.Domain.Model.Components.CPUCores" Collapsed="true">
+    <Position X="43.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgBAAAAAAAAAAAAAAAAAAAIAQAAIAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Components\CPU.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GeekStore.Domain.Model.Components.CPUManufacturer" Collapsed="true">
+    <Position X="45.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Components\CPU.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GeekStore.Domain.Model.Components.DiskType" Collapsed="true">
+    <Position X="43.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Disk.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GeekStore.Domain.ItemTypes" Collapsed="true">
+    <Position X="45.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgABAAAAAAAAAAQACQAQCIIAAAIAAAAAAAAEAIAAQ=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,9 +8,9 @@ namespace GeekStore.Domain.Model.Mapping
         public CaseMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.FormFactor);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.FormFactor).Not.Nullable();
         }
     }
 }

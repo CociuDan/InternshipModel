@@ -7,14 +7,13 @@ namespace GeekStore.Domain.Model.Mapping
     {
         public DiskMap()
         {
-            UseUnionSubclassForInheritanceMapping();
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Capacity);
-            Map(x => x.RPM);
-            Map(x => x.ReadSpeed);
-            Map(x => x.WriteSpeed);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Capacity).Not.Nullable();
+            Map(x => x.RPM).Nullable();
+            Map(x => x.ReadSpeed).Nullable();
+            Map(x => x.WriteSpeed).Nullable();
         }
     }
 }

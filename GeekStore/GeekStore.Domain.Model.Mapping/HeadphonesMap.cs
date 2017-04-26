@@ -8,11 +8,11 @@ namespace GeekStore.Domain.Model.Mapping
         public HeadphonesMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Impendance);
-            Map(x => x.MaxVolume);
-            Map(x => x.Type);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Impendance).Not.Nullable();
+            Map(x => x.MaxVolume).Not.Nullable();
+            Map(x => x.Type).Not.Nullable();
         }
     }
 }

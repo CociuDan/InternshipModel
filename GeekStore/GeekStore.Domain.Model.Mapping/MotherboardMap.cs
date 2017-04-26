@@ -8,12 +8,12 @@ namespace GeekStore.Domain.Model.Mapping
         public MotherboardMap()
         {
             Id(x => x.ID);
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
-            Map(x => x.Chipset);
-            Map(x => x.PCIESlots);
-            Map(x => x.RAMSlots);
-            Map(x => x.Socket);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Chipset).Not.Nullable();
+            Map(x => x.PCIESlots).Not.Nullable();
+            Map(x => x.RAMSlots).Not.Nullable();
+            Map(x => x.Socket).Not.Nullable();
         }
     }
 }

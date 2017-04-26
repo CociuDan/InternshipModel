@@ -6,6 +6,8 @@ using static System.Console;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model;
+using System;
+using System.Net.Http;
 
 namespace GeekStore
 {
@@ -17,6 +19,43 @@ namespace GeekStore
 
             IRepository _geekStore_Repository = Infrastucture.IoC.Resolve<IRepository>();
 
+           // Order or = new Order();
+           // or.OrderDate = DateTime.Now;
+           // or.TotalPrice = 100;
+           // or.User = HttpContext.CurrentUser;
+
+
+
+
+
+           // User us = Cure
+           //us.Orders.Add(or);
+           // us.SaveOrUpdate();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //ReadKey();
             //Cooler c = (Cooler)_geekStore_Repository.GetById<Cooler>(18);
             //_geekStore_Repository.Delete(c);
             //ReadKey();
@@ -24,7 +63,7 @@ namespace GeekStore
             //{
             //    WriteLine($"{item.LaptopModel} - {item.CpuModel} - {item.GpuModel}");
             //}
-            foreach(var ceva in _geekStore_Repository.GetLaptops())
+            foreach (var ceva in _geekStore_Repository.GetLaptops())
             {
                 WriteLine(ceva);
             }
