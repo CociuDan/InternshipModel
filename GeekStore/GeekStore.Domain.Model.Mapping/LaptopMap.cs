@@ -16,6 +16,7 @@ namespace GeekStore.Domain.Model.Mapping
             References(x => x.RAM).LazyLoad();
             Map(x => x.Manufacturer).Not.Nullable();
             Map(x => x.Model).Not.Nullable();
+            Map(x => x.RAMQuantity).Not.Nullable();
         }
     }
 }

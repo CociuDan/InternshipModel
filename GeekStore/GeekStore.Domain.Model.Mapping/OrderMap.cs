@@ -10,8 +10,7 @@ namespace GeekStore.Domain.Model.Mapping
             Map(x => x.OrderDate);
             HasMany(x => x.OrderItems)
                 .KeyColumn("Order_ID")
-                .Cascade.AllDeleteOrphan()
-                .LazyLoad();
+                .Cascade.AllDeleteOrphan();
             Map(x => x.TotalPrice);
             References(x => x.User);
         }

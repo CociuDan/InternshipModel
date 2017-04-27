@@ -6,7 +6,7 @@ namespace GeekStore.Domain.Model.Components
     {
         public Display() { }
 
-        public Display(string aspectRatio, int maxRefreshRate, string resolution, double size)
+        public Display(string aspectRatio, int maxRefreshRate, string resolution, decimal size)
         {
             if (string.IsNullOrEmpty(aspectRatio.Trim())) throw new ArgumentNullException(nameof(aspectRatio));
             if (maxRefreshRate < 60) throw new ArgumentException($"Display Max Refresh Rate cannot be less than 60Hz. Entered value: {maxRefreshRate}");
@@ -22,7 +22,7 @@ namespace GeekStore.Domain.Model.Components
         public virtual string AspectRatio { get; protected set; }
         public virtual int MaxRefreshRate { get; protected set; }
         public virtual string Resolution { get; protected set; }
-        public virtual double Size { get; protected set; }
+        public virtual decimal Size { get; protected set; }
 
         public override string ToString()
         {

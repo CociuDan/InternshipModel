@@ -58,5 +58,6 @@ namespace GeekStore.Domain.Model
         public virtual Motherboard Motherboard { get; protected set; }
         public virtual PowerUnit PowerUnit { get; protected set; }
         public virtual RAM RAM { get; protected set; }
+        public virtual int RAMQuantity { get; protected set; }
     }
 }

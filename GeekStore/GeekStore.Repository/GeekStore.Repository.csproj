@@ -58,7 +58,7 @@
     <Compile Include="Implimentation\ListRepository.cs" />
     <Compile Include="Implimentation\ProductRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

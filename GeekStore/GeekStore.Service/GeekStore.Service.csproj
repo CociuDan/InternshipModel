@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
       <Private>True</Private>
@@ -52,8 +56,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implimentation\GeekStoreService.cs" />
-    <Compile Include="Interfaces\IGeekStoreService.cs" />
+    <Compile Include="Implimentation\GenericService.cs" />
+    <Compile Include="Interfaces\Components\ICaseService.cs" />
+    <Compile Include="Interfaces\IGenericService.cs" />
+    <Compile Include="Mapping\CommonProfile.cs" />
+    <Compile Include="Models\ICase.cs" />
+    <Compile Include="Models\ICooler.cs" />
+    <Compile Include="Models\ICPU.cs" />
+    <Compile Include="Models\IDisk.cs" />
+    <Compile Include="Models\IDisplay.cs" />
+    <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\IGPU.cs" />
+    <Compile Include="Models\IHeadphones.cs" />
+    <Compile Include="Models\IKeyboard.cs" />
+    <Compile Include="Models\ILaptop.cs" />
+    <Compile Include="Models\IMonitor.cs" />
+    <Compile Include="Models\IMotherboard.cs" />
+    <Compile Include="Models\IMouse.cs" />
+    <Compile Include="Models\IPowerUnit.cs" />
+    <Compile Include="Models\IProduct.cs" />
+    <Compile Include="Models\IRAM.cs" />
+    <Compile Include="Models\ISpeakers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +92,11 @@
       <Project>{f5d9127f-0e85-4283-943f-73d392557db1}</Project>
       <Name>GeekStore.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Implimentation\Components\" />
+    <Folder Include="Implimentation\Peripherals\" />
+    <Folder Include="Interfaces\Peripherals\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

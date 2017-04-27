@@ -7,7 +7,7 @@ namespace GeekStore.Domain.Model.Peripherals
     {
         public Monitor() { }
 
-        public Monitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, double size)
+        public Monitor(string aspectRatio, string manufacturer, int maxRefreshRate, string model, string resolution, decimal size)
         {
             if (string.IsNullOrEmpty(manufacturer.Trim())) throw new ArgumentNullException(nameof(manufacturer));
             if (string.IsNullOrEmpty(model.Trim())) throw new ArgumentNullException(nameof(model));
@@ -45,7 +45,7 @@ namespace GeekStore.Domain.Model.Peripherals
         public virtual string AspectRatio { get; protected set; }
         public virtual int MaxRefreshRate { get; protected set; }
         public virtual string Resolution { get; protected set; }
-        public virtual double Size { get; protected set; }
+        public virtual decimal Size { get; protected set; }
 
         public override string ToString()
         {
