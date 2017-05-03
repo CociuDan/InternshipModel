@@ -3,14 +3,13 @@ using Microsoft.Practices.Unity;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Repository.Implimentation;
 using AutoMapper;
-using GeekStore.Service.Mapping;
 using GeekStore.Service.Interfaces;
 using GeekStore.Service.Implimentation;
-using GeekStore.Service.Models;
+using GeekStore.Service.DTO;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;
 using GeekStore.Domain.Model;
-using GeekStore.UI.ViewModel;
+using GeekStore.Infrastructure;
 
 namespace GeekStore.Infrastucture
 {
@@ -28,24 +27,26 @@ namespace GeekStore.Infrastucture
 
         public static void RegisterAll()
         {
+            //Registering Services
+            Container.RegisterType(typeof(IGenericService<CaseDTO>), typeof(GenericService<CaseDTO, Case>));
+            Container.RegisterType(typeof(IGenericService<CoolerDTO>), typeof(GenericService<CoolerDTO, Cooler>));
+            Container.RegisterType(typeof(IGenericService<CPUDTO>), typeof(GenericService<CPUDTO, CPU>));
+            Container.RegisterType(typeof(IGenericService<DiskDTO>), typeof(GenericService<DiskDTO, Disk>));
+            Container.RegisterType(typeof(IGenericService<DisplayDTO>), typeof(GenericService<DisplayDTO, Display>));
+            Container.RegisterType(typeof(IGenericService<GPUDTO>), typeof(GenericService<GPUDTO, GPU>));
+            Container.RegisterType(typeof(IGenericService<HeadphonesDTO>), typeof(GenericService<HeadphonesDTO, Headphones>));
+            Container.RegisterType(typeof(IGenericService<KeyboardDTO>), typeof(GenericService<GPUDTO, GPU>));
+            Container.RegisterType(typeof(IGenericService<LaptopDTO>), typeof(GenericService<LaptopDTO, Laptop>));
+            Container.RegisterType(typeof(IGenericService<MonitorDTO>), typeof(GenericService<MonitorDTO, Monitor>));
+            Container.RegisterType(typeof(IGenericService<MotherboardDTO>), typeof(GenericService<MotherboardDTO, Motherboard>));
+            Container.RegisterType(typeof(IGenericService<MouseDTO>), typeof(GenericService<MouseDTO, Mouse>));
+            Container.RegisterType(typeof(IGenericService<PowerUnitDTO>), typeof(GenericService<PowerUnitDTO, PowerUnit>));
+            Container.RegisterType(typeof(IGenericService<RAMDTO>), typeof(GenericService<RAMDTO, RAM>));
+            Container.RegisterType(typeof(IGenericService<SpeakersDTO>), typeof(GenericService<SpeakersDTO, Speakers>));
+            //Registering Repositories
             Container.RegisterType(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            Container.RegisterType(typeof(IGenericService<CaseViewModel>), typeof(GenericService<CaseViewModel, Case>));
-            Container.RegisterType<IGenericService<CoolerViewModel>, GenericService<CoolerViewModel, Cooler>>();
-            Container.RegisterType<IGenericService<CPUViewModel>, GenericService<CPUViewModel, CPU>>();
-            Container.RegisterType<IGenericService<DiskViewModel>, GenericService<DiskViewModel, Disk>>();
-            Container.RegisterType<IGenericService<DisplayViewModel>, GenericService<DisplayViewModel, Display>>();
-            Container.RegisterType<IGenericService<GPUViewModel>, GenericService<GPUViewModel, GPU>>();
-            Container.RegisterType<IGenericService<HeadphonesViewModel>, GenericService<HeadphonesViewModel, Headphones>>();
-            Container.RegisterType<IGenericService<KeyboardViewModel>, GenericService<KeyboardViewModel, Keyboard>>();
-            Container.RegisterType<IGenericService<LaptopViewModel>, GenericService<LaptopViewModel, Laptop>>();
-            Container.RegisterType<IGenericService<MonitorViewModel>, GenericService<MonitorViewModel, Monitor>>();
-            Container.RegisterType<IGenericService<MotherboardViewModel>, GenericService<MotherboardViewModel, Motherboard>>();
-            Container.RegisterType<IGenericService<MouseViewModel>, GenericService<MouseViewModel, Mouse>>();
-            Container.RegisterType<IGenericService<PowerUnitViewModel>, GenericService<PowerUnitViewModel, PowerUnit>>();
-            //Container.RegisterType<IGenericService<IProduct>, GenericService<IProduct, Product>>();
-            Container.RegisterType<IGenericService<RAMViewModel>, GenericService<RAMViewModel, RAM>>();
-            Container.RegisterType<IGenericService<SpeakersViewModel>, GenericService<SpeakersViewModel, Speakers>>();
             Container.RegisterType<IProductRepository, ProductRepository>();
+
             Container.RegisterInstance(NHibernateProvider.GetSession());
 
 

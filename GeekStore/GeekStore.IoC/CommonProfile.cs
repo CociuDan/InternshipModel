@@ -4,13 +4,8 @@ using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;
 using GeekStore.Service.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GeekStore.Service.Mapping
+namespace GeekStore.Infrastructure
 {
     public class CommonProfile : Profile
     {
@@ -32,7 +27,7 @@ namespace GeekStore.Service.Mapping
             CreateMap<PowerUnitDTO, PowerUnit>().ReverseMap();
             CreateMap<ProductDTO, Product>().ReverseMap();
             CreateMap<RAMDTO, RAM>().ReverseMap();
-            CreateMap<SpeakersDTO, Speakers>().ReverseMap();
+            CreateMap<SpeakersDTO, Speakers>().ReverseMap();            
         }
     }
 }

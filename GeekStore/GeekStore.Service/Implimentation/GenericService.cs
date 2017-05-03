@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using GeekStore.Service.Interfaces;
-using GeekStore.Service.Models;
+using GeekStore.Service.DTO;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain;
 using AutoMapper;
 
 namespace GeekStore.Service.Implimentation
 {
-    public class GenericService<TViewModel, TDomainModel> : IGenericService<TViewModel> where TViewModel : IEntity where TDomainModel : Entity
+    public class GenericService<TViewModel, TDomainModel> : IGenericService<TViewModel> where TViewModel : EntityDTO where TDomainModel : Entity
     {
         private readonly IGenericRepository<TDomainModel> _genericRepository = null;
         private readonly IMapper _mapper = null;

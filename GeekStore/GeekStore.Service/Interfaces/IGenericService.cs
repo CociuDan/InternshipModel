@@ -1,4 +1,4 @@
-﻿using GeekStore.Service.Models;
+﻿using GeekStore.Service.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GeekStore.Service.Interfaces
 {
-    public interface IGenericService<TViewModel> where TViewModel : IEntity
+    public interface IGenericService<TViewModel> where TViewModel : EntityDTO
     {
         IEnumerable<TViewModel> GetAll();
         IEnumerable<TViewModel> GetAllPaged(int page, int pageSize);

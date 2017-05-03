@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonProfile.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="NHibernateProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,10 +102,6 @@
     <ProjectReference Include="..\GeekStore.Service\GeekStore.Service.csproj">
       <Project>{536475ea-ad4e-4293-a476-707ef05095d9}</Project>
       <Name>GeekStore.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GeekStore.Web\GeekStore.UI.csproj">
-      <Project>{9E80FEDA-2A96-47CE-B4D6-BCFC728CF2AB}</Project>
-      <Name>GeekStore.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

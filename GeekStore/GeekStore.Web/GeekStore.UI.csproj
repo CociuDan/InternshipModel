@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -109,28 +110,37 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\CaseViewModel.cs" />
-    <Compile Include="ViewModel\CoolerViewModel.cs" />
-    <Compile Include="ViewModel\CPUViewModel.cs" />
-    <Compile Include="ViewModel\DiskViewModel.cs" />
-    <Compile Include="ViewModel\DisplayViewModel.cs" />
-    <Compile Include="ViewModel\EntityViewModel.cs" />
-    <Compile Include="ViewModel\GPUViewModel.cs" />
-    <Compile Include="ViewModel\HeadphonesViewModel.cs" />
-    <Compile Include="ViewModel\KeyboardViewModel.cs" />
-    <Compile Include="ViewModel\LaptopViewModel.cs" />
-    <Compile Include="ViewModel\MonitorViewModel.cs" />
-    <Compile Include="ViewModel\MotherboardViewModel.cs" />
-    <Compile Include="ViewModel\MouseViewModel.cs" />
-    <Compile Include="ViewModel\PowerUnitViewModel.cs" />
-    <Compile Include="ViewModel\ProductViewModel.cs" />
-    <Compile Include="ViewModel\RAMViewModel.cs" />
-    <Compile Include="ViewModel\SpeakersViewModel.cs" />
+    <Compile Include="Models\CaseViewModel.cs" />
+    <Compile Include="Models\CoolerViewModel.cs" />
+    <Compile Include="Models\CPUViewModel.cs" />
+    <Compile Include="Models\DiskViewModel.cs" />
+    <Compile Include="Models\DisplayViewModel.cs" />
+    <Compile Include="Models\EntityViewModel.cs" />
+    <Compile Include="Models\GPUViewModel.cs" />
+    <Compile Include="Models\HeadphonesViewModel.cs" />
+    <Compile Include="Models\KeyboardViewModel.cs" />
+    <Compile Include="Models\LaptopViewModel.cs" />
+    <Compile Include="Models\MonitorViewModel.cs" />
+    <Compile Include="Models\MotherboardViewModel.cs" />
+    <Compile Include="Models\MouseViewModel.cs" />
+    <Compile Include="Models\PowerUnitViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\RAMViewModel.cs" />
+    <Compile Include="Models\SpeakersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Start\" />
+    <Folder Include="Content\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Scripts\" />
     <Folder Include="Views\" />
+    <Folder Include="Windsor Utils\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.Model.csproj">

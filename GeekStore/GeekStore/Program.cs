@@ -3,8 +3,9 @@ using static System.Console;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Service.Interfaces;
-using GeekStore.UI.ViewModel;
-using GeekStore.Service.Models;
+using GeekStore.UI.Models;
+using GeekStore.Service.DTO;
+using GeekStore.Infrastucture;
 
 namespace GeekStore
 {
@@ -12,15 +13,27 @@ namespace GeekStore
     {
         static void Main(string[] args)
         {
-            Infrastucture.IoC.RegisterAll();
+            IoC.RegisterAll();
 
-            IGenericRepository<Case> _caseRepository = Infrastucture.IoC.Resolve<IGenericRepository<Case>>();
-            IGenericService<ICase> _genericService = Infrastucture.IoC.Resolve<IGenericService<ICase>>();
+            //IGenericRepository<Case> _caseRepository = IoC.Resolve<IGenericRepository<Case>>();
+            IGenericService<CaseDTO> _genericService = IoC.Resolve<IGenericService<CaseDTO>>();
 
             // Order or = new Order();
             // or.OrderDate = DateTime.Now;
             // or.TotalPrice = 100;
             // or.User = HttpContext.CurrentUser;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
