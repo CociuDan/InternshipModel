@@ -19,42 +19,12 @@ namespace GeekStore.UI
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             var container = new WindsorContainer().Install(FromAssembly.This());
             var ioc = new IoC("GeekStoreConnectionString");
             ioc.RegisterAll(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
-        }
-
-        protected void Session_Start(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Session_End(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void Application_End(object sender, EventArgs e)
-        {
-
         }
     }
 }

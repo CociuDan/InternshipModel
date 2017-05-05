@@ -1,23 +1,18 @@
-﻿//using Ninject.Modules;
-using Microsoft.Practices.Unity;
-using GeekStore.Repository.Interfaces;
+﻿using GeekStore.Repository.Interfaces;
 using GeekStore.Repository.Implimentation;
-using AutoMapper;
 using GeekStore.Service.Interfaces;
 using GeekStore.Service.Implimentation;
 using GeekStore.Service.DTO;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;
 using GeekStore.Domain.Model;
-using GeekStore.Infrastructure;
-//using Ninject;
 using NHibernate;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel;
 
 namespace GeekStore.Infrastucture
 {
-    public class IoC// : NinjectModule
+    public class IoC
     {
         private string _connectionString;
         public IoC(string connectionString)
@@ -49,7 +44,7 @@ namespace GeekStore.Infrastucture
             kernel.Register(Component.For(typeof(IProductRepository)).ImplementedBy(typeof(ProductRepository)));
 
             kernel.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
-            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory s) => s.OpenSession()).LifestylePerWebRequest());
+            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory s) => s.OpenSession()).LifestylePerThread());
         }
 
         //public static T Resolve<T>()
