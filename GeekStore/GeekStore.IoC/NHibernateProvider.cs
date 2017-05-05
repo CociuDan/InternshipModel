@@ -6,26 +6,31 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace GeekStore.Infrastucture
 {
-    public static class NHibernateProvider
+    public class NHibernateProvider
     {
-        private const string _connectionStringName = "GeekStoreConnectionString";
+        private string _connectionString;
+        private ISessionFactory _sessionFactory;
 
-        private static ISessionFactory _sessionFactory;
-
-        public static ISession GetSession()
+        public NHibernateProvider(string connectionString)
         {
-            if(_sessionFactory == null)
-            {
-                _sessionFactory = CreateSessionFactory();
-            }
-            return _sessionFactory.OpenSession();
+            _connectionString = connectionString;
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        public ISessionFactory SessionFactory
+        {
+            get
+            {
+                if (_sessionFactory == null)
+                    _sessionFactory = CreateSessionFactory();
+                return _sessionFactory;
+            }
+        }
+
+        private ISessionFactory CreateSessionFactory()
         {
             var configuration = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                    .ConnectionString(c => c.FromConnectionStringWithKey(_connectionStringName)))
+                    .ConnectionString(c => c.FromConnectionStringWithKey(_connectionString)))
                 .Mappings(x => x.FluentMappings.AddFromAssembly(typeof(CaseMap).Assembly))
                 .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
 

@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.Domain.CustomMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekStore.UI", "GeekStore.Web\GeekStore.UI.csproj", "{9E80FEDA-2A96-47CE-B4D6-BCFC728CF2AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{86CA7F9B-7CB0-41AC-938C-0FFD06E9F66F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{9E80FEDA-2A96-47CE-B4D6-BCFC728CF2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E80FEDA-2A96-47CE-B4D6-BCFC728CF2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E80FEDA-2A96-47CE-B4D6-BCFC728CF2AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86CA7F9B-7CB0-41AC-938C-0FFD06E9F66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CA7F9B-7CB0-41AC-938C-0FFD06E9F66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CA7F9B-7CB0-41AC-938C-0FFD06E9F66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CA7F9B-7CB0-41AC-938C-0FFD06E9F66F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

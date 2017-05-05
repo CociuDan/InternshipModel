@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'OCRAStd';
+    src: url(/Fonts/OCRAStd.eot);
+    src: url(/Fonts/OCRAStd.eot/Fonts) format('embedded-opentype'),
+         url(/Fonts/OCRAStd.woff2) format('woff2'),
+         url(/Fonts/OCRAStd.woff) format('woff'),
+         url(/Fonts/OCRAStd.ttf) format('truetype'),
+         url(/Fonts/OCRAStd.svg#OCRAStd) format('svg');
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1084px;
+    }
+
+    #body{
+      background: transparent;
+    }
+
+    #company-name-div{
+      color: #fad400 !important;
+      position: relative;
+      margin-top: -150px;
+    }
+
+    #company-name{
+      font-family: 'Design System A 700';
+      color: #fad400 !important;
+      text-decoration: none;
+    }
+
+    #company-name:hover {
+      color: #BBA219 !important;
+      text-decoration: none;
+    }    
+
+    #logo{
+      background: url(/Images/i.png) no-repeat scroll -27px -43px rgba(0, 0, 0, 0);
+      display: block;
+      max-height: 137px;
+      margin-left: 15px;
+      margin-bottom: 15px;
+      right: 289px;
+      top: 0;
+      width: 125px;
+    }
+
+    .nav{
+      font-family: "Arial Black";      
+    }
+}
+
+html{
+  background: #1c1c1c url(/Images/background.jpg) no-repeat center top fixed;
+  background-size: auto;
+}
+
+
+#logo{
+  height: 160px;
+}
+
+form { 
+margin: 0 auto; 
+width: 250px;
+margin-top: 11%;
+}
+
+#header { 
+  margin-left: -14px;
+  margin-right: -15px;
+  background-color: #262626;
+}
+
+#black-logo{
+  padding-top: 1%;
+  padding-left: 2.5%;
+  height: 70%;
+  width: 11%;
+}
+
+#company-name{
+  margin-top: -13%;  
+  padding-left: 16%;
+  font-size: 860%;
+  color: white;
+  font-family: 'OCRAStd';
+}
+
+#transition>div{
+  font:16px arial, helvetica, sans-serif;
+  color:#fff;
+  padding:2px 10px;
+  width :  180px;
+  list-style-type : none;
+  height : 60px;  
+  border-radius: 3px;
+  background-color : darkgrey; 
+  transition-property:  background-color,width,height; 
+
+  transition-duration: background-color 0.3s; 
+}
+
+#transition>div:hover {
+  background-color: gray;
+  color: black;
+  width:200px;
+  height:70px;
+  
+  transition-duration: 0.3s; 
+}
+
+.textBox{
+  width: 150px;
+}
+
+p :hover{
+  border-color: red;
+}
