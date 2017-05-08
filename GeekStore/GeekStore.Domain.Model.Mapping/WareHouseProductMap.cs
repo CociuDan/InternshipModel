@@ -2,9 +2,9 @@
 
 namespace GeekStore.Domain.Model.Mapping
 {
-    public class WareHouseProductMap : ClassMap<WareHouseProduct>
+    public class WarehouseProductMap : ClassMap<WarehouseProduct>
     {
-        public WareHouseProductMap()
+        public WarehouseProductMap()
         {
             Id(x => x.ID);
             Map(x => x.ItemID);

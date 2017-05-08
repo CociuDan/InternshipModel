@@ -77,7 +77,7 @@
     <Compile Include="Peripherals\Mouse.cs" />
     <Compile Include="Peripherals\Speakers.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="WareHouseProduct.cs" />
+    <Compile Include="WarehouseProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

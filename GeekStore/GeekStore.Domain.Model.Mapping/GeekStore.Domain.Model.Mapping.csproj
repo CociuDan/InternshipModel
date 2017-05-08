@@ -72,7 +72,7 @@
     <Compile Include="RAMMap.cs" />
     <Compile Include="SpeakersMap.cs" />
     <Compile Include="UserMap.cs" />
-    <Compile Include="WareHouseProductMap.cs" />
+    <Compile Include="WarehouseProductMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

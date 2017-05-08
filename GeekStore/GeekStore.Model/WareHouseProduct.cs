@@ -4,10 +4,10 @@ using System.Text;
 
 namespace GeekStore.Domain
 {
-    public class WareHouseProduct : Entity
+    public class WarehouseProduct : Entity
     {
-        public WareHouseProduct() { }
-        public WareHouseProduct(int itemID, ItemTypes itemType, decimal price, int quantity)
+        public WarehouseProduct() { }
+        public WarehouseProduct(int itemID, ItemTypes itemType, decimal price, int quantity)
         {
             if (itemID <= 0) throw new ArgumentException($"Invalid ItemID. Entered value: {itemID}");
             if (price <= 0) throw new ArgumentException("Price cannot be less or equal to 0");
