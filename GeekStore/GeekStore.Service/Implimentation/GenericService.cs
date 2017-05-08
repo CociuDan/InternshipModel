@@ -8,46 +8,46 @@ using AutoMapper;
 
 namespace GeekStore.Service.Implimentation
 {
-    public class GenericService<TViewModel, TDomainModel> : IGenericService<TViewModel> where TViewModel : EntityDTO where TDomainModel : Entity
+    public class GenericService<TDTOModel, TDomainModel> : IGenericService<TDTOModel> where TDTOModel : EntityDTO where TDomainModel : Entity
     {
         private readonly IGenericRepository<TDomainModel> _genericRepository = null;
         private readonly IMapper _mapper = null;
 
-        public GenericService(IMapper mapper, IGenericRepository<TDomainModel> genericRepository)
+        public GenericService(IGenericRepository<TDomainModel> genericRepository, IMapper mapper)
         {
             _genericRepository = genericRepository;
             _mapper = mapper;
         }
-        public void Delete(TViewModel entity)
+        public void Delete(TDTOModel entity)
         {
-            var domainEntity = _mapper.Map<TViewModel, TDomainModel>(entity);
+            var domainEntity = _mapper.Map<TDTOModel, TDomainModel>(entity);
             _genericRepository.Delete(domainEntity);
         }
 
-        public IEnumerable<TViewModel> GetAll()
+        public IEnumerable<TDTOModel> GetAll()
         {
-            return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TViewModel>>(_genericRepository.GetAll());
+            return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAll());
         }
 
-        public IEnumerable<TViewModel> GetAllPaged(int page, int pageSize)
+        public IEnumerable<TDTOModel> GetAllPaged(int page, int pageSize)
         {
-            return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TViewModel>>(_genericRepository.GetAllPaged(page, pageSize));
+            return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAllPaged(page, pageSize));
         }
 
-        public TViewModel GetById(int id)
+        public TDTOModel GetById(int id)
         {
-            return _mapper.Map<TDomainModel, TViewModel>(_genericRepository.GetById(id));
+            return _mapper.Map<TDomainModel, TDTOModel>(_genericRepository.GetById(id));
         }
 
-        public void Save(TViewModel entity)
+        public void Save(TDTOModel entity)
         {
-            var domainEntity = _mapper.Map<TViewModel, TDomainModel>(entity);
+            var domainEntity = _mapper.Map<TDTOModel, TDomainModel>(entity);
             _genericRepository.Save(domainEntity);
         }
 
-        public void Update(TViewModel entity)
+        public void Update(TDTOModel entity)
         {
-            var domainEntity = _mapper.Map<TViewModel, TDomainModel>(entity);
+            var domainEntity = _mapper.Map<TDTOModel, TDomainModel>(entity);
             _genericRepository.Update(domainEntity);
         }
     }

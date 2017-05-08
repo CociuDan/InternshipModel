@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GeekStore.Service.Interfaces
 {
-    public interface IGenericService<TViewModel> where TViewModel : EntityDTO
+    public interface IGenericService<TDTOs> where TDTOs : EntityDTO
     {
-        IEnumerable<TViewModel> GetAll();
-        IEnumerable<TViewModel> GetAllPaged(int page, int pageSize);
-        TViewModel GetById(int id);
-        void Save(TViewModel entity);
-        void Update(TViewModel entity);
-        void Delete(TViewModel entity);
+        IEnumerable<TDTOs> GetAll();
+        IEnumerable<TDTOs> GetAllPaged(int page, int pageSize);
+        TDTOs GetById(int id);
+        void Save(TDTOs entity);
+        void Update(TDTOs entity);
+        void Delete(TDTOs entity);
     }
 }

@@ -4,13 +4,17 @@ using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;
 using GeekStore.Service.DTO;
+using GeekStore.UI.Models;
 
-namespace GeekStore.Service.Mapping
+namespace GeekStore.Mapping
 {
     public class CommonProfile : Profile
     {
         public CommonProfile()
         {
+
+
+            //Mapping DTOs to Entity Models
             CreateMap<CaseDTO, Case>().ReverseMap();
             CreateMap<CoolerDTO, Cooler>().ReverseMap();
             CreateMap<CPUDTO, CPU>().ReverseMap();
@@ -27,7 +31,7 @@ namespace GeekStore.Service.Mapping
             CreateMap<PowerUnitDTO, PowerUnit>().ReverseMap();
             CreateMap<ProductDTO, Product>().ReverseMap();
             CreateMap<RAMDTO, RAM>().ReverseMap();
-            CreateMap<SpeakersDTO, Speakers>().ReverseMap();
+            CreateMap<SpeakersDTO, Speakers>().ReverseMap();            
         }
     }
 }

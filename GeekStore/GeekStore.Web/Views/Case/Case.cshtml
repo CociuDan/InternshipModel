@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<GeekStore.UI.Models.CaseViewModel>
+@{
+    foreach (var pcCase in Model)
+    {
+        <p>@pcCase.Manufacturer</p>
+        <p>@pcCase.Model</p>
+        <p>@pcCase.FormFactor</p>
+    }
+}
+

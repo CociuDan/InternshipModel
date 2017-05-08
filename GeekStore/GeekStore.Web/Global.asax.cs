@@ -1,6 +1,6 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
-using GeekStore.Infrastucture;
+using GeekStore.Infrastructure;
 using GeekStore.UI.App_Start;
 using GeekStore.UI.Windsor_Utils;
 using System;

@@ -5,7 +5,8 @@ using GeekStore.Domain.Model.Components;
 using GeekStore.Service.Interfaces;
 using GeekStore.UI.Models;
 using GeekStore.Service.DTO;
-using GeekStore.Infrastucture;
+using GeekStore.Infrastructure;
+using System.Linq;
 
 namespace GeekStore
 {

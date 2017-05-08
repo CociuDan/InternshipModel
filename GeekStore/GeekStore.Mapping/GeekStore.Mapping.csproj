@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{536475EA-AD4E-4293-A476-707EF05095D9}</ProjectGuid>
+    <ProjectGuid>{E0FBE6AD-42FA-4FA8-B0B7-402386E18404}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeekStore.Service</RootNamespace>
-    <AssemblyName>GeekStore.Service</AssemblyName>
+    <RootNamespace>GeekStore.Mapping</RootNamespace>
+    <AssemblyName>GeekStore.Mapping</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,18 +34,6 @@
       <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,47 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implimentation\GenericService.cs" />
-    <Compile Include="Interfaces\Components\ICaseService.cs" />
-    <Compile Include="Interfaces\IGenericService.cs" />
-    <Compile Include="Mapping\DTOToDomainEntityProfile.cs" />
-    <Compile Include="DTO\CaseDTO.cs" />
-    <Compile Include="DTO\CoolerDTO.cs" />
-    <Compile Include="DTO\CPUDTO.cs" />
-    <Compile Include="DTO\DiskDTO.cs" />
-    <Compile Include="DTO\DisplayDTO.cs" />
-    <Compile Include="DTO\EntityDTO.cs" />
-    <Compile Include="DTO\GPUDTO.cs" />
-    <Compile Include="DTO\HeadphonesDTO.cs" />
-    <Compile Include="DTO\KeyboardDTO.cs" />
-    <Compile Include="DTO\LaptopDTO.cs" />
-    <Compile Include="DTO\MonitorDTO.cs" />
-    <Compile Include="DTO\MotherboardDTO.cs" />
-    <Compile Include="DTO\MouseDTO.cs" />
-    <Compile Include="DTO\PowerUnitDTO.cs" />
-    <Compile Include="DTO\ProductDTO.cs" />
-    <Compile Include="DTO\RAMDTO.cs" />
-    <Compile Include="DTO\SpeakersDTO.cs" />
+    <Compile Include="CommonProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.Model.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
       <Name>GeekStore.Domain.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GeekStore.Repository\GeekStore.Repository.csproj">
-      <Project>{f5d9127f-0e85-4283-943f-73d392557db1}</Project>
-      <Name>GeekStore.Repository</Name>
+    <ProjectReference Include="..\GeekStore.Service\GeekStore.Service.csproj">
+      <Project>{536475ea-ad4e-4293-a476-707ef05095d9}</Project>
+      <Name>GeekStore.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeekStore.Web\GeekStore.UI.csproj">
+      <Project>{9E80FEDA-2A96-47CE-B4D6-BCFC728CF2AB}</Project>
+      <Name>GeekStore.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implimentation\Components\" />
-    <Folder Include="Implimentation\Peripherals\" />
-    <Folder Include="Interfaces\Peripherals\" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

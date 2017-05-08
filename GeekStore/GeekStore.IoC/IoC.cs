@@ -9,8 +9,10 @@ using GeekStore.Domain.Model;
 using NHibernate;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel;
+using AutoMapper;
+using GeekStore.Service.Mapping;
 
-namespace GeekStore.Infrastucture
+namespace GeekStore.Infrastructure
 {
     public class IoC
     {
@@ -39,12 +41,12 @@ namespace GeekStore.Infrastucture
             kernel.Register(Component.For(typeof(IGenericService<PowerUnitDTO>)).ImplementedBy(typeof(GenericService<PowerUnitDTO, PowerUnit>)));
             kernel.Register(Component.For(typeof(IGenericService<RAMDTO>)).ImplementedBy(typeof(GenericService<RAMDTO, RAM>)));
             kernel.Register(Component.For(typeof(IGenericService<SpeakersDTO>)).ImplementedBy(typeof(GenericService<SpeakersDTO, Speakers>)));
-            //Registering Reposioties
+            //Registering Repositories
             kernel.Register(Component.For(typeof(IGenericRepository<>)).ImplementedBy(typeof(GenericRepository<>)));
             kernel.Register(Component.For(typeof(IProductRepository)).ImplementedBy(typeof(ProductRepository)));
 
             kernel.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
-            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory s) => s.OpenSession()).LifestylePerThread());
+            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory s) => s.OpenSession()).LifestylePerWebRequest());
         }
 
         //public static T Resolve<T>()

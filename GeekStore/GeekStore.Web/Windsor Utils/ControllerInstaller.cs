@@ -1,6 +1,9 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using AutoMapper;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using GeekStore.Service.Mapping;
+using GeekStore.UI.Mapping;
 using System.Web.Mvc;
 
 namespace GeekStore.UI.Windsor_Utils
@@ -15,6 +18,14 @@ namespace GeekStore.UI.Windsor_Utils
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(FindControllers().LifestyleTransient());
+            container.Register(Component.For<IMapper>().UsingFactoryMethod(x =>
+            {
+                return new MapperConfiguration(c =>
+                {
+                    c.AddProfile<ViewModelToDTOProfile>();
+                    c.AddProfile<DTOToDomainEntityProfile>();
+                }).CreateMapper();
+            }));
         }
 
         /// <summary>
