@@ -3,13 +3,11 @@ using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Domain.Model.Mapping
 {
-    public class CaseMap : ClassMap<Case>
+    public class CaseMap : SubclassMap<Case>
     {
         public CaseMap()
         {
-            Id(x => x.ID);
-            Map(x => x.Manufacturer).Not.Nullable();
-            Map(x => x.Model).Not.Nullable();
+            KeyColumn("ID");
             Map(x => x.FormFactor).Not.Nullable();
         }
     }

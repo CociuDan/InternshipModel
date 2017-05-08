@@ -1,6 +1,4 @@
-﻿using GeekStore.Service.DTO;
-
-namespace GeekStore.UI.Models
+﻿namespace GeekStore.UI.Models
 {
     public class CPUViewModel : ProductViewModel
     {

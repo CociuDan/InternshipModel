@@ -1,3 +1,42 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model GeekStore.UI.Models.UserViewModel
+
+
+@using (Html.BeginForm("Register", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style="width:450px;"}))
+{
+    @Html.AntiForgeryToken()
+    <h4 style="text-align:center;">Create a new account.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FullName, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-4 control-label" })
+        <div class="col-md-8">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10" >
+            <input type="submit" class="btn btn-default" value="Register" style="margin-left: inherit;"/>
+        </div>
+    </div>
+}

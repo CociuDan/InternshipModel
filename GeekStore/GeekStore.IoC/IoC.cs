@@ -41,9 +41,11 @@ namespace GeekStore.Infrastructure
             kernel.Register(Component.For(typeof(IGenericService<PowerUnitDTO>)).ImplementedBy(typeof(GenericService<PowerUnitDTO, PowerUnit>)));
             kernel.Register(Component.For(typeof(IGenericService<RAMDTO>)).ImplementedBy(typeof(GenericService<RAMDTO, RAM>)));
             kernel.Register(Component.For(typeof(IGenericService<SpeakersDTO>)).ImplementedBy(typeof(GenericService<SpeakersDTO, Speakers>)));
+            kernel.Register(Component.For(typeof(IUserService)).ImplementedBy(typeof(UserService)));
             //Registering Repositories
             kernel.Register(Component.For(typeof(IGenericRepository<>)).ImplementedBy(typeof(GenericRepository<>)));
             kernel.Register(Component.For(typeof(IProductRepository)).ImplementedBy(typeof(ProductRepository)));
+            kernel.Register(Component.For(typeof(IUserRepository)).ImplementedBy(typeof(UserRepository)));
 
             kernel.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
             kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory s) => s.OpenSession()).LifestylePerWebRequest());

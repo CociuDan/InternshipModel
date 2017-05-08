@@ -56,9 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Implimentation\GenericService.cs" />
+    <Compile Include="Implimentation\UserService.cs" />
     <Compile Include="Interfaces\Components\ICaseService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Mapping\DTOToDomainEntityProfile.cs" />
     <Compile Include="DTO\CaseDTO.cs" />
     <Compile Include="DTO\CoolerDTO.cs" />

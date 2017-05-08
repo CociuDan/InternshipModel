@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace GeekStore.Domain.Model
+namespace GeekStore.Service.DTO
 {
-    public class User : Entity
+    public class UserDTO
     {
-        public User() { }
         public virtual string FullName { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual bool IsAdmin { get; set; }

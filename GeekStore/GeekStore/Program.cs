@@ -14,10 +14,10 @@ namespace GeekStore
     {
         static void Main(string[] args)
         {
-            IoC.RegisterAll();
+            //IoC.RegisterAll();
 
             //IGenericRepository<Case> _caseRepository = IoC.Resolve<IGenericRepository<Case>>();
-            IGenericService<CaseDTO> _genericService = IoC.Resolve<IGenericService<CaseDTO>>();
+            //IGenericService<CaseDTO> _genericService = IoC.Resolve<IGenericService<CaseDTO>>();
 
             // Order or = new Order();
             // or.OrderDate = DateTime.Now;
@@ -75,16 +75,16 @@ namespace GeekStore
             //{
             //    WriteLine($"{item.LaptopModel} - {item.CpuModel} - {item.GpuModel}");
             //}
-            foreach (var compCase in _genericService.GetAllPaged(2, 3))
-            {
-                WriteLine(compCase.Model);
-            }
-            ReadKey();
+            //foreach (var compCase in _genericService.GetAllPaged(2, 3))
+            //{
+            //    WriteLine(compCase.Model);
+            //}
+            //ReadKey();
             //foreach (var item in _geekStore_Repository.GetAll<CPU>())
             //{
             //    WriteLine(item.Model);
             //}
-            ReadKey();
+            //ReadKey();
         }
     }
 }

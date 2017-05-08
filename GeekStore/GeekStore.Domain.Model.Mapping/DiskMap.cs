@@ -3,13 +3,11 @@ using GeekStore.Domain.Model.Components;
 
 namespace GeekStore.Domain.Model.Mapping
 {
-    public class DiskMap : ClassMap<Disk>
+    public class DiskMap : SubclassMap<Disk>
     {
         public DiskMap()
         {
-            Id(x => x.ID);
-            Map(x => x.Manufacturer).Not.Nullable();
-            Map(x => x.Model).Not.Nullable();
+            KeyColumn("ID");
             Map(x => x.Capacity).Not.Nullable();
             Map(x => x.RPM).Nullable();
             Map(x => x.ReadSpeed).Nullable();

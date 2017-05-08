@@ -68,6 +68,7 @@
     <Compile Include="OrderItemMap.cs" />
     <Compile Include="OrderMap.cs" />
     <Compile Include="PowerUnitMap.cs" />
+    <Compile Include="ProductMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAMMap.cs" />
     <Compile Include="SpeakersMap.cs" />

@@ -1,17 +1,15 @@
-﻿using GeekStore.Service.DTO;
-
-namespace GeekStore.UI.Models
+﻿namespace GeekStore.UI.Models
 {
     public class LaptopViewModel : ProductViewModel
     {
-        public CPUDTO CPU { get; set; }
+        public CPUViewModel CPU { get; set; }
         public string Description { get; set; }
-        public DiskDTO Disk { get; set; }
-        public DisplayDTO Display { get; set; }
-        public GPUDTO GPU { get; set; }
-        public MotherboardDTO Motherboard { get; set; }
-        public PowerUnitDTO PowerUnit { get; set; }
-        public RAMDTO RAM { get; set; }
+        public DiskViewModel Disk { get; set; }
+        public DisplayViewModel Display { get; set; }
+        public GPUViewModel GPU { get; set; }
+        public MotherboardViewModel Motherboard { get; set; }
+        public PowerUnitViewModel PowerUnit { get; set; }
+        public RAMViewModel RAM { get; set; }
         public int RAMQuantity { get; set; }
     }
 }
