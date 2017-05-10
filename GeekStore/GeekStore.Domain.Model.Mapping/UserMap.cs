@@ -6,10 +6,9 @@ namespace GeekStore.Domain.Model.Mapping
     {
         public UserMap()
         {
-            Id(x => x.ID);
-            Map(x => x.Email).Not.Nullable();
+            Id(x => x.Id).GeneratedBy.Identity();
+            Map(x => x.UserName).Not.Nullable();
             Map(x => x.FullName).Not.Nullable();
-            Map(x => x.IsActive).Not.Nullable();
             Map(x => x.IsAdmin).Not.Nullable();
         }
     }

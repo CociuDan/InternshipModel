@@ -1,19 +1,18 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GeekStore.UI.Models
 {
-    public class UserViewModel
+    public class RegisterViewModel
     {
+        public virtual int Id { get; protected set; }
         [Required]
         [Display(Name = "Full Name")]
         public virtual string FullName { get; set; }
-        public virtual bool IsActive { get; set; }
         public virtual bool IsAdmin { get; set; }
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        public virtual string Email { get; set; }
+        public virtual string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

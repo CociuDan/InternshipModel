@@ -1,14 +1,7 @@
 ﻿using GeekStore.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace GeekStore.Repository.Interfaces
 {
-    public interface IUserRepository
-    {
-        void CreateUser(User user);
-    }
+    public interface IUserRepository : IUserStore<User, int>, IUserPasswordStore<User, int>, IUserLockoutStore<User, int>, IUserTwoFactorStore<User, int> { }
 }

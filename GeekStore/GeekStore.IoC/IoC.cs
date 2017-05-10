@@ -11,6 +11,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel;
 using AutoMapper;
 using GeekStore.Service.Mapping;
+using Microsoft.AspNet.Identity;
 
 namespace GeekStore.Infrastructure
 {
@@ -47,8 +48,14 @@ namespace GeekStore.Infrastructure
             kernel.Register(Component.For(typeof(IProductRepository)).ImplementedBy(typeof(ProductRepository)));
             kernel.Register(Component.For(typeof(IUserRepository)).ImplementedBy(typeof(UserRepository)));
 
+
+
+            
+
+
             kernel.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
-            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory s) => s.OpenSession()).LifestylePerWebRequest());
+            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory sessionFactory) => sessionFactory.OpenSession()).LifestylePerWebRequest());
+            kernel.Register(Component.For<ITransaction>().UsingFactory((ISession session) => session.BeginTransaction()).LifestylePerWebRequest());
         }
 
         //public static T Resolve<T>()

@@ -2,6 +2,6 @@
 {
     public interface IIDGenerator<T>
     {
-        int NextID<T>();
+        int NextID { get; }
     }
 }

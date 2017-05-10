@@ -4,14 +4,11 @@
     {
         private static int _id = 1;
 
-        public static int NextID()
+        private static int NextIDGenerator()
         {
             return _id++;
         }
 
-        public int NextID<T>()
-        {
-            return NextID();
-        }
+        public int NextID { get { return NextIDGenerator(); } }
     }
 }

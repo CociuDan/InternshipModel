@@ -2,8 +2,11 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using GeekStore.Service.Interfaces;
 using GeekStore.Service.Mapping;
+using GeekStore.UI.Managers;
 using GeekStore.UI.Mapping;
+using Owin;
 using System.Web.Mvc;
 
 namespace GeekStore.UI.Windsor_Utils
@@ -26,6 +29,9 @@ namespace GeekStore.UI.Windsor_Utils
                     c.AddProfile<DTOToDomainEntityProfile>();
                 }).CreateMapper();
             }));
+
+            container.Register(Component.For<ApplicationSingInManager>().LifestylePerWebRequest());
+            container.Register(Component.For<ApplicationUserManager>().LifestylePerWebRequest());
         }
 
         /// <summary>

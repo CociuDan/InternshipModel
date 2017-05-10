@@ -26,7 +26,6 @@ namespace GeekStore.UI.Mapping
             CreateMap<ProductViewModel, ProductDTO>().ReverseMap();
             CreateMap<RAMViewModel, RAMDTO>().ReverseMap();
             CreateMap<SpeakersViewModel, SpeakersDTO>().ReverseMap();
-            CreateMap<UserViewModel, UserDTO>().ReverseMap();
         }
     }
 }

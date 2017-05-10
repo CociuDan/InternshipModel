@@ -15,27 +15,27 @@ namespace GeekStore.Repository.Implimentation
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll<T>() where T : Entity
+        public IEnumerable<T> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Entity GetById<T1>(int id) where T1 : Entity
+        public Entity GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T1> GetByManufacturer<T1>(string manufacturer) where T1 : Product
+        public IEnumerable<T> GetByManufacturer(string manufacturer)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T1> GetByModel<T1>(string model) where T1 : Product
+        public IEnumerable<T> GetByModel(string model)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Entity> GetCPUs<T>()
+        public IEnumerable<Entity> GetCPUs()
         {
             throw new NotImplementedException();
         }
@@ -50,12 +50,12 @@ namespace GeekStore.Repository.Implimentation
             throw new NotImplementedException();
         }
 
-        public void Save<T1>(T1 item) where T1 : Entity
+        public void Save(T item)
         {
             throw new NotImplementedException();
         }
 
-        public void Update<T1>(T1 item)
+        public void Update(T item)
         {
             throw new NotImplementedException();
         }
