@@ -20,9 +20,9 @@ namespace GeekStore.UI
         protected void Application_Start(object sender, EventArgs e)
         {
 
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);            
             var container = new WindsorContainer().Install(FromAssembly.This());
-            var ioc = new IoC("GeekStoreConnectionString");
+            var ioc = new ServiceLocator("GeekStoreConnectionString");
             ioc.RegisterAll(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
         }

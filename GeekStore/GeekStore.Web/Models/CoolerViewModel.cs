@@ -2,7 +2,13 @@
 {
     public class CoolerViewModel : ProductViewModel
     {
-        public string Description { get; set; }
+        public virtual string Description
+        {
+            get
+            {
+                return $"{Manufacturer} {Model} {Socket}";
+            }
+        }
         public string Socket { get; set; }
     }
 }

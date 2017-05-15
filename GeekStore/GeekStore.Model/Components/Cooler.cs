@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
@@ -16,22 +15,6 @@ namespace GeekStore.Domain.Model.Components
             Manufacturer = manufacturer;
             Model = model;
             Socket = socket;
-        }
-
-        public virtual string Description
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"\tManufacturer: {Manufacturer}");
-                sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tSocket: {Socket}");
-                return sb.ToString();
-            }
-            protected set
-            {
-                Description = value;
-            }
         }
 
         public virtual string Socket { get; protected set; }

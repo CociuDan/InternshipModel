@@ -7,18 +7,18 @@ using AutoMapper;
 
 namespace GeekStore.UI.Controllers
 {
-    public class CaseController : Controller
+    public class ComponentsController : Controller
     {
         private readonly IGenericService<CaseDTO> _genericService;
         private readonly IMapper _mapper = null;
 
-        public CaseController(IGenericService<CaseDTO> genericService, IMapper mapper)
+        public ComponentsController(IGenericService<CaseDTO> genericService, IMapper mapper)
         {
             _genericService = genericService;
             _mapper = mapper;
         }
 
-        public ActionResult Case()
+        public ActionResult Cases()
         {
             IEnumerable<CaseViewModel> cases = _mapper.Map<IEnumerable<CaseDTO>, IEnumerable<CaseViewModel>>(_genericService.GetAll());
             return View(cases);

@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<GeekStore.UI.Models.CaseViewModel>
+
+<table id="items">
+    @{for (int i = 0; i < Model.Count() / 3; i++)
+        {
+            <tr>
+                @{ foreach (var pcCase in Model.Skip(i * 3).Take(3))
+                    {
+                        <td>
+                            <p>@pcCase.Description</p>
+                            <p>@pcCase.Model</p>
+                            <p>@pcCase.FormFactor</p>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                        </td>
+                    }
+                }
+
+            </tr>
+                    }
+    }
+</table>

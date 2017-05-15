@@ -19,11 +19,11 @@
             </div>
             <div id="navbarCollapse" class="collapse navbar-collapse ">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a id="home" href="#">Home</a></li>
+                    <li class="active"><a id="home" href="@Url.Action("Index", "Home")">Home</a></li>
                     <li class="dropdown">
                         <a id="components" data-toggle="dropdown" class="dropdown-toggle" href="#">Components <b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                            <li><a href="#">Cases</a></li>
+                            <li><a href="@Url.Action("Cases", "Components")">Cases</a></li>
                             <li><a href="#">Coolers</a></li>
                             <li><a href="#">CPUs</a></li>
                             <li><a href="#">Disks</a></li>
@@ -59,7 +59,7 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="login" href="#">Login</a></li>
+                    <li><a id="login" href="@Url.Action("Login", "Users")">Login</a></li>
                 </ul>
             </div>
         </div>

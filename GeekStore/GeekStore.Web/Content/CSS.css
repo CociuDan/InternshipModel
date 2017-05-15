@@ -117,3 +117,13 @@ margin-top: 11%;
 p :hover{
   border-color: red;
 }
+
+#items{
+    width:75%;
+    position:relative;
+    float:right;
+}
+
+#items td{
+    width:33%;
+}

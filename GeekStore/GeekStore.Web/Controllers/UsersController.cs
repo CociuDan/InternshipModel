@@ -20,21 +20,21 @@ namespace GeekStore.UI.Controllers
             _mapper = mapper;
         }
 
-        public ApplicationSingInManager SignInManager
+        //public ApplicationSingInManager SignInManager
 
-        {
+        //{
 
-            get { return HttpContext.GetOwinContext().Get<ApplicationSingInManager>(); }
+        //    get { return HttpContext.GetOwinContext().Get<ApplicationSingInManager>(); }
 
-        }
+        //}
 
-        public ApplicationUserManager UserManager
+        //public ApplicationUserManager UserManager
 
-        {
+        //{
 
-            get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+        //    get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
 
-        }
+        //}
 
         public ActionResult Register()
         {
@@ -44,7 +44,7 @@ namespace GeekStore.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if(ModelState.IsValid)
             {
@@ -52,28 +52,66 @@ namespace GeekStore.UI.Controllers
                 user.UserName = model.UserName;
                 user.FullName = model.FullName;
                 user.Password = model.Password;
-                user.IsAdmin = true;
-                var createResult = _userService.CreateAsync(user);
-                if(createResult.Exception)
+                user.IsAdmin = false;
+                await _userService.CreateAsync(user);
+                var result = await _userService.SignIn(model.UserName, model.Password, true, shouldLockout: true);
+                switch (result)
                 {
-
-                }
-                var createResult = UserManager.CreateAsync(user);
-                if(createResult.Status == TaskStatus.Created)
-                {
-                    var signInResult = SignInManager.SignInAsync(user, true, true);
-                    if (signInResult.Status == TaskStatus.Created)
-                    {
+                    case SignInStatus.Success:
                         return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                    }
-                    return RedirectToAction("Index", "Home");                    
-                }                
+                    case SignInStatus.Failure:
+                        return RedirectToAction("Login", "Users");
+                    default:
+                        return RedirectToAction("Login", "Users");
+                }
+                //if(createResult.Exception)
+                //{
+
+                //}
+                //var createResult = UserManager.CreateAsync(user);
+                //if(createResult.Status == TaskStatus.Created)
+                //{
+                //    var signInResult = SignInManager.SignInAsync(user, true, true);
+                //    if (signInResult.Status == TaskStatus.Created)
+                //    {
+                //        return RedirectToAction("Index", "Home");
+                //    }
+                //    else
+                //    {
+                //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                //    }
+                //    return RedirectToAction("Index", "Home");                    
+                //}                
             }
             return View(model);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var result = await _userService.SignIn(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToAction("Index", "Home");
+                case SignInStatus.Failure:
+                    return View("An error ocurred. Try again");
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
         }
     }
 }

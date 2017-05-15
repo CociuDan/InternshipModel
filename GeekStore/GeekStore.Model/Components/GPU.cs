@@ -23,25 +23,6 @@ namespace GeekStore.Domain.Model.Components
             VRAM = vram;
         }
 
-        public virtual string Description
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"\tManufacturer: {Manufacturer}");
-                sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tArchitecture: {Architecture}");
-                sb.AppendLine($"\tInterface Width: {InterfaceWidth}bit");
-                sb.AppendLine($"\tMemory Interface: {MemoryInterface}");
-                sb.AppendLine($"\tVRAM: {VRAM}GB");
-                return sb.ToString();
-            }
-            protected set
-            {
-                Description = value;
-            }
-        }
-
         public virtual string Architecture { get; protected set; }
         public virtual int InterfaceWidth { get; protected set; }
         public virtual string MemoryInterface { get; protected set; }

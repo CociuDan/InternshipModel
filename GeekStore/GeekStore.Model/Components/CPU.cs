@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace GeekStore.Domain.Model.Components
 {
@@ -27,27 +26,6 @@ namespace GeekStore.Domain.Model.Components
             Socket = socket;
             TDP = tdp;
             Threads = threads;
-        }
-
-        public virtual string Description
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"\tManufacturer: {Manufacturer}");
-                sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tCores: {Cores.ToString()}");
-                sb.AppendLine($"\tThreads: {Threads}");
-                sb.AppendLine($"\tBaseClock: {BaseFrequency}Ghz");
-                sb.AppendLine($"\tBoostClock: {BoostFrequency}Ghz");
-                sb.AppendLine($"\tSocket: {Socket}");
-                sb.AppendLine($"\tTDP: {TDP}W");
-                return sb.ToString();
-            }
-            protected set
-            {
-                Description = value;
-            }
         }
 
         public virtual decimal BaseFrequency { get; protected set; }

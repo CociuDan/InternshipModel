@@ -6,112 +6,97 @@ using GeekStore.Repository.Interfaces;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
 using GeekStore.Service.Managers;
+using Microsoft.AspNet.Identity.Owin;
 using NHibernate;
 
 namespace GeekStore.Service.Implimentation
 {
     public class UserService : IUserService
     {
-        private IUserRepository _userRepository;
         private IMapper _mapper;
         private ITransaction _transaction;
-        public UserService(IUserRepository userRepository, IMapper mapper, ITransaction transaction, ApplicationUserManager userManager)
-        {
+        private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+
+        public UserService(IUserRepository userRepository, IMapper mapper, ITransaction transaction, ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+       {
             _mapper = mapper;
-            _userRepository = userRepository;
             _transaction = transaction;
+            _userManager = userManager;
+            //_userManager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            _signInManager = signInManager;            
         }
 
-        public async Task CreateAsync(UserDTO user)
+        public async Task<SignInStatus> CreateAsync(UserDTO user)
         {
-            await _userRepository.CreateAsync(_mapper.Map<UserDTO, User>(user));
+            await _userManager.CreateAsync(_mapper.Map<UserDTO, User>(user), user.Password);
+            _transaction.Commit();
+            return await _signInManager.PasswordSignInAsync(user.UserName, user.Password, true, false);
+            //if (createResult.Exception)
+            //{
+
+            //}
+            //var createResult = UserManager.CreateAsync(user);
+            //if(createResult.Status == TaskStatus.Created)
+            //{
+            //    var signInResult = SignInManager.SignInAsync(user, true, true);
+            //    if (signInResult.Status == TaskStatus.Created)
+            //    {
+            //        return RedirectToAction("Index", "Home");
+            //    }
+            //    else
+            //    {
+            //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            //    }
+            //    return RedirectToAction("Index", "Home");                    
+            //}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
         public Task UpdateAsync(UserDTO user)
         {
-            return _userRepository.UpdateAsync(_mapper.Map<UserDTO, User>(user));
+            return _userManager.UpdateAsync(_mapper.Map<UserDTO, User>(user));
         }
 
         public Task DeleteAsync(UserDTO user)
         {
-            Task task = _userRepository.DeleteAsync(_mapper.Map<UserDTO, User>(user));
+            Task task = _userManager.DeleteAsync(_mapper.Map<UserDTO, User>(user));
             _transaction.Commit();
             return task;
         }
 
         public Task<UserDTO> FindByIdAsync(int userId)
         {
-            return _mapper.Map<Task<User>, Task<UserDTO>>(_userRepository.FindByIdAsync(userId));
+            return _mapper.Map<Task<User>, Task<UserDTO>>(_userManager.FindByIdAsync(userId));
         }
 
         public Task<UserDTO> FindByNameAsync(string userName)
         {
-            return _mapper.Map<Task<User>, Task<UserDTO>>(_userRepository.FindByNameAsync(userName));
+            return _mapper.Map<Task<User>, Task<UserDTO>>(_userManager.FindByNameAsync(userName));
         }
 
         public void Dispose()
         {
-            _userRepository.Dispose();
+            _userManager.Dispose();
         }
 
-        public Task SetPasswordHashAsync(UserDTO user, string passwordHash)
+        public Task<SignInStatus> SignIn(string userName, string password, bool rememberMe, bool shouldLockout)
         {
-            return _userRepository.SetPasswordHashAsync(_mapper.Map<UserDTO, User>(user), passwordHash);
-        }
-
-        public Task<string> GetPasswordHashAsync(UserDTO user)
-        {
-            return _userRepository.GetPasswordHashAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task<bool> HasPasswordAsync(UserDTO user)
-        {
-            return _userRepository.HasPasswordAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task<DateTimeOffset> GetLockoutEndDateAsync(UserDTO user)
-        {
-            return _userRepository.GetLockoutEndDateAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task SetLockoutEndDateAsync(UserDTO user, DateTimeOffset lockoutEnd)
-        {
-            return _userRepository.SetLockoutEndDateAsync(_mapper.Map<UserDTO, User>(user), lockoutEnd);
-        }
-
-        public Task<int> IncrementAccessFailedCountAsync(UserDTO user)
-        {
-            return _userRepository.IncrementAccessFailedCountAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task ResetAccessFailedCountAsync(UserDTO user)
-        {
-            return _userRepository.ResetAccessFailedCountAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task<int> GetAccessFailedCountAsync(UserDTO user)
-        {
-            return _userRepository.GetAccessFailedCountAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task<bool> GetLockoutEnabledAsync(UserDTO user)
-        {
-            return _userRepository.GetLockoutEnabledAsync(_mapper.Map<UserDTO, User>(user));
-        }
-
-        public Task SetLockoutEnabledAsync(UserDTO user, bool enabled)
-        {
-            return _userRepository.SetLockoutEnabledAsync(_mapper.Map<UserDTO, User>(user), enabled);
-        }
-
-        public Task SetTwoFactorEnabledAsync(UserDTO user, bool enabled)
-        {
-            return _userRepository.SetTwoFactorEnabledAsync(_mapper.Map<UserDTO, User>(user), enabled);
-        }
-
-        public Task<bool> GetTwoFactorEnabledAsync(UserDTO user)
-        {
-            return _userRepository.GetTwoFactorEnabledAsync(_mapper.Map<UserDTO, User>(user));
+            return _signInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout);
         }
     }
 }

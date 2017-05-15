@@ -6,6 +6,7 @@ namespace GeekStore.UI.Models
     {
         [Required]
         [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public virtual string UserName { get; set; }
 
@@ -13,5 +14,8 @@ namespace GeekStore.UI.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public virtual string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
     }
 }

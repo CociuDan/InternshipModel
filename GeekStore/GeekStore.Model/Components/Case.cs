@@ -1,7 +1,4 @@
-﻿using GeekStore.Domain;
-using GeekStore.Domain.Model.IDGenerator;
-using System;
-using System.Text;
+﻿using System;
 
 namespace GeekStore.Domain.Model.Components
 {
@@ -19,22 +16,6 @@ namespace GeekStore.Domain.Model.Components
             FormFactor = formFactor.ToString();
             Manufacturer = manufacturer;
             Model = model;
-        }
-
-        public virtual string Description
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"\tManufacturer: {Manufacturer}");
-                sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tForm Factor: {FormFactor}");
-                return sb.ToString();
-            }
-            protected set
-            {
-                Description = value;
-            }
         }
 
         public virtual string FormFactor { get; protected set; }

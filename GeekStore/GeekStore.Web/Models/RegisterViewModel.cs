@@ -5,12 +5,16 @@ namespace GeekStore.UI.Models
     public class RegisterViewModel
     {
         public virtual int Id { get; protected set; }
+
         [Required]
         [Display(Name = "Full Name")]
         public virtual string FullName { get; set; }
+
         public virtual bool IsAdmin { get; set; }
+
         [Required]
         [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public virtual string UserName { get; set; }
 

@@ -94,7 +94,7 @@
     <Compile Include="Interfaces\Components\ICaseService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
-    <Compile Include="Managers\ApplicationSingInManager.cs" />
+    <Compile Include="Managers\ApplicationSignInManager.cs" />
     <Compile Include="Managers\ApplicationUserManager.cs" />
     <Compile Include="Mapping\DTOToDomainEntityProfile.cs" />
     <Compile Include="DTO\CaseDTO.cs" />

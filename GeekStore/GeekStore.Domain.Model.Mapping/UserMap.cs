@@ -10,6 +10,7 @@ namespace GeekStore.Domain.Model.Mapping
             Map(x => x.UserName).Not.Nullable();
             Map(x => x.FullName).Not.Nullable();
             Map(x => x.IsAdmin).Not.Nullable();
+            Map(x => x.Password).Not.Nullable();
         }
     }
 }

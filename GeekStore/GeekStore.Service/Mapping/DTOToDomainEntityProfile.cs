@@ -4,6 +4,7 @@ using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;
 using GeekStore.Service.DTO;
+using System;
 using System.Threading.Tasks;
 
 namespace GeekStore.Service.Mapping
@@ -31,6 +32,7 @@ namespace GeekStore.Service.Mapping
             CreateMap<SpeakersDTO, Speakers>().ReverseMap();
             CreateMap<UserDTO, User>().ReverseMap();
             CreateMap<Task<UserDTO>, Task<User>>().ReverseMap();
+            CreateMap<Func<UserDTO, bool>, Func<User, bool>>().ReverseMap();
         }
     }
 }
