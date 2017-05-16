@@ -8,7 +8,7 @@ namespace GeekStore.UI.Models
 
         [Required]
         [Display(Name = "Full Name")]
-        public virtual string FullName { get; set; }
+        public string FullName { get; set; }
 
         public virtual bool IsAdmin { get; set; }
 

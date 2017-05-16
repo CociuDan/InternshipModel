@@ -3,26 +3,20 @@
 }
 @model IEnumerable<GeekStore.UI.Models.CaseViewModel>
 
-<table id="items">
+<table id="items" style="margin-top:75px;">
     @{for (int i = 0; i < Model.Count() / 3; i++)
         {
-            <tr>
+            <tr style="height:250px;">
                 @{ foreach (var pcCase in Model.Skip(i * 3).Take(3))
                     {
                         <td>
-                            <p>@pcCase.Description</p>
-                            <p>@pcCase.Model</p>
-                            <p>@pcCase.FormFactor</p>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
+                            <div style="margin-bottom:55px;">
+                                <img src="~/Images/Products/Components/@pcCase.Manufacturer @pcCase.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;"/>
+                                <p style="font-family: Arial Black;"><strong>@pcCase.Description </strong></p>
+                            </div>                            
                         </td>
                     }
                 }
-
             </tr>
                     }
     }

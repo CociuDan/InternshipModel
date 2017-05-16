@@ -11,7 +11,7 @@ namespace GeekStore.Domain.Model.Mapping
     {
         public ProductMap()
         {
-            Id(x => x.ID);
+            Id(x => x.ID).GeneratedBy.Identity();
             Map(x => x.Manufacturer);
             Map(x => x.Model);
         }

@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  GeekStore.UI.Models.WarehouseProductViewModel
+@using GeekStore.UI.Models
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Product, new { @class = "col-md-4 control-label" })
+    <div class="col-md-8">
+        @Html.DropDownList("productType", Model.ProductTypes, "-Select Type-")
+    </div>
+    <div id="partialPlaceHolder" style="display:none;"> </div>
+</div>
+<script>
+    $('#productType').change(function () {
+        debugger;
+        /* Get the selected value of dropdownlist */
+        var selected = $(this).val();
+
+        /* Request the partial view with .get request. */
+        $.get('/Products/GetPartialView/' + selected, function (data) {
+
+            /* data is the pure html returned from action method, load it to your page */
+            $('#partialPlaceHolder').html(data);
+            /* little fade in effect */
+            $('#partialPlaceHolder').fadeIn('fast');
+        });
+
+    });
+</script>

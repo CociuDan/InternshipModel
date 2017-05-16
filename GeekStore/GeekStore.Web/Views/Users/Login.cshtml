@@ -4,49 +4,53 @@
 @model GeekStore.UI.Models.LoginViewModel
 
             @using (Html.BeginForm("Login", "Users", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "width:450px; margin: 0 auto;" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4 style="text-align:center;">Login or Sign Up</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "example@mail.com", @style = "width:250px;"})
-                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "●●●●●●●●", @style = "width:250px;" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+            {                
+                <div style="align-content:center;">
+                    @Html.AntiForgeryToken()
+                    <h4 style="padding-left:80px;">Login or Sign Up</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "example@mail.com", @style = "width:250px;" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Login" class="btn btn-default" />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "●●●●●●●●", @style = "width:250px;" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                    <div class="col-md-5" style="float:left; margin-left:-25px;">
-                        <input type="button" id="btnClear" class="btn btn-default" value="Cancel" style="float:left; width:79px;" />
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9" style="margin-left:100px; margin-top:-15px;">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-3" style="margin-left:80px; margin-top:-10px;">
+                            <input type="submit" value="Login" class="btn btn-default" style="float:left;" />
+                        </div>
+                        <div class="col-md-5" style="float:left; margin-left:-45px; margin-top:-10px;">
+                            <input type="button" id="btnClear" class="btn btn-default" value="Cancel" style="float:left; width:79px;" />
+                        </div>
+                    </div>
+                    <div style="padding-left:80px; margin-top:-10px;">
+                        <p>
+                            @Html.ActionLink("Register as a new user", "Register")
+                        </p>
+                    </div>        
                 </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
             }
+@* Enable this once you have account confirmation enabled for password reset functionality
+    <p>
+        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+    </p>*@
     @*<div class="col-md-4">
         <section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })

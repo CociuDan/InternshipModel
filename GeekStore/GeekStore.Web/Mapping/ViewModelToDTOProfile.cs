@@ -9,7 +9,8 @@ namespace GeekStore.UI.Mapping
         public ViewModelToDTOProfile()
         {
             //Mapping View Models to DTOs
-            CreateMap<CaseViewModel, CaseDTO>().ReverseMap();
+            CreateMap<CaseViewModel, CaseDTO>();
+            CreateMap<CaseDTO, CaseViewModel>().ForMember(x => x.Description, o=>o.Ignore());
             CreateMap<CoolerViewModel, CoolerDTO>().ReverseMap();
             CreateMap<CPUViewModel, CPUDTO>().ReverseMap();
             CreateMap<DiskViewModel, DiskDTO>().ReverseMap();

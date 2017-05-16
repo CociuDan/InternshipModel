@@ -7,8 +7,7 @@ namespace GeekStore.Domain.Model.Mapping
         public WarehouseProductMap()
         {
             Id(x => x.ID);
-            Map(x => x.ItemID);
-            Map(x => x.ItemType);
+            References(x => x.Product);
             Map(x => x.Price);
             Map(x => x.Quantity);
         }
