@@ -17,45 +17,50 @@ namespace GeekStore.Infrastructure
 {
     public class ServiceLocator
     {
+        private readonly IKernel _kernel;
         private readonly string _connectionString;
-        public ServiceLocator(string connectionString)
+        public ServiceLocator(IKernel kernel, string connectionString)
         {
             _connectionString = connectionString;
+            _kernel = kernel;
         }
 
-        public void RegisterAll(IKernel kernel)
+        public void RegisterAll()
         {
             NHibernateProvider provider = new NHibernateProvider(_connectionString);
             //Registering Services
-            kernel.Register(Component.For(typeof(IGenericService<CaseDTO>)).ImplementedBy(typeof(GenericService<CaseDTO, Case>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<CoolerDTO>)).ImplementedBy(typeof(GenericService<CoolerDTO, Cooler>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<CPUDTO>)).ImplementedBy(typeof(GenericService<CPUDTO, CPU>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<DiskDTO>)).ImplementedBy(typeof(GenericService<DiskDTO, Disk>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<DisplayDTO>)).ImplementedBy(typeof(GenericService<DisplayDTO, Display>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<GPUDTO>)).ImplementedBy(typeof(GenericService<GPUDTO, GPU>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<HeadphonesDTO>)).ImplementedBy(typeof(GenericService<HeadphonesDTO, Headphones>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<KeyboardDTO>)).ImplementedBy(typeof(GenericService<KeyboardDTO, Keyboard>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<LaptopDTO>)).ImplementedBy(typeof(GenericService<LaptopDTO, Laptop>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<MonitorDTO>)).ImplementedBy(typeof(GenericService<MonitorDTO, Monitor>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<MotherboardDTO>)).ImplementedBy(typeof(GenericService<MotherboardDTO, Motherboard>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<MouseDTO>)).ImplementedBy(typeof(GenericService<MouseDTO, Mouse>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<PowerUnitDTO>)).ImplementedBy(typeof(GenericService<PowerUnitDTO, PowerUnit>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<RAMDTO>)).ImplementedBy(typeof(GenericService<RAMDTO, RAM>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IGenericService<SpeakersDTO>)).ImplementedBy(typeof(GenericService<SpeakersDTO, Speakers>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IUserService)).ImplementedBy(typeof(UserService)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<CaseDTO>)).ImplementedBy(typeof(GenericService<CaseDTO, Case>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IProductService<CaseDTO>)).ImplementedBy(typeof(ProductService<CaseDTO, Case>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<CoolerDTO>)).ImplementedBy(typeof(GenericService<CoolerDTO, Cooler>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<CPUDTO>)).ImplementedBy(typeof(GenericService<CPUDTO, CPU>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<DiskDTO>)).ImplementedBy(typeof(GenericService<DiskDTO, Disk>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<DisplayDTO>)).ImplementedBy(typeof(GenericService<DisplayDTO, Display>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<GPUDTO>)).ImplementedBy(typeof(GenericService<GPUDTO, GPU>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<HeadphonesDTO>)).ImplementedBy(typeof(GenericService<HeadphonesDTO, Headphones>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<KeyboardDTO>)).ImplementedBy(typeof(GenericService<KeyboardDTO, Keyboard>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<LaptopDTO>)).ImplementedBy(typeof(GenericService<LaptopDTO, Laptop>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<MonitorDTO>)).ImplementedBy(typeof(GenericService<MonitorDTO, Monitor>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<MotherboardDTO>)).ImplementedBy(typeof(GenericService<MotherboardDTO, Motherboard>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<MouseDTO>)).ImplementedBy(typeof(GenericService<MouseDTO, Mouse>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<PowerUnitDTO>)).ImplementedBy(typeof(GenericService<PowerUnitDTO, PowerUnit>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<RAMDTO>)).ImplementedBy(typeof(GenericService<RAMDTO, RAM>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericService<SpeakersDTO>)).ImplementedBy(typeof(GenericService<SpeakersDTO, Speakers>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IUserService)).ImplementedBy(typeof(UserService)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IWarehouseProductService)).ImplementedBy(typeof(WarehouseProductService)).LifestylePerWebRequest());
             //Registering Repositories
-            kernel.Register(Component.For(typeof(IGenericRepository<>)).ImplementedBy(typeof(GenericRepository<>)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IProductRepository)).ImplementedBy(typeof(ProductRepository)).LifestylePerWebRequest());
-            kernel.Register(Component.For(typeof(IUserRepository)).ImplementedBy(typeof(UserRepository)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IGenericRepository<>)).ImplementedBy(typeof(GenericRepository<>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IProductRepository<>)).ImplementedBy(typeof(ProductRepository<>)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IUserRepository)).ImplementedBy(typeof(UserRepository)).LifestylePerWebRequest());
+            _kernel.Register(Component.For(typeof(IWarehouseProductRepository)).ImplementedBy(typeof(WarehouseProductRepository)).LifestylePerWebRequest());
+            //Registering Default NHibernate Interfaces
+            _kernel.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
+            _kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory sessionFactory) => sessionFactory.OpenSession()).LifestylePerWebRequest());
+            _kernel.Register(Component.For<ITransaction>().UsingFactory((ISession session) => session.BeginTransaction()).LifestylePerWebRequest());
+        }
 
-
-
-            
-
-
-            kernel.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
-            kernel.Register(Component.For<ISession>().UsingFactory((ISessionFactory sessionFactory) => sessionFactory.OpenSession()).LifestylePerWebRequest());
-            kernel.Register(Component.For<ITransaction>().UsingFactory((ISession session) => session.BeginTransaction()).LifestylePerWebRequest());
+        public T Resolve<T>()
+        {
+            return _kernel.Resolve<T>();
         }
 
         //public static T Resolve<T>()

@@ -11,8 +11,7 @@ namespace GeekStore.Service.Managers
         {
             UserValidator = new UserValidator<User, int>(this);
             PasswordValidator = new PasswordValidator();
-            DefaultAccountLockoutTimeSpan = new TimeSpan(0, 5, 0);
-            
+            DefaultAccountLockoutTimeSpan = new TimeSpan(0, 5, 0);            
         }
     }
 }

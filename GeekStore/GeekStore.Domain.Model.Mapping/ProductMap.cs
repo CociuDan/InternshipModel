@@ -1,9 +1,4 @@
 ﻿using FluentNHibernate.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeekStore.Domain.Model.Mapping
 {
@@ -12,8 +7,11 @@ namespace GeekStore.Domain.Model.Mapping
         public ProductMap()
         {
             Id(x => x.ID).GeneratedBy.Identity();
-            Map(x => x.Manufacturer);
-            Map(x => x.Model);
+            Map(x => x.Manufacturer).Not.Nullable();
+            Map(x => x.Model).Not.Nullable();
+            Map(x => x.Price);
+            Map(x => x.Quantity);
+            //UseUnionSubclassForInheritanceMapping();
         }
     }
 }

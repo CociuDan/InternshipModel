@@ -22,8 +22,8 @@ namespace GeekStore.UI
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
             var container = new WindsorContainer().Install(FromAssembly.This());
-            var ioc = new ServiceLocator("GeekStoreConnectionString");
-            ioc.RegisterAll(container.Kernel);
+            var ioc = new ServiceLocator(container.Kernel, "GeekStoreConnectionString");
+            ioc.RegisterAll();
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
         }
     }

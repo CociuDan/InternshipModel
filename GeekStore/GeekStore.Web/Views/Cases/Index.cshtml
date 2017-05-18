@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model GeekStore.UI.Models.CaseProductsViewModel
+
+<div style="width:75%; float:right; position:relative;">
+    <div>
+        <table id="items" style="margin-top:75px;width:100%; margin-bottom:25px;">
+            @{for (int i = 0; i < Model.Cases.Count() / 3; i++)
+            {
+                    <tr style="height:250px;">
+                        @{ foreach (var pcCase in Model.Cases.Skip(i * 3).Take(3))
+                            {
+                                <td>
+                                    <div style="margin-bottom:55px;">
+                                        <img src="~/Images/Products/Components/@pcCase.Manufacturer @pcCase.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
+                                        <p style="font-family: Arial Black;"><strong>@pcCase.Description </strong></p>
+                                    </div>
+                                </td>
+                            }
+                        }
+                    </tr>
+                            }
+            }
+
+        </table>
+    </div>
+    <div style="position:absolute; bottom:0px;">
+        @if (Model.Pager.EndPage > 1)
+        {
+            <ul class="pagination">
+                @if (Model.Pager.CurrentPage > 1)
+                {
+                    <li>
+                        <a href="~/Cases/Index">First</a>
+                    </li>
+                    <li>
+                        <a href="~/Cases/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                    </li>
+                }
+
+                @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                {
+                    <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                        <a href="~/Cases/Index?page=@page">@page</a>
+                    </li>}
+
+                @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                {
+                    <li>
+                        <a href="~/Cases/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                    </li>
+                    <li>
+                        <a href="~/Cases/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>    
+</div>

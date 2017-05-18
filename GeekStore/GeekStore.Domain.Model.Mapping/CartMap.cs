@@ -8,7 +8,7 @@ namespace GeekStore.Domain.Model.Mapping
         {
             Id(x => x.ID);
             References(x => x.User).Not.Nullable();
-            References(x => x.Product).Not.Nullable();
+            HasMany(x => x.Product).KeyColumn("GarageId");
             Map(x => x.Quantity).Not.Nullable();
         }
     }

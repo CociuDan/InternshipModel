@@ -2,6 +2,10 @@
 {
     public class CaseViewModel : ProductViewModel
     {
+        public CaseViewModel()
+        {
+
+        }
         public string Description
         {
             get

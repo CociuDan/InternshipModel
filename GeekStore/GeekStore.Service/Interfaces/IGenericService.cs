@@ -1,15 +1,18 @@
 ﻿using GeekStore.Service.DTO;
+using System;
 using System.Collections.Generic;
 
 namespace GeekStore.Service.Interfaces
 {
-    public interface IGenericService<TDTOs> where TDTOs : EntityDTO
+    public interface IGenericService<TDTO> where TDTO : EntityDTO
     {
-        IEnumerable<TDTOs> GetAll();
-        IEnumerable<TDTOs> GetAllPaged(int page, int pageSize);
-        TDTOs GetById(int id);
-        void Save(TDTOs entity);
-        void Update(TDTOs entity);
-        void Delete(TDTOs entity);
+        IEnumerable<TDTO> GetAll();
+        IEnumerable<TDTO> GetAllPaged(int page, int pageSize);
+        //IEnumerable<TDTO> GetAllAvailablePaged(int page, int pageSize, Func<TDTO, bool> criteria);
+        TDTO GetById(int id);
+        void Save(TDTO entity);
+        void Update(TDTO entity);
+        void Delete(int entityId);
+
     }
 }

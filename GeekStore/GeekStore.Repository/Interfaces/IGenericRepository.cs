@@ -1,4 +1,5 @@
 ﻿using GeekStore.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace GeekStore.Repository.Interfaces
@@ -10,6 +11,6 @@ namespace GeekStore.Repository.Interfaces
         T GetById(int id);
         void Save(T entity);
         void Update(T entity);
-        void Delete(T entity);
+        void Delete(int entityId);
     }
 }

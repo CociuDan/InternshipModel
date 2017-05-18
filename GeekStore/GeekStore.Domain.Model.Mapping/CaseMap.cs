@@ -7,7 +7,7 @@ namespace GeekStore.Domain.Model.Mapping
     {
         public CaseMap()
         {
-            KeyColumn("ID");
+            KeyColumn("ID");            
             Map(x => x.FormFactor).Not.Nullable();
         }
     }

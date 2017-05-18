@@ -26,8 +26,7 @@ namespace GeekStore.UI.Controllers
         [HttpPost]
         public ActionResult Case(CaseViewModel caseViewModel)
         {
-            _service.Save(_mapper.Map<CaseViewModel, CaseDTO>(caseViewModel));
-            
+            _service.Save(_mapper.Map<CaseViewModel, CaseDTO>(caseViewModel));            
             return View();
         }
     }

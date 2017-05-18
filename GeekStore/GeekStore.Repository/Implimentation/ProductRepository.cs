@@ -2,10 +2,12 @@
 using GeekStore.Repository.Interfaces;
 using NHibernate;
 using System.Collections.Generic;
+using System;
+using System.Linq.Expressions;
 
 namespace GeekStore.Repository.Implimentation
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository<T> : IProductRepository<T> where T : Product
     {
         private ISession _session;
         public ProductRepository(ISession session)
@@ -13,12 +15,17 @@ namespace GeekStore.Repository.Implimentation
             _session = session;
         }
 
-        public IEnumerable<T> GetByManufacturer<T>(string manufacturer) where T : Product
+        public IEnumerable<T> GetAllAvailablePaged(int page, int pageSize, Expression<Func<T, bool>> criteria)
+        {
+            return _session.QueryOver<T>().Where(criteria).Skip((page - 1) * pageSize).Take(pageSize).List();
+        }
+
+        public IEnumerable<T> GetByManufacturer(string manufacturer)
         {
             return _session.QueryOver<T>().Where(x => x.Manufacturer == manufacturer).List();
         }
 
-        public IEnumerable<T> GetByModel<T>(string model) where T : Product
+        public IEnumerable<T> GetByModel(string model)
         {
             return _session.QueryOver<T>().Where(x => x.Model == model).List();
         }

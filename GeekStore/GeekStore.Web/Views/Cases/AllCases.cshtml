@@ -1,0 +1,59 @@
+﻿@model IEnumerable<GeekStore.UI.Models.CaseViewModel>
+
+@{
+    ViewBag.Title = "AllCases";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="width:75%; float:right;">
+    <h2 style="font-family: 'OCRAStd';">All Cases</h2>
+
+    <p>
+        <button onclick="location.href='@Url.Action("Create", "Cases")';return false;" class="btn btn-default">Create New</button>
+    </p>
+    <table class="table">
+        <tr>
+            <th style="font-family: Arial Black;">
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th style="font-family: Arial Black;">
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th style="font-family: Arial Black;">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th style="font-family: Arial Black;">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th style="font-family: Arial Black;">
+                @Html.DisplayNameFor(model => model.FormFactor)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td style="vertical-align:central;">
+                    <b>@Html.DisplayFor(modelItem => item.Manufacturer)</b>
+                </td>
+                <td style="vertical-align:central;">
+                    <b>@Html.DisplayFor(modelItem => item.Model)</b>
+                </td>
+                <td style="vertical-align:central;">
+                    <b>@Html.DisplayFor(modelItem => item.Price)</b>
+                </td>
+                <td style="vertical-align:central;">
+                    <b>@Html.DisplayFor(modelItem => item.Quantity)</b>
+                </td>
+                <td style="vertical-align:central;">
+                    <b>@Html.DisplayFor(modelItem => item.FormFactor)</b>
+                </td>
+                <td>
+                    <button onclick="location.href='@Url.Action("Edit", "Cases", new { caseId = item.ID })';return false;" class="btn btn-default">Edit</button>
+                    <button onclick="location.href='@Url.Action("Delete", "Cases", new { id = item.ID })';return false;" class="btn btn-default">Delete</button>
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

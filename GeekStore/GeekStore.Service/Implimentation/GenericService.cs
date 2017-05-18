@@ -5,6 +5,7 @@ using GeekStore.Service.DTO;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain;
 using AutoMapper;
+using NHibernate;
 
 namespace GeekStore.Service.Implimentation
 {
@@ -12,22 +13,29 @@ namespace GeekStore.Service.Implimentation
     {
         private readonly IGenericRepository<TDomainModel> _genericRepository = null;
         private readonly IMapper _mapper = null;
+        private readonly ITransaction _transaction = null;
 
-        public GenericService(IGenericRepository<TDomainModel> genericRepository, IMapper mapper)
+        public GenericService(IGenericRepository<TDomainModel> genericRepository, IMapper mapper, ITransaction transaction)
         {
             _genericRepository = genericRepository;
             _mapper = mapper;
+            _transaction = transaction;
         }
-        public void Delete(TDTOModel entity)
+        public void Delete(int entityId)
         {
-            var domainEntity = _mapper.Map<TDTOModel, TDomainModel>(entity);
-            _genericRepository.Delete(domainEntity);
+            _genericRepository.Delete(entityId);
+            _transaction.Commit();
         }
 
         public IEnumerable<TDTOModel> GetAll()
         {
             return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAll());
         }
+
+        //public IEnumerable<TDTOModel> GetAllAvailablePaged(int page, int pageSize, Func<TDTOModel, bool> criteria)
+        //{
+        //    /return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAllAvailablePaged(page, pageSize, _mapper.Map<Func<TDTOModel, bool>, Func<TDomainModel, bool>>(criteria)));
+        //}
 
         public IEnumerable<TDTOModel> GetAllPaged(int page, int pageSize)
         {
@@ -41,14 +49,14 @@ namespace GeekStore.Service.Implimentation
 
         public void Save(TDTOModel entity)
         {
-            var domainEntity = _mapper.Map<TDTOModel, TDomainModel>(entity);
-            _genericRepository.Save(domainEntity);
+            _genericRepository.Save(_mapper.Map<TDTOModel, TDomainModel>(entity));
+            _transaction.Commit();
         }
 
         public void Update(TDTOModel entity)
         {
-            var domainEntity = _mapper.Map<TDTOModel, TDomainModel>(entity);
-            _genericRepository.Update(domainEntity);
+            _genericRepository.Update(_mapper.Map<TDTOModel, TDomainModel>(entity));
+            _transaction.Commit();
         }
     }
 }

@@ -6,26 +6,30 @@
 @using GeekStore.UI.Models
 
 <div class="form-group">
-    @Html.LabelFor(m => m.Product, new { @class = "col-md-4 control-label" })
+    @Html.LabelFor(m => m.ProductType, new { @class = "col-md-4 control-label" })
     <div class="col-md-8">
         @Html.DropDownList("productType", Model.ProductTypes, "-Select Type-")
     </div>
-    <div id="partialPlaceHolder" style="display:none;"> </div>
+    <div id="partialPlaceHolder"></div>
 </div>
 <script>
     $('#productType').change(function () {
         debugger;
         /* Get the selected value of dropdownlist */
         var selected = $(this).val();
-
-        /* Request the partial view with .get request. */
-        $.get('/Products/GetPartialView/' + selected, function (data) {
-
-            /* data is the pure html returned from action method, load it to your page */
-            $('#partialPlaceHolder').html(data);
-            /* little fade in effect */
-            $('#partialPlaceHolder').fadeIn('fast');
-        });
-
+        if (selected != "")
+        {
+            /* Request the partial view with .get request. */
+            $.get('/Products/GetPartialView/', { partialViewName: selected }, function (data) {
+                $('#partialPlaceHolder').show();
+                /* data is the pure html returned from action method, load it to your page */
+                $('#partialPlaceHolder').html(data);
+                /* little fade in effect */
+                $('#partialPlaceHolder').fadeIn('fast');
+            });
+        }
+        else {
+            $('#partialPlaceHolder').html("");
+        }
     });
 </script>

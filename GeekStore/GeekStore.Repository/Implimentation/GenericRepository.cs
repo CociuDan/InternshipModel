@@ -2,13 +2,14 @@
 using NHibernate;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain;
+using System;
 
 namespace GeekStore.Repository.Implimentation
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : Entity
     {
         private ISession _session;
-        private ITransaction _transaction;
+
         public GenericRepository(ISession session)
         {
             _session = session;
@@ -39,13 +40,12 @@ namespace GeekStore.Repository.Implimentation
             _session.Update(entity);
         }
 
-        public void Delete(T entity)
+        public void Delete(int entityId)
         {
-            _transaction = _session.BeginTransaction();
+            var entity = GetById(entityId);
             _session.Delete(entity);
-            _transaction.Commit();
         }
-        
+
         //public IEnumerable<CPU> GetTOPCPUs()
         //{
         //    CPU cpuAlias = null;

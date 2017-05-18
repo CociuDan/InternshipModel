@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model  GeekStore.UI.Models.WarehouseProductViewModel
+@using GeekStore.UI.Models
+@{
+    List<SelectListItem> emptyList = new List<SelectListItem>();
+    emptyList.Add(new SelectListItem { Text = "Nothing", Value = "0" });
+ }
+<div class="form-group">
+    @Html.LabelFor(m => m.ProductType)
+    <div>
+        @Html.DropDownList("productTypes", Model.ProductTypes, "-Select Type-")
+    </div>
+</div>
+<div id="productDDL" class="form-group">
+    @Html.LabelFor(m => m.Product)
+    <div>
+        @Html.DropDownList("concreteProduct", emptyList, "-Select Product-")
+    </div>
+    <div id="partialPlaceHolder"></div>
+</div>
+
+<script>
+    $('#productTypes').change(function () {
+        debugger;
+        /* Get the selected value of dropdownlist */
+        var selectedVal = $(this).val();
+        if (selectedVal != "") {
+            /* Request the partial view with .get request. */
+            $.get('/' + selectedVal + 's/GetAll/', function (data) {
+                debugger;
+                //var div = document.querySelector("#container"),
+                //frag = document.createDocumentFragment(),
+                //var div = document.querySelector("#productDDL");
+                //frag = document.createDocumentFragment(),
+                //select = document.createElement("select");
+                //select.id = "concreteProduct";
+                //select.options.add(new Option("Select Product", ""));
+                var ddl = $('#concreteProduct');
+                $("option[value='0']").remove();
+                for (var i in data) {
+                    var option = document.createElement('option');
+                    option.text = data[i].Description;
+                    option.value = data[i].ID
+                    ddl.append(option);
+                };
+                //frag.appendChild(select);
+                //div.appendChild(frag);
+                //select.onchange = getPartialView();
+            });
+        }
+        else {
+            //$('#concreteProduct').remove();
+        }
+    });
+
+
+    $('#concreteProduct').change(function () {
+        debugger;
+        /* Get the selected value of dropdownlist */
+        var selectedType = $('#productTypes').val();
+        var selected = $('#concreteProduct').val();
+        if (selected != "") {
+            /* Request the partial view with .get request. */
+            $.get('/' + selectedType + 's/GetPartialView/', { productId: selected }, function (data) {
+                $('#partialPlaceHolder').show();
+                /* data is the pure html returned from action method, load it to your page */
+                $('#partialPlaceHolder').html(data);
+                /* little fade in effect */
+                $('#partialPlaceHolder').fadeIn('fast');
+            });
+        }
+        else {
+            $('#partialPlaceHolder').html("");
+        }
+    });
+</script>

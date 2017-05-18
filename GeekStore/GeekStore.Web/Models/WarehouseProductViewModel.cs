@@ -1,4 +1,5 @@
 ﻿using GeekStore.Service.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,12 +12,18 @@ namespace GeekStore.UI.Models
     {
         public WarehouseProductViewModel() { }
 
-        public System.Type Type { get; set; }
+        public Type Type { get; set; }
 
         public List<SelectListItem> ProductTypes { get; set; }
 
+        public List<SelectListItem> ProductsOfAType { get; set; }
+
         [Required]
         [Display(Name = "Product Type")]
+        public virtual Type ProductType { get; set; }
+
+        [Required]
+        [Display(Name = "Concrete Product")]
         public virtual ProductViewModel Product { get; set; }
 
         [Required]

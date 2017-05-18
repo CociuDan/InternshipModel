@@ -90,11 +90,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\WarehouseProductDTO.cs" />
     <Compile Include="Implimentation\GenericService.cs" />
+    <Compile Include="Implimentation\ProductService.cs" />
     <Compile Include="Implimentation\UserService.cs" />
+    <Compile Include="Implimentation\WarehouseProductService.cs" />
     <Compile Include="Interfaces\Components\ICaseService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
+    <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\IWarehouseProductService.cs" />
     <Compile Include="Managers\ApplicationSignInManager.cs" />
     <Compile Include="Managers\ApplicationUserManager.cs" />
     <Compile Include="Mapping\DTOToDomainEntityProfile.cs" />
