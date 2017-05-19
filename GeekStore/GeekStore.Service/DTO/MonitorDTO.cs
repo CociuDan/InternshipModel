@@ -1,9 +1,10 @@
 ﻿namespace GeekStore.Service.DTO
 {
-    public class MonitorDTO : DisplayDTO
+    public class MonitorDTO : ProductDTO
     {
-        public string Description { get; }
-        public string Manufacturer { get; }
-        public string Model { get; }
+        public string AspectRatio { get; set; }
+        public int MaxRefreshRate { get; set; }
+        public string Resolution { get; set; }
+        public decimal Size { get; set; }
     }
 }

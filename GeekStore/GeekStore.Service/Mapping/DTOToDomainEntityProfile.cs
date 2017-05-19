@@ -15,6 +15,7 @@ namespace GeekStore.Service.Mapping
     {
         public DTOToDomainEntityProfile()
         {
+            CreateMap<CartDTO, Cart>().ReverseMap();
             CreateMap<CaseDTO, Case>().ReverseMap();
             CreateMap<CoolerDTO, Cooler>().ReverseMap();
             CreateMap<CPUDTO, CPU>().ReverseMap();
@@ -34,17 +35,6 @@ namespace GeekStore.Service.Mapping
             CreateMap<SpeakersDTO, Speakers>().ReverseMap();
             CreateMap<UserDTO, User>().ReverseMap();
             CreateMap<WarehouseProductDTO, WarehouseProduct>().ReverseMap();
-            CreateMap<Task<UserDTO>, Task<User>>().ReverseMap();
-            CreateMap<Func<UserDTO, bool>, Func<User, bool>>().ReverseMap();
-            CreateMap<Func<CaseDTO, bool>, Func<Case, bool>>().ReverseMap();
-            CreateMap<Func<ProductDTO, bool>, Func<Product, bool>>().ReverseMap();
-            CreateMap<Func<EntityDTO, bool>, Func<Entity, bool>>().ReverseMap();
-
-            CreateMap<Expression<Func<CaseDTO, bool>>, Expression<Func<Case, bool>>>();
-            CreateMap<Expression<Func<ProductDTO, bool>>, Expression<Func<Product, bool>>>();
-            CreateMap<Expression<Func<EntityDTO, bool>>, Expression<Func<Entity, bool>>>();
-
-
         }
     }
 }

@@ -11,7 +11,8 @@ namespace GeekStore.Service.Interfaces
 {
     public interface IUserService
     {
-        Task<SignInStatus> CreateAsync(UserDTO user);
-        Task<SignInStatus> SignIn(string userName, string password, bool rememberMe, bool shouldLockout);
+        SignInStatus Create(UserDTO user);
+        SignInStatus SignIn(string userName, string password, bool rememberMe, bool shouldLockout);
+        UserDTO GetById(int userId);
     }
 }

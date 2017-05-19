@@ -8,6 +8,7 @@ using GeekStore.Service.Interfaces;
 using GeekStore.Service.Managers;
 using Microsoft.AspNet.Identity.Owin;
 using NHibernate;
+using Microsoft.AspNet.Identity;
 
 namespace GeekStore.Service.Implimentation
 {
@@ -27,11 +28,11 @@ namespace GeekStore.Service.Implimentation
             _signInManager = signInManager;            
         }
 
-        public async Task<SignInStatus> CreateAsync(UserDTO user)
+        public SignInStatus Create(UserDTO user)
         {
-            await _userManager.CreateAsync(_mapper.Map<UserDTO, User>(user), user.Password);
+            _userManager.CreateAsync(_mapper.Map<UserDTO, User>(user), user.Password);
             _transaction.Commit();
-            return await _signInManager.PasswordSignInAsync(user.UserName, user.Password, true, false);
+            return _signInManager.PasswordSignIn(user.UserName, user.Password, true, false);
             //if (createResult.Exception)
             //{
 
@@ -67,26 +68,25 @@ namespace GeekStore.Service.Implimentation
 
         }
 
-        public Task UpdateAsync(UserDTO user)
+        public void UpdateAsync(UserDTO user)
         {
-            return _userManager.UpdateAsync(_mapper.Map<UserDTO, User>(user));
+            _userManager.Update(_mapper.Map<UserDTO, User>(user));
         }
 
-        public Task DeleteAsync(UserDTO user)
+        public void DeleteAsync(UserDTO user)
         {
             Task task = _userManager.DeleteAsync(_mapper.Map<UserDTO, User>(user));
             _transaction.Commit();
-            return task;
         }
 
-        public Task<UserDTO> FindByIdAsync(int userId)
+        public UserDTO FindByIdAsync(int userId)
         {
-            return _mapper.Map<Task<User>, Task<UserDTO>>(_userManager.FindByIdAsync(userId));
+            return _mapper.Map<User, UserDTO>(_userManager.FindById(userId));
         }
 
-        public Task<UserDTO> FindByNameAsync(string userName)
+        public UserDTO FindByName(string userName)
         {
-            return _mapper.Map<Task<User>, Task<UserDTO>>(_userManager.FindByNameAsync(userName));
+            return _mapper.Map<User, UserDTO>(_userManager.FindByName(userName));
         }
 
         public void Dispose()
@@ -94,9 +94,14 @@ namespace GeekStore.Service.Implimentation
             _userManager.Dispose();
         }
 
-        public Task<SignInStatus> SignIn(string userName, string password, bool rememberMe, bool shouldLockout)
+        public SignInStatus SignIn(string userName, string password, bool rememberMe, bool shouldLockout)
         {
-            return _signInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout);
+            return _signInManager.PasswordSignIn(userName, password, rememberMe, shouldLockout);
+        }
+
+        public UserDTO GetById(int userId)
+        {
+            return _mapper.Map<User, UserDTO>(_userManager.FindById(userId));
         }
     }
 }

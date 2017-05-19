@@ -6,10 +6,10 @@ namespace GeekStore.Domain.Model.Mapping
     {
         public CartMap()
         {
-            Id(x => x.ID);
+            Id(x => x.ID).GeneratedBy.Identity();
+            References(x => x.Product).Not.Nullable();
             References(x => x.User).Not.Nullable();
-            HasMany(x => x.Product).KeyColumn("GarageId");
-            Map(x => x.Quantity).Not.Nullable();
+            Map(x => x.Quantity);
         }
     }
 }

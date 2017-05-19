@@ -46,7 +46,7 @@ namespace GeekStore.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public ActionResult Register(UserViewModel model)
         {
             if(ModelState.IsValid)
             {
@@ -55,8 +55,8 @@ namespace GeekStore.UI.Controllers
                 user.FullName = model.FullName;
                 user.Password = model.Password;
                 user.IsAdmin = false;
-                await _userService.CreateAsync(user);
-                var result = await _userService.SignIn(model.UserName, model.Password, true, shouldLockout: true);
+                _userService.Create(user);
+                var result = _userService.SignIn(model.UserName, model.Password, true, shouldLockout: true);
                 switch (result)
                 {
                     case SignInStatus.Success:
@@ -96,14 +96,14 @@ namespace GeekStore.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model)
+        public ActionResult Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var result = await _userService.SignIn(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
+            var result = _userService.SignIn(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:

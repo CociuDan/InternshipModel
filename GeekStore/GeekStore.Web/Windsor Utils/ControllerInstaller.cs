@@ -23,11 +23,13 @@ namespace GeekStore.UI.Windsor_Utils
             container.Register(FindControllers().LifestyleTransient());
             container.Register(Component.For<IMapper>().UsingFactoryMethod(x =>
             {
-                return new MapperConfiguration(c =>
+                var mapperConfig = new MapperConfiguration(c =>
                 {
                     c.AddProfile<ViewModelToDTOProfile>();
                     c.AddProfile<DTOToDomainEntityProfile>();
-                }).CreateMapper();
+                });             
+                mapperConfig.AssertConfigurationIsValid();
+                return mapperConfig.CreateMapper();
             }));
 
             container.Register(Component.For<ApplicationUserManager>().LifestylePerWebRequest());

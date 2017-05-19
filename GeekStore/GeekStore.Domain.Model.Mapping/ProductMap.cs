@@ -10,7 +10,7 @@ namespace GeekStore.Domain.Model.Mapping
             Map(x => x.Manufacturer).Not.Nullable();
             Map(x => x.Model).Not.Nullable();
             Map(x => x.Price);
-            Map(x => x.Quantity);
+            Map(x => x.AvailableQuantity);
             //UseUnionSubclassForInheritanceMapping();
         }
     }

@@ -24,23 +24,6 @@ namespace GeekStore.Domain.Model.Peripherals
             Size = size;
         }
 
-        public virtual string Description
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"\tManufacturer: {Manufacturer}");
-                sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tAspect Ratio: {AspectRatio}");
-                sb.AppendLine($"\tMax Refresh Rate: {MaxRefreshRate}Hz");
-                sb.AppendLine($"\tResolution: {Resolution}");
-                return sb.ToString();
-            }
-            protected set
-            {
-                Description = value;
-            }
-        }
 
         public virtual string AspectRatio { get; protected set; }
         public virtual int MaxRefreshRate { get; protected set; }

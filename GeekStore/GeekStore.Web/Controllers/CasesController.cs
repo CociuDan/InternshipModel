@@ -12,12 +12,16 @@ namespace GeekStore.UI.Controllers
     {
         private readonly IGenericService<CaseDTO> _genericService;
         private readonly IProductService<CaseDTO> _productService;
-        private readonly IMapper _mapper = null;
+        private readonly IGenericService<CartDTO> _cartService;
+        private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public CasesController(IGenericService<CaseDTO> genericService, IProductService<CaseDTO> productService, IMapper mapper)
+        public CasesController(IGenericService<CaseDTO> genericService, IGenericService<CartDTO> cartService, IProductService<CaseDTO> productService, IUserService userService, IMapper mapper)
         {
             _genericService = genericService;
+            _cartService = cartService;
             _productService = productService;
+            _userService = userService;
             _mapper = mapper;
         }
 
@@ -77,8 +81,26 @@ namespace GeekStore.UI.Controllers
             return RedirectToAction("AllCases");
         }
 
+        public ActionResult ViewDetails(int caseId)
+        {
+            var caseModel = new CaseViewModel();
+            caseModel = _mapper.Map<CaseDTO, CaseViewModel>(_genericService.GetById(caseId));
+            return View(caseModel);
+        }
 
-
+        [HttpPost]
+        public ActionResult ViewDetails(CaseViewModel caseModel)
+        {
+            var caseDTO = _genericService.GetById(caseModel.ID);
+            var userDTO = _userService.GetById(1);
+            var quantity = caseModel.Quantity;
+            var cartDTO = new CartDTO();
+            cartDTO.Product = caseDTO;
+            cartDTO.User = userDTO;
+            cartDTO.Quantity = quantity;            
+            _cartService.Save(cartDTO);
+            return RedirectToAction("Index");
+        }
 
 
 

@@ -2,7 +2,7 @@
 
 namespace GeekStore.UI.Models
 {
-    public class RegisterViewModel
+    public class UserViewModel
     {
         public virtual int Id { get; protected set; }
 

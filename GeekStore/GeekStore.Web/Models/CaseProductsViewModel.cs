@@ -6,5 +6,6 @@ namespace GeekStore.UI.Models
     {
         public Pager Pager { get; set; }
         public IEnumerable<CaseViewModel> Cases { get; set; }
+
     }
 }
