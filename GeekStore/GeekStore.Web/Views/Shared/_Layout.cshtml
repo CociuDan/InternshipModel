@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>MEGA PC</title>    
+    <title>MEGA PC</title>
     <link rel="stylesheet" type="text/css" href="~/Content/CSS.css">
     <link rel="stylesheet" href="~/Content/bootstrap.css">
     <link rel="stylesheet" href="~/Content/bootstrap-theme.css">
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
-    <script src="~/Scripts/Scripts.js"></script>     
+    @Styles.Render("~/Content/")
 </head>
 <body id="body">
     <div class="container">
@@ -22,7 +23,7 @@
                     <li class="dropdown">
                         <a id="components" data-toggle="dropdown" class="dropdown-toggle" href="#">Components <b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
-                            <li><a href="@Url.Action("Cases", "Components")">Cases</a></li>
+                            <li><a href="@Url.Action("Index", "Cases")">Cases</a></li>
                             <li><a href="#">Coolers</a></li>
                             <li><a href="#">CPUs</a></li>
                             <li><a href="#">Disks</a></li>
@@ -57,7 +58,19 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="login" href="@Url.Action("Login", "Users")">Login</a></li>
+                    @{
+                        if (Request.IsAuthenticated == true)
+                        {
+                            <li>
+                                <a>@User.Identity.GetUserName()</a>
+                            </li>
+                            <li>@Html.ActionLink("Log Off", "LogOff", "Users")</li>
+                        }
+                        else
+                        {
+                            <li><a id="login" href="@Url.Action("Login", "Users")">Login</a></li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
@@ -65,9 +78,12 @@
     <div class="container">
         @RenderBody()
     </div>
-    @*<script src='Lesson3Assignment.js'></script>*@
-    <script src="~/Scripts/jquery-3.1.1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("Scripts", required: false)
+    <script src="~/Scripts/Scripts.js"></script>  
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

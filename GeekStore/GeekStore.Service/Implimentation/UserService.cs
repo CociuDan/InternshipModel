@@ -103,5 +103,10 @@ namespace GeekStore.Service.Implimentation
         {
             return _mapper.Map<User, UserDTO>(_userManager.FindById(userId));
         }
+
+        public void SignOut()
+        {
+            _signInManager.SignOut();
+        }
     }
 }

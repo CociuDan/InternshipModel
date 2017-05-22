@@ -3,7 +3,9 @@ using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
 using GeekStore.UI.Managers;
 using GeekStore.UI.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -114,6 +116,12 @@ namespace GeekStore.UI.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
+        }
+
+        public ActionResult LogOff()
+        {
+            _userService.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
