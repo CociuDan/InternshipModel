@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+<div id="cpuTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#cpuTable').jtable({
+                title: 'All CPUs',
+                actions: {
+                    listAction: '/Admin/CPU/GetAll',
+                    createAction: '/Admin/CPU/Create',
+                    updateAction: '/Admin/CPU/Edit',
+                    deleteAction: '/Admin/CPU/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '10%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '20%'
+                    },
+                    BaseFrequency: {
+                        title: 'Base Frequency',
+                        width: '13%'
+                    },
+                    BoostFrequency: {
+                        title: 'Boost Frequency',
+                        width: '13%'
+                    },
+                    Cores: {
+                        title: 'Cores',
+                        width: '6%'
+                    },
+                    Threads: {
+                        title: 'Threads',
+                        width: '7%'
+                    },
+                    Socket: {
+                        title: 'Socket',
+                        width: '8%'
+                    },
+                    TDP: {
+                        title: 'TDP',
+                        width: '4%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '5%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '15%',
+                    }
+                }
+            });
+            $('#cpuTable').jtable('load');
+        });
+    </script>
+}

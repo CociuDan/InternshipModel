@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="ramTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#ramTable').jtable({
+                title: 'All GPUs',
+                actions: {
+                    listAction: '/Admin/RAM/GetAll',
+                    createAction: '/Admin/RAM/Create',
+                    updateAction: '/Admin/RAM/Edit',
+                    deleteAction: '/Admin/RAM/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '14%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '14%'
+                    },
+                    Capacity: {
+                        title: 'Capacity',
+                        width: '14%'
+                    },
+                    Frequency: {
+                        title: 'Frequency',
+                        width: '14%'
+                    },
+                    Generation: {
+                        title: 'Generation',
+                        width: '14%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '14%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '14%',
+                    }
+                }
+            });
+            $('#ramTable').jtable('load');
+        });
+    </script>
+}

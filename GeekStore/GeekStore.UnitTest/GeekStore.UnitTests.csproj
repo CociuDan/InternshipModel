@@ -102,10 +102,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeekStore.Factory\GeekStore.Factory.csproj">
-      <Project>{25DB1F25-18D8-46E1-9C6E-6ADC90508106}</Project>
-      <Name>GeekStore.Factory</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.Model.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
       <Name>GeekStore.Domain.Model</Name>

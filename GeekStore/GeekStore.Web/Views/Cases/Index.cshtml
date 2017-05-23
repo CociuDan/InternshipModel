@@ -3,6 +3,9 @@
 }
 @model GeekStore.UI.Models.CaseProductsViewModel
 
+<div style="background-color:#333; width:25%; float:left; height:auto; min-height:1320px; margin-left:-14px;">
+
+</div>
 <div style="width:75%; float:right; position:relative;">
     <div>
         <table id="items" style="margin-top:75px;width:100%; margin-bottom:25px;">
@@ -31,7 +34,7 @@
 
         </table>
     </div>
-    <div style="position:absolute; bottom:0px;">
+    <div style="position:absolute; margin-top: 1280px;">
         @if (Model.Pager.EndPage > 1)
         {
             <ul class="pagination">

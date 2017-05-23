@@ -15,9 +15,10 @@ namespace GeekStore.Repository.Implimentation
             _session = session;
         }
 
-        public void Save(T entity)
+        public int Save(T entity)
         {
             _session.SaveOrUpdate(entity);
+            return entity.ID;
         }
 
         public IEnumerable<T> GetAll()

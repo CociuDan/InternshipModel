@@ -1,0 +1,55 @@
+﻿<div id="table">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#table').jtable({
+                title: 'All GPUs',
+                actions: {
+                    listAction: '/Admin/Headphones/GetAll',
+                    createAction: '/Admin/Headphones/Create',
+                    updateAction: '/Admin/Headphones/Edit',
+                    deleteAction: '/Admin/Headphones/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '14%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '25%'
+                    },
+                    Impendance: {
+                        title: 'Impendance',
+                        width: '10%'
+                    },
+                    MaxVolume: {
+                        title: 'MaxVolume',
+                        width: '14%'
+                    },
+                    Type: {
+                        title: 'Type',
+                        width: '14%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '8%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '10%',
+                    }
+                }
+            });
+            $('#table').jtable('load');
+        });
+    </script>
+}

@@ -23,24 +23,6 @@ namespace GeekStore.Domain.Model.Peripherals
             Type = type.ToString();
         }
 
-        public virtual string Description
-        {
-            get
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"\tManufacturer: {Manufacturer}");
-                sb.AppendLine($"\tModel: {Model}");
-                sb.AppendLine($"\tImpendance: {Impendance}Ω");
-                sb.AppendLine($"\tMaxVolume: {MaxVolume}db");
-                sb.AppendLine($"\tType: {Type}");
-                return sb.ToString();
-            }
-            protected set
-            {
-                Description = value;
-            }
-        }
-
         public virtual int Impendance { get; protected set; }
         public virtual int MaxVolume { get; protected set; }
         public virtual string Type { get; protected set; }

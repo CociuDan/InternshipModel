@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="caseTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#caseTable').jtable({
+                title: 'All Cases',
+                actions: {
+                    listAction: '/Admin/Case/GetAll',
+                    createAction: '/Admin/Case/Create',
+                    updateAction: '/Admin/Case/Edit',
+                    deleteAction: '/Admin/Case/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '25%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '40%'
+                    },
+                    FormFactor: {
+                        title: 'Form Factor',
+                        width: '10%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '10%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '15%',
+                    }
+                }
+            });
+            $('#caseTable').jtable('load');
+        });
+    </script>
+}

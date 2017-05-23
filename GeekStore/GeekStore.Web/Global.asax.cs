@@ -27,6 +27,7 @@ namespace GeekStore.UI
             ioc.RegisterAll();
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ControllerBuilder.Current.DefaultNamespaces.Add("GeekStore.UI.Controllers");
         }
     }
 }

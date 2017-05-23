@@ -47,10 +47,11 @@ namespace GeekStore.Service.Implimentation
             return _mapper.Map<TDomainModel, TDTOModel>(_genericRepository.GetById(id));
         }
 
-        public void Save(TDTOModel entity)
+        public int Save(TDTOModel entity)
         {
-            _genericRepository.Save(_mapper.Map<TDTOModel, TDomainModel>(entity));
+            var id = _genericRepository.Save(_mapper.Map<TDTOModel, TDomainModel>(entity));
             _transaction.Commit();
+            return id;
         }
 
         public void Update(TDTOModel entity)

@@ -1,0 +1,59 @@
+﻿<div id="table">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#table').jtable({
+                title: 'All GPUs',
+                actions: {
+                    listAction: '/Admin/GPU/GetAll',
+                    createAction: '/Admin/GPU/Create',
+                    updateAction: '/Admin/GPU/Edit',
+                    deleteAction: '/Admin/GPU/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '14%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '25%'
+                    },
+                    Architecture: {
+                        title: 'Architecture',
+                        width: '10%'
+                    },
+                    InterfaceWidth: {
+                        title: 'Interface Width',
+                        width: '14%'
+                    },
+                    MemoryInterface: {
+                        title: 'Memory Interface',
+                        width: '14%'
+                    },
+                    VRAM: {
+                        title: 'VRAM',
+                        width: '5%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '8%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '10%',
+                    }
+                }
+            });
+            $('#table').jtable('load');
+        });
+    </script>
+}

@@ -2,9 +2,9 @@
 {
     public class RAMDTO : ProductDTO
     {
-        public string Description { get; }
-        public int Capacity { get; }
-        public int Frequency { get; }
-        public string Generation { get; }
+        public int Capacity { get; set; }
+        public string Description { get; set; }
+        public int Frequency { get; set; }
+        public string Generation { get; set; }
     }
 }

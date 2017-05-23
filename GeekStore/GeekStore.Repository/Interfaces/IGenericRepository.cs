@@ -9,7 +9,7 @@ namespace GeekStore.Repository.Interfaces
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAllPaged(int page, int pageSize);
         T GetById(int id);
-        void Save(T entity);
+        int Save(T entity);
         void Update(T entity);
         void Delete(int entityId);
     }

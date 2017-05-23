@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="tabs">
+    <ul>
+        <li>
+            <a href="#tabs1">Components</a>
+        </li>
+        <li>
+            <a href="#tabs2">PCs</a>
+        </li>
+        <li>
+            <a href="#tabs3">Peripherals</a>
+        </li>
+    </ul>
+    <div id="tabs1">
+        <div id="tabs">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Case")">Cases</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Cooler")">Coolers</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "CPU")">CPUs</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Disk")">Disks</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "GPU")">GPUs</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Motherboard")">Motherboards</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "PowerUnit")">PowerUnits</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "RAM")">RAMs</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="tabs2">
+        <div id="tabs">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Desktop")">Desktops</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Laptop")">Laptops</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="tabs3">
+        <div id="tabs">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Headphones")">Headphones</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Keyboards")">Keyboards</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Monitors")">Monitors</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Mouses")">Mouses</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Speakers")">Speakers</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#tabs').tabs();
+    $('#tabs1').tabs();
+    $('#tabs2').tabs();
+    $('#tabs3').tabs();
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#tabs").tabs({
+            beforeLoad: function (event, ui) {
+                ui.jqXHR.fail(function () {
+                    ui.panel.html(
+                        "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+                        "If this wouldn't be a demo.");
+                });
+            }
+        });
+    });
+</script>

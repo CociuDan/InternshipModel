@@ -134,3 +134,8 @@ p :hover{
     text-decoration:none;
     color: #fad400
 }
+
+.adminTable{
+    margin-left:-30px;
+    max-width:1000px;
+}

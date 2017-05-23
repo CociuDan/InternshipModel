@@ -10,7 +10,7 @@ namespace GeekStore.Service.Interfaces
         IEnumerable<TDTO> GetAllPaged(int page, int pageSize);
         //IEnumerable<TDTO> GetAllAvailablePaged(int page, int pageSize, Func<TDTO, bool> criteria);
         TDTO GetById(int id);
-        void Save(TDTO entity);
+        int Save(TDTO entity);
         void Update(TDTO entity);
         void Delete(int entityId);
 
