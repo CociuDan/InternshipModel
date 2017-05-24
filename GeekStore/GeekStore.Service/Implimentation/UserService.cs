@@ -113,5 +113,10 @@ namespace GeekStore.Service.Implimentation
         {
             return _mapper.Map<User, UserDTO>(_userManager.FindByName(userName));
         }
+
+        //public int GetAllCount()
+        //{
+        //    var users = _userManager.Users;
+        //}
     }
 }

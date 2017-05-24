@@ -2,7 +2,7 @@
 
 namespace GeekStore.Domain.Model
 {
-    public class User : IUser<int>
+    public class User : Entity, IUser<int>
     {
         public User() { }
         public virtual int Id { get; protected set; }

@@ -746,6 +746,7 @@
     <Compile Include="Areas\Admin\Controllers\PowerUnitController.cs" />
     <Compile Include="Areas\Admin\Controllers\RAMController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpeakersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
@@ -794,7 +795,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Images\Products\Components\" />
+    <Folder Include="Images\Products\Components\Cases\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeekStore.Infrastructure.IoC\GeekStore.Infrastructure.IoC.csproj">

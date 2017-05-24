@@ -16,5 +16,6 @@ namespace GeekStore.Service.Interfaces
         UserDTO GetById(int userId);
         void SignOut();
         UserDTO GetByName(string userName);
+        //int GetAllCount();
     }
 }
