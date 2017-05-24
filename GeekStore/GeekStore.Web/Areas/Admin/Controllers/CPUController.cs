@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
 using GeekStore.UI.Models;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
+    [AdminRoleRequired]
     public class CPUController : Controller
     {
         private readonly IGenericService<CPUDTO> _genericService;
@@ -26,10 +28,11 @@ namespace GeekStore.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetAll()
+        public JsonResult GetAll(PagedRequestDescription pageDescription)
         {
-            var cpus = _mapper.Map<IEnumerable<CPUDTO>, IEnumerable<CPUViewModel>>(_genericService.GetAll());
-            return Json(new { Result = "OK", Records = cpus });
+            int count = _genericService.GetAllCount();
+            var cpus = _mapper.Map<IEnumerable<CPUDTO>, IEnumerable<CPUViewModel>>(_genericService.GetAllPaged(pageDescription));
+            return Json(new { Result = "OK", Records = cpus, TotalRecordCount = count });
         }
 
         [HttpPost]

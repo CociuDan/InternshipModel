@@ -2,7 +2,6 @@
 {
     public class PowerUnitDTO : ProductDTO
     {
-        public string Description { get; }
-        public int Output { get; }
+        public int Output { get; set; }
     }
 }

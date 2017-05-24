@@ -2,8 +2,7 @@
 {
     public class KeyboardDTO : ProductDTO
     {
-        public string Description { get; }
-        public bool BackLight { get; }
-        public string Type { get; }
+        public bool BackLight { get; set; }
+        public string Type { get; set; }
     }
 }

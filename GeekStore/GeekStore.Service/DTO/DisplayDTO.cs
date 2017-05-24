@@ -2,9 +2,9 @@
 {
     public class DisplayDTO : EntityDTO
     {
-        public string AspectRatio { get; }
-        public int MaxRefreshRate { get; }
-        public string Resolution { get; }
-        public decimal Size { get; }
+        public string AspectRatio { get; set; }
+        public int MaxRefreshRate { get; set; }
+        public string Resolution { get; set; }
+        public decimal Size { get; set; }
     }
 }

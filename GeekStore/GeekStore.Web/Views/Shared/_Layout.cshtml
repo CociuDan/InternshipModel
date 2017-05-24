@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-
+@using GeekStore.UI.Models;
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
             </div>
             <div id="navbarCollapse" class="collapse navbar-collapse ">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a id="home" href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="active"><a id="home" href="@Url.Action("Index", "Home", new { area = ""})">Home</a></li>
                     <li class="dropdown">
                         <a id="components" data-toggle="dropdown" class="dropdown-toggle" href="#">Components <b class="caret"></b></a>
                         <ul role="menu" class="dropdown-menu">
@@ -63,13 +63,13 @@
                         if (Request.IsAuthenticated == true)
                         {
                             <li>
-                                <a>@User.Identity.GetUserName()</a>
+                                <a id="adminPage" href="@Url.Action("Index", "Home", new { area = "Admin" })">@User.Identity.GetUserName()</a>
                             </li>
-                            <li>@Html.ActionLink("Log Off", "LogOff", "Users")</li>
+                            <li><a id="login" href="@Url.Action("LogOff", "Users", new { area = ""})">Log Off</a></li>
                         }
                         else
                         {
-                            <li><a id="login" href="@Url.Action("Login", "Users")">Login</a></li>
+                            <li><a id="login" href="@Url.Action("Login", "Users", new { area = ""})">Login</a></li>
                         }
                     }
                 </ul>

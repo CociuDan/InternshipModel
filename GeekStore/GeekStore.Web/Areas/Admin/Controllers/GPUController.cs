@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
+using GeekStore.UI.Extensions;
 using GeekStore.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
+    [AdminRoleRequired]
     public class GPUController : Controller
     {
         private readonly IGenericService<GPUDTO> _genericService;
@@ -21,15 +24,16 @@ namespace GeekStore.UI.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<GPUViewModel> cpus = null;
-            return View(cpus);
+            IEnumerable<GPUViewModel> gpus = null;
+            return View(gpus);
         }
 
         [HttpPost]
-        public JsonResult GetAll()
+        public JsonResult GetAll(PagedRequestDescription pageDescription)
         {
-            var cpus = _mapper.Map<IEnumerable<GPUDTO>, IEnumerable<GPUViewModel>>(_genericService.GetAll());
-            return Json(new { Result = "OK", Records = cpus });
+            int count = _genericService.GetAllCount();
+            var gpus = _mapper.Map<IEnumerable<GPUDTO>, IEnumerable<GPUViewModel>>(_genericService.GetAllPaged(pageDescription));
+            return Json(new { Result = "OK", Records = gpus, TotalRecordCount = count });
         }
 
         [HttpPost]
@@ -62,11 +66,11 @@ namespace GeekStore.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Delete(GPUViewModel cpuModel)
+        public JsonResult Delete(GPUViewModel gpuModel)
         {
             try
             {
-                _genericService.Delete(cpuModel.ID);
+                _genericService.Delete(gpuModel.ID);
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
+using GeekStore.UI.Extensions;
 using GeekStore.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
+    [AdminRoleRequired]
     public class RAMController : Controller
     {
         private readonly IGenericService<RAMDTO> _genericService;
@@ -26,10 +29,11 @@ namespace GeekStore.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetAll()
+        public JsonResult GetAll(PagedRequestDescription pageDescription)
         {
-            var rams = _mapper.Map<IEnumerable<RAMDTO>, IEnumerable<RAMViewModel>>(_genericService.GetAll());
-            return Json(new { Result = "OK", Records = rams });
+            int count = _genericService.GetAllCount();
+            var rams = _mapper.Map<IEnumerable<RAMDTO>, IEnumerable<RAMViewModel>>(_genericService.GetAllPaged(pageDescription));
+            return Json(new { Result = "OK", Records = rams, TotalRecordCount = count });
         }
 
         [HttpPost]

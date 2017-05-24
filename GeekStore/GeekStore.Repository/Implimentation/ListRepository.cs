@@ -5,6 +5,7 @@ using System;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain;
 using GeekStore.Domain.Model;
+using GeekStore.Domain.Model.PCs;
 
 namespace GeekStore.Repository.Implimentation
 {

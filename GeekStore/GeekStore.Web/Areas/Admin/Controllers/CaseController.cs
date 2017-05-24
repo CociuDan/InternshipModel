@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
+using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
+using GeekStore.UI.Extensions;
 using GeekStore.UI.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
+    [AdminRoleRequired]
     public class CaseController : Controller
     {
         private readonly IGenericService<CaseDTO> _genericService;
@@ -27,10 +29,11 @@ namespace GeekStore.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetAll()
+        public JsonResult GetAll(PagedRequestDescription pageDescription)
         {
-            var cases = _mapper.Map<IEnumerable<CaseDTO>, IEnumerable<CaseViewModel>>(_genericService.GetAll());
-            return Json(new { Result = "OK", Records = cases });
+            int count = _genericService.GetAllCount();
+            var cases = _mapper.Map<IEnumerable<CaseDTO>, IEnumerable<CaseViewModel>>(_genericService.GetAllPaged(pageDescription));
+            return Json(new { Result = "OK", Records = cases, TotalRecordCount = count });
         }
 
         [HttpPost]

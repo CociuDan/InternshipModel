@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="diskTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#diskTable').jtable({
+                title: 'All Disks',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/Disk/GetAll',
+                    createAction: '/Admin/Disk/Create',
+                    updateAction: '/Admin/Disk/Edit',
+                    deleteAction: '/Admin/Disk/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '10%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '20%'
+                    },
+                    Capacity: {
+                        title: 'Capacity',
+                        width: '13%'
+                    },
+                    Type: {
+                        title: 'Type',
+                        width: '8%'
+                    },
+                    RPM: {
+                        title: 'RPM',
+                        width: '13%'
+                    },
+                    ReadSpeed: {
+                        title: 'Read Speed',
+                        width: '6%'
+                    },
+                    WriteSpeed: {
+                        title: 'Write Speed',
+                        width: '7%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '5%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '15%',
+                    }
+                }
+            });
+            $('#diskTable').jtable('load');
+        });
+    </script>
+}

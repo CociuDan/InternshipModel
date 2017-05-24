@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using GeekStore.Domain.Model.PCs;
 
 namespace GeekStore.Domain.Model.Mapping
 {
@@ -14,7 +15,6 @@ namespace GeekStore.Domain.Model.Mapping
             References(x => x.Motherboard).LazyLoad();
             References(x => x.PowerUnit).LazyLoad();
             References(x => x.RAM).LazyLoad();
-            Map(x => x.RAMQuantity).Not.Nullable();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
+using GeekStore.UI.Extensions;
 using GeekStore.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
+    [AdminRoleRequired]
     public class HeadphonesController : Controller
     {
         private readonly IGenericService<HeadphonesDTO> _genericService;
@@ -21,24 +24,25 @@ namespace GeekStore.UI.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<HeadphonesViewModel> rams = null;
-            return View(rams);
+            IEnumerable<HeadphonesViewModel> headphones = null;
+            return View(headphones);
         }
 
         [HttpPost]
-        public JsonResult GetAll()
+        public JsonResult GetAll(PagedRequestDescription pageDescription)
         {
-            var rams = _mapper.Map<IEnumerable<HeadphonesDTO>, IEnumerable<HeadphonesViewModel>>(_genericService.GetAll());
-            return Json(new { Result = "OK", Records = rams });
+            int count = _genericService.GetAllCount();
+            var headphones = _mapper.Map<IEnumerable<HeadphonesDTO>, IEnumerable<HeadphonesViewModel>>(_genericService.GetAllPaged(pageDescription));
+            return Json(new { Result = "OK", Records = headphones, TotalRecordCount = count });
         }
 
         [HttpPost]
-        public JsonResult Edit(HeadphonesViewModel ramModel)
+        public JsonResult Edit(HeadphonesViewModel headphoneModel)
         {
             try
             {
-                _genericService.Update(_mapper.Map<HeadphonesViewModel, HeadphonesDTO>(ramModel));
-                return Json(new { Result = "OK", Record = ramModel });
+                _genericService.Update(_mapper.Map<HeadphonesViewModel, HeadphonesDTO>(headphoneModel));
+                return Json(new { Result = "OK", Record = headphoneModel });
             }
             catch (Exception ex)
             {
@@ -47,13 +51,13 @@ namespace GeekStore.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(HeadphonesViewModel ramModel)
+        public JsonResult Create(HeadphonesViewModel headphoneModel)
         {
             try
             {
-                var id = _genericService.Save(_mapper.Map<HeadphonesViewModel, HeadphonesDTO>(ramModel));
-                ramModel.ID = id;
-                return Json(new { Result = "OK", Record = ramModel });
+                var id = _genericService.Save(_mapper.Map<HeadphonesViewModel, HeadphonesDTO>(headphoneModel));
+                headphoneModel.ID = id;
+                return Json(new { Result = "OK", Record = headphoneModel });
             }
             catch (Exception ex)
             {
@@ -62,11 +66,11 @@ namespace GeekStore.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Delete(HeadphonesViewModel ramModel)
+        public JsonResult Delete(HeadphonesViewModel headphoneModel)
         {
             try
             {
-                _genericService.Delete(ramModel.ID);
+                _genericService.Delete(headphoneModel.ID);
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)

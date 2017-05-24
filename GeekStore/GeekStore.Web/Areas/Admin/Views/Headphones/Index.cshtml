@@ -1,8 +1,8 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
 }
 
-<div id="table">
+<div id="headphonesTable" style="margin-left:-30px; max-width:1000px;">
 
 </div>
 
@@ -10,8 +10,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             debugger;
-            $('#table').jtable({
-                title: 'All GPUs',
+            $('#headphonesTable').jtable({
+                title: 'All Headphones',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
                 actions: {
                     listAction: '/Admin/Headphones/GetAll',
                     createAction: '/Admin/Headphones/Create',
@@ -36,7 +40,7 @@
                         width: '10%'
                     },
                     MaxVolume: {
-                        title: 'MaxVolume',
+                        title: 'Max Volume',
                         width: '14%'
                     },
                     Type: {
@@ -53,7 +57,7 @@
                     }
                 }
             });
-            $('#table').jtable('load');
+            $('#headphonesTable').jtable('load');
         });
     </script>
 }

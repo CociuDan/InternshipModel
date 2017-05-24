@@ -1,6 +1,7 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
 using GeekStore.Infrastructure;
+using GeekStore.Infrastructure.IoC;
 using GeekStore.UI.App_Start;
 using GeekStore.UI.Windsor_Utils;
 using System;
@@ -22,9 +23,8 @@ namespace GeekStore.UI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
-            var container = new WindsorContainer().Install(FromAssembly.This());
-            var ioc = new ServiceLocator(container.Kernel, "GeekStoreConnectionString");
-            ioc.RegisterAll();
+            var container = new WindsorContainer().Install(FromAssembly.This(), new ServiceModule("GeekStoreConnectionString"));
+            ServiceLocator.Kernel = container.Kernel;
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ControllerBuilder.Current.DefaultNamespaces.Add("GeekStore.UI.Controllers");

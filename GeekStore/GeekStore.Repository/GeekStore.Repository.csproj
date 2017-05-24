@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Implimentation\GenericRepository.cs" />
     <Compile Include="Implimentation\FileRepository.cs" />
     <Compile Include="Implimentation\ListRepository.cs" />
@@ -98,9 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeekStore.Domain.CustomModel\GeekStore.Domain.CustomModel.csproj">
-      <Project>{40B54064-58A4-43B0-905E-A3406F9C2AF5}</Project>
-      <Name>GeekStore.Domain.CustomModel</Name>
+    <ProjectReference Include="..\GeekStore.IoC\GeekStore.Infrastucture.Extensions.csproj">
+      <Project>{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}</Project>
+      <Name>GeekStore.Infrastucture.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.Model.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>

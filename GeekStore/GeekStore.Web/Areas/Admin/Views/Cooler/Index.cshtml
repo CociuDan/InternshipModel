@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="coolerTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#coolerTable').jtable({
+                title: 'All Coolers',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/Cooler/GetAll',
+                    createAction: '/Admin/Cooler/Create',
+                    updateAction: '/Admin/Cooler/Edit',
+                    deleteAction: '/Admin/Cooler/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '25%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '40%'
+                    },
+                    Socket: {
+                        title: 'Socket',
+                        width: '10%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '10%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '15%',
+                    }
+                }
+            });
+            $('#coolerTable').jtable('load');
+        });
+    </script>
+}

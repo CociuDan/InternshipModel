@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="powerUnitTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#powerUnitTable').jtable({
+                title: 'All Power Units',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/PowerUnit/GetAll',
+                    createAction: '/Admin/PowerUnit/Create',
+                    updateAction: '/Admin/PowerUnit/Edit',
+                    deleteAction: '/Admin/PowerUnit/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '10%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '20%'
+                    },
+                    Output: {
+                        title: 'Output',
+                        width: '13%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '5%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '15%',
+                    }
+                }
+            });
+            $('#powerUnitTable').jtable('load');
+        });
+    </script>
+}

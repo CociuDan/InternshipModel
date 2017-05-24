@@ -30,7 +30,7 @@ namespace GeekStore.Service.Implimentation
 
         public SignInStatus Create(UserDTO user)
         {
-            _userManager.CreateAsync(_mapper.Map<UserDTO, User>(user), user.Password);
+            _userManager.Create(_mapper.Map<UserDTO, User>(user), user.Password);
             _transaction.Commit();
             return _signInManager.PasswordSignIn(user.UserName, user.Password, true, false);
             //if (createResult.Exception)
@@ -107,6 +107,11 @@ namespace GeekStore.Service.Implimentation
         public void SignOut()
         {
             _signInManager.SignOut();
+        }
+
+        public UserDTO GetByName(string userName)
+        {
+            return _mapper.Map<User, UserDTO>(_userManager.FindByName(userName));
         }
     }
 }

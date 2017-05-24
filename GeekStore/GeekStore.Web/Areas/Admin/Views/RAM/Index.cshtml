@@ -11,7 +11,11 @@
         $(document).ready(function () {
             debugger;
             $('#ramTable').jtable({
-                title: 'All GPUs',
+                title: 'All RAMs',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
                 actions: {
                     listAction: '/Admin/RAM/GetAll',
                     createAction: '/Admin/RAM/Create',

@@ -15,5 +15,6 @@ namespace GeekStore.Service.Interfaces
         SignInStatus SignIn(string userName, string password, bool rememberMe, bool shouldLockout);
         UserDTO GetById(int userId);
         void SignOut();
+        UserDTO GetByName(string userName);
     }
 }

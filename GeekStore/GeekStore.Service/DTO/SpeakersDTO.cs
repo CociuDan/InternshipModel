@@ -2,8 +2,7 @@
 {
     public class SpeakersDTO : ProductDTO
     {
-        public string Description { get; }
-        public string Configuration { get; }
-        public int MaxVolume { get; }
+        public string Configuration { get; set; }
+        public int MaxVolume { get; set; }
     }
 }

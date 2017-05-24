@@ -1,6 +1,6 @@
 ﻿using GeekStore.Domain.Model.Components;
 
-namespace GeekStore.Domain.PCs
+namespace GeekStore.Domain.Model.PCs
 {
     public interface IComputer
     {

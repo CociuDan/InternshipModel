@@ -7,7 +7,7 @@ namespace GeekStore.Domain.Model.Mapping
     {
         public DisplayMap()
         {
-            Id(x => x.ID);
+            Id(x => x.ID).GeneratedBy.Identity();
             Map(x => x.AspectRatio).Not.Nullable();
             Map(x => x.MaxRefreshRate).Not.Nullable();
             Map(x => x.Resolution).Not.Nullable();

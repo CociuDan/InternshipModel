@@ -8,10 +8,7 @@ namespace GeekStore.Domain.Model.Mapping
         public MonitorMap()
         {
             KeyColumn("ID");
-            Map(x => x.AspectRatio).Not.Nullable();
-            Map(x => x.MaxRefreshRate).Not.Nullable();
-            Map(x => x.Resolution).Not.Nullable();
-            Map(x => x.Size).Not.Nullable();
+            References(x => x.Display);
         }
     }
 }

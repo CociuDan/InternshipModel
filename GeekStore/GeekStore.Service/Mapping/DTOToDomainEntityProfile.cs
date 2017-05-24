@@ -3,11 +3,8 @@ using GeekStore.Domain;
 using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;
+using GeekStore.Domain.Model.PCs;
 using GeekStore.Service.DTO;
-using System;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace GeekStore.Service.Mapping
 {
@@ -19,8 +16,9 @@ namespace GeekStore.Service.Mapping
             CreateMap<CaseDTO, Case>().ReverseMap();
             CreateMap<CoolerDTO, Cooler>().ReverseMap();
             CreateMap<CPUDTO, CPU>().ReverseMap();
-            CreateMap<DiskDTO, Disk>();
-            CreateMap<DisplayDTO, Display>();
+            CreateMap<DesktopDTO, Desktop>().ReverseMap();
+            CreateMap<DiskDTO, Disk>().ReverseMap();
+            CreateMap<DisplayDTO, Display>().ReverseMap();
             CreateMap<EntityDTO, Entity>().ReverseMap();
             CreateMap<GPUDTO, GPU>().ReverseMap();
             CreateMap<HeadphonesDTO, Headphones>().ReverseMap();

@@ -2,10 +2,9 @@
 {
     public class MotherboardDTO : ProductDTO
     {
-        public string Chipset { get; }
-        public string Description { get; }
-        public int PCIESlots { get; }
-        public int RAMSlots { get; }
-        public string Socket { get; }
+        public string Chipset { get; set; }
+        public int PCIESlots { get; set; }
+        public int RAMSlots { get; set; }
+        public string Socket { get; set; }
     }
 }

@@ -34,7 +34,8 @@ namespace GeekStore.UI.Windsor_Utils
 
             container.Register(Component.For<ApplicationUserManager>().LifestylePerWebRequest());
             container.Register(Component.For<IAuthenticationManager>().UsingFactoryMethod(() => HttpContext.Current.GetOwinContext().Authentication).LifestylePerWebRequest());
-            container.Register(Component.For<ApplicationSignInManager>().LifestylePerWebRequest());            
+            container.Register(Component.For<ApplicationSignInManager>().LifestylePerWebRequest());
+
         }
 
         /// <summary>

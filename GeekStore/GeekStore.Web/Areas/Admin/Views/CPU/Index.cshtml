@@ -11,6 +11,10 @@
             debugger;
             $('#cpuTable').jtable({
                 title: 'All CPUs',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
                 actions: {
                     listAction: '/Admin/CPU/GetAll',
                     createAction: '/Admin/CPU/Create',

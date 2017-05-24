@@ -139,3 +139,7 @@ p :hover{
     margin-left:-30px;
     max-width:1000px;
 }
+
+select{
+    color:#333 !important;
+}

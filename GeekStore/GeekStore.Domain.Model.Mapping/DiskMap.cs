@@ -12,6 +12,7 @@ namespace GeekStore.Domain.Model.Mapping
             Map(x => x.RPM).Nullable();
             Map(x => x.ReadSpeed).Nullable();
             Map(x => x.WriteSpeed).Nullable();
+            Map(x => x.Type).Not.Nullable();
         }
     }
 }

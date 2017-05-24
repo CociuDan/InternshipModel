@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_EmptyLayout.cshtml";
 }
 
-<div id="table" style="margin-left:-30px; max-width:1000px;">
+<div id="gpuTable" style="margin-left:-30px; max-width:1000px;">
 
 </div>
 
@@ -10,8 +10,12 @@
     <script type="text/javascript">
         $(document).ready(function () {
             debugger;
-            $('#table').jtable({
+            $('#gpuTable').jtable({
                 title: 'All GPUs',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
                 actions: {
                     listAction: '/Admin/GPU/GetAll',
                     createAction: '/Admin/GPU/Create',
@@ -57,7 +61,7 @@
                     }
                 }
             });
-            $('#table').jtable('load');
+            $('#gpuTable').jtable('load');
         });
     </script>
 }

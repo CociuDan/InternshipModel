@@ -6,6 +6,7 @@ using GeekStore.Repository.Interfaces;
 using GeekStore.Domain;
 using AutoMapper;
 using NHibernate;
+using GeekStore.Infrastucture.Extensions;
 
 namespace GeekStore.Service.Implimentation
 {
@@ -32,14 +33,19 @@ namespace GeekStore.Service.Implimentation
             return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAll());
         }
 
+        public int GetAllCount()
+        {
+            return _genericRepository.GetAllCount();
+        }
+
         //public IEnumerable<TDTOModel> GetAllAvailablePaged(int page, int pageSize, Func<TDTOModel, bool> criteria)
         //{
         //    /return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAllAvailablePaged(page, pageSize, _mapper.Map<Func<TDTOModel, bool>, Func<TDomainModel, bool>>(criteria)));
         //}
 
-        public IEnumerable<TDTOModel> GetAllPaged(int page, int pageSize)
+        public IEnumerable<TDTOModel> GetAllPaged(PagedRequestDescription pageDescription)
         {
-            return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAllPaged(page, pageSize));
+            return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAllPaged(pageDescription));
         }
 
         public TDTOModel GetById(int id)

@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\CartDTO.cs" />
+    <Compile Include="DTO\DesktopDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="DTO\WarehouseProductDTO.cs" />
     <Compile Include="Implimentation\GenericService.cs" />
@@ -128,6 +129,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GeekStore.IoC\GeekStore.Infrastucture.Extensions.csproj">
+      <Project>{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}</Project>
+      <Name>GeekStore.Infrastucture.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeekStore.Model\GeekStore.Domain.Model.csproj">
       <Project>{7b9e51cb-6b6c-4735-a990-76f3460f8cff}</Project>
       <Name>GeekStore.Domain.Model</Name>

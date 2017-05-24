@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="displayTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#displayTable').jtable({
+                title: 'All Displays',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'AspectRatio ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/Display/GetAll',
+                    createAction: '/Admin/Display/Create',
+                    updateAction: '/Admin/Display/Edit',
+                    deleteAction: '/Admin/Display/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    AspectRatio: {
+                        title: 'Aspect Ratio',
+                        width: '13%'
+                    },
+                    MaxRefreshRate: {
+                        title: 'Max Refresh Rate',
+                        width: '8%'
+                    },
+                    Resolution: {
+                        title: 'Resolution',
+                        width: '13%'
+                    },
+                    Size: {
+                        title: 'Size',
+                        width: '6%'
+                    },
+                }
+            });
+            $('#displayTable').jtable('load');
+        });
+    </script>
+}

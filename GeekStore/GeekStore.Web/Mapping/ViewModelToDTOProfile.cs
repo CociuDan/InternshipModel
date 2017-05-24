@@ -14,6 +14,7 @@ namespace GeekStore.UI.Mapping
             CreateMap<CaseDTO, CaseViewModel>().ForMember(x => x.Description, o=>o.Ignore()).ForMember(y=>y.Quantity, o=>o.Ignore());
             CreateMap<CoolerViewModel, CoolerDTO>().ReverseMap();
             CreateMap<CPUViewModel, CPUDTO>().ReverseMap();
+            CreateMap<DesktopViewModel, DesktopDTO>().ReverseMap();
             CreateMap<DiskViewModel, DiskDTO>().ReverseMap();
             CreateMap<DisplayViewModel, DisplayDTO>().ReverseMap();
             CreateMap<EntityViewModel, EntityDTO>().ForMember(dest=>dest.ID, opt=>opt.Ignore());

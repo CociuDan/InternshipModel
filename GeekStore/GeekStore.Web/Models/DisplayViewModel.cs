@@ -1,13 +1,13 @@
 ﻿namespace GeekStore.UI.Models
 {
-    public class DisplayViewModel : ProductViewModel
+    public class DisplayViewModel : EntityViewModel
     {
         public string AspectRatio { get; set; }
         public string Description
         {
             get
             {
-                return $"{Manufacturer} {Model} {Resolution} {AspectRatio} {Size} {MaxRefreshRate}";
+                return $"{Resolution} {AspectRatio} {Size} {MaxRefreshRate}";
             }
         }
         public int MaxRefreshRate { get; set; }

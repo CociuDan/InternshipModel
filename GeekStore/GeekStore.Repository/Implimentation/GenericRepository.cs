@@ -3,6 +3,9 @@ using NHibernate;
 using GeekStore.Repository.Interfaces;
 using GeekStore.Domain;
 using System;
+using System.Linq;
+using GeekStore.Infrastucture.Extensions;
+using GeekStore.Repository.Extensions;
 
 namespace GeekStore.Repository.Implimentation
 {
@@ -26,9 +29,9 @@ namespace GeekStore.Repository.Implimentation
             return _session.QueryOver<T>().List();
         }
 
-        public IEnumerable<T> GetAllPaged(int page, int pageSize)
-        {
-            return _session.QueryOver<T>().Skip((page - 1) * pageSize).Take(pageSize).List();
+        public IEnumerable<T> GetAllPaged(PagedRequestDescription pagedDescription)
+        {          
+            return _session.QueryOver<T>().GetPagedResult(pagedDescription);
         }
 
         public T GetById(int id)
@@ -45,6 +48,11 @@ namespace GeekStore.Repository.Implimentation
         {
             var entity = GetById(entityId);
             _session.Delete(entity);
+        }
+
+        public int GetAllCount()
+        {
+            return _session.QueryOver<T>().RowCount();
         }
 
         //public IEnumerable<CPU> GetTOPCPUs()

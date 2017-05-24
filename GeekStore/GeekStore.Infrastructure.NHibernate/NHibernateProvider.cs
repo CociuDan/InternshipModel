@@ -4,7 +4,7 @@ using GeekStore.Domain.Model.Mapping;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 
-namespace GeekStore.Infrastructure
+namespace GeekStore.Infrastructure.NHibernate
 {
     public class NHibernateProvider
     {

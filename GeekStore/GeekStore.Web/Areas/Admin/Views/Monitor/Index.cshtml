@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="monitorTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#monitorTable').jtable({
+                title: 'All Monitors',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/Monitor/GetAll',
+                    createAction: '/Admin/Monitor/Create',
+                    updateAction: '/Admin/Monitor/Edit',
+                    deleteAction: '/Admin/Monitor/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Manufacturer: {
+                        title: 'Manufacturer',
+                        width: '10%'
+                    },
+                    Model: {
+                        title: 'Model',
+                        width: '20%'
+                    },
+                    MonitorID: {
+                        title: 'Monitor ID',
+                        width: '13%'
+                    },
+                    Price: {
+                        title: 'Price',
+                        width: '5%'
+                    },
+                    AvailableQuantity: {
+                        title: 'Quantity',
+                        width: '15%',
+                    }
+                }
+            });
+            $('#monitorTable').jtable('load');
+        });
+    </script>
+}

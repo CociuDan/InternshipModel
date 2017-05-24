@@ -7,7 +7,7 @@
         {
             get
             {
-                return $"{Manufacturer} {Model} {CPU.Description} {GPU.Description} {RAMQuantity}x{RAM} {Disk.Description} {PowerUnit.Description} {Motherboard.Description}";
+                return $"{Manufacturer} {Model} {CPU.Description} {GPU.Description} {RAM} {Disk.Description} {PowerUnit.Description} {Motherboard.Description}";
             }
         }
         public DiskViewModel Disk { get; set; }
@@ -16,6 +16,5 @@
         public MotherboardViewModel Motherboard { get; set; }
         public PowerUnitViewModel PowerUnit { get; set; }
         public RAMViewModel RAM { get; set; }
-        public int RAMQuantity { get; set; }
     }
 }

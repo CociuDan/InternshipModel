@@ -57,8 +57,7 @@ namespace GeekStore.UI.Controllers
                 user.FullName = model.FullName;
                 user.Password = model.Password;
                 user.IsAdmin = false;
-                _userService.Create(user);
-                var result = _userService.SignIn(model.UserName, model.Password, true, shouldLockout: true);
+                var result = _userService.Create(user);
                 switch (result)
                 {
                     case SignInStatus.Success:

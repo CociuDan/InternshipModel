@@ -445,6 +445,17 @@
     <Content Include="Areas\Admin\Views\Shared\_RAMPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_HeadphonesPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Cooler\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Disk\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Display\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Monitor\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Motherboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Mouse\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PowerUnit\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Speakers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Keyboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Desktop\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Laptop\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -719,11 +730,22 @@
     <Compile Include="App_Start\StartUp.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CoolerController.cs" />
     <Compile Include="Areas\Admin\Controllers\CPUController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DesktopController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiskController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DisplayController.cs" />
     <Compile Include="Areas\Admin\Controllers\GPUController.cs" />
     <Compile Include="Areas\Admin\Controllers\HeadphonesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KeyboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LaptopController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MonitorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MotherboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MouseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PowerUnitController.cs" />
     <Compile Include="Areas\Admin\Controllers\RAMController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SpeakersController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
@@ -732,7 +754,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Extensions\AdminAttribute.cs" />
+    <Compile Include="Extensions\AdminRoleRequiredAttribute.cs" />
     <Compile Include="Extensions\ProductViewComponent.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -742,6 +764,7 @@
     <Compile Include="Mapping\ViewModelToDTOProfile.cs" />
     <Compile Include="Models\CartViewModel.cs" />
     <Compile Include="Models\CaseProductsViewModel.cs" />
+    <Compile Include="Models\DesktopViewModel.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Pager.cs" />
@@ -774,9 +797,13 @@
     <Folder Include="Images\Products\Components\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeekStore.IoC\GeekStore.Infrastucture.csproj">
+    <ProjectReference Include="..\GeekStore.Infrastructure.IoC\GeekStore.Infrastructure.IoC.csproj">
+      <Project>{E4E31CA9-8077-4660-8D98-6BE65A4C4520}</Project>
+      <Name>GeekStore.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeekStore.IoC\GeekStore.Infrastucture.Extensions.csproj">
       <Project>{505F924B-E6F4-42AF-B980-BFD3AA4F9E29}</Project>
-      <Name>GeekStore.Infrastucture</Name>
+      <Name>GeekStore.Infrastucture.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeekStore.Service\GeekStore.Service.csproj">
       <Project>{536475EA-AD4E-4293-A476-707EF05095D9}</Project>

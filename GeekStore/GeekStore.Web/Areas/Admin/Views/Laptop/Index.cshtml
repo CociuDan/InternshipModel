@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="laptopTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#laptopTable').jtable({
+                title: 'All Laptops',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Manufacturer ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/Laptop/GetAll',
+                    createAction: '/Admin/Laptop/Create',
+                    updateAction: '/Admin/Laptop/Edit',
+                    deleteAction: '/Admin/Laptop/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    Case: {
+                        title: 'Case',
+                        width: '13%'
+                    },
+                    Cooler: {
+                        title: 'Cooler',
+                        width: '13%'
+                    },
+                    CPU: {
+                        title: 'CPU',
+                        width: '6%'
+                    },
+                    Disk: {
+                        title: 'Disk',
+                        width: '7%'
+                    },
+                    GPU: {
+                        title: 'GPU',
+                        width: '8%'
+                    },
+                    Motherboard: {
+                        title: 'Motherboard',
+                        width: '4%'
+                    },
+                    PowerUnit: {
+                        title: 'Power Unit',
+                        width: '4%'
+                    },
+                    RAM: {
+                        title: 'RAM',
+                        width: '4%'
+                    },
+                }
+            });
+            $('#laptopTable').jtable('load');
+        });
+    </script>
+}
