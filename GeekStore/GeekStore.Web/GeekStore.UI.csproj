@@ -731,6 +731,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\StartUp.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CoolerController.cs" />
     <Compile Include="Areas\Admin\Controllers\CPUController.cs" />

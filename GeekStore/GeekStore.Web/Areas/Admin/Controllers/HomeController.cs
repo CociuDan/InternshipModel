@@ -1,10 +1,8 @@
-﻿using GeekStore.UI.Extensions;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
-    [AdminRoleRequired]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

@@ -2,7 +2,6 @@
 using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
-using GeekStore.UI.Extensions;
 using GeekStore.UI.Models.Common;
 using System;
 using System.Collections.Generic;
@@ -10,8 +9,7 @@ using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
-    [AdminRoleRequired]
-    public class MonitorController : Controller
+    public class MonitorController : BaseController
     {
         private readonly IGenericService<MonitorDTO> _genericService;
         private readonly IMapper _mapper;

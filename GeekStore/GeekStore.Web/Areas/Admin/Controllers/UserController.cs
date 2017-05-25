@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace GeekStore.UI.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
