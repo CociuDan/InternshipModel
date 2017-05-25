@@ -13,6 +13,9 @@
         <li>
             <a href="#tabs3">Peripherals</a>
         </li>
+        <li>
+            <a href="#tabs4">Users</a>
+        </li>
     </ul>
     <div id="tabs1">
         <div id="tabs">
@@ -80,6 +83,15 @@
             </ul>
         </div>
     </div>
+    <div id="tabs4">
+        <div id="tabs">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "User")">Users</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -87,7 +99,7 @@
     $('#tabs1').tabs();
     $('#tabs2').tabs();
     $('#tabs3').tabs();
-
+    $('#tabs4').tabs();
 </script>
 <script>
     $(document).ready(function () {

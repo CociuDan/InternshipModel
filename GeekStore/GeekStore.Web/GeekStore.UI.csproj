@@ -456,6 +456,7 @@
     <Content Include="Areas\Admin\Views\Keyboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Desktop\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Laptop\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

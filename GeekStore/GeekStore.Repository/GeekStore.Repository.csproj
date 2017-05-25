@@ -87,8 +87,6 @@
   <ItemGroup>
     <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Implimentation\GenericRepository.cs" />
-    <Compile Include="Implimentation\FileRepository.cs" />
-    <Compile Include="Implimentation\ListRepository.cs" />
     <Compile Include="Implimentation\ProductRepository.cs" />
     <Compile Include="Implimentation\UserRepository.cs" />
     <Compile Include="Implimentation\WarehouseProductRepository.cs" />

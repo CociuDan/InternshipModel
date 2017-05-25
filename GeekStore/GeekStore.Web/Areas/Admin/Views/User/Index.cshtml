@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+
+<div id="userTable" style="margin-left:-30px; max-width:1000px;">
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            debugger;
+            $('#userTable').jtable({
+                title: 'All Users',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'FullName ASC', //Set default sorting
+                actions: {
+                    listAction: '/Admin/User/GetAll',
+                    createAction: '/Admin/User/Create',
+                    updateAction: '/Admin/User/Edit',
+                    deleteAction: '/Admin/User/Delete'
+                },
+                fields: {
+                    ID: {
+                        key: true,
+                        list: false,
+                    },
+                    FullName: {
+                        title: 'Full Name',
+                        width: '10%'
+                    },
+                    UserName: {
+                        title: 'User Name',
+                        width: '20%'
+                    },
+                    IsAdmin: {
+                        title: 'Is Admin',
+                        width: '13%'
+                    },
+                }
+            });
+            $('#userTable').jtable('load');
+        });
+    </script>
+}

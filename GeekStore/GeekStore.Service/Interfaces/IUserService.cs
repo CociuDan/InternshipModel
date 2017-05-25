@@ -1,4 +1,5 @@
-﻿using GeekStore.Service.DTO;
+﻿using GeekStore.Infrastucture.Extensions;
+using GeekStore.Service.DTO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -16,6 +17,9 @@ namespace GeekStore.Service.Interfaces
         UserDTO GetById(int userId);
         void SignOut();
         UserDTO GetByName(string userName);
-        //int GetAllCount();
+        int GetAllCount();
+        IEnumerable<UserDTO> GetAllPaged(PagedRequestDescription pageDescription);
+        void Update(UserDTO user);
+        void Delete(int userId);
     }
 }

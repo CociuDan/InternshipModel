@@ -55,62 +55,9 @@ namespace GeekStore.UI.Controllers
             var cartDTO = new CartDTO();
             cartDTO.Product = caseDTO;
             cartDTO.User = userDTO;
-            cartDTO.Quantity = quantity;            
+            cartDTO.Quantity = quantity;
             _cartService.Save(cartDTO);
             return RedirectToAction("Index");
         }
-
-
-
-
-
-
-
-
-        //public ActionResult Cases()
-        //{
-        //    IEnumerable<CaseViewModel> cases = _mapper.Map<IEnumerable<CaseDTO>, IEnumerable<CaseViewModel>>(_casesService.GetAll());
-        //    return View(cases);
-        //}
-
-        //public JsonResult GetAll()
-        //{
-        //    var cases =  (List<CaseViewModel>)_mapper.Map<IEnumerable<CaseDTO>, IEnumerable<CaseViewModel>>(_casesService.GetAll());
-        //    return Json(cases, JsonRequestBehavior.AllowGet);
-        //}
-
-        //[HttpGet]
-        //public PartialViewResult GetPartialView(int productId)
-        //{
-        //    var partialView = _mapper.Map<CaseDTO, CaseViewModel>(_casesService.GetById(productId));
-        //    return PartialView("_ProductTypePartial", partialView);
-        //}
-
-        //public ActionResult CaseProducts()
-        //{
-        //    IEnumerable<CaseViewModel> cases = _mapper.Map<IEnumerable<CaseDTO>, IEnumerable<CaseViewModel>>(_casesService.GetAll());
-        //    return View(cases);
-        //}
-
-        //[HttpGet]
-        //public JsonResult GetCaseProducts()
-        //{
-        //    var caseProducts = new List<CaseProductsViewModel>();
-        //    var cases = _casesService.GetAll();
-        //    foreach (var pcCase in cases)
-        //    {
-        //        var product = _warehouseProductService.GetByProductId(pcCase.ID);
-        //        caseProducts.Add(new CaseProductsViewModel
-        //        {
-        //            ID = pcCase.ID,
-        //            FormFactor = pcCase.FormFactor,
-        //            Manufacturer = pcCase.Manufacturer,
-        //            Model = pcCase.Model,
-        //            Price = product.Price,
-        //            Quantity = product.Quantity
-        //        });
-        //    }
-        //    return Json(caseProducts, JsonRequestBehavior.AllowGet);
-        //}
     }
 }

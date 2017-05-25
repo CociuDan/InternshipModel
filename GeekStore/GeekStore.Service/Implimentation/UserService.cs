@@ -9,6 +9,8 @@ using GeekStore.Service.Managers;
 using Microsoft.AspNet.Identity.Owin;
 using NHibernate;
 using Microsoft.AspNet.Identity;
+using GeekStore.Infrastucture.Extensions;
+using System.Collections.Generic;
 
 namespace GeekStore.Service.Implimentation
 {
@@ -18,13 +20,14 @@ namespace GeekStore.Service.Implimentation
         private ITransaction _transaction;
         private ApplicationUserManager _userManager;
         private ApplicationSignInManager _signInManager;
+        private IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository, IMapper mapper, ITransaction transaction, ApplicationUserManager userManager, ApplicationSignInManager signInManager)
        {
+            _userRepository = userRepository;
             _mapper = mapper;
             _transaction = transaction;
             _userManager = userManager;
-            //_userManager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             _signInManager = signInManager;            
         }
 
@@ -114,9 +117,25 @@ namespace GeekStore.Service.Implimentation
             return _mapper.Map<User, UserDTO>(_userManager.FindByName(userName));
         }
 
-        //public int GetAllCount()
-        //{
-        //    var users = _userManager.Users;
-        //}
+        public int GetAllCount()
+        {
+            return _userRepository.GetAllCount();
+        }
+
+        public IEnumerable<UserDTO> GetAllPaged(PagedRequestDescription pagedDescription)
+        {
+            return _mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(_userRepository.GetAllPaged(pagedDescription));
+        }
+
+        public void Update(UserDTO user)
+        {
+            _userManager.Update(_mapper.Map<UserDTO, User>(user));
+        }
+
+        public void Delete(int userId)
+        {
+            var user = _userManager.FindById(userId);
+            _userManager.Delete(user);
+        }
     }
 }

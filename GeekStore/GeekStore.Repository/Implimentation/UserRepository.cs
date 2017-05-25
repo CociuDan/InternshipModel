@@ -3,6 +3,9 @@ using GeekStore.Repository.Interfaces;
 using NHibernate;
 using System;
 using System.Threading.Tasks;
+using GeekStore.Infrastucture.Extensions;
+using System.Collections.Generic;
+using GeekStore.Repository.Extensions;
 
 namespace GeekStore.Repository.Implimentation
 {
@@ -50,6 +53,16 @@ namespace GeekStore.Repository.Implimentation
         public Task<int> GetAccessFailedCountAsync(User user)
         {
             return Task.FromResult(0);
+        }
+
+        public int GetAllCount()
+        {
+            return _session.QueryOver<User>().RowCount();
+        }
+
+        public IEnumerable<User> GetAllPaged(PagedRequestDescription pagedDescription)
+        {
+            return _session.QueryOver<User>().GetPagedResult(pagedDescription);
         }
 
         public Task<bool> GetLockoutEnabledAsync(User user)
