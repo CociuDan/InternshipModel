@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using GeekStore.Domain.Model;
 using GeekStore.Repository.Interfaces;
@@ -36,39 +35,6 @@ namespace GeekStore.Service.Implimentation
             _userManager.Create(_mapper.Map<UserDTO, User>(user), user.Password);
             _transaction.Commit();
             return _signInManager.PasswordSignIn(user.UserName, user.Password, true, false);
-            //if (createResult.Exception)
-            //{
-
-            //}
-            //var createResult = UserManager.CreateAsync(user);
-            //if(createResult.Status == TaskStatus.Created)
-            //{
-            //    var signInResult = SignInManager.SignInAsync(user, true, true);
-            //    if (signInResult.Status == TaskStatus.Created)
-            //    {
-            //        return RedirectToAction("Index", "Home");
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            //    }
-            //    return RedirectToAction("Index", "Home");                    
-            //}   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         public void UpdateAsync(UserDTO user)

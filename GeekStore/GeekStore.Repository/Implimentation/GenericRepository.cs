@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using NHibernate;
 using GeekStore.Repository.Interfaces;
-using GeekStore.Domain;
-using System;
-using System.Linq;
+using GeekStore.Domain.Model;
 using GeekStore.Infrastucture.Extensions;
 using GeekStore.Repository.Extensions;
 
@@ -54,45 +52,5 @@ namespace GeekStore.Repository.Implimentation
         {
             return _session.QueryOver<T>().RowCount();
         }
-
-        //public IEnumerable<CPU> GetTOPCPUs()
-        //{
-        //    CPU cpuAlias = null;
-        //    return _session.QueryOver(() => cpuAlias)
-        //                   .Where(Restrictions.On(() => cpuAlias.Model).IsLike("%i7%") || Restrictions.On(() => cpuAlias.Model).IsLike("%Ryzen 7%"))
-        //                   .List();
-        //}
-
-        //public IEnumerable<string> GetLaptops()
-        //{
-        //    Laptop laptopAlias = null;
-        //    CPU cpuAlias = null;
-        //    return _session.QueryOver(() => laptopAlias)
-        //                   .JoinQueryOver(() => laptopAlias.CPU, () => cpuAlias)
-        //                   .Where(x=>x.Model.IsLike("2600", MatchMode.Anywhere))
-        //                   .Select(c => c.Model).List<string>();
-        //}
-
-        //public IEnumerable<LaptopCpuGpuModels> GetLaptopCpuGpuModels()
-        //{
-        //    Laptop laptopAlias = null;
-        //    CPU cpuAlias = null;
-        //    GPU gpuAlias = null;
-        //    LaptopCpuGpuModels laptopCpuGpuModels = null;
-        //    return _session.QueryOver(() => laptopAlias)
-        //                   .JoinAlias(() => laptopAlias.CPU, () => cpuAlias)
-        //                   .JoinAlias(() => laptopAlias.GPU, () => gpuAlias)
-        //                   .SelectList(list => list
-        //                   .Select(() => laptopAlias.Model).WithAlias(() => laptopCpuGpuModels.LaptopModel)
-        //                   .Select(() => cpuAlias.Model).WithAlias(() => laptopCpuGpuModels.CpuModel)
-        //                   .Select(() => gpuAlias.Model).WithAlias(() => laptopCpuGpuModels.GpuModel))
-        //                   .TransformUsing(Transformers.AliasToBean<LaptopCpuGpuModels>())
-        //                   .List<LaptopCpuGpuModels>();
-        //}
-
-        //public IEnumerable<int> GetCaseCount()
-        //{
-        //    return _session.QueryOver<Case>().Select().
-        //}
     }
 }

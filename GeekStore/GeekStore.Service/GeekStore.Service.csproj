@@ -97,7 +97,6 @@
     <Compile Include="Implimentation\ProductService.cs" />
     <Compile Include="Implimentation\UserService.cs" />
     <Compile Include="Implimentation\WarehouseProductService.cs" />
-    <Compile Include="Interfaces\Components\ICaseService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
@@ -142,11 +141,7 @@
       <Name>GeekStore.Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implimentation\Components\" />
-    <Folder Include="Implimentation\Peripherals\" />
-    <Folder Include="Interfaces\Peripherals\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

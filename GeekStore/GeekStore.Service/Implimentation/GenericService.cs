@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GeekStore.Service.Interfaces;
 using GeekStore.Service.DTO;
 using GeekStore.Repository.Interfaces;
-using GeekStore.Domain;
 using AutoMapper;
 using NHibernate;
 using GeekStore.Infrastucture.Extensions;
+using GeekStore.Domain.Model;
 
 namespace GeekStore.Service.Implimentation
 {
@@ -37,11 +36,6 @@ namespace GeekStore.Service.Implimentation
         {
             return _genericRepository.GetAllCount();
         }
-
-        //public IEnumerable<TDTOModel> GetAllAvailablePaged(int page, int pageSize, Func<TDTOModel, bool> criteria)
-        //{
-        //    /return _mapper.Map<IEnumerable<TDomainModel>, IEnumerable<TDTOModel>>(_genericRepository.GetAllAvailablePaged(page, pageSize, _mapper.Map<Func<TDTOModel, bool>, Func<TDomainModel, bool>>(criteria)));
-        //}
 
         public IEnumerable<TDTOModel> GetAllPaged(PagedRequestDescription pageDescription)
         {

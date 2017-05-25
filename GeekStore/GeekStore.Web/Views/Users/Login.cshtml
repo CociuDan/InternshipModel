@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model GeekStore.UI.Models.LoginViewModel
+@model GeekStore.UI.Models.Common.LoginViewModel
 
             @using (Html.BeginForm("Login", "Users", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "width:450px; margin: 0 auto;" }))
             {                
@@ -39,12 +39,15 @@
                         <div class="col-md-5" style="float:left; margin-left:-45px; margin-top:-10px;">
                             <input type="button" id="btnClear" class="btn btn-default" value="Cancel" style="float:left; width:79px;" />
                         </div>
+                        <div class="col-md-offset-3 col-md-3" style="margin-left:237px;margin-top:-34px;">
+                            <button onclick="location.href='@Url.Action("Register", "Users")';return false;" class="btn btn-default" style="float:right;">Register</button>
+                        </div>
                     </div>
-                    <div style="padding-left:80px; margin-top:-10px;">
+                    @*<div style="padding-left:80px; margin-top:-10px;">
                         <p>
                             @Html.ActionLink("Register as a new user", "Register")
                         </p>
-                    </div>        
+                    </div>*@        
                 </div>
             }
 @* Enable this once you have account confirmation enabled for password reset functionality

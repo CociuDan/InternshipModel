@@ -1,12 +1,7 @@
 ﻿using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GeekStore.Service.Interfaces
 {

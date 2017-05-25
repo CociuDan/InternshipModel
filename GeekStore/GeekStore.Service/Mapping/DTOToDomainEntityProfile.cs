@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using GeekStore.Domain;
 using GeekStore.Domain.Model;
 using GeekStore.Domain.Model.Components;
 using GeekStore.Domain.Model.Peripherals;

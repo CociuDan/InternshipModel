@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GeekStore.Service.DTO;
-using GeekStore.UI.Models;
+using GeekStore.UI.Models.Common;
 
 namespace GeekStore.UI.Mapping
 {
@@ -8,7 +8,7 @@ namespace GeekStore.UI.Mapping
     {
         public ViewModelToDTOProfile()
         {
-            //Mapping View Models to DTOs
+            //Mapping View Models to DTOs and reverse
             CreateMap<CartViewModel, CartDTO>().ReverseMap();
             CreateMap<CaseViewModel, CaseDTO>();
             CreateMap<CaseDTO, CaseViewModel>().ForMember(x => x.Description, o=>o.Ignore()).ForMember(y=>y.Quantity, o=>o.Ignore());

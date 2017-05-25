@@ -8,12 +8,10 @@ using GeekStore.Domain.Model.Peripherals;
 using GeekStore.Domain.Model;
 using NHibernate;
 using Castle.MicroKernel.Registration;
-using Castle.MicroKernel;
 using GeekStore.Domain.Model.PCs;
 using GeekStore.Infrastructure.NHibernate;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using System;
 
 namespace GeekStore.Infrastructure.IoC
 {

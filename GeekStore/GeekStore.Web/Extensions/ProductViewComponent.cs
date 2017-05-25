@@ -1,10 +1,5 @@
-﻿using GeekStore.UI.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 
@@ -22,7 +17,6 @@ namespace GeekStore.UI.Extensions
     {
         private readonly HtmlHelper<TModel> _helper;
         private readonly object _product;
-        //private object p;
 
         public ProductViewExtension(HtmlHelper<TModel> helper, TModel product)
         {

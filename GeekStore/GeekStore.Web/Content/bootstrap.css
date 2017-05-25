@@ -3057,20 +3057,23 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #fad400;
+  color: #fad400;
+  background-color: #555;
+  border-color: #333;
+  text-shadow:none;
 }
 .btn-default:focus,
 .btn-default.focus {
-  color: #333;
-  background-color: #e6e6e6;
+  color: #fad400;
+  background-color: #333;
   border-color: #fad400;
+  text-shadow:none;
 }
 .btn-default:hover {
-  color: #333;
-  background-color: #e6e6e6;
+  color: #fad400;
+  background-color: #333;
   border-color: #fad400;
+  text-shadow:none;
 }
 .btn-default:active,
 .btn-default.active,
@@ -4747,7 +4750,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   z-index: 2;
   color: black;
   background-color: #eee;
-  border-color: #fad400;
+  border-color: #333;
 }
 .pagination > .active > a,
 .pagination > .active > span,
@@ -4756,9 +4759,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   z-index: 3;
-  color: black;
+  color: #fad400;
   cursor: default;
-  background-color: #fad400;
+  background-color: #333;
   border-color: black;
 }
 .pagination > .disabled > span,

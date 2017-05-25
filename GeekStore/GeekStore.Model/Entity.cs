@@ -1,4 +1,4 @@
-﻿namespace GeekStore.Domain
+﻿namespace GeekStore.Domain.Model
 {
     public abstract class Entity
     {

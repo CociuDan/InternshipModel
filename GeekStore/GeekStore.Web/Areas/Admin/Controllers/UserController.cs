@@ -2,7 +2,7 @@
 using GeekStore.Infrastucture.Extensions;
 using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
-using GeekStore.UI.Models;
+using GeekStore.UI.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;

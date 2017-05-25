@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model GeekStore.UI.Models.Customers.CaseProductsViewModel
+
+<div style="background-color:#333; width:25%; float:left; height:auto; min-height:1320px; margin-left:-14px;">
+
+</div>
+<div style="width:75%; float:right; position:relative;">
+    <div>
+        <table id="items" style="margin-top:75px;width:100%; margin-bottom:25px;">
+            @{
+                for (int i = 0; i < Model.Cases.Count() / 3; i++)
+                {
+                    <tr style="height:250px; padding-bottom:20px;">
+                        @{ foreach (var pcCase in Model.Cases.Skip(i * 3).Take(3))
+                            {
+                                <td>
+                                    <div id="product" style="margin-bottom:100px">
+                                        <a href='@Url.Action("ViewDetails", "Case", new { caseId = pcCase.ID })'>
+                                            <img src="~/Images/Products/Components/Cases/@pcCase.Manufacturer @pcCase.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
+                                            <p style="font-family: Arial Black; padding-top:15px;"><strong>@pcCase.Description </strong></p>
+                                        </a>
+                                        <div style="margin-top:25px; margin-left:10px; margin-right:10px;">
+                                            <p style="font-family: Arial Black; float:left;"><strong>@pcCase.Price$</strong></p>
+                                            <button onclick="location.href='@Url.Action("ViewDetails", "Case", new { caseId = pcCase.ID })';return false;" class="btn btn-default" style="float:right;">Details</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            }
+                        }
+                    </tr>
+                            }
+            }
+
+        </table>
+    </div>
+    <div style="position:absolute; margin-top: 1280px;">
+        @if (Model.Pager.EndPage > 1)
+        {
+            <ul class="pagination">
+                @if (Model.Pager.CurrentPage > 1)
+                {
+                    <li>
+                        <a href="~/Case/Index">First</a>
+                    </li>
+                    <li>
+                        <a href="~/Case/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                    </li>
+                }
+
+                @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                {
+                    <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                        <a href="~/Case/Index?page=@page">@page</a>
+                    </li>}
+
+                @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                {
+                    <li>
+                        <a href="~/Case/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                    </li>
+                    <li>
+                        <a href="~/Case/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

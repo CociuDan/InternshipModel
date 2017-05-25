@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GeekStore.Domain.Model
+﻿namespace GeekStore.Domain.Model
 {
     public class Cart : Entity
     {

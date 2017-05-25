@@ -1,6 +1,5 @@
-﻿using GeekStore.Domain;
+﻿using GeekStore.Domain.Model;
 using GeekStore.Infrastucture.Extensions;
-using System;
 using System.Collections.Generic;
 
 namespace GeekStore.Repository.Interfaces
