@@ -92,9 +92,11 @@
     <Compile Include="DTO\CartDTO.cs" />
     <Compile Include="DTO\DesktopDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Implimentation\CartService.cs" />
     <Compile Include="Implimentation\GenericService.cs" />
     <Compile Include="Implimentation\ProductService.cs" />
     <Compile Include="Implimentation\UserService.cs" />
+    <Compile Include="Interfaces\ICartService.cs" />
     <Compile Include="Interfaces\IGenericService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />

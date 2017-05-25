@@ -1,6 +1,6 @@
 ﻿namespace GeekStore.UI.Models.Common
 {
-    public abstract class ProductViewModel : EntityViewModel
+    public class ProductViewModel : EntityViewModel
     {
         public string Manufacturer { get; set; }
         public string Model { get; set; }

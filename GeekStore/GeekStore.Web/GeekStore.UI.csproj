@@ -717,6 +717,7 @@
     <Content Include="Views\Case\TestIndex.cshtml" />
     <Content Include="Views\CPU\Index.cshtml" />
     <Content Include="Views\Disk\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

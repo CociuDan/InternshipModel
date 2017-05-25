@@ -32,11 +32,7 @@ namespace GeekStore.Service.Mapping
             CreateMap<MotherboardDTO, Motherboard>().ReverseMap();
             CreateMap<MouseDTO, Mouse>().ReverseMap();
             CreateMap<PowerUnitDTO, PowerUnit>().ReverseMap();
-            CreateMap<ProductDTO, Product>()
-                .Include<CaseDTO, Case>()
-                .Include<CoolerDTO, Cooler>()
-                .Include<CPUDTO, CPU>();
-
+            CreateMap<ProductDTO, Product>().ReverseMap();
             CreateMap(typeof(ProductDTO), typeof(Product)).ReverseMap();
             CreateMap<RAMDTO, RAM>().ReverseMap();
             CreateMap<SpeakersDTO, Speakers>().ReverseMap();

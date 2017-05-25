@@ -45,6 +45,13 @@
       width: 125px;
     }
 
+    #cart{
+        background: url(/Images/cart.png);
+        display: block;
+        max-height: 45px;
+        max-width: 45px;
+    }
+
     .nav{
       font-family: "Arial Black";      
     }
