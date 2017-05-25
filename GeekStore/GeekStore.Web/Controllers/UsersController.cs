@@ -42,7 +42,8 @@ namespace GeekStore.UI.Controllers
                     case SignInStatus.Success:
                         return RedirectToAction("Index", "Home");
                     case SignInStatus.Failure:
-                        return RedirectToAction("Login", "Users");
+                        model.ErrorMessage = "Something went wrong.Try Again!";
+                        return View(model);
                     default:
                         return RedirectToAction("Login", "Users");
                 }              

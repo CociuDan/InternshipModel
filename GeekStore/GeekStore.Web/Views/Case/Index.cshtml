@@ -19,7 +19,7 @@
                                     <div id="product" style="margin-bottom:100px">
                                         <a href='@Url.Action("ViewDetails", "Case", new { caseId = pcCase.ID })'>
                                             <img src="~/Images/Products/Components/Cases/@pcCase.Manufacturer @pcCase.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
-                                            <p style="font-family: Arial Black; padding-top:15px;"><strong>@pcCase.Description </strong></p>
+                                            <p style="font-family: Arial Black; padding-top:15px;"><strong>@pcCase.Manufacturer @pcCase.Model </strong></p>
                                         </a>
                                         <div style="margin-top:25px; margin-left:10px; margin-right:10px;">
                                             <p style="font-family: Arial Black; float:left;"><strong>@pcCase.Price$</strong></p>

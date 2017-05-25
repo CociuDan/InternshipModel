@@ -4,11 +4,20 @@
 @model GeekStore.UI.Models.Common.UserViewModel
 
 
-@using (Html.BeginForm("Register", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style="width:450px;"}))
+@using (Html.BeginForm("Register", "Users", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "width:450px;" }))
 {
     @Html.AntiForgeryToken()
     <h4 style="text-align:center; padding-left:50px;">Create a new account.</h4>
     <hr />
+    if (Model != null)
+    {
+        if (!string.IsNullOrWhiteSpace(Model.ErrorMessage.Trim()))
+        {
+            <div style="text-align:center; margin-bottom:10px;">
+                @Html.DisplayFor(m => m.ErrorMessage)
+            </div>
+        }
+    }
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.UserName, new { @class = "col-md-4 control-label" })

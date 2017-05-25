@@ -1,7 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model GeekStore.UI.Models.Customers.CoolerProductsViewModel
+
+@model GeekStore.UI.Models.Customers.CPUProductsViewModel
 
 <div style="background-color:#333; width:25%; float:left; height:auto; min-height:1320px; margin-left:-14px;">
 
@@ -10,20 +11,20 @@
     <div>
         <table id="items" style="margin-top:75px;width:100%; margin-bottom:25px;">
             @{
-                for (int i = 0; i < Model.Coolers.Count() / 3; i++)
+                for (int i = 0; i < Model.CPUs.Count() / 3; i++)
                 {
                     <tr style="height:250px;">
-                        @{ foreach (var cooler in Model.Coolers.Skip(i * 3).Take(3))
+                        @{ foreach (var cpu in Model.CPUs.Skip(i * 3).Take(3))
                             {
                                 <td style="width:263px;">
                                     <div id="product" style="margin-bottom:55px;">
-                                        <a href='@Url.Action("ViewDetails", "Cooler", new { coolerId = cooler.ID })'>
-                                            <img src="~/Images/Products/Components/Coolers/@cooler.Manufacturer @cooler.Model .png" alt="Image" style="height:220px; max-width:80%; margin-left:20%;" />
-                                            <p style="font-family: Arial Black;"><strong>@cooler.Manufacturer @cooler.Model </strong></p>
+                                        <a href='@Url.Action("ViewDetails", "CPU", new { cpuId = cpu.ID })'>
+                                            <img src="~/Images/Products/Components/CPUs/@cpu.Manufacturer @cpu.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
+                                            <p style="font-family: Arial Black;"><strong>@cpu.Manufacturer @cpu.Model </strong></p>
                                         </a>
                                         <div style="margin-top:15px; margin-left:10px; margin-right:10px;">
-                                            <p style="font-family: Arial Black; float:left;"><strong>@cooler.Price$</strong></p>
-                                            <button onclick="location.href='@Url.Action("ViewDetails", "Cooler", new { coolerId = cooler.ID })';return false;" class="btn btn-default" style="float:right;">Details</button>
+                                            <p style="font-family: Arial Black; float:left;"><strong>@cpu.Price$</strong></p>
+                                            <button onclick="location.href='@Url.Action("ViewDetails", "CPU", new { cpuId = cpu.ID })';return false;" class="btn btn-default" style="float:right;">Details</button>
                                         </div>
                                     </div>
                                 </td>
@@ -42,26 +43,26 @@
                 @if (Model.Pager.CurrentPage > 1)
                 {
                     <li>
-                        <a href="~/Coolers/Index">First</a>
+                        <a href="~/CPU/Index">First</a>
                     </li>
                     <li>
-                        <a href="~/Coolers/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                        <a href="~/CPU/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
                     </li>
                 }
 
                 @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
                 {
                     <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
-                        <a href="~/Coolers/Index?page=@page">@page</a>
+                        <a href="~/CPU/Index?page=@page">@page</a>
                     </li>}
 
                 @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
                 {
                     <li>
-                        <a href="~/Coolers/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                        <a href="~/CPU/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
                     </li>
                     <li>
-                        <a href="~/Coolers/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                        <a href="~/CPU/Index?page=@(Model.Pager.TotalPages)">Last</a>
                     </li>
                 }
             </ul>

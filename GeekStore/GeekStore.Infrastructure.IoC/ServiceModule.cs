@@ -46,12 +46,12 @@ namespace GeekStore.Infrastructure.IoC
             container.Register(Component.For(typeof(IGenericService<RAMDTO>)).ImplementedBy(typeof(GenericService<RAMDTO, RAM>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IGenericService<SpeakersDTO>)).ImplementedBy(typeof(GenericService<SpeakersDTO, Speakers>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IUserService)).ImplementedBy(typeof(UserService)).LifestylePerWebRequest());
-            container.Register(Component.For(typeof(IWarehouseProductService)).ImplementedBy(typeof(WarehouseProductService)).LifestylePerWebRequest());
+            //container.Register(Component.For(typeof(IWarehouseProductService)).ImplementedBy(typeof(WarehouseProductService)).LifestylePerWebRequest());
             //Registering Repositories
             container.Register(Component.For(typeof(IGenericRepository<>)).ImplementedBy(typeof(GenericRepository<>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IProductRepository<>)).ImplementedBy(typeof(ProductRepository<>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IUserRepository)).ImplementedBy(typeof(UserRepository)).LifestylePerWebRequest());
-            container.Register(Component.For(typeof(IWarehouseProductRepository)).ImplementedBy(typeof(WarehouseProductRepository)).LifestylePerWebRequest());
+            //container.Register(Component.For(typeof(IWarehouseProductRepository)).ImplementedBy(typeof(WarehouseProductRepository)).LifestylePerWebRequest());
             //Registering Default NHibernate Interfaces
             container.Register(Component.For<ISessionFactory>().Instance(provider.SessionFactory).LifestyleSingleton());
             container.Register(Component.For<ISession>().UsingFactory((ISessionFactory sessionFactory) => sessionFactory.OpenSession()).LifestylePerWebRequest());

@@ -676,7 +676,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\CreateProduct\Case.cshtml" />
     <Content Include="Views\EditDeleteProduct\Index.cshtml" />
     <Content Include="Views\Products\EditorTemplates\CaseViewModel.cshtml" />
     <Content Include="Views\Products\_ProductTypePartial.cshtml" />
@@ -716,6 +715,8 @@
     <Content Include="Views\Shared\_EmptyLayout.cshtml" />
     <Content Include="Views\Cooler\Index.cshtml" />
     <Content Include="Views\Case\TestIndex.cshtml" />
+    <Content Include="Views\CPU\Index.cshtml" />
+    <Content Include="Views\Disk\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -753,6 +754,8 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
     <Compile Include="Controllers\CoolerController.cs" />
+    <Compile Include="Controllers\CPUController.cs" />
+    <Compile Include="Controllers\DiskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Extensions\AdminRoleRequiredAttribute.cs" />
@@ -767,8 +770,9 @@
     <Compile Include="Models\Common\LoginViewModel.cs" />
     <Compile Include="Models\Common\Pager.cs" />
     <Compile Include="Models\Common\UserViewModel.cs" />
-    <Compile Include="Models\Common\WarehouseProductViewModel.cs" />
     <Compile Include="Models\Customers\CoolerProductsViewModel.cs" />
+    <Compile Include="Models\Customers\CPUProductsViewModel.cs" />
+    <Compile Include="Models\Customers\DiskProductsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Common\CaseViewModel.cs" />
     <Compile Include="Models\Common\CoolerViewModel.cs" />
