@@ -6,13 +6,6 @@
         {
 
         }
-        public string Description
-        {
-            get
-            {
-                return $"{Manufacturer} {Model} {FormFactor}";
-            }
-        }
         public string FormFactor { get; set; }
     }
 }

@@ -11,12 +11,6 @@ namespace GeekStore.Service.Mapping
     {
         public DTOToDomainEntityProfile()
         {
-            CreateMap<CartDTO, Cart>();
-
-
-            CreateMap<Cart, CartDTO>();
-
-
             CreateMap<CaseDTO, Case>().ReverseMap();
             CreateMap<CoolerDTO, Cooler>().ReverseMap();
             CreateMap<CPUDTO, CPU>().ReverseMap();
@@ -32,12 +26,13 @@ namespace GeekStore.Service.Mapping
             CreateMap<MotherboardDTO, Motherboard>().ReverseMap();
             CreateMap<MouseDTO, Mouse>().ReverseMap();
             CreateMap<PowerUnitDTO, PowerUnit>().ReverseMap();
-            CreateMap<ProductDTO, Product>().ReverseMap();
-            CreateMap(typeof(ProductDTO), typeof(Product)).ReverseMap();
+            CreateMap<ProductDTO, Product>()
+                .Include<CaseDTO, Case>();
+            CreateMap<Product, ProductDTO>()
+                .Include<Case, CaseDTO>();
             CreateMap<RAMDTO, RAM>().ReverseMap();
             CreateMap<SpeakersDTO, Speakers>().ReverseMap();
             CreateMap<UserDTO, User>().ReverseMap();
-            //CreateMap<WarehouseProductDTO, WarehouseProduct>().ReverseMap();
         }
     }
 }

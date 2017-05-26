@@ -97,7 +97,11 @@ namespace GeekStore.Repository.Implimentation
 
         public Task ResetAccessFailedCountAsync(User user)
         {
-            throw new NotImplementedException();
+            if (user == null)
+            {
+                throw new ArgumentNullException("user");
+            }
+            return Task.FromResult<int>(0);
         }
 
         public Task SetLockoutEnabledAsync(User user, bool enabled)
@@ -107,7 +111,20 @@ namespace GeekStore.Repository.Implimentation
 
         public Task SetLockoutEndDateAsync(User user, DateTimeOffset lockoutEnd)
         {
-            throw new NotImplementedException();
+            DateTime? nullable;
+            if (user == null)
+            {
+                throw new ArgumentNullException("user");
+            }
+            if (lockoutEnd == DateTimeOffset.MinValue)
+            {
+                nullable = null;
+            }
+            else
+            {
+                nullable = new DateTime?(lockoutEnd.UtcDateTime);
+            }
+            return Task.FromResult<int>(0);
         }
 
         public Task SetPasswordHashAsync(User user, string passwordHash)

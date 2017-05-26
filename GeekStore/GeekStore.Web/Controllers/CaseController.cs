@@ -12,14 +12,12 @@ namespace GeekStore.UI.Controllers
     public class CaseController : Controller
     {
         private readonly IGenericService<CaseDTO> _genericService;
-        private readonly IGenericService<CartDTO> _cartService;
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public CaseController(IGenericService<CaseDTO> genericService, IGenericService<CartDTO> cartService, IUserService userService, IMapper mapper)
+        public CaseController(IGenericService<CaseDTO> genericService, IUserService userService, IMapper mapper)
         {
             _genericService = genericService;
-            _cartService = cartService;
             _userService = userService;
             _mapper = mapper;
         }
@@ -48,14 +46,34 @@ namespace GeekStore.UI.Controllers
         [HttpPost]
         public ActionResult ViewDetails(CaseViewModel caseModel)
         {
-            var caseDTO = _genericService.GetById(caseModel.ID);
-            var userDTO = _userService.GetById(1);
-            var quantity = caseModel.Quantity;
-            var cartDTO = new CartDTO();
-            cartDTO.Product = caseDTO;
-            cartDTO.User = userDTO;
-            cartDTO.Quantity = quantity;
-            _cartService.Save(cartDTO);
+            var cartItems = new List<ProductViewModel>();
+            if ((List<ProductViewModel>)Session["CartItemsList"] != null)
+            {
+                cartItems = (List<ProductViewModel>)Session["CartItemsList"];
+            }
+            var pcCase = _mapper.Map<CaseDTO, CaseViewModel>(_genericService.GetById(caseModel.ID));
+            if (cartItems.Count > 0)
+            {
+                foreach (var item in cartItems)
+                {
+                    if (item.ID == pcCase.ID)
+                    {
+                        pcCase.Quantity = caseModel.Quantity;
+                        item.Quantity += pcCase.Quantity;
+                    }
+                    else
+                    {
+                        pcCase.Quantity = caseModel.Quantity;
+                        cartItems.Add(pcCase);
+                    }
+                }
+            }
+            else
+            {
+                pcCase.Quantity = caseModel.Quantity;
+                cartItems.Add(pcCase);
+            }
+            Session["CartItemsList"] = cartItems;
             return RedirectToAction("Index");
         }
     }

@@ -3,6 +3,7 @@ using GeekStore.Service.DTO;
 using GeekStore.Service.Interfaces;
 using GeekStore.UI.Models.Common;
 using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Web.Mvc;
 
 namespace GeekStore.UI.Controllers
@@ -29,7 +30,7 @@ namespace GeekStore.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(UserViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new UserDTO();
                 user.UserName = model.UserName;
@@ -46,7 +47,7 @@ namespace GeekStore.UI.Controllers
                         return View(model);
                     default:
                         return RedirectToAction("Login", "Users");
-                }              
+                }
             }
             return View(model);
         }
@@ -65,18 +66,27 @@ namespace GeekStore.UI.Controllers
             {
                 return View(model);
             }
-
-            var result = _userService.SignIn(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
-            switch (result)
+            try
             {
-                case SignInStatus.Success:
-                    return RedirectToAction("Index", "Home");
-                case SignInStatus.Failure:
-                    return View("An error ocurred. Try again");
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                var result = _userService.SignIn(model.UserName, model.Password, model.RememberMe, shouldLockout: true);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToAction("Index", "Home");
+                    case SignInStatus.Failure:
+                        ModelState.AddModelError("", "Invalid login User Name or Password.");
+                        return View(model);
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
             }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Invalid login Email or Password.");
+                return View(model);
+            }
+
         }
 
         public ActionResult LogOff()

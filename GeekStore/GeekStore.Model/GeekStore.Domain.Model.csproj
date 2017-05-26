@@ -85,7 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs" />
     <Compile Include="Components\Case.cs" />
     <Compile Include="Components\Cooler.cs" />
     <Compile Include="Components\CPU.cs" />

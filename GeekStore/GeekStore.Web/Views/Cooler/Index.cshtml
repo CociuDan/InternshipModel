@@ -18,7 +18,7 @@
                                 <td style="width:263px;">
                                     <div id="product" style="margin-bottom:55px;">
                                         <a href='@Url.Action("ViewDetails", "Cooler", new { coolerId = cooler.ID })'>
-                                            <img src="~/Images/Products/Components/Coolers/@cooler.Manufacturer @cooler.Model .png" alt="Image" style="height:220px; max-width:80%; margin-left:20%;" />
+                                            <img src="~/Images/Products/Components/@cooler.GetType().ToString().Split('.').Last().Substring(0, cooler.GetType().ToString().Split('.').Last().Length - 9)/@cooler.Manufacturer @cooler.Model .png" alt="Image" style="height:220px; max-width:80%; margin-left:20%;" />
                                             <p style="font-family: Arial Black;"><strong>@cooler.Manufacturer @cooler.Model </strong></p>
                                         </a>
                                         <div style="margin-top:15px; margin-left:10px; margin-right:10px;">

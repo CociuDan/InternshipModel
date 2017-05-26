@@ -85,7 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CartMap.cs" />
     <Compile Include="CaseMap.cs" />
     <Compile Include="CoolerMap.cs" />
     <Compile Include="CPUMap.cs" />

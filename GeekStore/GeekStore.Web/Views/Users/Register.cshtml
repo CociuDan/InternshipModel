@@ -11,11 +11,14 @@
     <hr />
     if (Model != null)
     {
-        if (!string.IsNullOrWhiteSpace(Model.ErrorMessage.Trim()))
+        if (Model.ErrorMessage != null)
         {
-            <div style="text-align:center; margin-bottom:10px;">
-                @Html.DisplayFor(m => m.ErrorMessage)
-            </div>
+            if (!string.IsNullOrWhiteSpace(Model.ErrorMessage.Trim()))
+            {
+                <div style="text-align:center; margin-bottom:10px;">
+                    @Html.DisplayFor(m => m.ErrorMessage)
+                </div>
+            }
         }
     }
     @Html.ValidationSummary("", new { @class = "text-danger" })

@@ -19,7 +19,7 @@
                                 <td style="width:263px;">
                                     <div id="product" style="margin-bottom:55px;">
                                         <a href='@Url.Action("ViewDetails", "CPU", new { cpuId = cpu.ID })'>
-                                            <img src="~/Images/Products/Components/CPUs/@cpu.Manufacturer @cpu.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
+                                            <img src="~/Images/Products/Components/@cpu.GetType().ToString().Split('.').Last().Substring(0, cpu.GetType().ToString().Split('.').Last().Length - 9)/@cpu.Manufacturer @cpu.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
                                             <p style="font-family: Arial Black;"><strong>@cpu.Manufacturer @cpu.Model </strong></p>
                                         </a>
                                         <div style="margin-top:15px; margin-left:10px; margin-right:10px;">

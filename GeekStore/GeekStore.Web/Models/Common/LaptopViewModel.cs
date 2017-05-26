@@ -3,13 +3,6 @@
     public class LaptopViewModel : ProductViewModel
     {
         public CPUViewModel CPU { get; set; }
-        public string Description
-        {
-            get
-            {
-                return $"{Manufacturer} {Model} {CPU.Description} {GPU.Description} {RAM} {Disk.Description} {PowerUnit.Description} {Motherboard.Description}";
-            }
-        }
         public DiskViewModel Disk { get; set; }
         public DisplayViewModel Display { get; set; }
         public GPUViewModel GPU { get; set; }

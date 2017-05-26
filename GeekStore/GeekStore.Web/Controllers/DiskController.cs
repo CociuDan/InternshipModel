@@ -45,18 +45,18 @@ namespace GeekStore.UI.Controllers
             return View(cpus);
         }
 
-        [HttpPost]
-        public ActionResult ViewDetails(DiskViewModel cpuModel)
-        {
-            var caseDTO = _genericService.GetById(cpuModel.ID);
-            var userDTO = _userService.GetByName(HttpContext.User.Identity.Name);
-            var quantity = cpuModel.Quantity;
-            var cartDTO = new CartDTO();
-            cartDTO.Product = caseDTO;
-            cartDTO.User = userDTO;
-            cartDTO.Quantity = quantity;
-            //_cartService.Save(cartDTO);
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public ActionResult ViewDetails(DiskViewModel cpuModel)
+        //{
+        //    var caseDTO = _genericService.GetById(cpuModel.ID);
+        //    var userDTO = _userService.GetByName(HttpContext.User.Identity.Name);
+        //    var quantity = cpuModel.Quantity;
+        //    var cartDTO = new CartDTO();
+        //    cartDTO.Product = caseDTO;
+        //    cartDTO.User = userDTO;
+        //    cartDTO.Quantity = quantity;
+        //    //_cartService.Save(cartDTO);
+        //    return RedirectToAction("Index");
+        //}
     }
 }

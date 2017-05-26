@@ -419,8 +419,18 @@
     <Content Include="Global.asax" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\black-logo.png" />
+    <Content Include="Images\cart.png" />
     <Content Include="Images\cpu-text-small1.png" />
     <Content Include="Images\i.png" />
+    <Content Include="Images\Products\Components\Cooler\Corsair H115i .png" />
+    <Content Include="Images\Products\Components\Cooler\Deepcool GAMMAX 200 .png" />
+    <Content Include="Images\Products\Components\Cooler\NZXT Kraken X62 .png" />
+    <Content Include="Images\Products\Components\CPU\AMD R7 1800X .png" />
+    <Content Include="Images\Products\Components\CPU\Intel i7 2600 .png" />
+    <Content Include="Images\Products\Components\CPU\Intel i7 7700K .png" />
+    <Content Include="Images\Products\IndexPage\case.jpg" />
+    <Content Include="Images\Products\IndexPage\cooler.jpg" />
+    <Content Include="Images\Products\IndexPage\cpu.png" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -714,10 +724,11 @@
     <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
     <Content Include="Views\Shared\_EmptyLayout.cshtml" />
     <Content Include="Views\Cooler\Index.cshtml" />
-    <Content Include="Views\Case\TestIndex.cshtml" />
     <Content Include="Views\CPU\Index.cshtml" />
     <Content Include="Views\Disk\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cooler\ViewDetails.cshtml" />
+    <Content Include="Views\CPU\ViewDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -766,6 +777,8 @@
     </Compile>
     <Compile Include="Mapping\ViewModelToDTOProfile.cs" />
     <Compile Include="Models\Common\CartViewModel.cs" />
+    <Compile Include="Models\Common\OrderItemViewModel.cs" />
+    <Compile Include="Models\Common\OrderViewModel.cs" />
     <Compile Include="Models\Customers\CaseProductsViewModel.cs" />
     <Compile Include="Models\Common\DesktopViewModel.cs" />
     <Compile Include="Models\Common\LoginViewModel.cs" />
@@ -798,7 +811,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Images\Products\Components\Cases\" />
+    <Folder Include="Images\Products\Components\Case\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeekStore.Infrastructure.IoC\GeekStore.Infrastructure.IoC.csproj">

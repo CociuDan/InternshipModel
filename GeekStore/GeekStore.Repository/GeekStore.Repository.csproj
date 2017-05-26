@@ -86,11 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\QueryableExtensions.cs" />
-    <Compile Include="Implimentation\CartRepository.cs" />
     <Compile Include="Implimentation\GenericRepository.cs" />
     <Compile Include="Implimentation\ProductRepository.cs" />
     <Compile Include="Implimentation\UserRepository.cs" />
-    <Compile Include="Interfaces\ICartRepository.cs" />
     <Compile Include="Interfaces\IProductRepository.cs" />
     <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />

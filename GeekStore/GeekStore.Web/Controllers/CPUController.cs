@@ -38,24 +38,25 @@ namespace GeekStore.UI.Controllers
             return View(viewModel);
         }
 
-        public ActionResult ViewDetails(int coolerId)
+        public ActionResult ViewDetails(int cpuId)
         {
-            var cpus = new CPUViewModel();
-            cpus = _mapper.Map<CPUDTO, CPUViewModel>(_genericService.GetById(coolerId));
-            return View(cpus);
+            var cpu = new CPUViewModel();
+            cpu = _mapper.Map<CPUDTO, CPUViewModel>(_genericService.GetById(cpuId));
+            return View(cpu);
         }
 
         [HttpPost]
         public ActionResult ViewDetails(CPUViewModel cpuModel)
         {
-            var caseDTO = _genericService.GetById(cpuModel.ID);
-            var userDTO = _userService.GetByName(HttpContext.User.Identity.Name);
-            var quantity = cpuModel.Quantity;
-            var cartDTO = new CartDTO();
-            cartDTO.Product = caseDTO;
-            cartDTO.User = userDTO;
-            cartDTO.Quantity = quantity;
-            //_cartService.Save(cartDTO);
+            var cartItems = new List<ProductViewModel>();
+            if ((List<ProductViewModel>)Session["CartItemsList"] != null)
+            {
+                cartItems = (List<ProductViewModel>)Session["CartItemsList"];
+            }
+            var cpuDTO = _mapper.Map<CPUDTO, CPUViewModel>(_genericService.GetById(cpuModel.ID));
+            cpuDTO.Quantity = cpuModel.Quantity;
+            cartItems.Add(cpuDTO);
+            Session["CartItemsList"] = cartItems;
             return RedirectToAction("Index");
         }
     }

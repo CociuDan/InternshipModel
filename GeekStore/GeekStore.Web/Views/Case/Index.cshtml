@@ -15,10 +15,10 @@
                     <tr style="height:250px; padding-bottom:20px;">
                         @{ foreach (var pcCase in Model.Cases.Skip(i * 3).Take(3))
                             {
-                                <td>
-                                    <div id="product" style="margin-bottom:100px">
+                                <td style="width:263px;">
+                                    <div id="product" style="margin-bottom:100px; width:263px;">
                                         <a href='@Url.Action("ViewDetails", "Case", new { caseId = pcCase.ID })'>
-                                            <img src="~/Images/Products/Components/Cases/@pcCase.Manufacturer @pcCase.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
+                                            <img src="~/Images/Products/Components/@pcCase.GetType().ToString().Split('.').Last().Substring(0, pcCase.GetType().ToString().Split('.').Last().Length - 9)/@pcCase.Manufacturer @pcCase.Model .png" alt="Image" style="height:220px; width:60%; margin-left:20%;" />
                                             <p style="font-family: Arial Black; padding-top:15px;"><strong>@pcCase.Manufacturer @pcCase.Model </strong></p>
                                         </a>
                                         <div style="margin-top:25px; margin-left:10px; margin-right:10px;">
@@ -35,7 +35,7 @@
 
         </table>
     </div>
-    <div style="position:absolute; margin-top: 1280px;">
+    <div style="position:absolute;">
         @if (Model.Pager.EndPage > 1)
         {
             <ul class="pagination">

@@ -16,14 +16,13 @@ namespace GeekStore.Repository.Extensions
 
         public static void Sort<T>(this IQueryOver<T> colletion, string sortBy, bool asc = true)
         {
-            ICriteria criteria = null;
             if (asc)
             {
-                criteria = colletion.UnderlyingCriteria.AddOrder(Order.Asc(sortBy));
+                colletion.UnderlyingCriteria.AddOrder(Order.Asc(sortBy));
             }
             else
             {
-                criteria = colletion.UnderlyingCriteria.AddOrder(Order.Desc(sortBy));
+                colletion.UnderlyingCriteria.AddOrder(Order.Desc(sortBy));
             }
         }
     }

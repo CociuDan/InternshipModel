@@ -27,7 +27,6 @@ namespace GeekStore.Infrastructure.IoC
         {
             NHibernateProvider provider = new NHibernateProvider(_connectionString);
             //Registering Services
-            container.Register(Component.For(typeof(IGenericService<CartDTO>)).ImplementedBy(typeof(GenericService<CartDTO, Cart>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IGenericService<CaseDTO>)).ImplementedBy(typeof(GenericService<CaseDTO, Case>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IProductService<CaseDTO>)).ImplementedBy(typeof(ProductService<CaseDTO, Case>)).LifestylePerWebRequest());
             container.Register(Component.For(typeof(IGenericService<CoolerDTO>)).ImplementedBy(typeof(GenericService<CoolerDTO, Cooler>)).LifestylePerWebRequest());

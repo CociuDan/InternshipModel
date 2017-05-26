@@ -22,6 +22,7 @@ namespace GeekStore.UI.Models.Common
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        [RegularExpression("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,18}", ErrorMessage = "Password is predictible.")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]

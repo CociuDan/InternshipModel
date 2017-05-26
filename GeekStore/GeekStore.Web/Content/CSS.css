@@ -21,6 +21,7 @@
       color: #fad400 !important;
       position: relative;
       margin-top: -150px;
+      width:1000px;
     }
 
     #company-name{
@@ -45,12 +46,13 @@
       width: 125px;
     }
 
-    #cart{
-        background: url(/Images/cart.png);
+    /*#cart{
+        background: url(/Images/cart.png)no-repeat scroll top rgba(0, 0, 0, 0);
         display: block;
         max-height: 45px;
         max-width: 45px;
-    }
+        top: 0;
+    }*/
 
     .nav{
       font-family: "Arial Black";      

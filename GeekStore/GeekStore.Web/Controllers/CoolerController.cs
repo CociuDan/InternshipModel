@@ -40,22 +40,24 @@ namespace GeekStore.UI.Controllers
 
         public ActionResult ViewDetails(int coolerId)
         {
-            var caseModel = new CaseViewModel();
-            caseModel = _mapper.Map<CoolerDTO, CaseViewModel>(_genericService.GetById(coolerId));
-            return View(caseModel);
+            var coolerModel = new CoolerViewModel();
+            coolerModel = _mapper.Map<CoolerDTO, CoolerViewModel>(_genericService.GetById(coolerId));
+            return View(coolerModel);
         }
+
 
         [HttpPost]
         public ActionResult ViewDetails(CoolerViewModel coolerModel)
         {
-            var caseDTO = _genericService.GetById(coolerModel.ID);
-            var userDTO = _userService.GetByName(HttpContext.User.Identity.Name);
-            var quantity = coolerModel.Quantity;
-            var cartDTO = new CartDTO();
-            cartDTO.Product = caseDTO;
-            cartDTO.User = userDTO;
-            cartDTO.Quantity = quantity;
-            //_cartService.Save(cartDTO);
+            var cartItems = new List<ProductViewModel>();
+            if ((List<ProductViewModel>)Session["CartItemsList"] != null)
+            {
+                cartItems = (List<ProductViewModel>)Session["CartItemsList"];
+            }
+            var coolerDTO = _mapper.Map<CoolerDTO, CoolerViewModel>(_genericService.GetById(coolerModel.ID));
+            coolerDTO.Quantity = coolerModel.Quantity;
+            cartItems.Add(coolerDTO);
+            Session["CartItemsList"] = cartItems;
             return RedirectToAction("Index");
         }
     }

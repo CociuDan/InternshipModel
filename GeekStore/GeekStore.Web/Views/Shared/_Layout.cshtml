@@ -14,18 +14,16 @@
 <body id="body">
     <div class="container">
         <div id='header'>
+            <div id="cart" style="float:right; margin-right:15px; margin-top:15px;">
+                <a href="@Url.Action("Index", "Cart", new { area = ""})">
+                    <img src="~/Images/cart.png" alt="Cart" style="max-height:40px; max-width:40px;" />
+                </a>
+            </div>
             <div id="logo"></div>
             <div id='company-name-div'>
                 <a id='company-name' href="@Url.Action("Index", "Home", new { area = ""})"><b>MEGA</b> PC</a>
             </div>
-            @{
-                if (HttpContext.Current.User.Identity.IsAuthenticated == true)
-                {
-                    <div id="cart" style="float:right; margin-top:-155px; margin-right:25px;">
-                        <a href="@Url.Action("Index", "Cart", new { area = ""})"></a>
-                    </div>
-                }
-            }
+
             <div id="navbarCollapse" class="collapse navbar-collapse ">
                 <ul class="nav navbar-nav">
                     <li class="active"><a id="home" href="@Url.Action("Index", "Home", new { area = ""})">Home</a></li>
@@ -73,7 +71,7 @@
                             <li>
                                 <a id="adminPage" href="@Url.Action("Index", "Home", new { area = "Admin" })">@User.Identity.GetUserName()</a>
                             </li>
-                                <li><a id="login" href="@Url.Action("LogOff", "Users", new { area = ""})">Log Off</a></li>
+                            <li><a id="login" href="@Url.Action("LogOff", "Users", new { area = ""})">Log Off</a></li>
                         }
                         else
                         {
